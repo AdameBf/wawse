@@ -19,6 +19,9 @@ $str['error_scheme_name_by_scheme_author_already_exists'] = 'Un scheme portant c
 $str['sch_editor_sch_list_title'] = 'Liste des schemes';
 $str['sch_editor_sch_list_pages_label'] = 'Pages :';
 
+$str['sch_editor_sch_list_id_column'] = 'ID';
+$str['sch_editor_sch_list_name_column'] = 'Nom';
+
 // Scheme maker/editor page
 $str['sch_editor_sch_maker_title'] = 'Créer un scheme';
 

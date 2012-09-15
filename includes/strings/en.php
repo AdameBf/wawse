@@ -13,6 +13,9 @@ $str['sch_editor_main_page_content'] = 'Welcome to my W:A Scheme Editor. Here, y
 $str['sch_editor_sch_list_title'] = 'Scheme List';
 $str['sch_editor_sch_list_pages_label'] = 'Pages:';
 
+$str['sch_editor_sch_list_id_column'] = 'Scheme ID';
+$str['sch_editor_sch_list_name_column'] = 'Name';
+
 // Errors
 $str['error'] = 'Error';
 $str['error_invalid_action'] = 'Invalid action.';

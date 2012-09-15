@@ -56,10 +56,10 @@ $page_actuelle = $str['sch_editor_sch_list_title'];
 include('../../includes/menu.php');
 include('../../includes/connexion_pdo.php');
 ?>
-<h1>Liste des fichiers</h1>
+<h1><?php $str['sch_editor_sch_list_title']; ?></h1>
 <p>
 	<table>
-		<tr><th>N°</th><th>Nom du fichier</th><th>Envoy&eacute; par :</th><th>Envoy&eacute; le :</th></tr>
+		<tr><th><?php $str['sch_editor_sch_list_id_column']; ?></th><th><?php $str['sch_editor_sch_list_name_column']; ?></th><th><?php $str['sch_editor_sch_list_author_column']; ?></th><th><?php $str['sch_editor_sch_list_submit_date_column']; ?></th><th><?php $str['sch_editor_sch_list_last_edit_date_column']; ?></th><th><?php $str['sch_editor_sch_list_download_column']; ?></th></tr>
 <?php
 $schemes_per_page = 30;
 
@@ -105,36 +105,19 @@ for ($i = 1 ; $i <= $pages_count ; $i++)
 	}
 }
 
-$get_schemes_query = $bdd->query('SELECT * FROM schemes_list ORDER BY sch_id LIMIT 0, 30 DESC');
+$beginning = ($pages_count - 1) * $schemes_per_page;
+
+$get_schemes_query = $bdd->prepare('SELECT * FROM schemes_list ORDER BY sch_id LIMIT :beginning, 30 DESC');
+$get_schemes_query->bindValue(':beginning', $beginning, PDO::PARAM_INT);
+$get_schemes_query->execute();
 $i = 1;
 
-while ($data = $requete->fetch())
+while ($scheme_data = $get_schemes_query->fetch())
 {
-	$numero_jour = date('w',$donnees['timestamp']);
-	$annee = date('Y',$donnees['timestamp']);
-	$numero_mois = date('m',$donnees['timestamp']) - 1;
-	$numero_jour_dans_mois = date ('d',$donnees['timestamp']);
-		if ($numero_mois < 10 AND $numero_mois > 00)
-		{
-			$numero_mois = str_replace('0','',$numero_mois);
-		}
-		if ($numero_mois == 00)
-		{
-			$numero_mois = 0;
-		}
-		if ($numero_jour_dans_mois < 10)
-		{
-			$numero_jour_dans_mois = str_replace('0','',$numero_jour_dans_mois);
-		}
-		if ($numero_jour_dans_mois != 1)
-		{
-			$date_complete = $jours[$numero_jour].' '.$numero_jour_dans_mois.' '.$mois[$numero_mois].' '.$annee;
-		}
-		else
-		{
-			$date_complete = $jours[$numero_jour].' '.$numero_jour_dans_mois.'<sup>er</sup> '.$mois[$numero_mois].' '.$annee;
-		}
-	echo '<tr><td>'.$boucle.'</td><td><a href="schemes/'.$donnees['fichier'].'">'.$donnees['fichier'].'</a></td><td>'.$donnees['pseudo'].'</td><td>'.$date_complete.'</td></tr>';
+	$creation_date = date('Y\/m\/d', $scheme_data['sch_submit_date']);
+	$last_edit_date = date('Y\/m\/d', $scheme_data['sch_last_edit_date']);
+
+	echo '<tr><td>'.$scheme_data['sch_id'].'</td><td>'.$donnees['fichier'].'</td><td>'.$donnees['pseudo'].'</td><td>'.$date_complete.'</td></tr>';
 	$i++;
 }
 ?>
