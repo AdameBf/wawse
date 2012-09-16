@@ -728,7 +728,7 @@ if (isset($_POST['action']))
 	
 		// Last, but not least, let's show the user a friendly message telling the user his scheme has successfully been created, and that he can even download it himself.
 		echo '<p>'.$str['sch_editor_scheme_succesfully_created_message'].'</p>';
-		echo '<p><a href="http://www.worms-univers.com/worms-armageddon/scheme-editor/download.php?id='.$scheme_id['sch_id'].'">'.$str['sch_editor_download_scheme_message'].'</a></p>';
+		echo '<p><a href="download.php?id='.$scheme_id['sch_id'].'">'.$str['sch_editor_download_scheme_message'].'</a></p>';
 
 	break;
 
@@ -1816,7 +1816,7 @@ if (isset($_POST['action']))
 					
 					// Last, but not least, let's show the user a friendly message telling the user his scheme has successfully been uploaded, and that he can even download it himself.
 					echo '<p>'.$str['sch_editor_scheme_succesfully_uploaded_message'].'</p>';
-					echo '<p><a href="http://www.worms-univers.com/worms-armageddon/scheme-editor/download.php?id='.$scheme_id['sch_id'].'">'.$str['sch_editor_download_scheme_message'].'</a></p>';
+					echo '<p><a href="download.php?id='.$scheme_id['sch_id'].'">'.$str['sch_editor_download_scheme_message'].'</a></p>';
 					
 					if (!empty($fixes))
 					{

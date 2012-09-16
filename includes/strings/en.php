@@ -13,8 +13,14 @@ $str['sch_editor_main_page_content'] = 'Welcome to my W:A Scheme Editor. Here, y
 $str['sch_editor_sch_list_title'] = 'Scheme List';
 $str['sch_editor_sch_list_pages_label'] = 'Pages:';
 
-$str['sch_editor_sch_list_id_column'] = 'Scheme ID';
+$str['sch_editor_sch_list_id_column'] = 'ID';
 $str['sch_editor_sch_list_name_column'] = 'Name';
+$str['sch_editor_sch_list_author_column'] = 'Author';
+$str['sch_editor_sch_list_submit_date_column'] = 'Created on';
+$str['sch_editor_sch_list_last_edit_date_column'] = 'Last Edited on';
+$str['sch_editor_sch_list_version_required_column'] = 'W:A Version Required';
+$str['sch_editor_sch_list_download_count_column'] = 'Download Count';
+$str['sch_editor_sch_list_download_column'] = 'Download';
 
 // Errors
 $str['error'] = 'Error';
@@ -260,6 +266,7 @@ $str['sch_editor_changelog_v0_2_0_item1'] = '[Improvement] The creation form has
 $str['sch_editor_changelog_v0_2_0_item2'] = '[Improvement] Finished to apply FFie\'s suggestion.';
 $str['sch_editor_changelog_v0_2_1_item1'] = '[Fixed bug] Some values (Hotseat Delay, Land Retreat Time and Rope Retreat Time) could be set up to 255 in the editor while the real limit is 127.';
 $str['sch_editor_changelog_v0_3_0_item1'] = '[Improvement] It is now possible to upload schemes on the database.';
+$str['sch_editor_changelog_v0_4_0_item1'] = '[Improvement] Added the schemes list.';
 
 // Link to the page that allows us to select another language
 $str['sch_editor_change_language'] = 'Select Another Language';

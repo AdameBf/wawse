@@ -21,6 +21,12 @@ $str['sch_editor_sch_list_pages_label'] = 'Pages :';
 
 $str['sch_editor_sch_list_id_column'] = 'ID';
 $str['sch_editor_sch_list_name_column'] = 'Nom';
+$str['sch_editor_sch_list_author_column'] = 'Créateur';
+$str['sch_editor_sch_list_submit_date_column'] = 'Date de création';
+$str['sch_editor_sch_list_last_edit_date_column'] = 'Date de dernière édition';
+$str['sch_editor_sch_list_version_required_column'] = 'Version requise de W:A';
+$str['sch_editor_sch_list_download_count_column'] = 'Nombre de téléchargements';
+$str['sch_editor_sch_list_download_column'] = 'Télécharger';
 
 // Scheme maker/editor page
 $str['sch_editor_sch_maker_title'] = 'Créer un scheme';
@@ -260,6 +266,7 @@ $str['sch_editor_changelog_v0_2_0_item1'] = '[Amélioration] Réorganisation du fo
 $str['sch_editor_changelog_v0_2_0_item2'] = '[Amélioration] Suggestion de FFie entièrement appliquée.';
 $str['sch_editor_changelog_v0_2_1_item1'] = '[Correction de bug] Certaines options (le délai entre les tours, le temps de retraite au sol et le temps de retraite après avoir lâché une arme depuis la corde) étaient limitées à 255 dans l\'éditeur alors que la vraie limite est 127. Cela est désormais corrigé.';
 $str['sch_editor_changelog_v0_3_0_item1'] = '[Amélioration] Il est désormais possible d\'importer des schemes sur le site.';
+$str['sch_editor_changelog_v0_4_0_item1'] = '[Amélioration] Ajout de la liste des schemes.';
 
 // Link to the page that allows us to select another language
 $str['sch_editor_change_language'] = 'Changer de langue';
