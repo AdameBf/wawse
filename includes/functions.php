@@ -83,4 +83,32 @@ $format = NULL;
 	
 return $format;
 }
+
+function setLanguage($language)
+{
+	if ($language === 'fr')
+	{
+	return $language;
+	}
+	else if ($language === 'en')
+	{
+	return $language;
+	}
+	else
+	{
+	return 'en';
+	}
+}
+
+function onceTwice($text)
+{
+	// - English
+	$text = str_replace('1 times', 'once', $text);
+	$text = str_replace('2 times', 'twice', $text);
+	
+	// - French: no changes.
+	
+	// Once we're done with all the languages, let's return the new text.
+	return $text;
+}
 ?>

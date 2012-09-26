@@ -66,7 +66,7 @@ if (isset($_POST['action']))
 	$page_actuelle = $str['sch_editor_sch_maker_title'];
 	include('../../includes/menu.php');
 
-		$sch_name = $_POST['sch_name'];
+		$sch_name = htmlspecialchars($_POST['sch_name']);
 	
 		echo '<h1>'.$str['sch_editor_sch_maker_title'].': '.$sch_name.'</h1>';
 
@@ -122,15 +122,15 @@ if (isset($_POST['action']))
 		}
 
 		//Let's replace characters in the author name and the file name
-		$sch_name = fileNameParser($sch_name);
-		$sch_author = fileNameParser($sch_author);
+		$sch_name_2 = fileNameParser($sch_name);
+		$sch_author_2 = fileNameParser($sch_author);
 		
 		if (empty($sch_name))
 		{
-			$sch_name = 'Unnamed_scheme_'.time();
+			$sch_name_2 = 'Unnamed_scheme_'.time();
 		}
 
-		$file_name = 'schemes/'.$sch_name.'_by_'.$sch_author.'.wsc';
+		$file_name = 'schemes/'.$sch_name_2.'_by_'.$sch_author_2.'.wsc';
 	
 		// Latest version required to run the scheme. It will be an array where the highest data will be picked, with max()
 		$version_required_array[] = 5; // Below, v2 schemes (might) crash the game.
@@ -753,18 +753,21 @@ if (isset($_POST['action']))
             // Is it the right format?
             $file_infos = pathinfo($_FILES['sch_file']['name']);
             $uploaded_file_format = $file_infos['extension'];
-            $uploaded_file_name = fileNameParser($file_infos['filename']);
+            $uploaded_file_name = $file_infos['filename'];
+            $uploaded_file_name_2 = fileNameParser($file_infos['filename']);
             $allowed_format = array('wsc');
             if (in_array($uploaded_file_format, $allowed_format))
             {
                 // Let's store the file in the database and on the server, though it requires checking
 				if (isset($_SESSION['id']))
 				{
-				$sch_author = fileNameParser($_SESSION['pseudo']);
+				$sch_author = htmlspecialchars($_SESSION['pseudo']);
+				$sch_author_2 = fileNameParser($sch_author);
 				}
 				else
 				{
-				$sch_author = fileNameParser($_POST['sch_author']);
+				$sch_author = htmlspecialchars($_POST['sch_author']);
+				$sch_author_2 = fileNameParser($sch_author);
 				}
 				
 				$query_check = $bdd->prepare('SELECT * FROM schemes_list WHERE sch_name = :sch_name AND sch_author = :sch_author');
@@ -779,15 +782,16 @@ if (isset($_POST['action']))
 					// And the magic number is... the timestamp. :O
 					$magic_number = time();
 					$uploaded_file_name .= $magic_number;
+					$uploaded_file_name_2 .= $magic_number;
 				}
-			
-				$name = $uploaded_file_name.'_by_'.$sch_author.'.'.$uploaded_file_format;
-				$sch_name = $uploaded_file_name.'_by_'.$sch_author; // Base name without extension
-				
+
+				$name = $uploaded_file_name_2.'_by_'.$sch_author_2.'.'.$uploaded_file_format;
+				$sch_name = $uploaded_file_name_2.'_by_'.$sch_author_2; // Base name without extension
+
 				$file_content = file_get_contents($_FILES['sch_file']['tmp_name']);
 				$errors = array();
 				$fixes = array();
-				
+
 				if (substr($file_content, 0, 4) != 'SCHM')
 				{
 				$errors[] = $str['sch_editor_sch_upload_error_incorrect_signature'];
@@ -1814,7 +1818,7 @@ if (isset($_POST['action']))
 					));
 					$scheme_id = $scheme_get_id->fetch();
 					
-					// Last, but not least, let's show the user a friendly message telling the user his scheme has successfully been uploaded, and that he can even download it himself.
+					// Last, but not least, let's show the user a friendly message telling the user his scheme has successfully been uploaded, and that he can even download it himself (even though he already have it).
 					echo '<p>'.$str['sch_editor_scheme_succesfully_uploaded_message'].'</p>';
 					echo '<p><a href="download.php?id='.$scheme_id['sch_id'].'">'.$str['sch_editor_download_scheme_message'].'</a></p>';
 					

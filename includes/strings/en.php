@@ -26,7 +26,7 @@ $str['sch_editor_sch_list_download_column'] = 'Download';
 $str['error'] = 'Error';
 $str['error_invalid_action'] = 'Invalid action.';
 $str['error_no_action'] = 'What do you actually want to do? If you don\'t know what you want to do, then there\'s a problem...';
-$str['error_scheme_name_by_scheme_author_already_exists'] = 'A scheme with the same name and the same author already exists. This new scheme will be numbered.';
+$str['error_scheme_name_by_scheme_author_already_exists'] = 'A scheme with the same name and the same author already exists. This new scheme will be numbered.'; // This one is actually a warning
 
 // Scheme maker/editor page
 $str['sch_editor_sch_maker_title'] = 'Create a New Scheme';
@@ -250,6 +250,22 @@ $str['sch_editor_sch_upload_error_incorrect_version_byte'] = 'Incorrect scheme v
 $str['sch_editor_sch_upload_error_unknown'] = 'Unknown error.';
 $str['sch_editor_scheme_succesfully_uploaded_message'] = 'Scheme successfully uploaded!';
 $str['sch_editor_sch_upload_fixes_have_been_applied'] = '<strong>Note:</strong> The following fixes have been applied:';
+
+// Scheme viewer
+$str['sch_editor_sch_viewer_title'] = 'View a Scheme:';
+$str['sch_editor_sch_viewer_by'] = 'by'; // It's on purpose that I didn't capitalize the "b".
+
+$str['sch_editor_sch_viewer_sch_download_label'] = 'Download:';
+$str['sch_editor_sch_viewer_sch_download_link'] = 'Download';
+$str['sch_editor_sch_viewer_sch_download_count_downloaded'] = 'downloaded';
+$str['sch_editor_sch_viewer_sch_download_count_times'] = 'times';
+$str['sch_editor_sch_viewer_sch_name'] = 'Name:';
+$str['sch_editor_sch_viewer_sch_author'] = 'Author:';
+
+$str['sch_editor_sch_viewer_error_title'] = 'Scheme Viewing Error';
+$str['sch_editor_sch_viewer_error_scheme_not_found'] = 'Scheme not found.';
+$str['sch_editor_sch_viewer_error_no_id_specified'] = 'Errm, what scheme do you want me to load? I mean, I can\'t load schemes without an ID, a bit like calculators can\'t multiply any numbers if these numbers are not specified... (Well, I hope you got my point.)';
+$str['sch_editor_sch_viewer_error_invalid_sch_signature'] = 'Invalid scheme signature. There, how did that file land on this server, if it had an invalid signature? :O';
 
 // My schemes
 $str['sch_editor_my_schemes_title'] = 'My Schemes';

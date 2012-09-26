@@ -251,6 +251,22 @@ $str['sch_editor_sch_upload_error_unknown'] = 'Erreur inconnue.';
 $str['sch_editor_scheme_succesfully_uploaded_message'] = 'Scheme importé avec succès !';
 $str['sch_editor_sch_upload_fixes_have_been_applied'] = '<strong>Note :</strong> les corrections suivantes ont été apportées :'; 
 
+// Scheme viewer
+$str['sch_editor_sch_viewer_title'] = 'Infos à propos du scheme :';
+$str['sch_editor_sch_viewer_by'] = 'par';
+
+$str['sch_editor_sch_viewer_sch_download_label'] = 'Télécharger :';
+$str['sch_editor_sch_viewer_sch_download_link'] = 'Télécharger';
+$str['sch_editor_sch_viewer_sch_download_count_downloaded'] = 'téléchargé';
+$str['sch_editor_sch_viewer_sch_download_count_times'] = 'fois';
+$str['sch_editor_sch_viewer_sch_name'] = 'Nom :';
+$str['sch_editor_sch_viewer_sch_author'] = 'Auteur :';
+
+$str['sch_editor_sch_viewer_error_title'] = 'Erreur de visionnage de scheme';
+$str['sch_editor_sch_viewer_error_scheme_not_found'] = 'Scheme inexistant.';
+$str['sch_editor_sch_viewer_error_no_id_specified'] = 'Euh, vous voulez que je charge quel scheme, au juste ? Si vous ne m\'indiquez pas d\'ID je ne peux pas faire grand chose.';
+$str['sch_editor_sch_viewer_error_invalid_sch_signature'] = 'Signature du fichier scheme invalide (mais comment l\'auteur a-t-il pu envoyer ou créer ce scheme, si on a vérifié/créé de manière valide ?).';
+
 // My schemes
 $str['sch_editor_my_schemes_title'] = 'Mes schemes';
 
