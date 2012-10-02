@@ -732,8 +732,16 @@ if (isset($_POST['action']))
 
 	break;
 
+
+
+
+
 	case 'edit';
 	break;
+
+
+
+
 
 	case 'upload';
 	$titre = 'Worms Armageddon - '.$str['sch_editor_sch_uploader_title'];

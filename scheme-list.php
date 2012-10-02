@@ -121,7 +121,7 @@ if ($pages_count > 0) // There would only be 0 pages if there are no schemes.
 		$creation_date = date('d\-m\-Y', $scheme_data['sch_submit_date']);
 		$last_edit_date = date('d\-m\-Y', $scheme_data['sch_last_edit_date']);
 
-		echo '<tr><td>'.$scheme_data['sch_id'].'</td><td>'.$scheme_data['sch_name'].'</td><td>'.$scheme_data['sch_author'].'</td><td>'.$creation_date.'</td><td>'.$last_edit_date.'</td><td>'.$scheme_data['sch_version_required'].'</td><td>'.$scheme_data['sch_download_count'].'</td><td><a href="download.php?id='.$scheme_data['sch_id'].'">'.$str['sch_editor_sch_list_download_column'].'</a></td></tr>';
+		echo '<tr><td>'.$scheme_data['sch_id'].'</td><td><a href="scheme-view.php?id='.$scheme_data['sch_id'].'">'.$scheme_data['sch_name'].'</a></td><td>'.$scheme_data['sch_author'].'</td><td>'.$creation_date.'</td><td>'.$last_edit_date.'</td><td>'.$scheme_data['sch_version_required'].'</td><td>'.$scheme_data['sch_download_count'].'</td><td><a href="download.php?id='.$scheme_data['sch_id'].'">'.$str['sch_editor_sch_list_download_column'].'</a></td></tr>';
 		$i++;
 	}
 	

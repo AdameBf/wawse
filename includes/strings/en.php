@@ -261,6 +261,10 @@ $str['sch_editor_sch_viewer_sch_download_count_downloaded'] = 'downloaded';
 $str['sch_editor_sch_viewer_sch_download_count_times'] = 'times';
 $str['sch_editor_sch_viewer_sch_name'] = 'Name:';
 $str['sch_editor_sch_viewer_sch_author'] = 'Author:';
+$str['sch_editor_sch_viewer_sch_created_on'] = 'Created on:';
+$str['sch_editor_sch_viewer_sch_last_edited_on'] = 'Last edited on:';
+$str['sch_editor_sch_viewer_sch_required_version'] = 'Required Version:';
+$str['sch_editor_sch_viewer_sch_desc'] = 'Description:';
 
 $str['sch_editor_sch_viewer_error_title'] = 'Scheme Viewing Error';
 $str['sch_editor_sch_viewer_error_scheme_not_found'] = 'Scheme not found.';

@@ -43,6 +43,10 @@ if (isset($_GET['id'])) // Yeah, we should rather make sure we're viewing an exi
 		$sch_id = $get_schemes_infos_result['sch_id'];
 		$sch_version_required = $get_schemes_infos_result['sch_version_required'];
 		$sch_download_count = $get_schemes_infos_result['sch_download_count'];
+		$sch_description = nl2br($get_schemes_infos_result['sch_desc']);
+		
+		$sch_created_on = date('d\/m\/Y', $get_schemes_infos_result['sch_submit_date']);
+		$sch_last_edited_on = date('d\/m\/Y', $get_schemes_infos_result['sch_last_edit_date']);
 
 		$parent_directory = 2;
 		$titre = 'Worms Armageddon - '.$str['sch_editor_sch_viewer_title'].' '.$sch_name.' '.$str['sch_editor_sch_viewer_by'].' '.$sch_author.' (#'.$sch_id.')';
@@ -59,7 +63,9 @@ if (isset($_GET['id'])) // Yeah, we should rather make sure we're viewing an exi
 		include('../../includes/menu.php');
 		
 		// First of all, let's open the scheme file.
-		$sch_file = fopen('schemes/'.fileNameParser($sch_name).'_by_'.$sch_author.'.wsc', 'r');
+		$file_name = 'schemes/'.fileNameParser($sch_name).'_by_'.fileNameParser($sch_author).'.wsc';
+		$sch_file = fopen($file_name, 'r');
+
 		$signature = '';
 		
 		// Check the signature
@@ -81,6 +87,156 @@ if (isset($_GET['id'])) // Yeah, we should rather make sure we're viewing an exi
 			echo '<p><strong>'.$str['sch_editor_sch_viewer_sch_name'].'</strong> '.$sch_name.'.<br />';
 			echo '<strong>'.$str['sch_editor_sch_viewer_sch_author'].'</strong> '.$sch_author.'.</p>';
 			
+			echo '<p><strong>'.$str['sch_editor_sch_viewer_sch_created_on'].'</strong> '.$sch_created_on.'.<br />';
+			echo '<strong>'.$str['sch_editor_sch_viewer_sch_last_edited_on'].'</strong> '.$sch_last_edited_on.'.</p>';
+
+			echo '<p><strong>'.$str['sch_editor_sch_viewer_sch_required_version'].'</strong> '.$sch_version_required.'.<br />';
+			echo '<strong>'.$str['sch_editor_sch_viewer_sch_desc'].'</strong><br />'.$sch_description.'</p>';
+			
+			// Now, let's go with the settings. I think it should be better to get the whole file's content now.
+			$file_content = file_get_contents($file_name);
+			
+			// Now let's start displaying informations.
+			?>
+			<table class="table_no_borders" style="width: 610px;">
+				<tr>
+					<td colspan="3" style="width: 300px;">
+						<fieldset><legend><?php echo $str['sch_editor_game_settings']; ?></legend>
+							<table class="table_no_borders" style="width: 296px">
+								<tr>
+									<td style="width: 74px"><img src="images/php/initial-worm-energy.php?v=<?php echo ord($file_content[26]); ?>" alt="<?php echo $str['sch_editor_initial_worm_energy']; ?>: <?php echo ord($file_content[26]); ?>" width="68px" height="68px" /></td>
+									<td style="width: 74px"><img src="images/php/wins-required.php?v=<?php echo ord($file_content[29]); ?>" alt="<?php echo $str['sch_editor_number_of_victories']; ?>: <?php echo ord($file_content[29]); ?>" width="68px" height="68px" /></td>
+									<td style="width: 74px"><img src="images/php/worm-select.php?v=<?php echo ord($file_content[14]); ?>" alt="<?php echo $str['sch_editor_worm_select']; ?>: <?php
+									if(ord($file_content[14]) == 0)
+									{
+									echo $str['off'];
+									}
+									else if(ord($file_content[14]) == 1)
+									{
+									echo $str['on'];
+									}
+									else
+									{
+									echo $str['random'];
+									}
+									?>" width="68px" height="68px" /></td>
+									<td><img src="images/php/worm-placement.php?v=<?php echo ord($file_content[25]); ?>" alt="<?php echo $str['sch_editor_worm_placement']; ?>: <?php
+									if(ord($file_content[25]) == 0)
+									{
+									echo $str['random'];
+									}
+									else
+									{
+									echo $str['manual'];
+									}
+									?>" width="68px" height="68px" /></td>
+								</tr>
+								<tr>
+									<td><img src="images/php/anchor-mode.php?v=<?php echo ord($file_content[11]); ?>" alt="<?php echo $str['sch_editor_anchor_mode']; ?>: <?php
+									if(ord($file_content[11]) == 0)
+									{
+									echo $str['off'];
+									}
+									else
+									{
+									echo $str['on'];
+									}
+									?>" width="68px" height="68px" /></td>
+									<td><img src="images/php/stockpiling-mode.php?v=<?php echo ord($file_content[13]); ?>" alt="<?php echo $str['sch_editor_stockpiling_mode']; ?>: <?php
+									if(ord($file_content[13]) == 0)
+									{
+									echo $str['off'];
+									}
+									else if(ord($file_content[13]) == 1)
+									{
+									echo $str['sch_editor_stockpiling_mode_acc'];
+									}
+									else
+									{
+									echo $str['sch_editor_stockpiling_mode_anti'];
+									}
+									?>" width="68px" height="68px" /></td>
+									<td><img src="images/php/donor-cards.php?v=<?php echo ord($file_content[18]); ?>" alt="<?php echo $str['sch_editor_stockpiling_mode']; ?>: <?php
+									if(ord($file_content[18]) == 0)
+									{
+									echo $str['off'];
+									}
+									else
+									{
+									echo $str['on'];
+									}
+									?>" width="68px" height="68px" /></td>
+									<td></td>
+								</tr>
+							</table>
+						</fieldset>
+					</td>
+					<td rowspan="2" style="width: 150px;">
+						<fieldset><legend><?php echo $str['sch_editor_game_settings']; ?></legend>
+							<table class="table_no_borders">
+								<tr>
+									<td><img src="images/php/turn-time.php?v=<?php echo ord($file_content[27]); ?>" alt="<?php echo $str['sch_editor_turn_time']; ?>: <?php echo ord($file_content[27]); ?>" width="68px" height="68px" /></td>
+									<td>Blah 2</td>
+								</tr>
+								<tr>
+									<td>Blah 3</td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>Blah 5</td>
+									<td></td>
+								</tr>
+							</table>
+						</fieldset>
+					</td>
+					<td rowspan="3">Blah</td>
+				</tr>
+				<tr>
+					<td>
+						<fieldset><legend><?php echo $str['sch_editor_game_settings']; ?></legend>
+							<table class="table_no_borders" style="width: 80px">
+								<tr>
+									<td><img src="images/php/turn-time.php?v=<?php echo ord($file_content[27]); ?>" alt="<?php echo $str['sch_editor_turn_time']; ?>: <?php echo ord($file_content[27]); ?>" width="68px" height="68px" /></td>
+								</tr>
+							</table>
+						</fieldset>
+					</td>
+					<td colspan="2">
+					<fieldset><legend><?php echo $str['sch_editor_game_settings']; ?></legend>
+							<table class="table_no_borders">
+								<tr>
+									<td><img src="images/php/initial-worm-energy.php?v=<?php echo ord($file_content[26]); ?>" alt="<?php echo $str['sch_editor_initial_worm_energy']; ?>: <?php echo ord($file_content[26]); ?>" width="68px" height="68px" /></td>
+									<td><img src="images/php/wins-required.php?v=<?php echo ord($file_content[29]); ?>" alt="<?php echo $str['sch_editor_number_of_victories']; ?>: <?php echo ord($file_content[29]); ?>" width="68px" height="68px" /></td>
+									<td><img src="images/php/worm-select.php?v=<?php echo ord($file_content[14]); ?>" alt="<?php echo $str['sch_editor_worm_select']; ?>: <?php
+									if(ord($file_content[14]) == 0)
+									{
+									echo $str['off'];
+									}
+									else if(ord($file_content[14]) == 1)
+									{
+									echo $str['on'];
+									}
+									else
+									{
+									echo $str['random'];
+									}
+									?>" width="68px" height="68px" /></td>
+								</tr>
+							</table>
+						</fieldset>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">Blah</td>
+					<td>Blah</td>
+					<td>Blah</td>
+				</tr>
+				<tr>
+					<td colspan="4">Blah</td>
+					<td>Blah</td>
+				</tr>
+			</table>
+			<?php
 		}
 		else
 		{
