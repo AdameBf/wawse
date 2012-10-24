@@ -166,13 +166,13 @@ if (isset($_GET['id'])) // Yeah, we should rather make sure we're viewing an exi
 									echo $str['on'];
 									}
 									?>" width="68px" height="68px" /></td>
-									<td></td>
+									<td><img src="images/php/fall-damage.php?v=<?php echo ord($file_content[10]); ?>" alt="<?php echo $str['sch_editor_fall_damage']; ?>: <?php echo ord($file_content[10]); ?>" width="68px" height="68px" /></td>
 								</tr>
 							</table>
 						</fieldset>
 					</td>
 					<td rowspan="2" style="width: 150px;">
-						<fieldset><legend><?php echo $str['sch_editor_game_settings']; ?></legend>
+						<fieldset><legend><?php echo $str['sch_editor_time_settings']; ?></legend>
 							<table class="table_no_borders">
 								<tr>
 									<td><img src="images/php/turn-time.php?v=<?php echo ord($file_content[27]); ?>" alt="<?php echo $str['sch_editor_turn_time']; ?>: <?php echo ord($file_content[27]); ?>" width="68px" height="68px" /></td>
@@ -189,7 +189,11 @@ if (isset($_GET['id'])) // Yeah, we should rather make sure we're viewing an exi
 							</table>
 						</fieldset>
 					</td>
-					<td rowspan="3">Blah</td>
+					<td rowspan="3">
+						<fieldset><legend><?php echo $str['sch_editor_weapon_settings']; ?></legend>
+							<p><img src="images/png/weapon-panel.png" alt="" /></p>
+						</fieldset>
+					</td>
 				</tr>
 				<tr>
 					<td>

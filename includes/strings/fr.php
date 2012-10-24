@@ -168,6 +168,8 @@ $str['sch_editor_rubber_antilock_power'] = 'Jauge qui se réduit après être arriv
 $str['sch_editor_rubber_antilock_power_hint'] = 'Une autre option TS directement sauvegardée dans le style de partie. Requiert RubberWorm31.';
 $str['sch_editor_rubber_kaosmod'] = 'Kaosmod';
 $str['sch_editor_rubber_kaosmod_hint'] = 'Les kaosmod sont des sets alternatifs des probabilités de trouver chaque utilitaire dans une caisse. Requiert RubberWorm31.';
+$str['sch_editor_rubber_knocking_force'] = 'Force d\'un Rope Knocking';
+$str['sch_editor_rubber_knocking_force_hint'] = 'Vous pouvez définir la force d\'une poussée à la corde (Rope Knocking). Affecte aussi l\'élastique. 0 = désactiver cette option, comme toujours ; 1 = plus petite force ; 100 = force par défaut ; 200 = double de la force par défaut ; 254 = 2.54× la force par défaut, c\'est le maximum ; 255 = pas de rope knocking.';
 
 $str['sch_editor_rubber_crate_rate'] = 'Caisses par tour et compteur de caisses';
 $str['sch_editor_rubber_crate_rate_hint'] = 'Toutes les valeurs, sauf 0, activent le compteur.';
@@ -182,6 +184,8 @@ $str['sch_editor_rubber_speed'] = 'Vitesse';
 $str['sch_editor_rubber_speed_hint'] = 'Vous pouvez modifier la vitesse maximale des objets. 16: par défaut (utile pour activer TS en gardant la vitesse par défaut), 32: comme dans le Test Stuff actuel, 255: sans limite, comme dans TS3. Requiert RubberWorm31.';
 $str['sch_editor_rubber_anti_worm_sink'] = 'Les vers ne coulent pas';
 $str['sch_editor_rubber_anti_worm_sink_hint'] = 'Quand un ver coule, il sera retéléporté là où il était juste avant de couler. S\'il coule juste après avoir été retéléporté (parce que le terrain n\'existe plus), il meurt bel et bien.';
+$str['sch_editor_rubber_gravity_modifications'] = 'Modifications de la gravité';
+$str['sch_editor_rubber_gravity_modifications_hint'] = 'Là, vous avez pas mal de possibilités : vous pouvez augmenter ou diminuer la gravité de base en effet (options "grav##"), mais pas seulement. Vous pouvez aussi inverser cette gravité (options "grav-##"), ce qui fait que les vers marcheront au plafond (les déplacements sont difficiles cependant), ou bien encore, créer un trou noir. Celui-ci se trouvera au centre de la map et attirera ou repoussera tous les objets et les vers vers lui. Son attraction est soit constante (partout la même sur la carte, options "cbh(-)##") soit proportionnelle (plus l\'objet est loin moins l\'attraction est importante, options "pbh(-)##").';
 $str['sch_editor_rubber_swat'] = 'Sélection de ver n\'importe quand pendant le tour';
 $str['sch_editor_rubber_swat_hint'] = 'Si la sélection du ver au début du tour est manuelle, vous pourrez changer de ver à tout moment pendant votre tour. Sinon, vous ne pourrez changer de ver qu\'une fois avoir utilisé l\'arme sélection de ver, les effets ne durant qu\'un tour (un peu comme pour la faible pesanteur ou la marche rapide). Requiert RubberWorm31.';
 $str['sch_editor_rubber_air_viscosity'] = 'Perte de vitesse dans l\'air';
@@ -203,8 +207,7 @@ $str['sch_editor_god_mode'] = 'Mode divin';
 $str['sch_editor_god_mode_hint'] = 'Si vous l\'activez, tous les vers auront une quantité d\'énergie infinie.';
 $str['sch_editor_sheep_heaven'] = 'Paradis des moutons';
 $str['sch_editor_sheep_heaven_hint'] = 'Si vous activez cette option, un mouton sortira de chaque caisse détruite (pas seulement de celles qui contiennent un mouton ou un super mouton). Le temps de vol du super mouton est rallongé.';
-$str['sch_editor_rubber_gravity_modifications'] = 'Modifications de la gravité';
-$str['sch_editor_rubber_gravity_modifications_hint'] = 'Là, vous avez pas mal de possibilités : vous pouvez augmenter ou diminuer la gravité de base en effet (options "grav##"), mais pas seulement. Vous pouvez aussi inverser cette gravité (options "grav-##"), ce qui fait que les vers marcheront au plafond (les déplacements sont difficiles cependant), ou bien encore, créer un trou noir. Celui-ci se trouvera au centre de la map et attirera ou repoussera tous les objets et les vers vers lui. Son attraction est soit constante (partout la même sur la carte, options "cbh(-)##") soit proportionnelle (plus l\'objet est loin moins l\'attraction est importante, options "pbh(-)##").';
+
 $str['sch_editor_indestructible_landscape'] = 'Terrain indestructible';
 $str['sch_editor_indestructible_landscape_hint'] = 'Si vous activez cette option, le terrain ne pourra pas être détruit.';
 
@@ -284,9 +287,13 @@ $str['sch_editor_changelog_v0_1_2_item1'] = '[Correction de bug] Le temps de la 
 $str['sch_editor_changelog_v0_1_2_item2'] = '[Correction de bug] Les dates étaient toujours affichées en français dans cet historique.';
 $str['sch_editor_changelog_v0_2_0_item1'] = '[Amélioration] Réorganisation du formulaire, pour répondre à une suggestion de GreeN.';
 $str['sch_editor_changelog_v0_2_0_item2'] = '[Amélioration] Suggestion de FFie entièrement appliquée.';
-$str['sch_editor_changelog_v0_2_1_item1'] = '[Correction de bug] Certaines options (le délai entre les tours, le temps de retraite au sol et le temps de retraite après avoir lâché une arme depuis la corde) étaient limitées à 255 dans l\'éditeur alors que la vraie limite est 127. Cela est désormais corrigé.';
+$str['sch_editor_changelog_v0_2_1_item1'] = '[Correction] Certaines options (le délai entre les tours, le temps de retraite au sol et le temps de retraite après avoir lâché une arme depuis la corde) étaient limitées à 255 dans l\'éditeur alors que la vraie limite est 127. Cela est désormais corrigé.';
 $str['sch_editor_changelog_v0_3_0_item1'] = '[Amélioration] Il est désormais possible d\'importer des schemes sur le site.';
 $str['sch_editor_changelog_v0_4_0_item1'] = '[Amélioration] Ajout de la liste des schemes.';
+$str['sch_editor_changelog_v0_4_1_item1'] = '[Correction] Après des tests plus concrets, il se trouvait que seul le temps de retraite au sol était limité à 127. La limite des deux autres valeurs (délai entre les tours et temps de retraite sur la corde) a été remise à 255.';
+$str['sch_editor_changelog_v0_4_1_item2'] = '[Correction] Si un scheme était importé et que l\'uploadeur n\'a pas indiqué de nom d\'auteur, son nom sera maintenant mis à Anonymous. Un oubli accidentel avait fait que le nom resterait vide.';
+$str['sch_editor_changelog_v0_4_1_item3'] = 'Et quelques petites corrections que j\'ai faites les jours précédents et que je n\'ai pas listées.';
+$str['sch_editor_changelog_v0_4_2_item1'] = '[Amélioration] Ajout de la nouvelle option de RubberWorm v0.0.1.12.';
 
 // Link to the page that allows us to select another language
 $str['sch_editor_change_language'] = 'Changer de langue';

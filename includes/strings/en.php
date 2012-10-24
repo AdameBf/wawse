@@ -178,6 +178,8 @@ $str['sch_editor_rubber_circular_aim'] = 'Circular Aiming';
 $str['sch_editor_rubber_circular_aim_hint'] = 'Yes, this option comes from Test-Stuff, but with Rubber it is stored in the scheme file directly. Requires RubberWorm31.';
 $str['sch_editor_rubber_antilock_power'] = 'Antilock Power';
 $str['sch_editor_rubber_antilock_power_hint'] = 'Another TS option stored in the scheme file. Requires RubberWorm31.';
+$str['sch_editor_rubber_knocking_force'] = 'Knocking Force';
+$str['sch_editor_rubber_knocking_force_hint'] = 'Set your custom rope knocking force. Note that this also affects bungee knocks. 0 = disable, as always; 1 = lowest force; 100 = default force; 200 = 2× default force; 254 = max, 2.54× force; 255 = forces no rope knocking.';
 
 $str['sch_editor_rubber_crate_rate'] = 'Crate Rate and Crate Counter';
 $str['sch_editor_rubber_crate_rate_hint'] = 'All values, but 0, enables the crate counter.';
@@ -281,12 +283,16 @@ $str['sch_editor_changelog_v0_1_0_item1'] = 'First release of the scheme editor,
 $str['sch_editor_changelog_v0_1_1_item1'] = '[Improvement] On the scheme creation page: the first few numeric options now use text fields instead of option zones, as suggested by FFie (and with her help). Not finished yet.';
 $str['sch_editor_changelog_v0_1_1_item2'] = 'Created this changelog.';
 $str['sch_editor_changelog_v0_1_2_item1'] = '[Fixed bug] The round time is now correctly stored if it is defined in seconds. In v0.1.0, the value was incorrectly stored (for example, the 90s value was stored as 39s); in v0.1.1, it was always stored in minutes.';
-$str['sch_editor_changelog_v0_1_2_item2'] = '[Fixed bug] Dates were always shown in French in this changelog.';
+$str['sch_editor_changelog_v0_1_2_item2'] = '[Fixed] Dates were always shown in French in this changelog.';
 $str['sch_editor_changelog_v0_2_0_item1'] = '[Improvement] The creation form has been reorganised so it is smaller, as GreeN suggested.';
 $str['sch_editor_changelog_v0_2_0_item2'] = '[Improvement] Finished to apply FFie\'s suggestion.';
-$str['sch_editor_changelog_v0_2_1_item1'] = '[Fixed bug] Some values (Hotseat Delay, Land Retreat Time and Rope Retreat Time) could be set up to 255 in the editor while the real limit is 127.';
+$str['sch_editor_changelog_v0_2_1_item1'] = '[Fixed] Some values (Hotseat Delay, Land Retreat Time and Rope Retreat Time) could be set up to 255 in the editor while the real limit is 127.';
 $str['sch_editor_changelog_v0_3_0_item1'] = '[Improvement] It is now possible to upload schemes on the database.';
 $str['sch_editor_changelog_v0_4_0_item1'] = '[Improvement] Added the schemes list.';
+$str['sch_editor_changelog_v0_4_1_item1'] = '[Fixed] After ingame testing, I realised that only the Land Retreat Time was limited to 127. The Hotseat Delay and the Rope Retreat Time can be set up to 255 again.';
+$str['sch_editor_changelog_v0_4_1_item2'] = '[Fixed] Uploaded schemes without any author name had an empty author field. Now, if no author name is given, the author name will be set to Anonymous.';
+$str['sch_editor_changelog_v0_4_1_item3'] = 'Plus some other minor fixes I\'ve released on the previous days and I didn\'t list.';
+$str['sch_editor_changelog_v0_4_2_item1'] = '[Improvement] Added custom knocking force setting, RubberWorm v0.0.1.12\'s new feature.';
 
 // Link to the page that allows us to select another language
 $str['sch_editor_change_language'] = 'Select Another Language';

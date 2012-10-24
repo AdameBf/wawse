@@ -66,25 +66,24 @@ if (isset($_POST['action']))
 	$page_actuelle = $str['sch_editor_sch_maker_title'];
 	include('../../includes/menu.php');
 
-		$sch_name = htmlspecialchars($_POST['sch_name']);
+	$sch_name = htmlspecialchars($_POST['sch_name']);
 	
-		echo '<h1>'.$str['sch_editor_sch_maker_title'].': '.$sch_name.'</h1>';
+	echo '<h1>'.$str['sch_editor_sch_maker_title'].': '.$sch_name.'</h1>';
 
 		// First, let's make sure that we won't override a scheme before actually writing the file.
-	
 		if (isset($_SESSION['id']))
 		{
-		$sch_author_is_member = 1;
+			$sch_author_is_member = 1;
 		}
 		else
 		{
-		$sch_author_is_member = 0;
+			$sch_author_is_member = 0;
 		}
 
 		if ($sch_author_is_member === 1)
 		{
-		$sch_author = $_SESSION['pseudo'];
-		$sch_password = null;
+			$sch_author = $_SESSION['pseudo'];
+			$sch_password = null;
 		}
 		else
 		{
@@ -144,7 +143,7 @@ if (isset($_POST['action']))
 			{
 				if ($round_time_value === 0)
 				{
-				$round_time_value = 1;
+					$round_time_value = 1;
 				}
 				
 				$round_time = 256 - $round_time_value;
@@ -505,6 +504,7 @@ if (isset($_POST['action']))
 		$rubber_wind_influence = (int) $_POST['rubber_wind_influence'];
 		$rubber_gravity_modifications = (int) $_POST['rubber_gravity_modifications'];
 		$rubber_worms_bounciness = (int) $_POST['rubber_worms_bounciness'];
+		$rubber_knocking_force = (int) $_POST['rubber_knocking_force'];
 
 		// Anti sink
 		if (isset($_POST['rubber_anti_sink']))
@@ -628,12 +628,12 @@ if (isset($_POST['action']))
 		$laser_fix_enabled = true;
 		$version_required_array[] = 29;
 		}
-		if ($rubber_speed !== 0 OR $rubber_version_override > 82)
+		if ($rubber_speed !== 0 OR $rubber_version_override > 82 OR $rubber_knocking_force !== 0)
 		{
 		$version_required_array[] = 31;
 		}
 	
-		$rubber_settings = array(0, 0, $rubber_speed, 0, $rubber_earthquake, $rubber_flames_limit, 0, 0, $rubber_crate_limit, $rubber_crate_rate, $rubber_version_override, $rubber_friction, $rubber_mole_squadron, $rubber_swat, 	$rubber_air_viscosity, $rubber_wind_influence, $rubber_anti_sink, $rubber_gravity_modifications, $rubber_worms_bounciness);
+		$rubber_settings = array(0, $rubber_knocking_force, $rubber_speed, 0, $rubber_earthquake, $rubber_flames_limit, 0, 0, $rubber_crate_limit, $rubber_crate_rate, $rubber_version_override, $rubber_friction, $rubber_mole_squadron, $rubber_swat, $rubber_air_viscosity, $rubber_wind_influence, $rubber_anti_sink, $rubber_gravity_modifications, $rubber_worms_bounciness);
 
 		$rubber_max_value = max($rubber_settings);
 		if ($rubber_max_value === 0)
@@ -774,8 +774,16 @@ if (isset($_POST['action']))
 				}
 				else
 				{
-				$sch_author = htmlspecialchars($_POST['sch_author']);
-				$sch_author_2 = fileNameParser($sch_author);
+					if (!empty($_POST['sch_author']))
+					{
+					$sch_author = htmlspecialchars($_POST['sch_author']);
+					$sch_author_2 = fileNameParser($sch_author);
+					}
+					else
+					{
+					$sch_author = 'Anonymous';
+					$sch_author_2 = $sch_author;
+					}
 				}
 				
 				$query_check = $bdd->prepare('SELECT * FROM schemes_list WHERE sch_name = :sch_name AND sch_author = :sch_author');
@@ -1340,7 +1348,7 @@ if (isset($_POST['action']))
 							}
 						break;
 						
-						case 200: case 202: case 204: case 206: case 208: case 210: case 212: case 214: case 216: case 218: case 219: case 220: case 222: case 224: case 226: case 228: case 230: case 234: case 236: case 238: case 242: case 246: case 248: case 250: case 252: case 254: case 258: case 262: case 266: case 270: case 274: case 278: case 282: case 286: case 290: case 294: // Unused bytes (there are 36 of them!)
+						case 200: case 202: case 204: case 206: case 208: case 210: case 212: case 214: case 216: case 218: case 219: case 220: case 222: case 224: case 226: case 230: case 234: case 236: case 238: case 242: case 246: case 248: case 250: case 252: case 254: case 258: case 262: case 266: case 270: case 274: case 278: case 282: case 286: case 290: case 294: // Unused bytes (there are 35 of them!)
 							if (ord($file_content[$i]) !== 0)
 							{
 							$old_value = ord($file_content[$i]);
@@ -1509,17 +1517,6 @@ if (isset($_POST['action']))
 									else
 									{
 									$fixes[] = 'The Super Banana Bomb Power setting\'s byte value has been reset to 0 (was '.$old_value.') - this setting has no effect.';
-									}
-								}
-								else if ($i === 228)
-								{
-									if ($language === 'fr')
-									{
-									$fixes[] = 'Les chances de trouver la super bombe banane dans une caisse ont été remises à 0 (elles étaient à '.$old_value.') - l\'option n\'a aucun effet.';
-									}
-									else
-									{
-									$fixes[] = 'The Super Banana Bomb Crate Probability byte value has been reset to 0 (was '.$old_value.') - this setting has no effect.';
 									}
 								}
 								else if ($i === 230)

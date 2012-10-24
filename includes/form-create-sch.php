@@ -36,7 +36,7 @@
 	<table class="table_no_borders">
 	<tr>
 		<td style="width:280px;"><label for="hotseat"><?php echo $str['sch_editor_hotseat_delay']; ?></label> <img src="../../images/sch-editor-hint-icon.png" alt="(Hover for a tip)" title="<?php echo $str['sch_editor_hotseat_delay_hint']; ?>" /></td>
-		<td><input type="text" name="hotseat" id="hotseat" maxlength="3" size="2" value="10" style="font-size: 0.9em;" onchange="checkValue(this, 0, 127, 10, '<?php echo $language; ?>')" />s</td>
+		<td><input type="text" name="hotseat" id="hotseat" maxlength="3" size="2" value="10" style="font-size: 0.9em;" onchange="checkValue(this, 0, 255, 10, '<?php echo $language; ?>')" />s</td>
 	</tr>
 	<tr>
 		<td><label for="retreat_time"><?php echo $str['sch_editor_retreat_time']; ?></label> <img src="../../images/sch-editor-hint-icon.png" alt="(Hover for a tip)" title="<?php echo $str['sch_editor_retreat_time_hint']; ?>" /></td>
@@ -44,7 +44,7 @@
 	</tr>
 	<tr>
 		<td><label for="rope_retreat_time"><?php echo $str['sch_editor_rope_retreat_time']; ?></label> <img src="../../images/sch-editor-hint-icon.png" alt="(Hover for a tip)" title="<?php echo $str['sch_editor_rope_retreat_time_hint']; ?>" /></td>
-		<td><input type="text" name="rope_retreat_time" id="rope_retreat_time" maxlength="3" size="2" value="5" style="font-size: 0.9em;" onchange="checkValue(this, 0, 127, 5, '<?php echo $language; ?>')" />s</td>
+		<td><input type="text" name="rope_retreat_time" id="rope_retreat_time" maxlength="3" size="2" value="5" style="font-size: 0.9em;" onchange="checkValue(this, 0, 255, 5, '<?php echo $language; ?>')" />s</td>
 	</tr>
 	<tr>
 		<td colspan="2"> </td>
@@ -855,11 +855,6 @@
 	<tr>
 		<td><label for="rubber_ldet"><?php echo $str['sch_editor_rubber_ldet']; ?></label> <img src="../../images/sch-editor-hint-icon.png" alt="(Hover for a tip)" title="<?php echo $str['sch_editor_rubber_ldet_hint']; ?>" /></td>
 		<td style="padding-left: 25px;"><input type="checkbox" name="rubber_ldet" id="rubber_ldet" checked="checked" /></td>
-		<td colspan="2"></td>
-	</tr>
-	<tr>
-		<td><label for="rubber_fdpt"><?php echo $str['sch_editor_rubber_fdpt']; ?></label> <img src="../../images/sch-editor-hint-icon.png" alt="(Hover for a tip)" title="<?php echo $str['sch_editor_rubber_fdpt_hint']; ?>" /></td>
-		<td style="padding-left: 25px;"><input type="checkbox" name="rubber_fdpt" id="rubber_fdpt" /></td>
 		<td><label for="rubber_kaosmod"><?php echo $str['sch_editor_rubber_kaosmod']; ?></label> <img src="../../images/sch-editor-hint-icon.png" alt="(Hover for a tip)" title="<?php echo $str['sch_editor_rubber_kaosmod_hint']; ?>" /></td>
 		<td><select name="rubber_kaosmod" id="rubber_kaosmod">
 		<?php
@@ -880,6 +875,12 @@
 		}
 		?>
 		</select></td>
+	</tr>
+	<tr>
+		<td><label for="rubber_fdpt"><?php echo $str['sch_editor_rubber_fdpt']; ?></label> <img src="../../images/sch-editor-hint-icon.png" alt="(Hover for a tip)" title="<?php echo $str['sch_editor_rubber_fdpt_hint']; ?>" /></td>
+		<td style="padding-left: 25px;"><input type="checkbox" name="rubber_fdpt" id="rubber_fdpt" /></td>
+		<td><label for="rubber_knocking_force"><?php echo $str['sch_editor_rubber_knocking_force']; ?></label> <img src="../../images/sch-editor-hint-icon.png" alt="(Hover for a tip)" title="<?php echo $str['sch_editor_rubber_knocking_force_hint']; ?>" /></td>
+		<td><input type="text" name="rubber_knocking_force" id="rubber_knocking_force" maxlength="3" size="2" value="0" style="font-size: 0.9em;" onchange="checkValue(this, 0, 255, 0, '<?php echo $language; ?>')" /></td>
 	</tr>
 	<tr>
 		<td><label for="rubber_improved_rope"><?php echo $str['sch_editor_rubber_improved_rope']; ?></label> <img src="../../images/sch-editor-hint-icon.png" alt="(Hover for a tip)" title="<?php echo $str['sch_editor_rubber_improved_rope_hint']; ?>" /></td>
