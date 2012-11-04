@@ -69,7 +69,15 @@ include('../../includes/connexion_pdo.php');
 <?php
 }
 ?>
-<label for="sch_desc" class="aligner"><?php echo $str['sch_editor_sch_desc']; ?></label><textarea name="sch_desc" id="sch_desc" rows="4" cols="35" class="champ" ></textarea></p>
+<label for="sch_desc" class="aligner"><?php echo $str['sch_editor_sch_desc']; ?></label><textarea name="sch_desc" id="sch_desc" rows="4" cols="35" class="champ"></textarea></p>
+<p><label for="sch_ex_rep1" class="aligner"><?php echo $str['sch_editor_sch_example_replays']; ?><br />
+<span class="sch_editor_hint"><?php echo $str['sch_editor_sch_example_replays_hint']; ?></span></label></td>
+<input type="file" name="sch_ex_rep1" id="sch_ex_rep1" class="champ" /><br />
+<input type="file" name="sch_ex_rep2" id="sch_ex_rep2" class="champ" /><br />
+<input type="file" name="sch_ex_rep3" id="sch_ex_rep3" class="champ" /><br />
+<input type="file" name="sch_ex_rep4" id="sch_ex_rep4" class="champ" /><br />
+<input type="file" name="sch_ex_rep5" id="sch_ex_rep5" class="champ" style="margin-left: 250px;" /></<p>
+
 <p><input type="hidden" name="action" value="upload" /><input type="submit" value="<?php echo $str['sch_editor_sch_upload_button']; ?>" class="bouton" /></p>
 </form>
 <?php

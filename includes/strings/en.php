@@ -36,7 +36,7 @@ $str['sch_editor_sch_name_hint'] = 'Unless you\'re ok to see your scheme being c
 $str['sch_editor_sch_author'] = 'Your Nickname';
 $str['sch_editor_sch_author_hint'] = 'Optional field. If you don\'t give any nickname, then your nickname will be set to Anonymous in the database.';
 $str['sch_editor_sch_password'] = 'Scheme\'s Password';
-$str['sch_editor_sch_password_hint'] = 'This will allow you to edit your scheme later, even if you didn\'t registered here - which is understandable if you don\'t speak French.';
+$str['sch_editor_sch_password_hint'] = 'This will allow you to edit your scheme later, even if you didn\'t register here - which is understandable if you don\'t speak French.';
 $str['sch_editor_sch_desc'] = 'Scheme\'s Description';
 $str['sch_editor_sch_desc_hint'] = 'Describe your scheme here! You should tell:</span>
 <ul class="sch_editor_hint">
@@ -44,6 +44,8 @@ $str['sch_editor_sch_desc_hint'] = 'Describe your scheme here! You should tell:<
 <li>the recommended amount of worms per team;</li>
 <li>what kind of maps to use, if your scheme requires special maps...</li>
 </ul>';
+$str['sch_editor_sch_example_replays'] = 'Example Replays';
+$str['sch_editor_sch_example_replays_hint'] = 'There\'s nothing better than replays to show people how your scheme works. Thus, you can upload up to 5 example replays (this limit may be extended in the future).';
 
 $str['ammo'] = 'Ammo';
 $str['barrels'] = 'Oil Drums'; 
@@ -193,7 +195,7 @@ $str['sch_editor_rubber_worms_bounciness_hint'] = 'The value will be divided by 
 $str['sch_editor_rubber_friction'] = 'Friction';
 $str['sch_editor_rubber_friction_hint'] = 'How does a worm\'s speed change while he is sliding? 1-95: high friction, 96: default friction, 97-99: low friction, 100: no friction, more than 100: anti-friction, i.e. the worm\'s speed increases while it is sliding.';
 $str['sch_editor_rubber_flames_limit'] = 'Flames Limit';
-$str['sch_editor_rubber_flames_limit_hint'] = 'Can be set up to 25,500. Requires RubberWorm31 (3.6.31.0) or LaserFix (3.6.29.0).';
+$str['sch_editor_rubber_flames_limit_hint'] = 'Can be set up to 25,500 (255×100). Requires RubberWorm31 (3.6.31.0) or LaserFix (3.6.29.0).';
 $str['sch_editor_rubber_speed'] = 'Speed';
 $str['sch_editor_rubber_speed_hint'] = 'You can edit objects\' max speed. 16: default, 32: like in current Test Stuff, 255: no limit, like in TS3. Requires RubberWorm31.';
 $str['sch_editor_rubber_anti_worm_sink'] = 'Anti Worm Sink';
@@ -239,7 +241,7 @@ $str['sch_editor_download_scheme_message'] = 'Download it here.';
 
 // Scheme uploader
 $str['sch_editor_sch_uploader_title'] = 'Upload a Scheme';
-$str['sch_editor_sch_uploader_intro'] = 'So, your scheme is already ready, and all you want is to upload it here? No problem, just use the following form. The file you upload must be in *.wsc format and must be valid (don\'t think you can get me that easily! :O).';
+$str['sch_editor_sch_uploader_intro'] = 'So, your scheme is already ready, and all you want is to upload it here? No problem, just use the following form. The scheme file you upload must be in *.wsc format and must be either 221 or 297 bytes long; replays file must be in *.WAgame format (max. 3 MB). All files must be valid.';
 $str['sch_editor_sch_uploader_sch_file'] = 'Your Scheme File';
 $str['sch_editor_sch_upload_button'] = 'Send us your piece of art! =)';
 $str['sch_editor_sch_upload_error_invalid_scheme_file'] = 'Invalid scheme file. The following errors were found:';
@@ -267,6 +269,8 @@ $str['sch_editor_sch_viewer_sch_created_on'] = 'Created on:';
 $str['sch_editor_sch_viewer_sch_last_edited_on'] = 'Last edited on:';
 $str['sch_editor_sch_viewer_sch_required_version'] = 'Required Version:';
 $str['sch_editor_sch_viewer_sch_desc'] = 'Description:';
+
+$str['sch_editor_sch_view_action_replays'] = 'I. Replays';
 
 $str['sch_editor_sch_viewer_error_title'] = 'Scheme Viewing Error';
 $str['sch_editor_sch_viewer_error_scheme_not_found'] = 'Scheme not found.';

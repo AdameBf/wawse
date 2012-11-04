@@ -78,7 +78,8 @@ $format = NULL;
 	}
 	else
 	{
-	$format = 'H*'; // I don't think it's the right behaviour, though
+	$new_value = $value % 256; // Something limited to 255 is limited to 255, period. If you don't respect this, then don't cry for unexpected values. :P
+	$format = packingFormat($new_value); // Yes, recursivity kicks in. (This is the first time I have a recursive function, actually.)
 	}
 	
 return $format;
@@ -110,5 +111,154 @@ function onceTwice($text)
 	
 	// Once we're done with all the languages, let's return the new text.
 	return $text;
+}
+
+function validHazardsByteValue($value) // When generating the image on the scheme view page.
+{
+	$value = (int) $value;
+	
+	if ($value >= 0 && $value <= 2)
+	{
+	return true;
+	}
+	else if ($value == 5)
+	{
+	return true;
+	}
+	else if ($value >= 12 && $value <= 247)
+	{
+	return true;
+	}
+	else
+	{
+	return false;
+	}
+}
+
+function hazardousObjectByteDecrypt($value, $language = 'en') // Might only be using this on the scheme viewing page though; I won't bother replacing old occurences.
+{
+	$value = (int) $value;
+	
+	if ($language == 'fr')
+	{
+		$object_types_array = array('Aucun', 'Mines', 'Barils', 'Mines et Barils');
+	}
+	else
+	{
+		$object_types_array = array('None', 'Mines', 'Barrels', 'Both Mines and Barrels');
+	}
+	$object_counts_array = array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200, 210, 220, 230, 240, 250);
+	
+	if (validHazardsByteValue($value))
+	{
+		// Object Type
+		if ($value < 12)
+		{
+			// Then we have the old values.
+			switch ($value)
+			{
+				case 0:
+				$object_type = $object_types_array[0];
+				break;
+				
+				case 1:
+				$object_type = $object_types_array[1];
+				break;
+				
+				case 2:
+				$object_type = $object_types_array[2];
+				break;
+				
+				case 5:
+				$object_type = $object_types_array[3];
+				break;
+				
+				default:
+				$object_type = $object_types_array[1];
+				break;
+			}
+			
+			$object_count = 8;
+		}
+		else
+		{
+			$object_type_numeric_value = $value % 4;
+			$object_type = $object_types_array[$object_type_numeric_value];
+			$object_count = $object_counts_array[($value - 8 - $object_type) / 4];
+		}
+		
+		$results = array($object_type_numeric_value, $object_type, $object_count);
+		return $results;
+	}
+	else
+	{
+	$results = array(1, $object_types_array[1], 8);
+	return $results;
+	}
+}
+
+function replayFileCheck($file) // Warning, this function hasn't been tested yet.
+{
+	if (isset($file) AND $file['error'] == 0)
+	{
+		if ($file['size'] <= 3000000)
+		{
+			$file_infos = pathinfo($file['name']);
+            $uploaded_file_format = $file_infos['extension'];
+            $uploaded_file_name = $file_infos['filename'];
+            $uploaded_file_name_2 = fileNameParser($file_infos['filename']);
+            
+            if ($uploaded_file_format == 'WAgame')
+            {
+				// Then let's check a few things in the file proving it is valid
+				$file_content = file_get_contents($file['tmp_name']);
+				
+				if ($file_content[0] === 'W' && $file_content[1] === 'A' && ord($file_content[3]) == 0) // Signature, firstly.
+				{
+					// Let's continue, then.
+					if (ord($file_content[9]) == 0 || ord($file_content[9]) == 255) // It seems that values can be -1 (0xFFFFFFFF), 1, 2 or 3, so the 3 other bytes are either 0x00 or 0xFF
+					{
+						if (ord($file_content[10]) == ord($file_content[9]) && ord($file_content[11]) == ord($file_content[9])) // But these 3 bytes always have the same value.
+						{
+							$map_chunk_length = ord($file_content[4] + $file_content[5] * 256 + $file_content[6] * (256^2) + $file_content[7] * (256^3));
+							if (ord($file_content[12 + $map_chunk_length]) == 0 && ord($file_content[13 + $map_chunk_length]) == 0 && ord($file_content[14 + $map_chunk_length]) == 0)
+							{
+								// Should be enough, for now at least.
+								return true;
+							}
+							else
+							{
+								return false;
+							}
+						}
+						else
+						{
+							return false;
+						}
+					}
+					else
+					{
+						return false;
+					}
+				}
+				else
+				{
+					return false;
+				}
+			}
+			else
+			{
+				return false;
+			}
+		}
+		else
+		{
+			return false;
+		}
+	}
+	else
+	{
+		return false;
+	}
 }
 ?>

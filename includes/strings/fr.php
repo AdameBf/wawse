@@ -38,12 +38,14 @@ $str['sch_editor_sch_author_hint'] = 'Champ optionnel. Si vous n\'indiquez aucun
 $str['sch_editor_sch_password'] = 'Mot de passe d\'édition du scheme';
 $str['sch_editor_sch_password_hint'] = 'Cela vous permettra d\'éditer le scheme à l\'avenir, même si vous ne vous êtes pas inscrit sur le site.';
 $str['sch_editor_sch_desc'] = 'Description du scheme';
-$str['sch_editor_sch_desc_hint'] = 'Décrivez votre scheme ici ! Indiquez :</span>
+$str['sch_editor_sch_desc_hint'] = 'Décrivez votre scheme ici (en anglais de préférence) ! Indiquez :</span>
 <ul class="sch_editor_hint">
 <li>les règles spéciales, s\'il y en a ;</li>
 <li>le nombre de vers par équipe conseillé ;</li>
 <li>le type de maps à utiliser, s\'il faut des maps spéciales...</li>
 </ul>';
+$str['sch_editor_sch_example_replays'] = 'Replays de démonstration';
+$str['sch_editor_sch_example_replays_hint'] = 'Quoi de mieux comme aperçu de votre scheme que des replays ? Vous pouvez importer jusqu\'à 5 replays de démonstration (pour le moment).';
 
 $str['ammo'] = 'Munitions';
 $str['barrels'] = 'Barils'; 
@@ -179,7 +181,7 @@ $str['sch_editor_rubber_crate_limit_hint'] = 'S\'il y a trop de caisses, plus au
 $str['sch_editor_rubber_friction'] = 'Adhérence';
 $str['sch_editor_rubber_friction_hint'] = 'En éditant cette option, vous changez la façon dont la vitesse d\'un ver qui glisse varie. 1-95: haute adhérence, 96: adhérence normale, 97-99: faible adhérence, 100: pas d\'adhérence, plus de 100: la vitesse augmente pendant la glissade, au lieu de diminuer.';
 $str['sch_editor_rubber_flames_limit'] = 'Nombre maximum de flammes';
-$str['sch_editor_rubber_flames_limit_hint'] = 'Peut être mis jusqu\'à 25 500. Requiert RubberWorm31 (pour la v3.6.31.0) ou LaserFix (pour la v3.6.29.0).';
+$str['sch_editor_rubber_flames_limit_hint'] = 'Peut être mis jusqu\'à 25 500 (255×100). Requiert RubberWorm31 (pour la v3.6.31.0) ou LaserFix (pour la v3.6.29.0).';
 $str['sch_editor_rubber_speed'] = 'Vitesse';
 $str['sch_editor_rubber_speed_hint'] = 'Vous pouvez modifier la vitesse maximale des objets. 16: par défaut (utile pour activer TS en gardant la vitesse par défaut), 32: comme dans le Test Stuff actuel, 255: sans limite, comme dans TS3. Requiert RubberWorm31.';
 $str['sch_editor_rubber_anti_worm_sink'] = 'Les vers ne coulent pas';
@@ -240,7 +242,7 @@ $str['sch_editor_download_scheme_message'] = 'Téléchargez-le en cliquant sur ce 
 
 // Scheme uploader
 $str['sch_editor_sch_uploader_title'] = 'Importer un scheme';
-$str['sch_editor_sch_uploader_intro'] = 'Donc, votre scheme est déjà prêt, et tout ce que vous voudriez ce serait de pouvoir de l\'importer ici, au lieu de le recréer? Aucun problème, il vous suffit simplement de remplir le formulaire ci-dessous. Le fichier que vous importez doit être au format *.wsc et doit être valide (non non, vous ne m\'aurez pas aussi facilement :O).';
+$str['sch_editor_sch_uploader_intro'] = 'Donc, votre scheme est déjà prêt, et tout ce que vous voudriez ce serait de pouvoir de l\'importer ici, au lieu de le recréer? Aucun problème, il vous suffit simplement de remplir le formulaire ci-dessous. Le fichier scheme que vous importez doit être au format *.wsc (taille: 221 ou 297 octets), et les replays doivent être au format *.WAgame (max. 3 Mo). Les fichiers doivent être valides.';
 $str['sch_editor_sch_uploader_sch_file'] = 'Votre fichier';
 $str['sch_editor_sch_upload_button'] = 'Envoyez-nous votre œuvre d\'art ! =)';
 $str['sch_editor_sch_upload_error_invalid_scheme_file'] = 'Fichier invalide. Les erreurs suivantes ont été trouvées :';
@@ -268,6 +270,8 @@ $str['sch_editor_sch_viewer_sch_created_on'] = 'Créé le :';
 $str['sch_editor_sch_viewer_sch_last_edited_on'] = 'Dernière édition le :';
 $str['sch_editor_sch_viewer_sch_required_version'] = 'Version requise :';
 $str['sch_editor_sch_viewer_sch_desc'] = 'Description :';
+
+$str['sch_editor_sch_view_action_replays'] = 'Replays I.';
 
 $str['sch_editor_sch_viewer_error_title'] = 'Erreur de visionnage de scheme';
 $str['sch_editor_sch_viewer_error_scheme_not_found'] = 'Scheme inexistant.';

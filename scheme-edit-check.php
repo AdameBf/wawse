@@ -763,8 +763,8 @@ if (isset($_POST['action']))
             $uploaded_file_format = $file_infos['extension'];
             $uploaded_file_name = $file_infos['filename'];
             $uploaded_file_name_2 = fileNameParser($file_infos['filename']);
-            $allowed_format = array('wsc');
-            if (in_array($uploaded_file_format, $allowed_format))
+            
+            if ($uploaded_file_format == 'wsc')
             {
                 // Let's store the file in the database and on the server, though it requires checking
 				if (isset($_SESSION['id']))

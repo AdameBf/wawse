@@ -1,9 +1,9 @@
-<h1><?php echo $str['sch_editor_sch_maker_title']; ?></h1>
-<form method="post" action="scheme-edit-check.php" enctype="multipart/form-data">
+<h1><?php echo $str['sch_editor_sch_editor_title']; ?></h1>
+<form method="post" action="scheme-edit-check.php">
 	<table class="table_no_borders">
 	<tr>
 		<td style="width:200px;"><label for="sch_name"><?php echo $str['sch_editor_sch_name']; ?></label></td>
-		<td style="width:250px;"><input type="text" name="sch_name" id="sch_name" maxlength="30" /></td>
+		<td style="width:185px;"><input type="text" name="sch_name" id="sch_name" maxlength="30" /></td>
 		<td><span class="sch_editor_hint"><?php echo $str['sch_editor_sch_name_hint']; ?></span></td>
 	</tr>
 	<?php if (!isset($_SESSION['id']))
