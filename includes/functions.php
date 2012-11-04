@@ -226,39 +226,13 @@ function replayFileCheck($file) // Warning, this function hasn't been tested yet
 								// Should be enough, for now at least.
 								return true;
 							}
-							else
-							{
-								return false;
-							}
-						}
-						else
-						{
-							return false;
 						}
 					}
-					else
-					{
-						return false;
-					}
-				}
-				else
-				{
-					return false;
 				}
 			}
-			else
-			{
-				return false;
-			}
-		}
-		else
-		{
-			return false;
 		}
 	}
-	else
-	{
-		return false;
-	}
+	
+	return false;
 }
 ?>
