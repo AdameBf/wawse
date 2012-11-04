@@ -188,13 +188,13 @@ function hazardousObjectByteDecrypt($value, $language = 'en') // Might only be u
 		}
 		
 		$results = array($object_type_numeric_value, $object_type, $object_count);
-		return $results;
 	}
 	else
 	{
-	$results = array(1, $object_types_array[1], 8);
-	return $results;
+		$results = array(1, $object_types_array[1], 8);
 	}
+	
+	return $results;
 }
 
 function replayFileCheck($file) // Warning, this function hasn't been tested yet.
