@@ -297,6 +297,7 @@ $str['sch_editor_changelog_v0_4_1_item1'] = '[Fixed] After ingame testing, I rea
 $str['sch_editor_changelog_v0_4_1_item2'] = '[Fixed] Uploaded schemes without any author name had an empty author field. Now, if no author name is given, the author name will be set to Anonymous.';
 $str['sch_editor_changelog_v0_4_1_item3'] = 'Plus some other minor fixes I\'ve released on the previous days and I didn\'t list.';
 $str['sch_editor_changelog_v0_4_2_item1'] = '[Improvement] Added custom knocking force setting, RubberWorm v0.0.1.12\'s new feature.';
+$str['sch_editor_changelog_v0_4_3_item1'] = '[Fixed] Downloading a scheme with a parsed name now works succesfully.';
 
 // Link to the page that allows us to select another language
 $str['sch_editor_change_language'] = 'Select Another Language';

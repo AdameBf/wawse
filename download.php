@@ -33,7 +33,7 @@ if (!empty($query_result))
 	$query_update_counter->execute();
 
 	// 3. Let the user download the scheme
-	header('Location: schemes/'.$file_name.'.wsc');
+	header('Location: schemes/'.fileNameParser($file_name).'.wsc');
 }
 else
 {

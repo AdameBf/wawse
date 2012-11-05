@@ -298,6 +298,7 @@ $str['sch_editor_changelog_v0_4_1_item1'] = '[Correction] Après des tests plus c
 $str['sch_editor_changelog_v0_4_1_item2'] = '[Correction] Si un scheme était importé et que l\'uploadeur n\'a pas indiqué de nom d\'auteur, son nom sera maintenant mis à Anonymous. Un oubli accidentel avait fait que le nom resterait vide.';
 $str['sch_editor_changelog_v0_4_1_item3'] = 'Et quelques petites corrections que j\'ai faites les jours précédents et que je n\'ai pas listées.';
 $str['sch_editor_changelog_v0_4_2_item1'] = '[Amélioration] Ajout de la nouvelle option de RubberWorm v0.0.1.12.';
+$str['sch_editor_changelog_v0_4_3_item1'] = '[Correction] Le téléchargement d\'un scheme dont le nom a été corrigé avant la création fonctionne désormais.';
 
 // Link to the page that allows us to select another language
 $str['sch_editor_change_language'] = 'Changer de langue';
