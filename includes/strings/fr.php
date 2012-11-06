@@ -27,6 +27,7 @@ $str['sch_editor_sch_list_last_edit_date_column'] = 'Date de dernière édition';
 $str['sch_editor_sch_list_version_required_column'] = 'Version requise de W:A';
 $str['sch_editor_sch_list_download_count_column'] = 'Nombre de téléchargements';
 $str['sch_editor_sch_list_download_column'] = 'Télécharger';
+$str['sch_editor_sch_list_download_example_replays'] = 'Télécharger les replays de démonstration';
 
 // Scheme maker/editor page
 $str['sch_editor_sch_maker_title'] = 'Créer un scheme';
@@ -298,7 +299,8 @@ $str['sch_editor_changelog_v0_4_1_item1'] = '[Correction] Après des tests plus c
 $str['sch_editor_changelog_v0_4_1_item2'] = '[Correction] Si un scheme était importé et que l\'uploadeur n\'a pas indiqué de nom d\'auteur, son nom sera maintenant mis à Anonymous. Un oubli accidentel avait fait que le nom resterait vide.';
 $str['sch_editor_changelog_v0_4_1_item3'] = 'Et quelques petites corrections que j\'ai faites les jours précédents et que je n\'ai pas listées.';
 $str['sch_editor_changelog_v0_4_2_item1'] = '[Amélioration] Ajout de la nouvelle option de RubberWorm v0.0.1.12.';
-$str['sch_editor_changelog_v0_4_3_item1'] = '[Correction] Le téléchargement d\'un scheme dont le nom a été corrigé avant la création fonctionne désormais.';
+$str['sch_editor_changelog_v0_5_0_item1'] = '[Amélioration] Ajout des replays d\'exemple, qui peuvent être attachés à un scheme importé uniquement. Ils sont téléchargables depuis la liste des schemes. (À l\'avenir, il devrait être possible de les ajouter après la création du scheme.)';
+$str['sch_editor_changelog_v0_5_0_item2'] = '[Correction] Le téléchargement d\'un scheme dont le nom a été corrigé avant la création fonctionne désormais.';
 
 // Link to the page that allows us to select another language
 $str['sch_editor_change_language'] = 'Changer de langue';

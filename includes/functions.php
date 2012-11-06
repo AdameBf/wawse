@@ -159,22 +159,27 @@ function hazardousObjectByteDecrypt($value, $language = 'en') // Might only be u
 			{
 				case 0:
 				$object_type = $object_types_array[0];
+				$object_type_numeric_value = 0;
 				break;
 				
 				case 1:
 				$object_type = $object_types_array[1];
+				$object_type_numeric_value = 1;
 				break;
 				
 				case 2:
 				$object_type = $object_types_array[2];
+				$object_type_numeric_value = 2;
 				break;
 				
 				case 5:
 				$object_type = $object_types_array[3];
+				$object_type_numeric_value = 3;
 				break;
 				
 				default:
 				$object_type = $object_types_array[1];
+				$object_type_numeric_value = 1;
 				break;
 			}
 			
@@ -184,7 +189,7 @@ function hazardousObjectByteDecrypt($value, $language = 'en') // Might only be u
 		{
 			$object_type_numeric_value = $value % 4;
 			$object_type = $object_types_array[$object_type_numeric_value];
-			$object_count = $object_counts_array[($value - 8 - $object_type) / 4];
+			$object_count = $object_counts_array[($value - 8 - $object_type_numeric_value) / 4];
 		}
 		
 		$results = array($object_type_numeric_value, $object_type, $object_count);
@@ -213,15 +218,16 @@ function replayFileCheck($file) // Warning, this function hasn't been tested yet
 				// Then let's check a few things in the file proving it is valid
 				$file_content = file_get_contents($file['tmp_name']);
 				
-				if ($file_content[0] === 'W' && $file_content[1] === 'A' && ord($file_content[3]) == 0) // Signature, firstly.
+				if ($file_content[0] == 'W' && $file_content[1] == 'A') // Signature, firstly.
 				{
 					// Let's continue, then.
 					if (ord($file_content[9]) == 0 || ord($file_content[9]) == 255) // It seems that values can be -1 (0xFFFFFFFF), 1, 2 or 3, so the 3 other bytes are either 0x00 or 0xFF
 					{
 						if (ord($file_content[10]) == ord($file_content[9]) && ord($file_content[11]) == ord($file_content[9])) // But these 3 bytes always have the same value.
 						{
-							$map_chunk_length = ord($file_content[4] + $file_content[5] * 256 + $file_content[6] * (256^2) + $file_content[7] * (256^3));
-							if (ord($file_content[12 + $map_chunk_length]) == 0 && ord($file_content[13 + $map_chunk_length]) == 0 && ord($file_content[14 + $map_chunk_length]) == 0)
+							$map_chunk_length = ord($file_content[4]) + (ord($file_content[5]) * 256) + (ord($file_content[6]) * (256^2)) + (ord($file_content[7]) * (256^3));
+							
+							if (ord($file_content[12 + $map_chunk_length]) == 0 && ord($file_content[13 + $map_chunk_length]) == 0 && ord($file_content[14 + $map_chunk_length]) == 0 && ord($file_content[15 + $map_chunk_length]) == ord($file_content[2]) && ord($file_content[16 + $map_chunk_length]) == ord($file_content[3]) && ord($file_content[20 + $map_chunk_length]) == 0)
 							{
 								// Should be enough, for now at least.
 								return true;

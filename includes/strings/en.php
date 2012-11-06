@@ -21,6 +21,7 @@ $str['sch_editor_sch_list_last_edit_date_column'] = 'Last Edited on';
 $str['sch_editor_sch_list_version_required_column'] = 'W:A Version Required';
 $str['sch_editor_sch_list_download_count_column'] = 'Download Count';
 $str['sch_editor_sch_list_download_column'] = 'Download';
+$str['sch_editor_sch_list_download_example_replays'] = 'Download Example Replays';
 
 // Errors
 $str['error'] = 'Error';
@@ -297,7 +298,8 @@ $str['sch_editor_changelog_v0_4_1_item1'] = '[Fixed] After ingame testing, I rea
 $str['sch_editor_changelog_v0_4_1_item2'] = '[Fixed] Uploaded schemes without any author name had an empty author field. Now, if no author name is given, the author name will be set to Anonymous.';
 $str['sch_editor_changelog_v0_4_1_item3'] = 'Plus some other minor fixes I\'ve released on the previous days and I didn\'t list.';
 $str['sch_editor_changelog_v0_4_2_item1'] = '[Improvement] Added custom knocking force setting, RubberWorm v0.0.1.12\'s new feature.';
-$str['sch_editor_changelog_v0_4_3_item1'] = '[Fixed] Downloading a scheme with a parsed name now works succesfully.';
+$str['sch_editor_changelog_v0_5_0_item1'] = '[Improvement] Example replays can now be attached to an uploaded scheme, and they\'re downloadable on the scheme list. (It should be possible to attach them to a scheme after its creation/upload in the future.)';
+$str['sch_editor_changelog_v0_5_0_item2'] = '[Fixed] Downloading a scheme with a parsed name now works succesfully.';
 
 // Link to the page that allows us to select another language
 $str['sch_editor_change_language'] = 'Select Another Language';

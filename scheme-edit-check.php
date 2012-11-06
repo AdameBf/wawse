@@ -1823,6 +1823,85 @@ if (isset($_POST['action']))
 					));
 					$scheme_id = $scheme_get_id->fetch();
 					
+					// Now, replay files.
+					$i = 1;
+					
+					if (replayFileCheck($_FILES['sch_ex_rep1']))
+					{
+						$replay_file_name_without_extension = '['.$scheme_id['sch_id'].'.'.$sch_name.']_Example_Replay_'.$i;
+						$replay_file_name = $replay_file_name_without_extension.'.WAgame';
+						
+						move_uploaded_file($_FILES['sch_ex_rep1']['tmp_name'], 'replays/'.basename($replay_file_name));
+						$add_replay_query = $bdd->prepare('INSERT INTO sch_example_replays VALUES(\'\', :sch_id, :file_name, :submit_date, 0)');
+						$add_replay_query->execute(array(
+						'sch_id' => $scheme_id['sch_id'],
+						'file_name' => $replay_file_name_without_extension,
+						'submit_date' => $timestamp
+						));
+
+						$i++;
+					}
+					if (replayFileCheck($_FILES['sch_ex_rep2']))
+					{
+						$replay_file_name_without_extension = '['.$scheme_id['sch_id'].'.'.$sch_name.']_Example_Replay_'.$i;
+						$replay_file_name = $replay_file_name_without_extension.'.WAgame';
+						
+						move_uploaded_file($_FILES['sch_ex_rep2']['tmp_name'], 'replays/'.basename($replay_file_name));
+						$add_replay_query = $bdd->prepare('INSERT INTO sch_example_replays VALUES(\'\', :sch_id, :file_name, :submit_date, 0)');
+						$add_replay_query->execute(array(
+						'sch_id' => $scheme_id['sch_id'],
+						'file_name' => $replay_file_name_without_extension,
+						'submit_date' => $timestamp
+						));
+
+						$i++;
+					}
+					if (replayFileCheck($_FILES['sch_ex_rep3']))
+					{
+						$replay_file_name_without_extension = '['.$scheme_id['sch_id'].'.'.$sch_name.']_Example_Replay_'.$i;
+						$replay_file_name = $replay_file_name_without_extension.'.WAgame';
+						
+						move_uploaded_file($_FILES['sch_ex_rep3']['tmp_name'], 'replays/'.basename($replay_file_name));
+						$add_replay_query = $bdd->prepare('INSERT INTO sch_example_replays VALUES(\'\', :sch_id, :file_name, :submit_date, 0)');
+						$add_replay_query->execute(array(
+						'sch_id' => $scheme_id['sch_id'],
+						'file_name' => $replay_file_name_without_extension,
+						'submit_date' => $timestamp
+						));
+
+						$i++;
+					}
+					if (replayFileCheck($_FILES['sch_ex_rep4']))
+					{
+						$replay_file_name_without_extension = '['.$scheme_id['sch_id'].'.'.$sch_name.']_Example_Replay_'.$i;
+						$replay_file_name = $replay_file_name_without_extension.'.WAgame';
+						
+						move_uploaded_file($_FILES['sch_ex_rep4']['tmp_name'], 'replays/'.basename($replay_file_name));
+						$add_replay_query = $bdd->prepare('INSERT INTO sch_example_replays VALUES(\'\', :sch_id, :file_name, :submit_date, 0)');
+						$add_replay_query->execute(array(
+						'sch_id' => $scheme_id['sch_id'],
+						'file_name' => $replay_file_name_without_extension,
+						'submit_date' => $timestamp
+						));
+
+						$i++;
+					}
+					if (replayFileCheck($_FILES['sch_ex_rep5']))
+					{
+						$replay_file_name_without_extension = '['.$scheme_id['sch_id'].'.'.$sch_name.']_Example_Replay_'.$i;
+						$replay_file_name = $replay_file_name_without_extension.'.WAgame';
+						
+						move_uploaded_file($_FILES['sch_ex_rep5']['tmp_name'], 'replays/'.basename($replay_file_name));
+						$add_replay_query = $bdd->prepare('INSERT INTO sch_example_replays VALUES(\'\', :sch_id, :file_name, :submit_date, 0)');
+						$add_replay_query->execute(array(
+						'sch_id' => $scheme_id['sch_id'],
+						'file_name' => $replay_file_name_without_extension,
+						'submit_date' => $timestamp
+						));
+
+						$i++;
+					}
+					
 					// Last, but not least, let's show the user a friendly message telling the user his scheme has successfully been uploaded, and that he can even download it himself (even though he already have it).
 					echo '<p>'.$str['sch_editor_scheme_succesfully_uploaded_message'].'</p>';
 					echo '<p><a href="download.php?id='.$scheme_id['sch_id'].'">'.$str['sch_editor_download_scheme_message'].'</a></p>';
