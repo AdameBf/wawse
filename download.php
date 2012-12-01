@@ -1,4 +1,6 @@
 <?php
+require('includes/functions.php');
+
 // Download the scheme which id is in the "id" parameter
 if (isset($_GET['id']))
 {

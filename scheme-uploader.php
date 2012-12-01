@@ -76,7 +76,7 @@ include('../../includes/connexion_pdo.php');
 <input type="file" name="sch_ex_rep2" id="sch_ex_rep2" class="champ" /><br />
 <input type="file" name="sch_ex_rep3" id="sch_ex_rep3" class="champ" /><br />
 <input type="file" name="sch_ex_rep4" id="sch_ex_rep4" class="champ" /><br />
-<input type="file" name="sch_ex_rep5" id="sch_ex_rep5" class="champ" style="margin-left: 250px;" /><p>
+<input type="file" name="sch_ex_rep5" id="sch_ex_rep5" class="champ" /></p>
 
 <table class="table_no_borders">
 	<tr>

@@ -1,4 +1,6 @@
 <?php
+require('includes/functions.php');
+
 // Download the replay which id is in the "id" parameter
 if (isset($_GET['id']))
 {
