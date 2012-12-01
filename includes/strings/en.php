@@ -318,10 +318,11 @@ $str['sch_editor_changelog_v0_4_1_item1'] = '[Fixed] After ingame testing, I rea
 $str['sch_editor_changelog_v0_4_1_item2'] = '[Fixed] Uploaded schemes without any author name had an empty author field. Now, if no author name is given, the author name will be set to Anonymous.';
 $str['sch_editor_changelog_v0_4_1_item3'] = 'Plus some other minor fixes I\'ve released on the previous days and I didn\'t list.';
 $str['sch_editor_changelog_v0_4_2_item1'] = '[Improvement] Added custom knocking force setting, RubberWorm v0.0.1.12\'s new feature.';
-$str['sch_editor_changelog_v0_5_0_item1'] = '[Improvement] Example replays can now be attached to an uploaded scheme, and they\'re downloadable on the scheme list. (It should be possible to attach them to a scheme after its creation/upload in the future.)';
-$str['sch_editor_changelog_v0_5_0_item2'] = '[Fixed] Downloading a scheme with a parsed name now works succesfully.';
+$str['sch_editor_changelog_v0_5_0_item1'] = '[Improvement] Example replays can now be attached to an uploaded scheme, and they\'re downloadable on the scheme list. (It should be possible to attach them to a scheme after its creation/upload in the future.) <em>(Downloading these replays actually didn\'t work: see explanation below.)</em>';
+$str['sch_editor_changelog_v0_5_0_item2'] = '[Fixed] Downloading a scheme with a parsed name now works succesfully. <em>(This fix actually broke every scheme downloads: the required file with the new function wasn\'t loaded on the page managing all scheme downloads - thus triggering a fatal error.)</em>';
 $str['sch_editor_changelog_v0_5_1_item1'] = '[Improvement] Example replays can now be attached after a scheme\'s creation or upload. Scheme authors can also decide who is allowed to upload replays (author only/everyone but there\'s an approvement system/everyone without approvements, though I can check from time to time or act upon request).';
 $str['sch_editor_changelog_v0_5_1_item2'] = '[Improvement] You can now attach more than 5 replays to a scheme, however you still only can upload 5 replays at once - if you want more, do it in two/three/four... times; I don\'t want my server to burn, you know =).';
+$str['sch_editor_changelog_v0_5_1_item3'] = '[Fixed] Scheme and replay downloading, accidentally broken in v0.5.0 even with schemes/replays which name doesn\'t need parsing, is now possible again.';
 
 // Link to the page that allows us to select another language
 $str['sch_editor_change_language'] = 'Select Another Language';
