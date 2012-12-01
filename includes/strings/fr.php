@@ -45,9 +45,15 @@ $str['sch_editor_sch_desc_hint'] = 'Décrivez votre scheme ici (en anglais de pré
 <li>le nombre de vers par équipe conseillé ;</li>
 <li>le type de maps à utiliser, s\'il faut des maps spéciales...</li>
 </ul>';
-$str['sch_editor_sch_example_replays'] = 'Replays de démonstration';
-$str['sch_editor_sch_example_replays_hint'] = 'Quoi de mieux comme aperçu de votre scheme que des replays ? Vous pouvez importer jusqu\'à 5 replays de démonstration (pour le moment).';
 
+$str['sch_editor_sch_example_replays'] = 'Replays de démonstration';
+$str['sch_editor_sch_example_replays_hint'] = 'Quoi de mieux comme aperçu de votre scheme que des replays ? Vous pouvez importer quelques replays de démonstration dans les 5 champs ci-contre (si vous avez besoin de plus de champs, il vous faudra les importer 5 par 5).';
+$str['sch_editor_sch_example_replays_permissions_label'] = 'Qui peut importer des replays ?';
+$str['sch_editor_sch_example_replays_permissions_opt0'] = 'L\'auteur (vous) uniquement.';
+$str['sch_editor_sch_example_replays_permissions_opt1'] = 'Tout le monde (l\'auteur doit valider les replays).';
+$str['sch_editor_sch_example_replays_permissions_opt2'] = 'Tout le monde (l\'auteur ne valide pas les replays, mais je peux toujours agir en cas de problème).';
+
+$str['add'] = 'Ajouter';
 $str['ammo'] = 'Munitions';
 $str['barrels'] = 'Barils'; 
 $str['both'] = 'Les deux';
@@ -279,7 +285,20 @@ $str['sch_editor_sch_viewer_error_scheme_not_found'] = 'Scheme inexistant.';
 $str['sch_editor_sch_viewer_error_no_id_specified'] = 'Euh, vous voulez que je charge quel scheme, au juste ? Si vous ne m\'indiquez pas d\'ID je ne peux pas faire grand chose.';
 $str['sch_editor_sch_viewer_error_invalid_sch_signature'] = 'Signature du fichier scheme invalide (mais comment l\'auteur a-t-il pu envoyer ou créer ce scheme, si on a vérifié/créé de manière valide ?).';
 
-// My schemes
+// Upload example replays
+$str['sch_editor_sch_replay_uploader_title'] = 'Attacher des replays de démonstration au scheme'; // This string is completed by " #$id ($name $by $author)" - yep, the $by differs between languages.
+$str['sch_editor_sch_replay_uploader_intro'] = 'Vous avez de bons replays qui montrent comment ce scheme se joue ? Très bien, alors importez-les !';
+$str['sch_editor_sch_replay_uploader_authoring_submit_button'] = 'Allons-y !'; // By "authoring" I mean, typing the scheme author's name and his password. And this string corresponds to the text that appears on the submit button at the bottom of that "authoring" form.
+$str['sch_editor_sch_replay_uploader_wrong_user'] = 'Vous n\'êtes pas le membre qui a créé ce scheme !';
+$str['sch_editor_sch_replay_uploader_login_to_attach_replays'] = 'Veuillez vous connecter pour pouvoir attacher des replays à ce scheme (puisque l\'auteur est un membre qui a décidé d\'être le seul à pouvoir attacher des replays à ce scheme).';
+$str['sch_editor_sch_replay_uploader_button'] = 'Envoyer les replays';
+$str['sch_editor_sch_replay_uploader_error_uatginam'] = 'Bien essayé, mais vous ne m\'aurez pas :P.'; // UATGINAM = Uploading Although The Guy Is Not A Member.
+
+// Example replays approving interface
+$str['sch_editor_sch_replay_approving_interface_title'] = 'Approuver des replays d\'exemple en attente pour le scheme'; // Same as line 289.
+$str['sch_editor_sch_replay_approving_interface_please_login'] = 'Veuillez vous connecter pour pouvoir approuver/rejeter des replays (puisque l\'auteur de ce scheme est un membre).';
+
+// My schemes - this section probably won't be created (before a while?).
 $str['sch_editor_my_schemes_title'] = 'Mes schemes';
 
 // Changelog
@@ -301,6 +320,8 @@ $str['sch_editor_changelog_v0_4_1_item3'] = 'Et quelques petites corrections que
 $str['sch_editor_changelog_v0_4_2_item1'] = '[Amélioration] Ajout de la nouvelle option de RubberWorm v0.0.1.12.';
 $str['sch_editor_changelog_v0_5_0_item1'] = '[Amélioration] Ajout des replays d\'exemple, qui peuvent être attachés à un scheme importé uniquement. Ils sont téléchargables depuis la liste des schemes. (À l\'avenir, il devrait être possible de les ajouter après la création du scheme.)';
 $str['sch_editor_changelog_v0_5_0_item2'] = '[Correction] Le téléchargement d\'un scheme dont le nom a été corrigé avant la création fonctionne désormais.';
+$str['sch_editor_changelog_v0_5_1_item1'] = '[Amélioration] Les replays d\'exemple peuvent désormais être attachés à un scheme après sa création ou son import. Les auteurs de scheme peuvent par ailleurs définir les permissions pour importer des replays (l\'auteur seul/tout le monde mais les replays doivent être approuvés par l\'auteur/tout le monde sans que les replays n\'aient besoin d\'être approuvé, cependant je peux vérifier de temps en temps ou bien agir sur demande expresse de l\'auteur).';
+$str['sch_editor_changelog_v0_5_1_item2'] = '[Amélioration] Vous pouvez désormais joindre plus de 5 replays d\'exemple à un scheme au total, cependant vous ne pouvez pas en importer plus de 5 d\'un coup - si vous voulez joindre plus de replays, faites-le en deux/trois/quatre... fois ; je ne veux pas que mon serveur prenne feu, surtout vu qu\'il n\'y a pas que moi :P.';
 
 // Link to the page that allows us to select another language
 $str['sch_editor_change_language'] = 'Changer de langue';

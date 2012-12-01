@@ -27,6 +27,12 @@
 		<td><textarea name="sch_desc" id="sch_desc" rows="4" cols="20" ></textarea></td>
 		<td><span class="sch_editor_hint"><?php echo $str['sch_editor_sch_desc_hint']; ?></td>
 	</tr>
+	<tr>
+		<td><?php echo $str['sch_editor_sch_example_replays_permissions_label']; ?></td>
+		<td colspan="2"><input type="radio" name="sch_exrep_permissions" value="0" id="opt0" /> <label for="opt0" class="sch_editor_hint"><?php echo $str['sch_editor_sch_example_replays_permissions_opt0']; ?></label><br />
+		<input type="radio" name="sch_exrep_permissions" value="1" id="opt1" checked="checked" /> <label for="opt1" class="sch_editor_hint"><?php echo $str['sch_editor_sch_example_replays_permissions_opt1']; ?></label><br />
+		<input type="radio" name="sch_exrep_permissions" value="2" id="opt2" /> <label for="opt2" class="sch_editor_hint"><?php echo $str['sch_editor_sch_example_replays_permissions_opt2']; ?></label></td>
+	</tr>
 	</table>
 	
 <table class="table_no_borders_2">

@@ -45,9 +45,15 @@ $str['sch_editor_sch_desc_hint'] = 'Describe your scheme here! You should tell:<
 <li>the recommended amount of worms per team;</li>
 <li>what kind of maps to use, if your scheme requires special maps...</li>
 </ul>';
-$str['sch_editor_sch_example_replays'] = 'Example Replays';
-$str['sch_editor_sch_example_replays_hint'] = 'There\'s nothing better than replays to show people how your scheme works. Thus, you can upload up to 5 example replays (this limit may be extended in the future).';
 
+$str['sch_editor_sch_example_replays'] = 'Example Replays';
+$str['sch_editor_sch_example_replays_hint'] = 'There\'s nothing better than replays to show people how your scheme works. Thus, you can upload some example replays here (if you want to upload more than 5 - which sounds like a lot! - then you\'ll need to upload them 5 by 5).';
+$str['sch_editor_sch_example_replays_permissions_label'] = 'Who can upload example replays?';
+$str['sch_editor_sch_example_replays_permissions_opt0'] = 'You (the author) only.';
+$str['sch_editor_sch_example_replays_permissions_opt1'] = 'Everyone, but replays have to be approved by the author - I might take over inactive authors though.';
+$str['sch_editor_sch_example_replays_permissions_opt2'] = 'Everyone, without any approvement required (I may still act behind though - for example, when the guy didn\'t get how to play the scheme).';
+
+$str['add'] = 'Add';
 $str['ammo'] = 'Ammo';
 $str['barrels'] = 'Oil Drums'; 
 $str['both'] = 'Both';
@@ -99,7 +105,7 @@ $str['sch_editor_anchor_mode_hint'] = 'Worms can\'t walk or jump.';
 $str['sch_editor_stockpiling_mode'] = 'Stockpiling Mode';
 $str['sch_editor_stockpiling_mode_acc'] = 'Accumulative';
 $str['sch_editor_stockpiling_mode_anti'] = 'Anti-accumulative';
-$str['sch_editor_stockpiling_mode_hint'] = '[Multi-Round Games] Off: ammunitions are reset at every round. Accumulative: the new ammunitions are added to the previous game\'s ammunitions. Anti-accumulative: the ammunitions are set once and for all at the first round, meaning once an ammunition is used, you won\'t see it again in the next rounds.';
+$str['sch_editor_stockpiling_mode_hint'] = '[Multi-Round Games] Off: ammunitions are reset at every round. Accumulative: the new ammunitions are added to the previous game\'s ammunitions. Anti-accumulative: the ammunitions are set once and for all at the first round, meaning once an ammunition is used, you won\'t have it back in later rounds.';
 $str['sch_editor_worm_select'] = 'Select Worm';
 $str['sch_editor_worm_select_hint'] = 'Set the way the worm that will play on a given turn is selected: will it be selected according to the team order, randomly, or will the player be able to choose it himself? If you set Random, the scheme will require v3.6.29.0 or later to be played.';
 $str['sch_editor_donor_cards'] = 'Donor Cards';
@@ -193,6 +199,7 @@ $str['sch_editor_rubber_kaosmod'] = 'Kaosmod';
 $str['sch_editor_rubber_kaosmod_hint'] = 'Alters utilities\' crate probabilities. Requires RubberWorm31.';
 $str['sch_editor_rubber_worms_bounciness'] = 'Worms Bounciness';
 $str['sch_editor_rubber_worms_bounciness_hint'] = 'The value will be divided by 255.';
+
 $str['sch_editor_rubber_friction'] = 'Friction';
 $str['sch_editor_rubber_friction_hint'] = 'How does a worm\'s speed change while he is sliding? 1-95: high friction, 96: default friction, 97-99: low friction, 100: no friction, more than 100: anti-friction, i.e. the worm\'s speed increases while it is sliding.';
 $str['sch_editor_rubber_flames_limit'] = 'Flames Limit';
@@ -278,7 +285,20 @@ $str['sch_editor_sch_viewer_error_scheme_not_found'] = 'Scheme not found.';
 $str['sch_editor_sch_viewer_error_no_id_specified'] = 'Errm, what scheme do you want me to load? I mean, I can\'t load schemes without an ID, a bit like calculators can\'t multiply any numbers if these numbers are not specified... (Well, I hope you got my point.)';
 $str['sch_editor_sch_viewer_error_invalid_sch_signature'] = 'Invalid scheme signature. There, how did that file land on this server, if it had an invalid signature? :O';
 
-// My schemes
+// Upload example replays
+$str['sch_editor_sch_replay_uploader_title'] = 'Attach Example Replays to scheme'; // This string is completed by " #$id ($name $by $author)" - yep, the $by differs between languages.
+$str['sch_editor_sch_replay_uploader_intro'] = 'Have good example replays to show how this scheme works? Well, just upload them!';
+$str['sch_editor_sch_replay_uploader_authoring_submit_button'] = 'Go!'; // By "authoring" I mean, typing the scheme author's name and his password. And this string corresponds to the text that appears on the submit button at the bottom of that "authoring" form.
+$str['sch_editor_sch_replay_uploader_wrong_user'] = 'You\'re not the member who created this scheme!';
+$str['sch_editor_sch_replay_uploader_login_to_attach_replays'] = 'Please log in to attach replays to this scheme (since the author is a member who decided he was the only one allowed to upload example replays).';
+$str['sch_editor_sch_replay_uploader_button'] = 'Send us these replays';
+$str['sch_editor_sch_replay_uploader_error_uatginam'] = 'Nice try getting me there :P.'; // UATGINAM = Uploading Although The Guy Is Not A Member.
+
+// Example replays approving interface
+$str['sch_editor_sch_replay_approving_interface_title'] = 'Approving Pending Example Replays for Scheme'; // Same as line 289.
+$str['sch_editor_sch_replay_approving_interface_please_login'] = 'Please log in to approve/reject replays (since the scheme\'s author is a member).';
+
+// My schemes - this section probably won't be created (before a while?).
 $str['sch_editor_my_schemes_title'] = 'My Schemes';
 
 // Changelog
@@ -300,6 +320,8 @@ $str['sch_editor_changelog_v0_4_1_item3'] = 'Plus some other minor fixes I\'ve r
 $str['sch_editor_changelog_v0_4_2_item1'] = '[Improvement] Added custom knocking force setting, RubberWorm v0.0.1.12\'s new feature.';
 $str['sch_editor_changelog_v0_5_0_item1'] = '[Improvement] Example replays can now be attached to an uploaded scheme, and they\'re downloadable on the scheme list. (It should be possible to attach them to a scheme after its creation/upload in the future.)';
 $str['sch_editor_changelog_v0_5_0_item2'] = '[Fixed] Downloading a scheme with a parsed name now works succesfully.';
+$str['sch_editor_changelog_v0_5_1_item1'] = '[Improvement] Example replays can now be attached after a scheme\'s creation or upload. Scheme authors can also decide who is allowed to upload replays (author only/everyone but there\'s an approvement system/everyone without approvements, though I can check from time to time or act upon request).';
+$str['sch_editor_changelog_v0_5_1_item2'] = '[Improvement] You can now attach more than 5 replays to a scheme, however you still only can upload 5 replays at once - if you want more, do it in two/three/four... times; I don\'t want my server to burn, you know =).';
 
 // Link to the page that allows us to select another language
 $str['sch_editor_change_language'] = 'Select Another Language';

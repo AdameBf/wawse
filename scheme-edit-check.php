@@ -707,9 +707,24 @@ if (isset($_POST['action']))
 		{
 		$timestamp = time();
 		}
+		
+		// Introduced in 0.5.1: who can upload example replays and do they have to be approved?
+		if (isset($_POST['sch_exrep_permissions']))
+		{
+			$example_replays_permissions = (int) $_POST['sch_exrep_permissions'];
+
+			if ($example_replays_permissions < 0 && $example_replays_permissions > 2)
+			{
+			$example_replays_permissions = 0;
+			}
+		}
+		else
+		{
+		$example_replays_permissions = 0;
+		}
 	
 		// We can store the scheme on the database, that thingie I logged on almost 600 lines above.
-		$create_scheme_query = $bdd->prepare('INSERT INTO schemes_list VALUES(\'\', :name, :author, :is_member, :password, :submit_date, :submit_date, :description, :version_required_string, 0)');
+		$create_scheme_query = $bdd->prepare('INSERT INTO schemes_list VALUES(\'\', :name, :author, :is_member, :password, :submit_date, :submit_date, :description, :version_required_string, 0, :example_replays_permissions)');
 		$create_scheme_query->execute(array(
 		'name' => $sch_name,
 		'author' => $sch_author,
@@ -717,7 +732,8 @@ if (isset($_POST['action']))
 		'password' => $sch_password,
 		'submit_date' => $timestamp,
 		'description' => $description,
-		'version_required_string' => $version_required_string
+		'version_required_string' => $version_required_string,
+		'$example_replays_permissions' => $example_replays_permissions
 		));
 
 		$scheme_get_id = $bdd->prepare('SELECT sch_id FROM schemes_list WHERE sch_name = :name');
@@ -1805,8 +1821,23 @@ if (isset($_POST['action']))
 					$version_required_string = '3.6.29.0 with Laser Fix or 3.6.31.0 with RubberWorm31';
 					}
 					
+					// Introduced in 0.5.1: who can upload example replays and do they have to be approved?
+					if (isset($_POST['sch_exrep_permissions']))
+					{
+						$example_replays_permissions = (int) $_POST['sch_exrep_permissions'];
+
+						if ($example_replays_permissions < 0 && $example_replays_permissions > 2)
+						{
+							$example_replays_permissions = 0;
+						}
+					}
+					else
+					{
+						$example_replays_permissions = 0;
+					}
+
 					move_uploaded_file($_FILES['sch_file']['tmp_name'], 'schemes/'.basename($name));
-					$create_scheme_query = $bdd->prepare('INSERT INTO schemes_list VALUES(\'\', :name, :author, :is_member, :password, :submit_date, :submit_date, :description, :version_required_string, 0)');
+					$create_scheme_query = $bdd->prepare('INSERT INTO schemes_list VALUES(\'\', :name, :author, :is_member, :password, :submit_date, :submit_date, :description, :version_required_string, 0, :example_replays_permissions)');
 					$create_scheme_query->execute(array(
 					'name' => $uploaded_file_name,
 					'author' => $sch_author,
@@ -1814,7 +1845,8 @@ if (isset($_POST['action']))
 					'password' => $sch_password,
 					'submit_date' => $timestamp,
 					'description' => $description,
-					'version_required_string' => $version_required_string
+					'version_required_string' => $version_required_string,
+					'example_replays_permissions' => $example_replays_permissions
 					));
 					
 					$scheme_get_id = $bdd->prepare('SELECT sch_id FROM schemes_list WHERE sch_name = :name');
@@ -1832,7 +1864,7 @@ if (isset($_POST['action']))
 						$replay_file_name = $replay_file_name_without_extension.'.WAgame';
 						
 						move_uploaded_file($_FILES['sch_ex_rep1']['tmp_name'], 'replays/'.basename($replay_file_name));
-						$add_replay_query = $bdd->prepare('INSERT INTO sch_example_replays VALUES(\'\', :sch_id, :file_name, :submit_date, 0)');
+						$add_replay_query = $bdd->prepare('INSERT INTO sch_example_replays VALUES(\'\', :sch_id, :file_name, :submit_date, 0, "1")'); // Value 1 in last column because replays uploaded along with the scheme are automatically approved.
 						$add_replay_query->execute(array(
 						'sch_id' => $scheme_id['sch_id'],
 						'file_name' => $replay_file_name_without_extension,
@@ -1847,7 +1879,7 @@ if (isset($_POST['action']))
 						$replay_file_name = $replay_file_name_without_extension.'.WAgame';
 						
 						move_uploaded_file($_FILES['sch_ex_rep2']['tmp_name'], 'replays/'.basename($replay_file_name));
-						$add_replay_query = $bdd->prepare('INSERT INTO sch_example_replays VALUES(\'\', :sch_id, :file_name, :submit_date, 0)');
+						$add_replay_query = $bdd->prepare('INSERT INTO sch_example_replays VALUES(\'\', :sch_id, :file_name, :submit_date, 0, "1")');
 						$add_replay_query->execute(array(
 						'sch_id' => $scheme_id['sch_id'],
 						'file_name' => $replay_file_name_without_extension,
@@ -1862,7 +1894,7 @@ if (isset($_POST['action']))
 						$replay_file_name = $replay_file_name_without_extension.'.WAgame';
 						
 						move_uploaded_file($_FILES['sch_ex_rep3']['tmp_name'], 'replays/'.basename($replay_file_name));
-						$add_replay_query = $bdd->prepare('INSERT INTO sch_example_replays VALUES(\'\', :sch_id, :file_name, :submit_date, 0)');
+						$add_replay_query = $bdd->prepare('INSERT INTO sch_example_replays VALUES(\'\', :sch_id, :file_name, :submit_date, 0, "1")');
 						$add_replay_query->execute(array(
 						'sch_id' => $scheme_id['sch_id'],
 						'file_name' => $replay_file_name_without_extension,
@@ -1877,7 +1909,7 @@ if (isset($_POST['action']))
 						$replay_file_name = $replay_file_name_without_extension.'.WAgame';
 						
 						move_uploaded_file($_FILES['sch_ex_rep4']['tmp_name'], 'replays/'.basename($replay_file_name));
-						$add_replay_query = $bdd->prepare('INSERT INTO sch_example_replays VALUES(\'\', :sch_id, :file_name, :submit_date, 0)');
+						$add_replay_query = $bdd->prepare('INSERT INTO sch_example_replays VALUES(\'\', :sch_id, :file_name, :submit_date, 0, "1")');
 						$add_replay_query->execute(array(
 						'sch_id' => $scheme_id['sch_id'],
 						'file_name' => $replay_file_name_without_extension,
@@ -1892,7 +1924,7 @@ if (isset($_POST['action']))
 						$replay_file_name = $replay_file_name_without_extension.'.WAgame';
 						
 						move_uploaded_file($_FILES['sch_ex_rep5']['tmp_name'], 'replays/'.basename($replay_file_name));
-						$add_replay_query = $bdd->prepare('INSERT INTO sch_example_replays VALUES(\'\', :sch_id, :file_name, :submit_date, 0)');
+						$add_replay_query = $bdd->prepare('INSERT INTO sch_example_replays VALUES(\'\', :sch_id, :file_name, :submit_date, 0, "1")');
 						$add_replay_query->execute(array(
 						'sch_id' => $scheme_id['sch_id'],
 						'file_name' => $replay_file_name_without_extension,

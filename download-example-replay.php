@@ -6,7 +6,7 @@ if (isset($_GET['id']))
 }
 else
 {
-	header('Location: '.$_SERVER['HTTP_REFERER']); // Bleh, I actually don't know what replay you attempt to download. :O
+	header('Location: '.$_SERVER['HTTP_REFERER']); // Bleh, I actually don't know which replay you attempt to download. :O
 }
 
 // Log on the database

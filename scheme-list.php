@@ -123,7 +123,7 @@ if ($pages_count > 0) // There would only be 0 pages if there are no schemes.
 		$last_edit_date = date('d\-m\-Y', $scheme_data['sch_last_edit_date']);
 		
 		// Load the example replays.
-		$get_example_replays_query = $bdd->prepare('SELECT * FROM sch_example_replays WHERE sch_id = :sch_id');
+		$get_example_replays_query = $bdd->prepare('SELECT * FROM sch_example_replays WHERE sch_id = :sch_id AND sch_exrep_approvement_level = "1"');
 		$get_example_replays_query->bindValue(':sch_id', $scheme_data['sch_id'], PDO::PARAM_INT);
 		$get_example_replays_query->execute();
 		
@@ -139,7 +139,12 @@ if ($pages_count > 0) // There would only be 0 pages if there are no schemes.
 		}
 		
 		// Finally, let's end the cell and the row.
-		echo '</td></tr>';
+		if ($j != 1)
+		{
+			echo '- ';
+		}
+		
+		echo '<a href="attach-replays.php?id='.$scheme_data['sch_id'].'">'.$str['add'].'</a>.</td></tr>';
 		$i++;
 	}
 	
