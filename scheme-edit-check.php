@@ -704,7 +704,7 @@ if (isset($_POST['action']))
 		}
 		if ($laser_fix_enabled) // Flames limit feature
 		{
-		$version_required_string = '3.6.29.0 with Laser Fix or 3.6.31.0 with RubberWorm31';
+		$version_required_string = '3.6.29.0 with Laser Fix, 3.6.31.0 with RubberWorm31 or 3.7.0.0 with RubberWorm';
 		}
 	
 		if (isset($magic_number))
@@ -875,24 +875,13 @@ if (isset($_POST['action']))
 						// Let's use a loop for the remainder of the file, and treat each case with a switch
 						switch ($i)
 						{
-						case 5: case 6: case 7: case 10: case 17: case 19: case 21:
+						case 6: case 10: case 17: case 19: case 21:
 							if (ord($file_content[$i]) > 127)
 							{
 							$old_value = ord($file_content[$i]);
 							$file_content[$i] = chr(127);
 							
-								if ($i === 5)
-								{
-									if ($language === 'fr')
-									{
-									$fixes[] = 'Le temps de réflexion avant les tours a été remis à 127 (il était à '.$old_value.')';
-									}
-									else
-									{
-									$fixes[] = 'The Hotseat Time byte value has been reset to 127 (was '.$old_value.')';
-									}
-								}
-								else if ($i === 6)
+								if ($i === 6)
 								{
 									if ($language === 'fr')
 									{
@@ -901,17 +890,6 @@ if (isset($_POST['action']))
 									else
 									{
 									$fixes[] = 'The Land Retreat Time byte value has been reset to 127 (was '.$old_value.')';
-									}
-								}
-								else if ($i === 7)
-								{
-									if ($language === 'fr')
-									{
-									$fixes[] = 'Le temps de retraite après avoir lâché une arme depuis la corde a été remis à 127 (il était à '.$old_value.')';
-									}
-									else
-									{
-									$fixes[] = 'The Rope Retreat Time byte value has been reset to 127 (was '.$old_value.')';
 									}
 								}
 								else if ($i === 17)

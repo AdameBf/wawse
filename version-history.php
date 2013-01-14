@@ -56,6 +56,19 @@ include('../../includes/menu.php');
 ?>
 <h1><?php echo $str['sch_editor_changelog']; ?></h1>
 <p><?php echo $str['sch_editor_changelog_intro']; ?></p>
+<h4>0.5.2a - <?php
+if ($language == 'fr')
+{
+echo '14 janvier 2013';
+}
+else
+{
+echo 'January 14th, 2013';
+}
+ ?></h4>
+<ul>
+	<li><?php echo $str['sch_editor_changelog_v0_5_2a_item1']; ?></li>
+</ul>
 <h4>0.5.2 - <?php
 if ($language == 'fr')
 {
