@@ -297,6 +297,18 @@ $str['sch_editor_sch_replay_uploader_error_uatginam'] = 'Bien essayé, mais vous 
 // Example replays approving interface
 $str['sch_editor_sch_replay_approving_interface_title'] = 'Approuver des replays d\'exemple en attente pour le scheme'; // Same as line 289.
 $str['sch_editor_sch_replay_approving_interface_please_login'] = 'Veuillez vous connecter pour pouvoir approuver/rejeter des replays (puisque l\'auteur de ce scheme est un membre).';
+$str['sch_editor_sch_replay_approving_error_message'] = 'Soit le scheme spécifié n\'existe pas, soit ses replays n\'ont pas besoin d\'être approuvés.';
+
+$str['sch_editor_sch_replay_approving_waiting_for_approvement_replays'] = 'Replays en attente';
+$str['sch_editor_sch_replay_approving_approved_replays'] = 'Replays acceptés';
+$str['sch_editor_sch_replay_approving_rejected_replays'] = 'Replays rejetés';
+
+$str['sch_editor_sch_exrep_appr_file_id_column'] = 'ID';
+$str['sch_editor_sch_exrep_appr_file_name_column'] = 'Nom du fichier';
+$str['sch_editor_sch_exrep_appr_upload_date_column'] = 'Date de mise en ligne';
+
+$str['sch_editor_sch_exrep_appr_approve_column'] = 'Accepter';
+$str['sch_editor_sch_exrep_appr_reject_column'] = 'Rejeter';
 
 // My schemes - this section probably won't be created (before a while?).
 $str['sch_editor_my_schemes_title'] = 'Mes schemes';
@@ -320,9 +332,10 @@ $str['sch_editor_changelog_v0_4_1_item3'] = 'Et quelques petites corrections que
 $str['sch_editor_changelog_v0_4_2_item1'] = '[Amélioration] Ajout de la nouvelle option de RubberWorm v0.0.1.12.';
 $str['sch_editor_changelog_v0_5_0_item1'] = '[Amélioration] Ajout des replays d\'exemple, qui peuvent être attachés à un scheme importé uniquement. Ils sont téléchargables depuis la liste des schemes. (À l\'avenir, il devrait être possible de les ajouter après la création du scheme.) <em>(Télécharger ces replays ne fonctionnait pas : voyez l\'explication plus bas.)</em>';
 $str['sch_editor_changelog_v0_5_0_item2'] = '[Correction] Le téléchargement d\'un scheme dont le nom a été corrigé avant la création fonctionne désormais. <em>(En fait, cette correction a complètement empêché les téléchargements : un fichier requis pour la nouvelle fonction manquait sur la page qui s\'occupe des téléchargements.)</em>';
-$str['sch_editor_changelog_v0_5_1_item1'] = '[Amélioration] Les replays d\'exemple peuvent désormais être attachés à un scheme après sa création ou son import. Les auteurs de scheme peuvent par ailleurs définir les permissions pour importer des replays (l\'auteur seul/tout le monde mais les replays doivent être approuvés par l\'auteur/tout le monde sans que les replays n\'aient besoin d\'être approuvé, cependant je peux vérifier de temps en temps ou bien agir sur demande expresse de l\'auteur).';
-$str['sch_editor_changelog_v0_5_1_item2'] = '[Amélioration] Vous pouvez désormais joindre plus de 5 replays d\'exemple à un scheme au total, cependant vous ne pouvez pas en importer plus de 5 d\'un coup - si vous voulez joindre plus de replays, faites-le en deux/trois/quatre... fois ; je ne veux pas que mon serveur prenne feu, surtout vu qu\'il n\'y a pas que moi :P.';
-$str['sch_editor_changelog_v0_5_1_item3'] = '[Correction] Le téléchargement de schemes et de replays, brisé par accident en v0.5.0, a été rétabli.';
+$str['sch_editor_changelog_v0_5_1_item1'] = '[Correction] Le téléchargement de schemes et de replays, brisé par accident en v0.5.0, a été rétabli.';
+$str['sch_editor_changelog_v0_5_2_item1'] = '[Amélioration] Ajout des versions entre la 3.6.31.0 et la 3.7.0.0 dans les options d\'émulation de versions via RubberWorm, à l\'occasion de la sortie de RubberWorm v0.0.1.13.';
+$str['sch_editor_changelog_v0_6_0_item1'] = '[Amélioration] Les replays d\'exemple peuvent désormais être attachés à un scheme après sa création ou son envoi sur le serveur. Les auteurs de scheme peuvent par ailleurs définir les permissions pour importer des replays (l\'auteur seul/tout le monde mais les replays doivent être approuvés par l\'auteur/tout le monde sans que les replays n\'aient besoin d\'être approuvé, cependant je peux vérifier de temps en temps ou bien agir sur demande expresse de l\'auteur).';
+$str['sch_editor_changelog_v0_6_0_item2'] = '[Amélioration] Vous pouvez désormais joindre plus de 5 replays d\'exemple à un scheme au total, cependant vous ne pouvez pas en importer plus de 5 d\'un coup - si vous voulez joindre plus de replays, faites-le en deux/trois/quatre... fois ; je ne veux pas que mon serveur prenne feu, surtout vu qu\'il n\'y a pas que moi dessus :P.';
 
 // Link to the page that allows us to select another language
 $str['sch_editor_change_language'] = 'Changer de langue';

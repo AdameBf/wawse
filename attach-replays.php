@@ -283,6 +283,7 @@ if (isset($_GET['id']))
 	else
 	{
 		// Tell the user no scheme has this ID.
+		echo $str['sch_editor_sch_viewer_error_scheme_not_found'];
 	}
 }
 else

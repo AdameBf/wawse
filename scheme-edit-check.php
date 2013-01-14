@@ -632,6 +632,10 @@ if (isset($_POST['action']))
 		{
 		$version_required_array[] = 31;
 		}
+		if ($rubber_version_override > 167)
+		{
+		$version_required_array[] = 32;
+		}
 	
 		$rubber_settings = array(0, $rubber_knocking_force, $rubber_speed, 0, $rubber_earthquake, $rubber_flames_limit, 0, 0, $rubber_crate_limit, $rubber_crate_rate, $rubber_version_override, $rubber_friction, $rubber_mole_squadron, $rubber_swat, $rubber_air_viscosity, $rubber_wind_influence, $rubber_anti_sink, $rubber_gravity_modifications, $rubber_worms_bounciness);
 
@@ -693,6 +697,10 @@ if (isset($_POST['action']))
 		if ($rubber_enabled AND $version_required === 31)
 		{
 		$version_required_string = '3.6.31.0 with RubberWorm31';
+		}
+		if ($rubber_enabled AND $version_required === 32)
+		{
+		$version_required_string = '3.7.0.0 with RubberWorm';
 		}
 		if ($laser_fix_enabled) // Flames limit feature
 		{

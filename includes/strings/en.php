@@ -297,6 +297,18 @@ $str['sch_editor_sch_replay_uploader_error_uatginam'] = 'Nice try getting me the
 // Example replays approving interface
 $str['sch_editor_sch_replay_approving_interface_title'] = 'Approving Pending Example Replays for Scheme'; // Same as line 289.
 $str['sch_editor_sch_replay_approving_interface_please_login'] = 'Please log in to approve/reject replays (since the scheme\'s author is a member).';
+$str['sch_editor_sch_replay_approving_error_message'] = 'Either the specified scheme doesn\'t exist, or its replays don\'t have to be approved.';
+
+$str['sch_editor_sch_replay_approving_waiting_for_approvement_replays'] = 'Replays Waiting for Approvement';
+$str['sch_editor_sch_replay_approving_approved_replays'] = 'Approved Replays';
+$str['sch_editor_sch_replay_approving_rejected_replays'] = 'Rejected Replays';
+
+$str['sch_editor_sch_exrep_appr_file_id_column'] = 'ID';
+$str['sch_editor_sch_exrep_appr_file_name_column'] = 'File Name';
+$str['sch_editor_sch_exrep_appr_upload_date_column'] = 'Upload Date';
+
+$str['sch_editor_sch_exrep_appr_approve_column'] = 'Approve';
+$str['sch_editor_sch_exrep_appr_reject_column'] = 'Reject';
 
 // My schemes - this section probably won't be created (before a while?).
 $str['sch_editor_my_schemes_title'] = 'My Schemes';
@@ -320,9 +332,10 @@ $str['sch_editor_changelog_v0_4_1_item3'] = 'Plus some other minor fixes I\'ve r
 $str['sch_editor_changelog_v0_4_2_item1'] = '[Improvement] Added custom knocking force setting, RubberWorm v0.0.1.12\'s new feature.';
 $str['sch_editor_changelog_v0_5_0_item1'] = '[Improvement] Example replays can now be attached to an uploaded scheme, and they\'re downloadable on the scheme list. (It should be possible to attach them to a scheme after its creation/upload in the future.) <em>(Downloading these replays actually didn\'t work: see explanation below.)</em>';
 $str['sch_editor_changelog_v0_5_0_item2'] = '[Fixed] Downloading a scheme with a parsed name now works succesfully. <em>(This fix actually broke every scheme downloads: the required file with the new function wasn\'t loaded on the page managing all scheme downloads - thus triggering a fatal error.)</em>';
-$str['sch_editor_changelog_v0_5_1_item1'] = '[Improvement] Example replays can now be attached after a scheme\'s creation or upload. Scheme authors can also decide who is allowed to upload replays (author only/everyone but there\'s an approvement system/everyone without approvements, though I can check from time to time or act upon request).';
-$str['sch_editor_changelog_v0_5_1_item2'] = '[Improvement] You can now attach more than 5 replays to a scheme, however you still only can upload 5 replays at once - if you want more, do it in two/three/four... times; I don\'t want my server to burn, you know =).';
-$str['sch_editor_changelog_v0_5_1_item3'] = '[Fixed] Scheme and replay downloading, accidentally broken in v0.5.0 even with schemes/replays which name doesn\'t need parsing, is now possible again.';
+$str['sch_editor_changelog_v0_5_1_item1'] = '[Fixed] Scheme and replay downloading, accidentally broken in v0.5.0 even with schemes/replays which name doesn\'t need parsing, is now possible again.';
+$str['sch_editor_changelog_v0_5_2_item1'] = '[Improvement] Added versions between 3.6.31.0 and 3.7.0.0 in the "Version Override" drop-down list, since it is possible to emulate them with RubberWorm v0.0.1.13.';
+$str['sch_editor_changelog_v0_6_0_item1'] = '[Improvement] Example replays can now be attached after a scheme\'s creation or upload. Scheme authors can also decide who is allowed to upload replays (author only/everyone but there\'s an approvement system/everyone without approvements, though I can check from time to time or act upon request).';
+$str['sch_editor_changelog_v0_6_0_item2'] = '[Improvement] You can now attach more than 5 replays to a scheme, however you still only can upload 5 replays at once - if you want more, do it in two/three/four... times; I don\'t want my server to burn, you know =).';
 
 // Link to the page that allows us to select another language
 $str['sch_editor_change_language'] = 'Select Another Language';
