@@ -9,6 +9,12 @@ $str['category'] = 'W:A Scheme Editor';
 $str['sch_editor_main_page_title'] = 'Worms Armageddon Scheme Editor';
 $str['sch_editor_main_page_content'] = 'Welcome to my W:A Scheme Editor. Here, you can view the users\' schemes, download them, and even create your own schemes. Have fun!';
 
+// Errors / Warnings
+$str['error'] = 'Error';
+$str['error_invalid_action'] = 'Invalid action.';
+$str['error_no_action'] = 'No action specified.';
+$str['error_scheme_name_by_scheme_author_already_exists'] = 'A scheme with the same name and the same author already exists. This new scheme will be numbered.'; // This one is actually a warning.
+
 // Scheme list page
 $str['sch_editor_sch_list_title'] = 'Scheme List';
 $str['sch_editor_sch_list_pages_label'] = 'Pages:';
@@ -23,11 +29,9 @@ $str['sch_editor_sch_list_download_count_column'] = 'Download Count';
 $str['sch_editor_sch_list_download_column'] = 'Download';
 $str['sch_editor_sch_list_download_example_replays'] = 'Download Example Replays';
 
-// Errors
-$str['error'] = 'Error';
-$str['error_invalid_action'] = 'Invalid action.';
-$str['error_no_action'] = 'What do you actually want to do? If you don\'t know what you want to do, then there\'s a problem...';
-$str['error_scheme_name_by_scheme_author_already_exists'] = 'A scheme with the same name and the same author already exists. This new scheme will be numbered.'; // This one is actually a warning
+$str['sch_editor_sch_list_no_example_replays'] = 'No Example Replay';
+
+$str['sch_editor_sch_list_replay_approving_interface_link'] = 'Handle'; // This link should be moved to the Scheme Viewing page once I'm done creating it.
 
 // Scheme maker/editor page
 $str['sch_editor_sch_maker_title'] = 'Create a New Scheme';
@@ -166,7 +170,7 @@ $str['sch_editor_rubber_settings_warning'] = 'Warning: These settings require Wo
 $str['sch_editor_rubber_sdet'] = 'Shot Ends Turn';
 $str['sch_editor_rubber_sdet_hint'] = 'By default, this setting is enabled.';
 $str['sch_editor_rubber_usw'] = 'Unlock "Shot Doesn\'t End Turn" weapons';
-$str['sch_editor_rubber_usw_hint'] = 'Unlocks Earthquake, Indian Nuclear Test and Armageddon when shot doesn\'t end turn. Requires RubberWorm31.';
+$str['sch_editor_rubber_usw_hint'] = 'Unlocks Earthquake, Indian Nuclear Test and Armageddon when shot doesn\'t end turn. Requires RubberWorm for 3.6.31.0 or later.';
 $str['sch_editor_rubber_ldet'] = 'Loss of Control Ends Turn';
 $str['sch_editor_rubber_ldet_hint'] = 'By default, this setting is enabled.';
 $str['sch_editor_rubber_fdpt'] = 'Fire Doesn\'t Pause Timer';
@@ -176,19 +180,19 @@ $str['sch_editor_rubber_improved_rope_hint'] = 'If enabled, Worms 2\'s rope phys
 $str['sch_editor_rubber_ccs'] = 'Continuous Crate Shower';
 $str['sch_editor_rubber_ccs_hint'] = 'Crates will spawn every 5 seconds.';
 $str['sch_editor_rubber_ope'] = 'Objects Can Be Pushed By Explosions';
-$str['sch_editor_rubber_ope_hint'] = 'Requires RubberWorm31.';
+$str['sch_editor_rubber_ope_hint'] = 'Requires RubberWorm for 3.6.31.0 or later.';
 $str['sch_editor_rubber_wdca'] = 'Weapons Don\'t Change Automatically';
-$str['sch_editor_rubber_wdca_hint'] = 'Requires RubberWorm31.';
+$str['sch_editor_rubber_wdca_hint'] = 'Requires RubberWorm for 3.6.31.0 or later.';
 $str['sch_editor_rubber_fuseex'] = 'Extended Fuse';
-$str['sch_editor_rubber_fuseex_hint'] = 'Fuse can be set up to 9 seconds. Requires RubberWorm31.';
+$str['sch_editor_rubber_fuseex_hint'] = 'Fuse can be set up to 9 seconds. Requires RubberWorm for 3.6.31.0 or later.';
 $str['sch_editor_rubber_auto_reaim'] = 'Automatic Reaiming';
-$str['sch_editor_rubber_auto_reaim_hint'] = 'Requires RubberWorm31.';
+$str['sch_editor_rubber_auto_reaim_hint'] = 'Requires RubberWorm for 3.6.31.0 or later.';
 $str['sch_editor_rubber_circular_aim'] = 'Circular Aiming';
-$str['sch_editor_rubber_circular_aim_hint'] = 'Yes, this option comes from Test-Stuff, but with Rubber it is stored in the scheme file directly. Requires RubberWorm31.';
+$str['sch_editor_rubber_circular_aim_hint'] = 'Yes, this option comes from Test-Stuff, but with Rubber it is stored in the scheme file directly. Requires RubberWorm for 3.6.31.0 or later.';
 $str['sch_editor_rubber_antilock_power'] = 'Antilock Power';
-$str['sch_editor_rubber_antilock_power_hint'] = 'Another TS option stored in the scheme file. Requires RubberWorm31.';
+$str['sch_editor_rubber_antilock_power_hint'] = 'Another TS option stored in the scheme file. Requires RubberWorm for 3.6.31.0 or later.';
 $str['sch_editor_rubber_knocking_force'] = 'Knocking Force';
-$str['sch_editor_rubber_knocking_force_hint'] = 'Set your custom rope knocking force. Note that this also affects bungee knocks. 0 = disable, as always; 1 = lowest force; 100 = default force; 200 = 2× default force; 254 = max, 2.54× force; 255 = forces no rope knocking.';
+$str['sch_editor_rubber_knocking_force_hint'] = 'Set your custom rope knocking force. Note that this also affects bungee knocks. 0 = disable, as always; 1 = lowest force; 100 = default force; 200 = 2× default force; 254 = max, 2.54× force; 255 = forces no rope knocking. Requires RubberWorm for 3.6.31.0 or later.';
 
 $str['sch_editor_rubber_crate_rate'] = 'Crate Rate and Crate Counter';
 $str['sch_editor_rubber_crate_rate_hint'] = 'All values, but 0, enables the crate counter.';
@@ -196,7 +200,7 @@ $str['sch_editor_rubber_crate_limit'] = 'Crate Limit';
 $str['sch_editor_rubber_crate_limit_hint'] = 'If there are too many crates, no more will spawn until some are removed (collected, destroyed or sunk).';
 
 $str['sch_editor_rubber_kaosmod'] = 'Kaosmod';
-$str['sch_editor_rubber_kaosmod_hint'] = 'Alters utilities\' crate probabilities. Requires RubberWorm31.';
+$str['sch_editor_rubber_kaosmod_hint'] = 'Alters utilities\' crate probabilities. Requires RubberWorm for 3.6.31.0 or later.';
 $str['sch_editor_rubber_worms_bounciness'] = 'Worms Bounciness';
 $str['sch_editor_rubber_worms_bounciness_hint'] = 'The value will be divided by 255.';
 
@@ -205,11 +209,11 @@ $str['sch_editor_rubber_friction_hint'] = 'How does a worm\'s speed change while
 $str['sch_editor_rubber_flames_limit'] = 'Flames Limit';
 $str['sch_editor_rubber_flames_limit_hint'] = 'Can be set up to 25,500 (255×100). Requires RubberWorm31 (3.6.31.0) or LaserFix (3.6.29.0).';
 $str['sch_editor_rubber_speed'] = 'Speed';
-$str['sch_editor_rubber_speed_hint'] = 'You can edit objects\' max speed. 16: default, 32: like in current Test Stuff, 255: no limit, like in TS3. Requires RubberWorm31.';
+$str['sch_editor_rubber_speed_hint'] = 'You can edit objects\' max speed. 16: default, 32: like in current Test Stuff, 255: no limit, like in TS3. Requires RubberWorm for 3.6.31.0 or later.';
 $str['sch_editor_rubber_anti_worm_sink'] = 'Anti Worm Sink';
 $str['sch_editor_rubber_anti_worm_sink_hint'] = 'When a worm sinks, it\'ll respawn where it was before falling into the water. If it sinks again after respawning, then it\'ll die.';
 $str['sch_editor_rubber_swat'] = 'Select Worm Anytime during the Turn';
-$str['sch_editor_rubber_swat_hint'] = 'If you can manually select the worm that will play at the beginning of the turn, then with this setting enabled you can select another worm at anytime during any turn. Otherwise, you can only use this feature during a turn where you used the Select Worm weapon; it will last until the end of the current turn (like Low Gravity or Fast Walk for example). Requires RubberWorm31.';
+$str['sch_editor_rubber_swat_hint'] = 'If you can manually select the worm that will play at the beginning of the turn, then with this setting enabled you can select another worm at anytime during any turn. Otherwise, you can only use this feature during a turn where you used the Select Worm weapon; it will last until the end of the current turn (like Low Gravity or Fast Walk for example). Requires RubberWorm for 3.6.31.0 or later.';
 $str['sch_editor_rubber_air_viscosity'] = 'Air Viscosity';
 $str['sch_editor_rubber_air_viscosity_hint'] = 'Here you can set how fast a flying object loses velocity. If you set an odd value, worms will be affected too.';
 $str['sch_editor_rubber_gravity_modifications'] = 'Gravity Modifications';
@@ -302,6 +306,10 @@ $str['sch_editor_sch_replay_approving_error_message'] = 'Either the specified sc
 $str['sch_editor_sch_replay_approving_waiting_for_approvement_replays'] = 'Replays Waiting for Approvement';
 $str['sch_editor_sch_replay_approving_approved_replays'] = 'Approved Replays';
 $str['sch_editor_sch_replay_approving_rejected_replays'] = 'Rejected Replays';
+
+$str['sch_editor_sch_replay_approving_no_replays_waiting_for_approvement'] = 'No Replays Waiting for Approvement.';
+$str['sch_editor_sch_replay_approving_no_approved_replays'] = 'No Approved Replays.';
+$str['sch_editor_sch_replay_approving_no_rejected_replays'] = 'No Rejected Replays.';
 
 $str['sch_editor_sch_exrep_appr_file_id_column'] = 'ID';
 $str['sch_editor_sch_exrep_appr_file_name_column'] = 'File Name';

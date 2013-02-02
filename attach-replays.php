@@ -85,7 +85,7 @@ if (isset($_GET['id']))
 					<p><label for="author" class="aligner"><?php echo $str['sch_editor_sch_author']; ?></label><input type="text" name="author" id="sch_author" class="champ" /><br />
 					<label for="password" class="aligner"><?php echo $str['sch_editor_sch_password']; ?></label><input type="password" name="password" id="sch_password" /></p>
 
-					<input type="submit" value="<?php echo $str['sch_editor_sch_replay_uploader_authoring_submit_button']; ?>" class="bouton" />
+					<p><input type="submit" value="<?php echo $str['sch_editor_sch_replay_uploader_authoring_submit_button']; ?>" class="bouton" /></p>
 				</form>
 				<?php
 				}
@@ -157,7 +157,7 @@ if (isset($_GET['id']))
 			$example_replays_count_query->closeCursor();
 			
 			// Define also the *approvement level* (i.e. if the replay is waiting for approvement, accepted, or rejected - the latter shouldn't appear right here, though)
-			if ($scheme_infos['sch_example_replays_permissions'] == 2) // The easiest one
+			if ($scheme_infos['sch_example_replays_permissions'] == 2)
 			{
 			$example_replays_approvement_level = '1';
 			$continue = true;

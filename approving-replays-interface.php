@@ -94,7 +94,14 @@ if (isset($_GET['id']))
 		{
 			if (!isset($_POST['sch_password']) OR sha1($_POST['sch_password']) != $scheme_infos['sch_password'])
 			{
-				// Ask for scheme author and password.
+				// Ask for scheme password.
+				?>
+				<form method="post" action="?id=<?php echo $id; ?>">
+					<label for="password" class="aligner"><?php echo $str['sch_editor_sch_password']; ?></label><input type="password" name="password" id="sch_password" /></p>
+
+					<p><input type="submit" value="<?php echo $str['sch_editor_sch_replay_uploader_authoring_submit_button']; ?>" class="bouton" /></p>
+				</form>
+				<?php
 				$continue = false;
 			}
 			else
@@ -107,57 +114,153 @@ if (isset($_GET['id']))
 		if ($continue)
 		{
 			// Show all replays, sorted according to their approvement level (with a separate section for each level).
-			
-			// 1. Count replays separately, according to their approvement level.
-			
-			// A. Replays waiting for approvement
-			$example_replays_waiting_for_approvement_count_query = $bdd->prepare('SELECT COUNT(*) AS example_replays_waiting_for_approvement_count FROM sch_example_replays WHERE sch_id = :sch_id AND sch_exrep_approvement_level = "0"');
-			$example_replays_waiting_for_approvement_count_query->bindValue(':sch_id', $_GET['id'], PDO::PARAM_INT);
-			$example_replays_waiting_for_approvement_count_query->execute();
-			
-			$example_replays_waiting_for_approvement_count = $example_replays_waiting_for_approvement_count_query->fetch();
-			
-			// B. Approved replays
-			$approved_example_replays_count_query = $bdd->prepare('SELECT COUNT(*) AS approved_example_replays_count FROM sch_example_replays WHERE sch_id = :sch_id AND sch_exrep_approvement_level = "1"');
-			$approved_example_replays_count_query->bindValue(':sch_id', $_GET['id'], PDO::PARAM_INT);
-			$approved_example_replays_count_query->execute();
-			
-			$approved_example_replays_count = $approved_example_replays_count_query->fetch();
-			
-			// C. Rejected replays
-			$rejected_example_replays_count_query = $bdd->prepare('SELECT COUNT(*) AS rejected_example_replays_count FROM sch_example_replays WHERE sch_id = :sch_id AND sch_exrep_approvement_level = "2"');
-			$rejected_example_replays_count_query->bindValue(':sch_id', $_GET['id'], PDO::PARAM_INT);
-			$rejected_example_replays_count_query->execute();
-			
-			$rejected_example_replays_count = $rejected_example_replays_count_query->fetch();
-			
-			// 2. Show the replays
-			
-			// A. Replays waiting for approvement
-			$i = 1;
+			?>
+			<form method="post" action="approving-replays-interface-action.php">
+			<?php
+			// 1. Replays waiting for approvement
 			?>
 			<h2><?php echo $str['sch_editor_sch_replay_approving_waiting_for_approvement_replays']; ?></h2>
-			<table>
-				<tr><th><?php echo $str['sch_editor_sch_exrep_appr_file_id_column']; ?></th><th><?php echo $str['sch_editor_sch_exrep_appr_file_name_column']; ?></th><th><?php echo $str['sch_editor_sch_exrep_appr_upload_date_column']; ?></th><th><?php echo $str['sch_editor_sch_exrep_appr_approve_column']; ?></th><th><?php echo $str['sch_editor_sch_exrep_appr_reject_column']; ?></th></tr>
-			</table>
+			<?php
+			// Load the example replays waiting for approvement.
+			$get_waiting_for_approvement_example_replays_query = $bdd->prepare('SELECT * FROM sch_example_replays WHERE sch_id = :sch_id AND sch_exrep_approvement_level = "0"');
+			$get_waiting_for_approvement_example_replays_query->bindValue(':sch_id', $scheme_data['sch_id'], PDO::PARAM_INT);
+			$get_waiting_for_approvement_example_replays_query->execute();
+			
+			$waiting_for_approvement_example_replays_count = $get_waiting_for_approvement_example_replays_query->rowCount();
+			
+			if ($waiting_for_approvement_example_replays_count != 0)
+			{
+				?>
+				<table>
+					<tr><th><?php echo $str['sch_editor_sch_exrep_appr_file_id_column']; ?></th><th><?php echo $str['sch_editor_sch_exrep_appr_file_name_column']; ?></th><th><?php echo $str['sch_editor_sch_exrep_appr_upload_date_column']; ?></th><th><?php echo $str['sch_editor_sch_exrep_appr_approve_column']; ?></th><th><?php echo $str['sch_editor_sch_exrep_appr_reject_column']; ?></th></tr>
+				<?php
+				$i = 1;
+		
+				while ($waiting_for_approvement_example_replays = $get_waiting_for_approvement_example_replays_query->fetch())
+				{
+					// Convert the timestamp to a date.
+					$upload_date = date('d\-m\-Y', $waiting_for_approvement_example_replays['sch_exrep_upload_date']);;
+					?>
+					<tr>
+						<td><?php echo $i; ?></td>
+						<td><?php echo '<a href="download-example-replay.php?id='.$waiting_for_approvement_example_replays['sch_exrep_id'].'">'.$waiting_for_approvement_example_replays['sch_exrep_file_name'].'</a>'; ?></td>
+						<td><?php echo $upload_date; ?></td>
+						<td><?php echo '<input type="radio" name="'.$waiting_for_approvement_example_replays['sch_exrep_id'].'" value="1" />'; ?></td>
+						<td><?php echo '<input type="radio" name="'.$waiting_for_approvement_example_replays['sch_exrep_id'].'" value="2" />'; ?></td>
+					</tr>
+					<?php
+					$i++;
+				}
+				?>
+				</table>
+				<?php
+			}
+			else
+			{
+				echo $str['sch_editor_sch_replay_approving_no_replays_waiting_for_approvement'];
+			}
+			
+			// 2. Approved replays
+			?>
+			<h2><?php echo $str['sch_editor_sch_replay_approving_approved_replays']; ?></h2>
+			<?php
+			// Load the example replays waiting for approvement.
+			$get_approved_example_replays_query = $bdd->prepare('SELECT * FROM sch_example_replays WHERE sch_id = :sch_id AND sch_exrep_approvement_level = "1"');
+			$get_approved_example_replays_query->bindValue(':sch_id', $scheme_data['sch_id'], PDO::PARAM_INT);
+			$get_approved_example_replays_query->execute();
+			
+			$approved_example_replays_count = $approved_example_replays_query->rowCount();
+			
+			if ($approved_example_replays_count != 0)
+			{
+				?>
+				<table>
+					<tr><th><?php echo $str['sch_editor_sch_exrep_appr_file_id_column']; ?></th><th><?php echo $str['sch_editor_sch_exrep_appr_file_name_column']; ?></th><th><?php echo $str['sch_editor_sch_exrep_appr_upload_date_column']; ?></th><th><?php echo $str['sch_editor_sch_exrep_appr_reject_column']; ?></th></tr>
+				<?php
+				$i = 1;
+		
+				while ($approved_example_replays = $get_approved_example_replays_query->fetch())
+				{
+					// Convert the timestamp to a date.
+					$upload_date = date('d\-m\-Y', $approved_example_replays['sch_exrep_upload_date']);;
+					?>
+					<tr>
+						<td><?php echo $i; ?></td>
+						<td><?php echo '<a href="download-example-replay.php?id='.$approved_example_replays['sch_exrep_id'].'">'.$approved_example_replays['sch_exrep_file_name'].'</a>'; ?></td>
+						<td><?php echo $upload_date; ?></td>
+						<td><?php echo '<input type="checkbox" name="'.$approved_example_replays['sch_exrep_id'].'" id="'.$approved_example_replays['sch_exrep_id'].'" />'; ?></td>
+					</tr>
+					<?php
+					$i++;
+				}
+				?>
+				</table>
+				<?php
+			}
+			else
+			{
+				echo $str['sch_editor_sch_replay_approving_no_approved_replays'];
+			}
+			
+			// 3. Rejected replays
+			?>
+			<h2><?php echo $str['sch_editor_sch_replay_approving_rejected_replays']; ?></h2>
+			<?php
+			// Load the example replays waiting for approvement.
+			$get_rejected_example_replays_query = $bdd->prepare('SELECT * FROM sch_example_replays WHERE sch_id = :sch_id AND sch_exrep_approvement_level = "0"');
+			$get_rejected_example_replays_query->bindValue(':sch_id', $scheme_data['sch_id'], PDO::PARAM_INT);
+			$get_rejected_example_replays_query->execute();
+			
+			$rejected_example_replays_count = $rejected_example_replays_query->rowCount();
+			
+			if ($rejected_example_replays_count != 0)
+			{
+				?>
+				<table>
+					<tr><th><?php echo $str['sch_editor_sch_exrep_appr_file_id_column']; ?></th><th><?php echo $str['sch_editor_sch_exrep_appr_file_name_column']; ?></th><th><?php echo $str['sch_editor_sch_exrep_appr_upload_date_column']; ?></th><th><?php echo $str['sch_editor_sch_exrep_appr_approve_column']; ?></th></tr>
+				<?php
+				$i = 1;
+		
+				while ($rejected_example_replays = $get_rejected_example_replays_query->fetch())
+				{
+					// Convert the timestamp to a date.
+					$upload_date = date('d\-m\-Y', $rejected_example_replays['sch_exrep_upload_date']);;
+					?>
+					<tr>
+						<td><?php echo $i; ?></td>
+						<td><?php echo '<a href="download-example-replay.php?id='.$rejected_example_replays['sch_exrep_id'].'">'.$rejected_example_replays['sch_exrep_file_name'].'</a>'; ?></td>
+						<td><?php echo $upload_date; ?></td>
+						<td><?php echo '<input type="checkbox" name="'.$rejected_example_replays['sch_exrep_id'].'" value="'.$rejected_example_replays['sch_exrep_id'].'" />'; ?></td>
+					</tr>
+					<?php
+					$i++;
+				}
+				?>
+				</table>
+				<?php
+			}
+			else
+			{
+				echo $str['sch_editor_sch_replay_approving_no_rejected_replays'];
+			}
+			
+			// Now, let's add a few things before closing that form.
+			?>
+			<p>
 			<?php
 			
-			// B. Approved replays
-			$i = 1;
-			?>
-			<h2><?php echo $str['sch_editor_sch_replay_approving_waiting_for_approvement_replays']; ?></h2>
-			<table>
-				<tr><th><?php echo $str['sch_editor_sch_exrep_appr_file_id_column']; ?></th><th><?php echo $str['sch_editor_sch_exrep_appr_file_name_column']; ?></th><th><?php echo $str['sch_editor_sch_exrep_appr_upload_date_column']; ?></th><th><?php echo $str['sch_editor_sch_exrep_appr_reject_column']; ?></th></tr>
-			</table>
-			<?php
+			if (isset($_POST['sch_password']))
+			{
+				// Send the password again, but in a hidden field.
+				?>
+				<input type="hidden" name="sch_password" value="<?php echo $_POST['sch_password']; ?>" />
+				<?php
+			}
 			
-			// C. Rejected replays
-			$i = 1;
+			// Finally, let the user send his edits.
 			?>
-			<h2><?php echo $str['sch_editor_sch_replay_approving_waiting_for_approvement_replays']; ?></h2>
-			<table>
-				<tr><th><?php echo $str['sch_editor_sch_exrep_appr_file_id_column']; ?></th><th><?php echo $str['sch_editor_sch_exrep_appr_file_name_column']; ?></th><th><?php echo $str['sch_editor_sch_exrep_appr_upload_date_column']; ?></th><th><?php echo $str['sch_editor_sch_exrep_appr_approve_column']; ?></th></tr>
-			</table>
+				<input type="submit" class="bouton" /></p>
+			</form>
 			<?php
 		}
 		
@@ -166,10 +269,12 @@ if (isset($_GET['id']))
 	else
 	{
 		// Tell the user no scheme has this ID or that the scheme's replays don't have to be approved.
+		echo '<p>'.$str['sch_editor_sch_replay_approving_error_message'].'</p>';
 	}
 }
 else
 {
-	// Redirect the user; where, I don't know yet! :O
+	// Redirect the user to the previous page
+	header('Location: '.$_SERVER['HTTP_REFERER']);
 }
 ?>

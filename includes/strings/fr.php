@@ -12,7 +12,7 @@ $str['sch_editor_main_page_content'] = 'Bienvenue dans l\'éditeur de styles de p
 // Errors
 $str['error'] = 'Erreur';
 $str['error_invalid_action'] = 'Action invalide.';
-$str['error_no_action'] = 'Que voulez-vous faire au juste ? Si vous ne savez pas ce que vous voulez faire ça marchera pas...';
+$str['error_no_action'] = 'Action non-spécifiée.';
 $str['error_scheme_name_by_scheme_author_already_exists'] = 'Un scheme portant ce nom-là et du même auteur existe déjà. L\'éditeur va le numéroter.';
 
 // Scheme list page
@@ -28,6 +28,10 @@ $str['sch_editor_sch_list_version_required_column'] = 'Version requise de W:A';
 $str['sch_editor_sch_list_download_count_column'] = 'Nombre de téléchargements';
 $str['sch_editor_sch_list_download_column'] = 'Télécharger';
 $str['sch_editor_sch_list_download_example_replays'] = 'Télécharger les replays de démonstration';
+
+$str['sch_editor_sch_list_no_example_replays'] = 'Pas de replay';
+
+$str['sch_editor_sch_list_replay_approving_interface_link'] = 'Gérer'; // This link should be moved to the Scheme Viewing page once I'm done creating it.
 
 // Scheme maker/editor page
 $str['sch_editor_sch_maker_title'] = 'Créer un scheme';
@@ -154,7 +158,7 @@ $str['sch_editor_rubber_settings_warning'] = 'Attention : Ces options requièrent
 $str['sch_editor_rubber_sdet'] = 'Tirer met fin au tour';
 $str['sch_editor_rubber_sdet_hint'] = 'Par défaut, cette option est activée.';
 $str['sch_editor_rubber_usw'] = 'Déverrouiller certaines armes dans le mode "Tirer ne met pas fin au tour"';
-$str['sch_editor_rubber_usw_hint'] = 'Cela déverrouille le séisme, le test nucléaire indien et l\'Armageddon lorsque tirer ne met pas fin au tour. Requiert RubberWorm31.';
+$str['sch_editor_rubber_usw_hint'] = 'Cela déverrouille le séisme, le test nucléaire indien et l\'Armageddon lorsque tirer ne met pas fin au tour. Requiert RubberWorm pour la v3.6.31.0 ou ultérieure.';
 $str['sch_editor_rubber_ldet'] = 'Perdre le contrôle du ver met fin au tour';
 $str['sch_editor_rubber_ldet_hint'] = 'Par défaut, cette option est activée.';
 $str['sch_editor_rubber_fdpt'] = 'Tirer n\'interrompt pas le temps de tour';
@@ -164,21 +168,21 @@ $str['sch_editor_rubber_improved_rope_hint'] = 'Si cette option est activée, la 
 $str['sch_editor_rubber_ccs'] = 'Pluie de caisses continuelle';
 $str['sch_editor_rubber_ccs_hint'] = 'Des caisses tomberont toutes les 5 secondes.';
 $str['sch_editor_rubber_ope'] = 'Les objets peuvent être poussés par les explosions';
-$str['sch_editor_rubber_ope_hint'] = 'Requiert RubberWorm31.';
+$str['sch_editor_rubber_ope_hint'] = 'Requiert RubberWorm pour la v3.6.31.0 ou ultérieure.';
 $str['sch_editor_rubber_wdca'] = 'L\'arme ne change pas automatiquement';
-$str['sch_editor_rubber_wdca_hint'] = 'Utile lorsque tirer ne met pas fin au tour. Requiert RubberWorm31.';
+$str['sch_editor_rubber_wdca_hint'] = 'Utile lorsque tirer ne met pas fin au tour. Requiert RubberWorm pour la v3.6.31.0 ou ultérieure.';
 $str['sch_editor_rubber_fuseex'] = 'Plus grand détonateur';
-$str['sch_editor_rubber_fuseex_hint'] = 'Le détonateur peut être mis jusqu\'à 9 secondes au lieu de 5 si cette option est activée. Requiert RubberWorm31.';
+$str['sch_editor_rubber_fuseex_hint'] = 'Le détonateur peut être mis entre 0 et 9 secondes inclus (au lieu de devoir être entre 1 et 5 inclus) si cette option est activée. Il peut également y avoir jusqu\'à 10 vaches. Requiert RubberWorm pour la v3.6.31.0 ou ultérieure.';
 $str['sch_editor_rubber_auto_reaim'] = 'Changement d\'angle de visée automatique';
-$str['sch_editor_rubber_auto_reaim_hint'] = 'Requiert RubberWorm31.';
+$str['sch_editor_rubber_auto_reaim_hint'] = 'Requiert RubberWorm pour la v3.6.31.0 ou ultérieure.';
 $str['sch_editor_rubber_circular_aim'] = 'Visée 360°';
-$str['sch_editor_rubber_circular_aim_hint'] = 'Oui, cette option vient de Test Stuff, mais avec Rubber Worm elle est directement sauvegardée dans le style de partie. Requiert RubberWorm31.';
+$str['sch_editor_rubber_circular_aim_hint'] = 'Oui, cette option vient de Test Stuff, mais avec Rubber Worm elle est directement sauvegardée dans le style de partie. Requiert RubberWorm pour la v3.6.31.0 ou ultérieure.';
 $str['sch_editor_rubber_antilock_power'] = 'Jauge qui se réduit après être arrivée au maximum';
-$str['sch_editor_rubber_antilock_power_hint'] = 'Une autre option TS directement sauvegardée dans le style de partie. Requiert RubberWorm31.';
+$str['sch_editor_rubber_antilock_power_hint'] = 'Une autre option TS directement sauvegardée dans le style de partie. Requiert RubberWorm pour la v3.6.31.0 ou ultérieure.';
 $str['sch_editor_rubber_kaosmod'] = 'Kaosmod';
-$str['sch_editor_rubber_kaosmod_hint'] = 'Les kaosmod sont des sets alternatifs des probabilités de trouver chaque utilitaire dans une caisse. Requiert RubberWorm31.';
+$str['sch_editor_rubber_kaosmod_hint'] = 'Les kaosmod sont des sets alternatifs des probabilités de trouver chaque utilitaire dans une caisse. Requiert RubberWorm pour la v3.6.31.0 ou ultérieure.';
 $str['sch_editor_rubber_knocking_force'] = 'Force d\'un Rope Knocking';
-$str['sch_editor_rubber_knocking_force_hint'] = 'Vous pouvez définir la force d\'une poussée à la corde (Rope Knocking). Affecte aussi l\'élastique. 0 = désactiver cette option, comme toujours ; 1 = plus petite force ; 100 = force par défaut ; 200 = double de la force par défaut ; 254 = 2.54× la force par défaut, c\'est le maximum ; 255 = pas de rope knocking.';
+$str['sch_editor_rubber_knocking_force_hint'] = 'Vous pouvez définir la force d\'une poussée à la corde (Rope Knocking). Affecte aussi l\'élastique. 0 = désactiver cette option, comme toujours ; 1 = plus petite force ; 100 = force par défaut ; 200 = double de la force par défaut ; 254 = 2.54× la force par défaut, c\'est le maximum ; 255 = pas de rope knocking. Requiert RubberWorm pour la v3.6.31.0 ou ultérieure.';
 
 $str['sch_editor_rubber_crate_rate'] = 'Caisses par tour et compteur de caisses';
 $str['sch_editor_rubber_crate_rate_hint'] = 'Toutes les valeurs, sauf 0, activent le compteur.';
@@ -188,7 +192,7 @@ $str['sch_editor_rubber_crate_limit_hint'] = 'S\'il y a trop de caisses, plus au
 $str['sch_editor_rubber_friction'] = 'Adhérence';
 $str['sch_editor_rubber_friction_hint'] = 'En éditant cette option, vous changez la façon dont la vitesse d\'un ver qui glisse varie. 1-95: haute adhérence, 96: adhérence normale, 97-99: faible adhérence, 100: pas d\'adhérence, plus de 100: la vitesse augmente pendant la glissade, au lieu de diminuer.';
 $str['sch_editor_rubber_flames_limit'] = 'Nombre maximum de flammes';
-$str['sch_editor_rubber_flames_limit_hint'] = 'Peut être mis jusqu\'à 25 500 (255×100). Requiert RubberWorm31 (pour la v3.6.31.0) ou LaserFix (pour la v3.6.29.0).';
+$str['sch_editor_rubber_flames_limit_hint'] = 'Peut être mis jusqu\'à 25 500 (255×100). Requiert RubberWorm31 (pour la v3.6.31.0),  RubberWorm (pour la v3.7.0.0) ou LaserFix (pour la v3.6.29.0).';
 $str['sch_editor_rubber_speed'] = 'Vitesse';
 $str['sch_editor_rubber_speed_hint'] = 'Vous pouvez modifier la vitesse maximale des objets. 16: par défaut (utile pour activer TS en gardant la vitesse par défaut), 32: comme dans le Test Stuff actuel, 255: sans limite, comme dans TS3. Requiert RubberWorm31.';
 $str['sch_editor_rubber_anti_worm_sink'] = 'Les vers ne coulent pas';
@@ -302,6 +306,10 @@ $str['sch_editor_sch_replay_approving_error_message'] = 'Soit le scheme spécifié
 $str['sch_editor_sch_replay_approving_waiting_for_approvement_replays'] = 'Replays en attente';
 $str['sch_editor_sch_replay_approving_approved_replays'] = 'Replays acceptés';
 $str['sch_editor_sch_replay_approving_rejected_replays'] = 'Replays rejetés';
+
+$str['sch_editor_sch_replay_approving_no_replays_waiting_for_approvement'] = 'Aucun replay en attente.';
+$str['sch_editor_sch_replay_approving_no_approved_replays'] = 'Aucun replay approuvé.';
+$str['sch_editor_sch_replay_approving_no_rejected_replays'] = 'Aucun replay rejeté.';
 
 $str['sch_editor_sch_exrep_appr_file_id_column'] = 'ID';
 $str['sch_editor_sch_exrep_appr_file_name_column'] = 'Nom du fichier';
