@@ -96,6 +96,7 @@ if (isset($_GET['id']))
 			{
 				// Ask for scheme password.
 				?>
+				<h1><?php echo $str['sch_editor_sch_replay_approving_interface_please_enter_sch_pwd']; ?></h1>
 				<form method="post" action="?id=<?php echo $id; ?>">
 					<label for="password" class="aligner"><?php echo $str['sch_editor_sch_password']; ?></label><input type="password" name="password" id="sch_password" /></p>
 
@@ -115,6 +116,7 @@ if (isset($_GET['id']))
 		{
 			// Show all replays, sorted according to their approvement level (with a separate section for each level).
 			?>
+			<h1><?php echo $page_actuelle; ?></h1>
 			<form method="post" action="approving-replays-interface-action.php">
 			<?php
 			// 1. Replays waiting for approvement
@@ -269,6 +271,7 @@ if (isset($_GET['id']))
 	else
 	{
 		// Tell the user no scheme has this ID or that the scheme's replays don't have to be approved.
+		echo '<h1>'.$str['error'].'</h1>';
 		echo '<p>'.$str['sch_editor_sch_replay_approving_error_message'].'</p>';
 	}
 }

@@ -299,17 +299,26 @@ $str['sch_editor_sch_replay_uploader_button'] = 'Envoyer les replays';
 $str['sch_editor_sch_replay_uploader_error_uatginam'] = 'Bien essayé, mais vous ne m\'aurez pas :P.'; // UATGINAM = Uploading Although The Guy Is Not A Member.
 
 // Example replays approving interface
-$str['sch_editor_sch_replay_approving_interface_title'] = 'Approuver des replays d\'exemple en attente pour le scheme'; // Same as line 289.
+$str['sch_editor_sch_replay_approving_interface_title'] = 'Approuver des replays d\'exemple en attente pour le scheme'; // Same as line 293.
+$str['sch_editor_sch_replay_approving_interface_please_enter_sch_pwd'] = 'Veuillez saisir le mot de passe du scheme';
+
 $str['sch_editor_sch_replay_approving_interface_please_login'] = 'Veuillez vous connecter pour pouvoir approuver/rejeter des replays (puisque l\'auteur de ce scheme est un membre).';
-$str['sch_editor_sch_replay_approving_error_message'] = 'Soit le scheme spécifié n\'existe pas, soit ses replays n\'ont pas besoin d\'être approuvés.';
+$str['sch_editor_sch_replay_approving_interface_wrong_sch_password'] = 'Mot de passe incorrect ou non spécifié.';
+$str['sch_editor_sch_replay_approving_interface_error_message'] = 'Soit le scheme spécifié n\'existe pas, soit ses replays n\'ont pas besoin d\'être approuvés.';
 
 $str['sch_editor_sch_replay_approving_waiting_for_approvement_replays'] = 'Replays en attente';
 $str['sch_editor_sch_replay_approving_approved_replays'] = 'Replays acceptés';
 $str['sch_editor_sch_replay_approving_rejected_replays'] = 'Replays rejetés';
 
+$str['sch_editor_sch_replay_approving_action_message'] = 'Le replay #%1 a été %2.'; // I.e. the message that appears on the page where database edits are made ("action")
+$str['sch_editor_sch_replay_approving_approved'] = 'approuvé'; // Replaces the %2 in the above line.
+$str['sch_editor_sch_replay_approving_rejected'] = 'rejeté'; // Same as above.
+
 $str['sch_editor_sch_replay_approving_no_replays_waiting_for_approvement'] = 'Aucun replay en attente.';
 $str['sch_editor_sch_replay_approving_no_approved_replays'] = 'Aucun replay approuvé.';
 $str['sch_editor_sch_replay_approving_no_rejected_replays'] = 'Aucun replay rejeté.';
+
+$str['sch_editor_sch_replay_approving_no_example_replays_at_all'] = 'Aucun replay d\'exemple n\'a été attaché à ce scheme.';
 
 $str['sch_editor_sch_exrep_appr_file_id_column'] = 'ID';
 $str['sch_editor_sch_exrep_appr_file_name_column'] = 'Nom du fichier';

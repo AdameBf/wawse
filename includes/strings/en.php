@@ -10,7 +10,7 @@ $str['sch_editor_main_page_title'] = 'Worms Armageddon Scheme Editor';
 $str['sch_editor_main_page_content'] = 'Welcome to my W:A Scheme Editor. Here, you can view the users\' schemes, download them, and even create your own schemes. Have fun!';
 
 // Errors / Warnings
-$str['error'] = 'Error';
+$str['error'] = 'Error'; // This one is a title.
 $str['error_invalid_action'] = 'Invalid action.';
 $str['error_no_action'] = 'No action specified.';
 $str['error_scheme_name_by_scheme_author_already_exists'] = 'A scheme with the same name and the same author already exists. This new scheme will be numbered.'; // This one is actually a warning.
@@ -282,7 +282,7 @@ $str['sch_editor_sch_viewer_sch_last_edited_on'] = 'Last edited on:';
 $str['sch_editor_sch_viewer_sch_required_version'] = 'Required Version:';
 $str['sch_editor_sch_viewer_sch_desc'] = 'Description:';
 
-$str['sch_editor_sch_view_action_replays'] = 'I. Replays';
+$str['sch_editor_sch_view_action_replays'] = 'I. Replays'; // This string should be as short as this.
 
 $str['sch_editor_sch_viewer_error_title'] = 'Scheme Viewing Error';
 $str['sch_editor_sch_viewer_error_scheme_not_found'] = 'Scheme not found.';
@@ -290,7 +290,7 @@ $str['sch_editor_sch_viewer_error_no_id_specified'] = 'Errm, what scheme do you 
 $str['sch_editor_sch_viewer_error_invalid_sch_signature'] = 'Invalid scheme signature. There, how did that file land on this server, if it had an invalid signature? :O';
 
 // Upload example replays
-$str['sch_editor_sch_replay_uploader_title'] = 'Attach Example Replays to scheme'; // This string is completed by " #$id ($name $by $author)" - yep, the $by differs between languages.
+$str['sch_editor_sch_replay_uploader_title'] = 'Attach Example Replays to scheme'; // This string is completed by " #$id ($name $by $author)" - yes, the $by differs between languages.
 $str['sch_editor_sch_replay_uploader_intro'] = 'Have good example replays to show how this scheme works? Well, just upload them!';
 $str['sch_editor_sch_replay_uploader_authoring_submit_button'] = 'Go!'; // By "authoring" I mean, typing the scheme author's name and his password. And this string corresponds to the text that appears on the submit button at the bottom of that "authoring" form.
 $str['sch_editor_sch_replay_uploader_wrong_user'] = 'You\'re not the member who created this scheme!';
@@ -299,9 +299,12 @@ $str['sch_editor_sch_replay_uploader_button'] = 'Send us these replays';
 $str['sch_editor_sch_replay_uploader_error_uatginam'] = 'Nice try getting me there :P.'; // UATGINAM = Uploading Although The Guy Is Not A Member.
 
 // Example replays approving interface
-$str['sch_editor_sch_replay_approving_interface_title'] = 'Approving Pending Example Replays for Scheme'; // Same as line 289.
+$str['sch_editor_sch_replay_approving_interface_title'] = 'Approving Pending Example Replays for Scheme'; // Same as line 293.
+$str['sch_editor_sch_replay_approving_interface_please_enter_sch_pwd'] = 'Please enter the scheme password';
+
 $str['sch_editor_sch_replay_approving_interface_please_login'] = 'Please log in to approve/reject replays (since the scheme\'s author is a member).';
-$str['sch_editor_sch_replay_approving_error_message'] = 'Either the specified scheme doesn\'t exist, or its replays don\'t have to be approved.';
+$str['sch_editor_sch_replay_approving_interface_wrong_sch_password'] = 'Incorrect or unspecified password.';
+$str['sch_editor_sch_replay_approving_interface_error_message'] = 'Either the specified scheme doesn\'t exist, or its replays don\'t have to be approved.';
 
 $str['sch_editor_sch_replay_approving_waiting_for_approvement_replays'] = 'Replays Waiting for Approvement';
 $str['sch_editor_sch_replay_approving_approved_replays'] = 'Approved Replays';
@@ -310,6 +313,12 @@ $str['sch_editor_sch_replay_approving_rejected_replays'] = 'Rejected Replays';
 $str['sch_editor_sch_replay_approving_no_replays_waiting_for_approvement'] = 'No Replays Waiting for Approvement.';
 $str['sch_editor_sch_replay_approving_no_approved_replays'] = 'No Approved Replays.';
 $str['sch_editor_sch_replay_approving_no_rejected_replays'] = 'No Rejected Replays.';
+
+$str['sch_editor_sch_replay_approving_action_message'] = 'Replay #%1 has been %2.'; // I.e. the message that appears on the page where database edits are made ("action")
+$str['sch_editor_sch_replay_approving_approved'] = 'approved'; // Replaces the %2 in the above line.
+$str['sch_editor_sch_replay_approving_rejected'] = 'rejected'; // Same as above.
+
+$str['sch_editor_sch_replay_approving_no_example_replays_at_all'] = 'No example replays are attached to this scheme.';
 
 $str['sch_editor_sch_exrep_appr_file_id_column'] = 'ID';
 $str['sch_editor_sch_exrep_appr_file_name_column'] = 'File Name';
