@@ -138,11 +138,11 @@ if (isset($_GET['id']))
 							$new_appr_lvl_set = (int) $_POST[$replay_id];
 
 							$query_approvement_level_update = $bdd->prepare('UPDATE sch_example_replays SET sch_exrep_approvement_level = :new_level WHERE sch_exrep_id = :replay_id');
-							$query_approvement_level_update->bindValue(':new_level', $new_appr_lvl_set, PDO::PARAM_INT);
+							$query_approvement_level_update->bindValue(':new_level', $new_appr_lvl_set, PDO::PARAM_STR);
 							$query_approvement_level_update->bindValue(':replay_id', $replay_id, PDO::PARAM_INT);
 							$query_approvement_level_update->execute();
 							
-							$actions_array = array($str['sch_editor_sch_replay_approving_approved'], $str['sch_editor_sch_replay_approving_rejected']);
+							$actions_array = array(NULL, $str['sch_editor_sch_replay_approving_approved'], $str['sch_editor_sch_replay_approving_rejected']);
 							
 							$message = str_replace('%1', $replay_id, $str['sch_editor_sch_replay_approving_action_message']);
 							$message = str_replace('%2', $actions_array[$new_appr_lvl_set], $message);

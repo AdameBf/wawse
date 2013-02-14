@@ -108,7 +108,7 @@ if ($pages_count > 0) // There would only be 0 pages if there are no schemes.
 
 	$beginning = ($pages_count - 1) * $schemes_per_page;
 
-	$get_schemes_query = $bdd->prepare('SELECT * FROM schemes_list ORDER BY sch_id DESC LIMIT :beginning, 30');
+	$get_schemes_query = $bdd->prepare('SELECT schemes_list.*, sch_exrep_id, sch_example_replays.sch_id AS sch_id_2, sch_example_replays.sch_exrep_approvement_level FROM schemes_list LEFT JOIN sch_example_replays ON sch_example_replays.sch_id = schemes_list.sch_id ORDER BY schemes_list.sch_id DESC LIMIT :beginning, 30'); // (I hope I won't be blamed for not using more aliases.)
 	$get_schemes_query->bindValue(':beginning', $beginning, PDO::PARAM_INT);
 	$get_schemes_query->execute();
 	
@@ -122,35 +122,59 @@ if ($pages_count > 0) // There would only be 0 pages if there are no schemes.
 		$creation_date = date('d\-m\-Y', $scheme_data['sch_submit_date']);
 		$last_edit_date = date('d\-m\-Y', $scheme_data['sch_last_edit_date']);
 		
-		// Load the example replays.
-		$get_example_replays_query = $bdd->prepare('SELECT * FROM sch_example_replays WHERE sch_id = :sch_id AND sch_exrep_approvement_level = "1"');
-		$get_example_replays_query->bindValue(':sch_id', $scheme_data['sch_id'], PDO::PARAM_INT);
-		$get_example_replays_query->execute();
-		
-		// Let's write that first, then fetch the results.
-		echo '<tr><td>'.$scheme_data['sch_id'].'</td><td><a href="scheme-view.php?id='.$scheme_data['sch_id'].'">'.$scheme_data['sch_name'].'</a></td><td>'.$scheme_data['sch_author'].'</td><td>'.$creation_date.'</td><td>'.$last_edit_date.'</td><td>'.$scheme_data['sch_version_required'].'</td><td>'.$scheme_data['sch_download_count'].'</td><td><a href="download.php?id='.$scheme_data['sch_id'].'">'.$str['sch_editor_sch_list_download_column'].'</a></td><td style="text-align: center;">';
-		
-		$j = 1;
-		
-		while ($example_replay = $get_example_replays_query->fetch())
+		if (!isset($previous_sch_id)) // This means we're going to list the first scheme.
 		{
-			echo '<a href="download-example-replay.php?id='.$example_replay['sch_exrep_id'].'">'.$j.'</a> ';
+			// Let's start the table row and set the replay counter to 1.
+			echo '<tr><td>'.$scheme_data['sch_id'].'</td><td><a href="scheme-view.php?id='.$scheme_data['sch_id'].'">'.$scheme_data['sch_name'].'</a></td><td>'.$scheme_data['sch_author'].'</td><td>'.$creation_date.'</td><td>'.$last_edit_date.'</td><td>'.$scheme_data['sch_version_required'].'</td><td>'.$scheme_data['sch_download_count'].'</td><td><a href="download.php?id='.$scheme_data['sch_id'].'">'.$str['sch_editor_sch_list_download_column'].'</a></td><td style="text-align: center;">';
+			
+			$j = 1;
+		}
+		else if (isset($previous_sch_id) AND $previous_sch_id != $scheme_data['sch_id']) // This means we're starting listing a new scheme.
+		{
+			// Firstly, let's finish the previous row.
+			if ($j != 1)
+			{
+				echo '- ';
+			}
+			else
+			{
+				echo '<em>'.$str['sch_editor_sch_list_no_example_replays'].' - </em>';
+			}
+			
+			echo '<a href="attach-replays.php?id='.$previous_sch_id.'">'.$str['add'].'</a> / <a href="replay-approving-interface.php?id='.$previous_sch_id.'">'.$str['sch_editor_sch_list_replay_approving_interface_link'].'</a>.</td></tr>';
+			
+			// Then, let's start the new one and reset the replay counter.
+			echo '<tr><td>'.$scheme_data['sch_id'].'</td><td><a href="scheme-view.php?id='.$scheme_data['sch_id'].'">'.$scheme_data['sch_name'].'</a></td><td>'.$scheme_data['sch_author'].'</td><td>'.$creation_date.'</td><td>'.$last_edit_date.'</td><td>'.$scheme_data['sch_version_required'].'</td><td>'.$scheme_data['sch_download_count'].'</td><td><a href="download.php?id='.$scheme_data['sch_id'].'">'.$str['sch_editor_sch_list_download_column'].'</a></td><td style="text-align: center;">';
+			
+			$j = 1;
+		}
+		else // Yes, I always create else{} blocks, even if they're empty.
+		{
+		}
+		
+		// Create a link to the replay we're currently on.
+		if ($scheme_data['sch_exrep_approvement_level'] == 1)
+		{
+			echo '<a href="download-example-replay.php?id='.$scheme_data['sch_exrep_id'].'">'.$j.'</a> ';
 			$j++;
 		}
 		
-		// Finally, let's end the cell and the row.
-		if ($j != 1)
-		{
-			echo '- ';
-		}
-		else
-		{
-			echo '<em>'.$str['sch_editor_sch_list_no_example_replays'].' - </em>';
-		}
+		$previous_sch_id = $scheme_data['sch_id']; // So we won't repeat a scheme if several replays are attached to it.
 		
-		echo '<a href="attach-replays.php?id='.$scheme_data['sch_id'].'">'.$str['add'].'</a> / <a href="replay-approving-interface.php?id='.$scheme_data['sch_id'].'">'.$str['sch_editor_sch_list_replay_approving_interface_link'].'</a>.</td></tr>';
 		$i++;
 	}
+	
+	// Let's close the table.
+	if ($j != 1)
+	{
+		echo '- ';
+	}
+	else
+	{
+		echo '<em>'.$str['sch_editor_sch_list_no_example_replays'].' - </em>';
+	}
+			
+	echo '<a href="attach-replays.php?id='.$previous_sch_id.'">'.$str['add'].'</a> / <a href="replay-approving-interface.php?id='.$previous_sch_id.'">'.$str['sch_editor_sch_list_replay_approving_interface_link'].'</a>.</td></tr>';
 	
 	echo '</table>';
 	
