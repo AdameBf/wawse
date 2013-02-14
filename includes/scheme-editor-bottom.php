@@ -29,7 +29,7 @@ if (isset($compteur_page) AND $compteur_page != '' AND $compteur_page != NULL)
 if (isset($language) AND $language === 'fr')
 {
 ?>
-<p>Site et éditeur de schemes créés par LeTotalKiller. Merci à FFie et GreeN ;).<br />
+<p>Site et éditeur de schemes créés par LeTotalKiller.<!-- Merci à FFie et GreeN ;).--><br />
 Liens pratiques :</p>
 <ul>
 	<li><a href="../index.php">Accueil</a></li>
@@ -41,8 +41,8 @@ Liens pratiques :</p>
 else
 {
 ?>
-<p style="margin-bottom: 20px;">Scheme editor by LeTotalKiller.<br />
-Special thanks to FFie and GreeN ;).</p>
+<p style="margin-bottom: 20px;">Scheme editor by LeTotalKiller.<!--<br />
+Special thanks to FFie and GreeN ;).--></p>
 <?php
 }
 ?>
@@ -90,7 +90,7 @@ Every page on this website have been viewed <?php echo $vues_total; ?> times sin
 <!--><![endif]-->
 </p>
 <p id="copyright">
-&copy; LeTotalKiller, 2008-2012, version <?php echo $version; ?>.
+&copy; LeTotalKiller, 2008-2013, version <?php echo $version; ?>.
 </p>
 </div>
 </body>
