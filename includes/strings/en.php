@@ -292,6 +292,7 @@ $str['sch_editor_sch_viewer_error_invalid_sch_signature'] = 'Invalid scheme sign
 // Upload example replays
 $str['sch_editor_sch_replay_uploader_title'] = 'Attach Example Replays to scheme'; // This string is completed by " #$id ($name $by $author)" - yes, the $by differs between languages.
 $str['sch_editor_sch_replay_uploader_intro'] = 'Have good example replays to show how this scheme works? Well, just upload them!';
+$str['sch_editor_sch_replay_uploader_successful'] = 'Replays Successfully Uploaded.';
 $str['sch_editor_sch_replay_uploader_authoring_submit_button'] = 'Go!'; // By "authoring" I mean, typing the scheme author's name and his password. And this string corresponds to the text that appears on the submit button at the bottom of that "authoring" form.
 $str['sch_editor_sch_replay_uploader_wrong_user'] = 'You\'re not the member who created this scheme!';
 $str['sch_editor_sch_replay_uploader_login_to_attach_replays'] = 'Please log in to attach replays to this scheme (since the author is a member who decided he was the only one allowed to upload example replays).';

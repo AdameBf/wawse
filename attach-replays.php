@@ -153,25 +153,25 @@ if (isset($_GET['id']))
 			$example_replays_count_query->execute();
 
 			$example_replays_count_query_result = $example_replays_count_query->fetch();
-			$example_replays_count = $schemes_count_query_result['example_replays_count'];
+			$example_replays_count = $example_replays_count_query_result['example_replays_count'];
 			$example_replays_count_query->closeCursor();
 			
 			// Define also the *approvement level* (i.e. if the replay is waiting for approvement, accepted, or rejected - the latter shouldn't appear right here, though)
 			if ($scheme_infos['sch_example_replays_permissions'] == 2)
 			{
-			$example_replays_approvement_level = '1';
+			$example_replays_approvement_level = 1;
 			$continue = true;
 			}
 			else if ($scheme_infos['sch_example_replays_permissions'] == 1)
 			{
-			$example_replays_approvement_level = '0';
+			$example_replays_approvement_level = 0;
 			$continue = true;
 			}
 			else
 			{
 				if ($_SESSION['scheme_password'] == $scheme_infos['sch_password'] AND $_SESSION['scheme_author'] == sha1($scheme_infos['sch_author']))
 				{
-					$example_replays_approvement_level = '1';
+					$example_replays_approvement_level = 1;
 					$continue = true;
 				}
 				else
@@ -182,10 +182,11 @@ if (isset($_GET['id']))
 			
 			$scheme_id = (int) $_GET['id'];
 
-			$i = $example_replays_count + 1;
-
 			if ($continue)
 			{
+				$i = $example_replays_count + 1;
+				$timestamp = time();
+			
 				// Then, check the replays.
 				if (replayFileCheck($_FILES['sch_ex_rep1']))
 				{
@@ -195,7 +196,7 @@ if (isset($_GET['id']))
 					move_uploaded_file($_FILES['sch_ex_rep1']['tmp_name'], 'replays/'.basename($replay_file_name));
 					$add_replay_query = $bdd->prepare('INSERT INTO sch_example_replays VALUES(\'\', :sch_id, :file_name, :submit_date, 0, :example_replays_approvement_level)');
 					$add_replay_query->execute(array(
-					'sch_id' => $scheme_id['sch_id'],
+					'sch_id' => $scheme_id,
 					'file_name' => $replay_file_name_without_extension,
 					'submit_date' => $timestamp,
 					'example_replays_approvement_level' => $example_replays_approvement_level
@@ -212,7 +213,7 @@ if (isset($_GET['id']))
 					move_uploaded_file($_FILES['sch_ex_rep2']['tmp_name'], 'replays/'.basename($replay_file_name));
 					$add_replay_query = $bdd->prepare('INSERT INTO sch_example_replays VALUES(\'\', :sch_id, :file_name, :submit_date, 0, :example_replays_approvement_level)');
 					$add_replay_query->execute(array(
-					'sch_id' => $scheme_id['sch_id'],
+					'sch_id' => $scheme_id,
 					'file_name' => $replay_file_name_without_extension,
 					'submit_date' => $timestamp,
 					'example_replays_approvement_level' => $example_replays_approvement_level
@@ -246,7 +247,7 @@ if (isset($_GET['id']))
 					move_uploaded_file($_FILES['sch_ex_rep4']['tmp_name'], 'replays/'.basename($replay_file_name));
 					$add_replay_query = $bdd->prepare('INSERT INTO sch_example_replays VALUES(\'\', :sch_id, :file_name, :submit_date, 0, :example_replays_approvement_level)');
 					$add_replay_query->execute(array(
-					'sch_id' => $scheme_id['sch_id'],
+					'sch_id' => $scheme_id,
 					'file_name' => $replay_file_name_without_extension,
 					'submit_date' => $timestamp,
 					'example_replays_approvement_level' => $example_replays_approvement_level
@@ -263,7 +264,7 @@ if (isset($_GET['id']))
 					move_uploaded_file($_FILES['sch_ex_rep5']['tmp_name'], 'replays/'.basename($replay_file_name));
 					$add_replay_query = $bdd->prepare('INSERT INTO sch_example_replays VALUES(\'\', :sch_id, :file_name, :submit_date, 0, :example_replays_approvement_level)');
 					$add_replay_query->execute(array(
-					'sch_id' => $scheme_id['sch_id'],
+					'sch_id' => $scheme_id,
 					'file_name' => $replay_file_name_without_extension,
 					'submit_date' => $timestamp,
 					'example_replays_approvement_level' => $example_replays_approvement_level
@@ -271,10 +272,14 @@ if (isset($_GET['id']))
 
 					$i++;
 				}
+				
+				echo '<h1>'.$page_actuelle.'</h1>';
+				echo '<p>'.$str['sch_editor_sch_replay_uploader_successful'].'</p>';
 			}
 			else
 			{
-			echo '<p>'.$str['sch_editor_sch_replay_uploader_error_uatginam'].'<p>'; // UATGINAM = Uploading Although The Guy Is Not A Member.
+				echo '<h1>'.$str['error'].'</h1>';
+				echo '<p>'.$str['sch_editor_sch_replay_uploader_error_uatginam'].'<p>'; // UATGINAM = Uploading Although The Guy Is Not A Member.
 			}
 		}
 
@@ -283,7 +288,8 @@ if (isset($_GET['id']))
 	else
 	{
 		// Tell the user no scheme has this ID.
-		echo $str['sch_editor_sch_viewer_error_scheme_not_found'];
+		echo '<h1>'.$str['error'].'</h1>';
+		echo '<p>'.$str['sch_editor_sch_viewer_error_scheme_not_found'].'</p>';
 	}
 }
 else

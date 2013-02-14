@@ -68,7 +68,7 @@ if (isset($_GET['id']))
 		$page_actuelle = $str['sch_editor_sch_replay_approving_interface_title'].' #'.$id.' ('.$scheme_infos['sch_name'].' '.$str['sch_editor_sch_viewer_by'].' '.$scheme_infos['sch_author'].')';
 
 		include('../../includes/menu.php');
-		if ($scheme_infos['sch_author_ismember'] != 0) // Yeah, I'll probably change how this colum works to have the member's ID - which is more reliable than his nickname.
+		if ($scheme_infos['sch_auth_ismember'] != 0) // Yeah, I'll probably change how this colum works to have the member's ID - which is more reliable than his nickname.
 		{
 			if (isset($_SESSION['pseudo']))
 			{
@@ -117,7 +117,7 @@ if (isset($_GET['id']))
 			// Show all replays, sorted according to their approvement level (with a separate section for each level).
 			?>
 			<h1><?php echo $page_actuelle; ?></h1>
-			<form method="post" action="approving-replays-interface-action.php">
+			<form method="post" action="replay-approving-interface-action.php?id=<?php echo $id; ?>">
 			<?php
 			// 1. Replays waiting for approvement
 			?>
@@ -125,7 +125,7 @@ if (isset($_GET['id']))
 			<?php
 			// Load the example replays waiting for approvement.
 			$get_waiting_for_approvement_example_replays_query = $bdd->prepare('SELECT * FROM sch_example_replays WHERE sch_id = :sch_id AND sch_exrep_approvement_level = "0"');
-			$get_waiting_for_approvement_example_replays_query->bindValue(':sch_id', $scheme_data['sch_id'], PDO::PARAM_INT);
+			$get_waiting_for_approvement_example_replays_query->bindValue(':sch_id', $id, PDO::PARAM_INT);
 			$get_waiting_for_approvement_example_replays_query->execute();
 			
 			$waiting_for_approvement_example_replays_count = $get_waiting_for_approvement_example_replays_query->rowCount();
@@ -168,10 +168,10 @@ if (isset($_GET['id']))
 			<?php
 			// Load the example replays waiting for approvement.
 			$get_approved_example_replays_query = $bdd->prepare('SELECT * FROM sch_example_replays WHERE sch_id = :sch_id AND sch_exrep_approvement_level = "1"');
-			$get_approved_example_replays_query->bindValue(':sch_id', $scheme_data['sch_id'], PDO::PARAM_INT);
+			$get_approved_example_replays_query->bindValue(':sch_id', $id, PDO::PARAM_INT);
 			$get_approved_example_replays_query->execute();
 			
-			$approved_example_replays_count = $approved_example_replays_query->rowCount();
+			$approved_example_replays_count = $get_approved_example_replays_query->rowCount();
 			
 			if ($approved_example_replays_count != 0)
 			{
@@ -190,7 +190,7 @@ if (isset($_GET['id']))
 						<td><?php echo $i; ?></td>
 						<td><?php echo '<a href="download-example-replay.php?id='.$approved_example_replays['sch_exrep_id'].'">'.$approved_example_replays['sch_exrep_file_name'].'</a>'; ?></td>
 						<td><?php echo $upload_date; ?></td>
-						<td><?php echo '<input type="checkbox" name="'.$approved_example_replays['sch_exrep_id'].'" id="'.$approved_example_replays['sch_exrep_id'].'" />'; ?></td>
+						<td><?php echo '<input type="checkbox" name="rej'.$approved_example_replays['sch_exrep_id'].'" id="'.$approved_example_replays['sch_exrep_id'].'" />'; ?></td>
 					</tr>
 					<?php
 					$i++;
@@ -208,12 +208,12 @@ if (isset($_GET['id']))
 			?>
 			<h2><?php echo $str['sch_editor_sch_replay_approving_rejected_replays']; ?></h2>
 			<?php
-			// Load the example replays waiting for approvement.
-			$get_rejected_example_replays_query = $bdd->prepare('SELECT * FROM sch_example_replays WHERE sch_id = :sch_id AND sch_exrep_approvement_level = "0"');
-			$get_rejected_example_replays_query->bindValue(':sch_id', $scheme_data['sch_id'], PDO::PARAM_INT);
+			// Load the rejected example replays.
+			$get_rejected_example_replays_query = $bdd->prepare('SELECT * FROM sch_example_replays WHERE sch_id = :sch_id AND sch_exrep_approvement_level = "2"');
+			$get_rejected_example_replays_query->bindValue(':sch_id', $id, PDO::PARAM_INT);
 			$get_rejected_example_replays_query->execute();
 			
-			$rejected_example_replays_count = $rejected_example_replays_query->rowCount();
+			$rejected_example_replays_count = $get_rejected_example_replays_query->rowCount();
 			
 			if ($rejected_example_replays_count != 0)
 			{
@@ -232,7 +232,7 @@ if (isset($_GET['id']))
 						<td><?php echo $i; ?></td>
 						<td><?php echo '<a href="download-example-replay.php?id='.$rejected_example_replays['sch_exrep_id'].'">'.$rejected_example_replays['sch_exrep_file_name'].'</a>'; ?></td>
 						<td><?php echo $upload_date; ?></td>
-						<td><?php echo '<input type="checkbox" name="'.$rejected_example_replays['sch_exrep_id'].'" value="'.$rejected_example_replays['sch_exrep_id'].'" />'; ?></td>
+						<td><?php echo '<input type="checkbox" name="appr'.$rejected_example_replays['sch_exrep_id'].'" id="'.$rejected_example_replays['sch_exrep_id'].'" />'; ?></td>
 					</tr>
 					<?php
 					$i++;
@@ -251,17 +251,22 @@ if (isset($_GET['id']))
 			<p>
 			<?php
 			
-			if (isset($_POST['sch_password']))
+			if ($waiting_for_approvement_example_replays_count != 0 OR $approved_example_replays_count != 0 OR $rejected_example_replays_count != 0)
 			{
-				// Send the password again, but in a hidden field.
+				if (isset($_POST['sch_password']))
+				{
+					// Send the password again, but in a hidden field.
+					?>
+					<input type="hidden" name="sch_password" value="<?php echo $_POST['sch_password']; ?>" />
+					<?php
+				}
+			
+				// Finally, let the user send his edits.
 				?>
-				<input type="hidden" name="sch_password" value="<?php echo $_POST['sch_password']; ?>" />
+					<input type="submit" class="bouton" /></p>
 				<?php
 			}
-			
-			// Finally, let the user send his edits.
 			?>
-				<input type="submit" class="bouton" /></p>
 			</form>
 			<?php
 		}
@@ -270,9 +275,25 @@ if (isset($_GET['id']))
 	}
 	else
 	{
+		$parent_directory = 2;
+		$titre = 'Worms Armageddon - '.$str['sch_editor'].' - '.$str['error'];
+		include('../../includes/haut-sans-session-start.php');
+
+		$jeu = $str['category'];
+
+		//Chemin de fer (13 février 2013)
+		$lien1 = array($str['index'], '../../index.php');
+		$lien2 = array('Worms Armageddon', '../index.php');
+		$lien3 = array($str['sch_editor'], 'index.php');
+		$page_actuelle = $str['sch_editor_sch_replay_approving_interface_title'].' #'.$id.' ('.$scheme_infos['sch_name'].' '.$str['sch_editor_sch_viewer_by'].' '.$scheme_infos['sch_author'].')';
+
+		include('../../includes/menu.php');
+		
 		// Tell the user no scheme has this ID or that the scheme's replays don't have to be approved.
 		echo '<h1>'.$str['error'].'</h1>';
-		echo '<p>'.$str['sch_editor_sch_replay_approving_error_message'].'</p>';
+		echo '<p>'.$str['sch_editor_sch_replay_approving_interface_error_message'].'</p>';
+		
+		include('includes/scheme-editor-bottom.php');
 	}
 }
 else

@@ -68,7 +68,7 @@ if (isset($_GET['id']))
 		$page_actuelle = $str['sch_editor_sch_replay_approving_interface_title'].' #'.$id.' ('.$scheme_infos['sch_name'].' '.$str['sch_editor_sch_viewer_by'].' '.$scheme_infos['sch_author'].')';
 
 		include('../../includes/menu.php');
-		if ($scheme_infos['sch_author_ismember'] != 0) // Yeah, I'll probably change how this colum works to have the member's ID - which is more reliable than his nickname.
+		if ($scheme_infos['sch_auth_ismember'] != 0) // Yeah, I'll probably change how this colum works to have the member's ID - which is more reliable than his nickname.
 		{
 			if (isset($_SESSION['pseudo']))
 			{
@@ -131,23 +131,25 @@ if (isset($_GET['id']))
 					$replay_appr_lvl = $sch_replay_info['sch_exrep_approvement_level'];
 
 					// If any box has been ticked, then it means there will be a change in the database.
-					if (isset($_POST[$replay_id]))
+					if (isset($_POST[$replay_id]) OR isset($_POST['appr'.$replay_id]) OR isset($_POST['rej'.$replay_id]))
 					{
-						if ($_POST[$replay_id] == 1 OR $_POST[$replay_id] == 2) // Waiting for approvement replays.
+						if (isset($_POST[$replay_id]) AND $_POST[$replay_id] == 1 || $_POST[$replay_id] == 2) // Waiting for approvement replays.
 						{
+							$new_appr_lvl_set = (int) $_POST[$replay_id];
+
 							$query_approvement_level_update = $bdd->prepare('UPDATE sch_example_replays SET sch_exrep_approvement_level = :new_level WHERE sch_exrep_id = :replay_id');
-							$query_approvement_level_update->bindValue(':new_level', $_POST[$replay_id], PDO::PARAM_INT);
+							$query_approvement_level_update->bindValue(':new_level', $new_appr_lvl_set, PDO::PARAM_INT);
 							$query_approvement_level_update->bindValue(':replay_id', $replay_id, PDO::PARAM_INT);
 							$query_approvement_level_update->execute();
 							
-							$actions_array = ($str['sch_editor_sch_replay_approving_approved'], $str['sch_editor_sch_replay_approving_rejected']);
+							$actions_array = array($str['sch_editor_sch_replay_approving_approved'], $str['sch_editor_sch_replay_approving_rejected']);
 							
 							$message = str_replace('%1', $replay_id, $str['sch_editor_sch_replay_approving_action_message']);
-							$message = str_replace('%2', $actions_array[$replay_appr_lvl], $message);
+							$message = str_replace('%2', $actions_array[$new_appr_lvl_set], $message);
 							
 							echo '<li>'.$message.'</li>';
 						}
-						else if ($_POST[$replay_id] == 'on' AND $replay_appr_lvl == 1) // Approved replays going to be rejected.
+						else if (isset($_POST['rej'.$replay_id])) // Approved replays going to be rejected.
 						{
 							$query_approvement_level_update = $bdd->prepare('UPDATE sch_example_replays SET sch_exrep_approvement_level = "2" WHERE sch_exrep_id = :replay_id');
 							$query_approvement_level_update->bindValue(':replay_id', $replay_id, PDO::PARAM_INT);
@@ -158,7 +160,7 @@ if (isset($_GET['id']))
 							
 							echo '<li>'.$message.'</li>';
 						}
-						else if ($_POST[$replay_id] == 'on' AND $replay_appr_lvl == 2) // Rejected replays going to be approved.
+						else if (isset($_POST['appr'.$replay_id])) // Rejected replays going to be approved.
 						{
 							$query_approvement_level_update = $bdd->prepare('UPDATE sch_example_replays SET sch_exrep_approvement_level = "1" WHERE sch_exrep_id = :replay_id');
 							$query_approvement_level_update->bindValue(':replay_id', $replay_id, PDO::PARAM_INT);
@@ -192,7 +194,9 @@ if (isset($_GET['id']))
 		// Tell the user no scheme has this ID or that the scheme's replays don't have to be approved.
 		echo '<h1>'.$str['error'].'</h1>';
 		echo '<p>'.$str['sch_editor_sch_replay_approving_interface_error_message'].'</p>';
-	} */
+		
+		include('includes/scheme-editor-bottom.php');
+	}
 }
 else
 {

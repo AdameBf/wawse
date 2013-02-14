@@ -292,6 +292,7 @@ $str['sch_editor_sch_viewer_error_invalid_sch_signature'] = 'Signature du fichie
 // Upload example replays
 $str['sch_editor_sch_replay_uploader_title'] = 'Attacher des replays de démonstration au scheme'; // This string is completed by " #$id ($name $by $author)" - yep, the $by differs between languages.
 $str['sch_editor_sch_replay_uploader_intro'] = 'Vous avez de bons replays qui montrent comment ce scheme se joue ? Très bien, alors importez-les !';
+$str['sch_editor_sch_replay_uploader_successful'] = 'Replay(s) envoyé(s) avec succès.';
 $str['sch_editor_sch_replay_uploader_authoring_submit_button'] = 'Allons-y !'; // By "authoring" I mean, typing the scheme author's name and his password. And this string corresponds to the text that appears on the submit button at the bottom of that "authoring" form.
 $str['sch_editor_sch_replay_uploader_wrong_user'] = 'Vous n\'êtes pas le membre qui a créé ce scheme !';
 $str['sch_editor_sch_replay_uploader_login_to_attach_replays'] = 'Veuillez vous connecter pour pouvoir attacher des replays à ce scheme (puisque l\'auteur est un membre qui a décidé d\'être le seul à pouvoir attacher des replays à ce scheme).';

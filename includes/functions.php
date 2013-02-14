@@ -221,17 +221,12 @@ function replayFileCheck($file) // Warning, this function hasn't been tested yet
 				if ($file_content[0] == 'W' && $file_content[1] == 'A') // Signature, firstly.
 				{
 					// Let's continue, then.
-					if (ord($file_content[9]) == 0 || ord($file_content[9]) == 255) // It seems that values can be -1 (0xFFFFFFFF), 1, 2 or 3, so the 3 other bytes are either 0x00 or 0xFF
+					if (ord($file_content[9]) == 0 || ord($file_content[9]) == 255) // It seems that values can be -1 (0xFFFFFFFF), 1, 2 or 3, so the 3 other bytes are either 0x00 or 0xFF...
 					{
-						if (ord($file_content[10]) == ord($file_content[9]) && ord($file_content[11]) == ord($file_content[9])) // But these 3 bytes always have the same value.
+						if (ord($file_content[10]) == ord($file_content[9]) && ord($file_content[11]) == ord($file_content[9])) // ... but these 3 bytes always have the same value.
 						{
-							$map_chunk_length = ord($file_content[4]) + (ord($file_content[5]) * 256) + (ord($file_content[6]) * (256^2)) + (ord($file_content[7]) * (256^3));
-							
-							if (ord($file_content[12 + $map_chunk_length]) == 0 && ord($file_content[13 + $map_chunk_length]) == 0 && ord($file_content[14 + $map_chunk_length]) == 0 && ord($file_content[15 + $map_chunk_length]) == ord($file_content[2]) && ord($file_content[16 + $map_chunk_length]) == ord($file_content[3]) && ord($file_content[20 + $map_chunk_length]) == 0)
-							{
-								// Should be enough, for now at least.
-								return true;
-							}
+							// Should be enough, for now at least.
+							return true;
 						}
 					}
 				}

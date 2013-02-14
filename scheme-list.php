@@ -148,7 +148,7 @@ if ($pages_count > 0) // There would only be 0 pages if there are no schemes.
 			echo '<em>'.$str['sch_editor_sch_list_no_example_replays'].' - </em>';
 		}
 		
-		echo '<a href="attach-replays.php?id='.$scheme_data['sch_id'].'">'.$str['add'].'</a> / <a href="approving-replays-interface.php?id='.$scheme_data['sch_id'].'">'.$str['handle'].'</a>.</td></tr>';
+		echo '<a href="attach-replays.php?id='.$scheme_data['sch_id'].'">'.$str['add'].'</a> / <a href="replay-approving-interface.php?id='.$scheme_data['sch_id'].'">'.$str['sch_editor_sch_list_replay_approving_interface_link'].'</a>.</td></tr>';
 		$i++;
 	}
 	
