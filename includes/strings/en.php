@@ -355,6 +355,7 @@ $str['sch_editor_changelog_v0_5_2_item1'] = '[Improvement] Added versions betwee
 $str['sch_editor_changelog_v0_5_2a_item1'] = '[Minor fix] The Rope Retreat Time and the Hot Seat Delay were still limited to 127 in the uploading scheme part. They\'re now limited to 255.';
 $str['sch_editor_changelog_v0_6_0_item1'] = '[Improvement] Example replays can now be attached after a scheme\'s creation or upload. Scheme authors can also decide who is allowed to upload replays (author only/everyone but there\'s an approvement system/everyone without approvements, though I can check from time to time or act upon request).';
 $str['sch_editor_changelog_v0_6_0_item2'] = '[Improvement] You can now attach more than 5 replays to a scheme, however you still only can upload 5 replays at once - if you want more, do it in two/three/four... times; I don\'t want my server to burn, you know =).';
+$str['sch_editor_changelog_v0_6_0_item3'] = '[Fixed] The replay checking function has been slightly changed, because it used to block some valid replays while testing this version.';
 
 // Link to the page that allows us to select another language
 $str['sch_editor_change_language'] = 'Select Another Language';
