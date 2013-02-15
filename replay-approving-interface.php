@@ -74,7 +74,7 @@ if (isset($_GET['id']))
 			{
 				if ($_SESSION['pseudo'] == $scheme_infos['sch_author'])
 				{
-					// We can continue :)
+					// We can continue. :)
 					$continue = true;
 				}
 				else
@@ -92,13 +92,13 @@ if (isset($_GET['id']))
 		}
 		else
 		{
-			if (!isset($_POST['sch_password']) OR sha1($_POST['sch_password']) != $scheme_infos['sch_password'])
+			if (!isset($_POST['password']) OR sha1($_POST['password']) != $scheme_infos['sch_password'])
 			{
 				// Ask for scheme password.
 				?>
 				<h1><?php echo $str['sch_editor_sch_replay_approving_interface_please_enter_sch_pwd']; ?></h1>
-				<form method="post" action="?id=<?php echo $id; ?>">
-					<label for="password" class="aligner"><?php echo $str['sch_editor_sch_password']; ?></label><input type="password" name="password" id="sch_password" /></p>
+				<form method="post" action="replay-approving-interface.php?id=<?php echo $id; ?>">
+					<p><label for="password" class="aligner"><?php echo $str['sch_editor_sch_password']; ?></label><input type="password" name="password" id="password" /></p>
 
 					<p><input type="submit" value="<?php echo $str['sch_editor_sch_replay_uploader_authoring_submit_button']; ?>" class="bouton" /></p>
 				</form>
@@ -253,11 +253,11 @@ if (isset($_GET['id']))
 			
 			if ($waiting_for_approvement_example_replays_count != 0 OR $approved_example_replays_count != 0 OR $rejected_example_replays_count != 0)
 			{
-				if (isset($_POST['sch_password']))
+				if (isset($_POST['password']))
 				{
 					// Send the password again, but in a hidden field.
 					?>
-					<input type="hidden" name="sch_password" value="<?php echo $_POST['sch_password']; ?>" />
+					<input type="hidden" name="password" value="<?php echo $_POST['password']; ?>" />
 					<?php
 				}
 			

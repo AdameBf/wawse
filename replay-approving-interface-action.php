@@ -94,7 +94,7 @@ if (isset($_GET['id']))
 		}
 		else
 		{
-			if (!isset($_POST['sch_password']) OR sha1($_POST['sch_password']) != $scheme_infos['sch_password'])
+			if (!isset($_POST['password']) OR sha1($_POST['password']) != $scheme_infos['sch_password'])
 			{
 				// Show an error message.
 				echo '<h1>'.$str['error'].'</h1>';

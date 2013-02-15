@@ -82,8 +82,8 @@ if (isset($_GET['id']))
 				// Ask for scheme author and scheme password
 				?>
 				<form method="post" action="?id=<?php echo $_GET['id']; ?>">
-					<p><label for="author" class="aligner"><?php echo $str['sch_editor_sch_author']; ?></label><input type="text" name="author" id="sch_author" class="champ" /><br />
-					<label for="password" class="aligner"><?php echo $str['sch_editor_sch_password']; ?></label><input type="password" name="password" id="sch_password" /></p>
+					<p><label for="author" class="aligner"><?php echo $str['sch_editor_sch_author']; ?></label><input type="text" name="author" id="author" class="champ" /><br />
+					<label for="password" class="aligner"><?php echo $str['sch_editor_sch_password']; ?></label><input type="password" name="password" id="password" /></p>
 
 					<p><input type="submit" value="<?php echo $str['sch_editor_sch_replay_uploader_authoring_submit_button']; ?>" class="bouton" /></p>
 				</form>
