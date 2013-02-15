@@ -102,7 +102,7 @@ if (isset($_GET['id'])) // Yeah, we should rather make sure we're viewing an exi
 				<tr>
 					<td colspan="3" style="width: 300px;">
 						<fieldset><legend><?php echo $str['sch_editor_game_settings']; ?></legend>
-							<table class="table_no_borders" style="width: 296px">
+							<table class="table_no_borders" style="width: 296px; margin: auto;">
 								<tr>
 									<td style="width: 74px"><img src="images/php/initial-worm-energy.php?v=<?php echo ord($file_content[26]); ?>" alt="<?php echo $str['sch_editor_initial_worm_energy']; ?>: <?php echo ord($file_content[26]); ?>" width="68px" height="68px" /></td>
 									<td style="width: 74px"><img src="images/php/wins-required.php?v=<?php echo ord($file_content[29]); ?>" alt="<?php echo $str['sch_editor_number_of_victories']; ?>: <?php echo ord($file_content[29]); ?>" width="68px" height="68px" /></td>
@@ -173,7 +173,7 @@ if (isset($_GET['id'])) // Yeah, we should rather make sure we're viewing an exi
 					</td>
 					<td rowspan="2" style="width: 150px;">
 						<fieldset><legend><?php echo $str['sch_editor_time_settings']; ?></legend>
-							<table class="table_no_borders">
+							<table class="table_no_borders" style="margin: auto;">
 								<tr>
 									<td><img src="images/php/turn-time.php?v=<?php echo ord($file_content[27]); ?>" alt="<?php echo $str['sch_editor_turn_time']; ?>: <?php echo ord($file_content[27]); ?>" width="68px" height="68px" /></td>
 									<td>Blah 2</td>
@@ -198,7 +198,7 @@ if (isset($_GET['id'])) // Yeah, we should rather make sure we're viewing an exi
 				<tr>
 					<td>
 						<fieldset><legend><?php echo $str['sch_editor_sch_view_action_replays']; ?></legend>
-							<table class="table_no_borders" style="width: 80px">
+							<table class="table_no_borders" style="width: 80px; margin: auto;">
 								<tr>
 									<td><img src="images/php/instant-replays.php?v=<?php echo ord($file_content[9]); ?>" alt="<?php echo $str['sch_editor_action_replays']; ?>: <?php
 									if(ord($file_content[9]) == 0)
@@ -216,33 +216,34 @@ if (isset($_GET['id'])) // Yeah, we should rather make sure we're viewing an exi
 					</td>
 					<td colspan="2">
 					<fieldset><legend><?php echo $str['sch_editor_hazardous_objects_settings']; ?></legend>
-							<table class="table_no_borders">
+							<table class="table_no_borders" style="margin: auto;">
 								<tr>
 									<td><img src="images/php/object-type-and-count.php?v=<?php echo ord($file_content[22]); ?>" alt="<?php echo $str['sch_editor_object_type']; ?>: <?php echo ord($file_content[22]); ?><br /><?php echo $str['sch_editor_object_count']; ?>: <?php echo ord($file_content[22]); ?>" width="68px" height="68px" /></td>
-									<td><img src="images/php/dud-mines.php?v=<?php echo ord($file_content[24]); ?>" alt="<?php echo $str['sch_editor_dud_mines']; ?>:  <?php
-									if(ord($file_content[24]) == 0)
+									<?php
+									if (ord($file_content[22]) % 2 == 1)
 									{
-									echo $str['off'];
+									?>
+										<td><img src="images/php/dud-mines.php?v=<?php echo ord($file_content[24]); ?>" alt="<?php echo $str['sch_editor_dud_mines']; ?>:  <?php
+										if(ord($file_content[24]) == 0)
+										{
+											echo $str['off'];
+										}
+										else
+										{
+											echo $str['on'];
+										}
+										?>" width="68px" height="68px" /></td>
+										<td><img src="images/php/mine-fuse.php?v=<?php echo ord($file_content[23]); ?>" alt="<?php echo $str['sch_editor_mine_fuse']; ?>: <?php echo ord($file_content[23]); ?>" width="68px" height="68px" /></td>
+									<?php
 									}
 									else
 									{
-									echo $str['on'];
+									?>
+										<td style="width: 68px; height:68px;"></td>
+										<td style="width: 68px; height:68px;"></td>
+									<?php
 									}
-									?>" width="68px" height="68px" /></td>
-									<td><img src="images/php/worm-select.php?v=<?php echo ord($file_content[14]); ?>" alt="<?php echo $str['sch_editor_worm_select']; ?>: <?php
-									if(ord($file_content[14]) == 0)
-									{
-									echo $str['off'];
-									}
-									else if(ord($file_content[14]) == 1)
-									{
-									echo $str['on'];
-									}
-									else
-									{
-									echo $str['random'];
-									}
-									?>" width="68px" height="68px" /></td>
+									?>
 								</tr>
 							</table>
 						</fieldset>
