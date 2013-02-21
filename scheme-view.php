@@ -100,6 +100,13 @@ if (isset($_GET['id'])) // Yeah, we should rather make sure we're viewing an exi
 			?>
 			<table class="table_no_borders" style="width: 610px;">
 				<tr>
+					<td></td>
+					<td style="width: 100px;"></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
 					<td colspan="3" style="width: 300px;">
 						<fieldset><legend><?php echo $str['sch_editor_game_settings']; ?></legend>
 							<table class="table_no_borders" style="width: 296px; margin: auto;">
@@ -172,26 +179,45 @@ if (isset($_GET['id'])) // Yeah, we should rather make sure we're viewing an exi
 						</fieldset>
 					</td>
 					<td rowspan="2" style="width: 150px;">
-						<fieldset><legend><?php echo $str['sch_editor_time_settings']; ?></legend>
-							<table class="table_no_borders" style="margin: auto;">
+						<fieldset style="height: 283px;"><legend><?php echo $str['sch_editor_time_settings']; ?></legend>
+							<table class="table_no_borders" style="width: 148px; margin: auto;">
 								<tr>
-									<td><img src="images/php/turn-time.php?v=<?php echo ord($file_content[27]); ?>" alt="<?php echo $str['sch_editor_turn_time']; ?>: <?php echo ord($file_content[27]); ?>" width="68px" height="68px" /></td>
-									<td>Blah 2</td>
+									<td><img src="images/php/turn-time.php?v=<?php echo ord($file_content[27]); ?>" alt="<?php echo $str['sch_editor_turn_time']; ?>: <?php echo ord($file_content[27]); ?>s" width="68px" height="68px" /></td>
+									<td><img src="images/php/round-time.php?v=<?php echo ord($file_content[28]); ?>" alt="<?php echo $str['sch_editor_round_time']; ?>: <?php
+									if(ord($file_content[28]) <= 127)
+									{
+										echo ord($file_content[28]).' min(s)';
+									}
+									else
+									{
+										$value = 256 - ord($file_content[28]); 
+										echo $value.'s';
+									}
+									?>" width="68px" height="68px" /></td>
 								</tr>
 								<tr>
-									<td>Blah 3</td>
-									<td>Blah 4</td>
+									<td><img src="images/php/land-retreat-time.php?v=<?php echo ord($file_content[6]); ?>" alt="<?php echo $str['sch_editor_retreat_time']; ?>: <?php echo ord($file_content[6]); ?>s" width="68px" height="68px" /></td>
+									<td><img src="images/php/rope-retreat-time.php?v=<?php echo ord($file_content[7]); ?>" alt="<?php echo $str['sch_editor_retreat_time']; ?>: <?php echo ord($file_content[7]); ?>s" width="68px" height="68px" /></td>
 								</tr>
 								<tr>
-									<td>Blah 5</td>
-									<td>Blah 6</td>
+									<td><img src="images/php/hotseat-time.php?v=<?php echo ord($file_content[5]); ?>" alt="<?php echo $str['sch_editor_hotseat_delay']; ?>: <?php echo ord($file_content[5]); ?>s" width="68px" height="68px" /></td>
+									<td><img src="images/php/display-round-time.php?v=<?php echo ord($file_content[8]); ?>" alt="<?php echo $str['sch_editor_round_time_display']; ?>: <?php
+									if(ord($file_content[8]) == 0)
+									{
+									echo $str['off'];
+									}
+									else
+									{
+									echo $str['on'];
+									}
+									?>" width="68px" height="68px" /></td>
 								</tr>
 							</table>
 						</fieldset>
 					</td>
 					<td rowspan="3">
 						<fieldset><legend><?php echo $str['sch_editor_weapon_settings']; ?></legend>
-							<p><img src="images/png/weapon-panel.png" alt="" /></p>
+							<p><img src="images/png/weapons/weapon-panel.png" alt="" /></p>
 						</fieldset>
 					</td>
 				</tr>
@@ -215,7 +241,7 @@ if (isset($_GET['id'])) // Yeah, we should rather make sure we're viewing an exi
 						</fieldset>
 					</td>
 					<td colspan="2">
-					<fieldset><legend><?php echo $str['sch_editor_hazardous_objects_settings']; ?></legend>
+						<fieldset><legend><?php echo $str['sch_editor_hazardous_objects_settings_short']; ?></legend>
 							<table class="table_no_borders" style="margin: auto;">
 								<tr>
 									<td><img src="images/php/object-type-and-count.php?v=<?php echo ord($file_content[22]); ?>" alt="<?php echo $str['sch_editor_object_type']; ?>: <?php echo ord($file_content[22]); ?><br /><?php echo $str['sch_editor_object_count']; ?>: <?php echo ord($file_content[22]); ?>" width="68px" height="68px" /></td>
@@ -250,9 +276,122 @@ if (isset($_GET['id'])) // Yeah, we should rather make sure we're viewing an exi
 					</td>
 				</tr>
 				<tr>
-					<td colspan="2">Blah</td>
-					<td>Blah</td>
-					<td>Blah</td>
+					<td colspan="2">
+						<fieldset><legend><?php echo $str['sch_editor_crate_probability_settings_short']; ?></legend>
+							<?php
+								// Let's calculate crate probabilities percentages.
+								$crate_probabilities = crateProbabilitiesPercentages(ord($file_content[17]), ord($file_content[19]), ord($file_content[21]));
+							?>
+							<table class="table_no_borders" style="margin: auto; width: 170px; height: 154px;">
+								<tr>
+									<td><img src="images/png/crate-types/weapon-crate.png" alt="<?php echo $str['sch_editor_weapon_crate_probability']; ?>:" width="36px" height="36px" /></td>
+									<td><?php echo $crate_probabilities[0]; ?> %</td>
+									<td rowspan="3" style="padding-left: 18px;"><img src="images/php/sheep-heaven.php?v=<?php echo ord($file_content[32]); ?>" alt="<?php echo $str['sch_editor_sheep_heaven']; ?>: <?php echo ord($file_content[32]).':';
+									if(ord($file_content[32]) == 0)
+									{
+									echo $str['off'];
+									}
+									else
+									{
+									echo $str['on'];
+									}
+									?>" width="68px" height="68px" /></td>
+								</tr>
+								<tr>
+									<td><img src="images/png/crate-types/health-crate.png" alt="<?php echo $str['sch_editor_health_crate_probability']; ?>:" width="36px" height="36px" /></td>
+									<td><?php echo $crate_probabilities[1]; ?> %</td>
+								</tr>
+								<tr>
+									<td><img src="images/png/crate-types/utility-crate.png" alt="<?php echo $str['sch_editor_utility_crate_probability']; ?>:" width="36px" height="36px" /></td>
+									<td><?php echo $crate_probabilities[2]; ?> %</td>
+								</tr>
+							</table>
+						</fieldset>
+					</td>
+					<td>
+						<fieldset><legend><?php echo $str['sch_editor_sudden_death_settings_abbr']; ?></legend>
+							<table class="table_no_borders" style="margin: auto;">
+								<tr>
+									<td><img src="images/php/sudden-death-event.php?v=<?php echo ord($file_content[15]); ?>" alt="<?php echo $str['sch_editor_sudden_death_event']; ?>: <?php echo ord($file_content[15]).':';
+									if(ord($file_content[15]) == 0)
+									{
+									echo $str['sch_edit_sd_round_ends'];
+									}
+									else if(ord($file_content[15]) == 1)
+									{
+									echo $str['sch_edit_sd_nuke'];
+									}
+									else if(ord($file_content[15]) == 2)
+									{
+									echo $str['sch_edit_sd_1hp'];
+									}
+									else
+									{
+									echo $str['sch_edit_sd_water_rise_only'];
+									}
+									?>" width="68px" height="68px" /></td>
+								</tr>
+								<tr>
+									<td><img src="images/php/sudden-death-water-rise-speed.php?v=<?php echo ord($file_content[16]); ?>" alt="<?php echo $str['sch_editor_water_rise_speed']; ?>: <?php echo ord($file_content[16]); ?>" <?php
+									if (echoWaterRiseSpeedTitleAttribute(ord($file_content[16])) == true)
+									{
+										echo 'title="'.$str['sch_editor_water_rise_speed_img_title_attr'].'"';
+									}
+									?> width="68px" height="68px" /></td>
+								</tr>
+							</table>
+						</fieldset>
+					</td>
+					<td>
+						<fieldset><legend><?php echo $str['sch_editor_general_settings']; ?></legend>
+							<table class="table_no_borders" style="margin: auto;">
+								<tr>
+									<td><img src="images/php/blood.php?v=<?php echo ord($file_content[30]); ?>" alt="<?php echo $str['sch_editor_blood_mode']; ?>: <?php echo ord($file_content[30]).':';
+									if(ord($file_content[30]) == 0)
+									{
+									echo $str['off'];
+									}
+									else
+									{
+									echo $str['on'];
+									}
+									?>" width="68px" height="68px" /></td>
+									<td><img src="images/php/sheep-heaven.php?v=<?php echo ord($file_content[32]); ?>" alt="<?php echo $str['sch_editor_sheep_heaven']; ?>: <?php echo ord($file_content[32]).':';
+									if(ord($file_content[32]) == 0)
+									{
+									echo $str['off'];
+									}
+									else
+									{
+									echo $str['on'];
+									}
+									?>" width="68px" height="68px" /></td>
+								</tr>
+								<tr>
+									<td><img src="images/php/god-mode.php?v=<?php echo ord($file_content[33]); ?>" alt="<?php echo $str['sch_editor_god_mode']; ?>: <?php echo ord($file_content[33]).':';
+									if(ord($file_content[33]) == 0)
+									{
+									echo $str['off'];
+									}
+									else
+									{
+									echo $str['on'];
+									}
+									?>" width="68px" height="68px" /></td>
+									<td><img src="images/php/indestructible-land.php?v=<?php echo ord($file_content[34]); ?>" alt="<?php echo $str['sch_editor_god_mode']; ?>: <?php echo ord($file_content[34]).':';
+									if(ord($file_content[34]) == 0)
+									{
+									echo $str['off'];
+									}
+									else
+									{
+									echo $str['on'];
+									}
+									?>" width="68px" height="68px" /></td>
+								</tr>
+							</table>
+						</fieldset>
+					</td>
 				</tr>
 				<tr>
 					<td colspan="4">Blah</td>

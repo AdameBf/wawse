@@ -122,6 +122,7 @@ $str['sch_editor_number_of_victories'] = 'Victories Required';
 $str['sch_editor_number_of_victories_hint'] = 'If you set 0, 1 round will be played, no more (even if the round ends with a draw). Any value above 3 is not recommended.';
 
 $str['sch_editor_sudden_death_settings'] = 'Sudden Death Settings';
+$str['sch_editor_sudden_death_settings_abbr'] = 'SD Settings'; // Scheme Viewer.
 $str['sch_editor_sudden_death_event'] = 'Sudden Death Event';
 $str['sch_editor_sudden_death_event_hint'] = 'What happens when the round time reaches 0?';
 $str['sch_edit_sd_round_ends'] = 'Round Ends';
@@ -130,8 +131,10 @@ $str['sch_edit_sd_1hp'] = 'All Worms Have 1 HP';
 $str['sch_edit_sd_water_rise_only'] = 'Water Rise Only';
 $str['sch_editor_water_rise_speed'] = 'Water Rise Speed';
 $str['sch_editor_water_rise_speed_hint'] = 'You can set the water rise speed in pixels per turn.';
+$str['sch_editor_water_rise_speed_img_title_attr'] = '(In pixels/turn.)'; // Scheme Viewer.
 
 $str['sch_editor_crate_probability_settings'] = 'Crate Probability Settings';
+$str['sch_editor_crate_probability_settings_short'] = 'Crate Probability Settings'; // Scheme Viewer - there are no changes in English, but you may cut "probability" in your translation, like I did in the French translation.
 $str['sch_editor_weapon_crate_probability'] = 'Weapon Crate Probability';
 $str['sch_editor_weapon_crate_probability_hint'] = 'Value in percents:';
 $str['sch_editor_health_crate_probability'] = 'Health Crate Probability';
@@ -144,6 +147,7 @@ $str['sch_editor_turns_without_crates'] = 'Turns Without Crates';
 $str['sch_editor_turns_without_crates_hint'] = 'Value in percents:';
 
 $str['sch_editor_hazardous_objects_settings'] = 'Hazardous Object Settings';
+$str['sch_editor_hazardous_objects_settings_short'] = 'Hazardous Object Settings'; // Scheme Viewer - same as line 136, but the word you may cut is "hazardous".
 $str['sch_editor_object_type'] = 'Object Types';
 $str['sch_editor_object_type_hint'] = 'Will there be any objects on the landscape? If so, what kind of objects? Mines? Barrels? Both?';
 $str['sch_editor_object_count'] = 'Max Object Count';

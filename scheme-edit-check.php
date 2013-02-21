@@ -409,7 +409,7 @@ if (isset($_POST['action']))
 		fputs($scheme_file, pack('h', $worm_placement)); // Char no.25
 		fputs($scheme_file, pack(packingFormat($initial_worm_energy), dechex($initial_worm_energy))); // Char no.26
 		fputs($scheme_file, pack(packingFormat($turn_time), dechex($turn_time))); // Char no.27
-		fputs($scheme_file, pack(packingFormat($round_time), dechex($round_time))); // Char no.28 - buggy value if it is set in seconds...
+		fputs($scheme_file, pack(packingFormat($round_time), dechex($round_time))); // Char no.28
 		fputs($scheme_file, pack(packingFormat($number_of_victories), dechex($number_of_victories))); // Char no.29
 		fputs($scheme_file, pack('h', $blood_mode)); // Char no.30
 		fputs($scheme_file, pack('h', $aqua_sheep)); // Char no.31
@@ -731,7 +731,7 @@ if (isset($_POST['action']))
 		$example_replays_permissions = 0;
 		}
 	
-		// We can store the scheme on the database, that thingie I logged on almost 600 lines above.
+		// We can store the scheme on the database, that thing I logged on almost 600 lines above.
 		$create_scheme_query = $bdd->prepare('INSERT INTO schemes_list VALUES(\'\', :name, :author, :is_member, :password, :submit_date, :submit_date, :description, :version_required_string, 0, :example_replays_permissions)');
 		$create_scheme_query->execute(array(
 		'name' => $sch_name,

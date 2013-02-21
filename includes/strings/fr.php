@@ -122,6 +122,7 @@ $str['sch_editor_number_of_victories'] = 'Nombre de victoires requises';
 $str['sch_editor_number_of_victories_hint'] = 'Si vous mettez 0, la partie durera toujours une manche (version 3.6.29.0 ou ultérieure requise), même si elle se termine par une égalité. Valeur maximale conseillée : 3 victoires.';
 
 $str['sch_editor_sudden_death_settings'] = 'Options de la mort subite';
+$str['sch_editor_sudden_death_settings_abbr'] = 'M. Subite'; // Scheme Viewer.
 $str['sch_editor_sudden_death_event'] = 'Type de mort subite';
 $str['sch_editor_sudden_death_event_hint'] = 'Que se passe-t-il si le temps de la manche arrive à 0 ?';
 $str['sch_edit_sd_round_ends'] = 'Fin de la manche';
@@ -130,8 +131,10 @@ $str['sch_edit_sd_1hp'] = 'Tous les vers ont 1 PV';
 $str['sch_edit_sd_water_rise_only'] = 'Montée de l\'eau uniquement';
 $str['sch_editor_water_rise_speed'] = 'Vitesse de la montée de l\'eau';
 $str['sch_editor_water_rise_speed_hint'] = 'La vitesse est en pixels par tour.';
+$str['sch_editor_water_rise_speed_img_title_attr'] = '(En pixels/tour.)'; // Scheme Viewer.
 
 $str['sch_editor_crate_probability_settings'] = 'Options des probabilités des caisses';
+$str['sch_editor_crate_probability_settings_short'] = 'Options des caisses'; // Scheme Viewer.
 $str['sch_editor_weapon_crate_probability'] = 'Probabilité des caisses d\'armes';
 $str['sch_editor_weapon_crate_probability_hint'] = 'En pourcentages :';
 $str['sch_editor_health_crate_probability'] = 'Probabilité des caisses de santé';
@@ -144,6 +147,7 @@ $str['sch_editor_turns_without_crates'] = 'Tours sans caisses';
 $str['sch_editor_turns_without_crates_hint'] = 'En pourcentages :';
 
 $str['sch_editor_hazardous_objects_settings'] = 'Options des objets aléatoires';
+$str['sch_editor_hazardous_objects_settings_short'] = 'Options des objets'; // Scheme Viewer.
 $str['sch_editor_object_type'] = 'Types d\'objets';
 $str['sch_editor_object_type_hint'] = 'Y aura-t-il des objets sur le terrain ? Si oui, quel genre d\'objets ? Des mines ? Des barils ? Les deux ?';
 $str['sch_editor_object_count'] = 'Nombre maximum d\'objets';
@@ -282,7 +286,7 @@ $str['sch_editor_sch_viewer_sch_last_edited_on'] = 'Dernière édition le :';
 $str['sch_editor_sch_viewer_sch_required_version'] = 'Version requise :';
 $str['sch_editor_sch_viewer_sch_desc'] = 'Description :';
 
-$str['sch_editor_sch_view_action_replays'] = 'Replays I.';
+$str['sch_editor_sch_view_action_replays'] = 'Repl. inst.';
 
 $str['sch_editor_sch_viewer_error_title'] = 'Erreur de visionnage de scheme';
 $str['sch_editor_sch_viewer_error_scheme_not_found'] = 'Scheme inexistant.';

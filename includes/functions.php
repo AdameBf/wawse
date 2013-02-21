@@ -236,4 +236,80 @@ function replayFileCheck($file) // Warning, this function hasn't been tested yet
 	
 	return false;
 }
+
+function echoWaterRiseSpeedTitleAttribute($byte_value) // Doesn't work; this will need some further investigating.
+{
+	$value = (pow($byte_value, 2) * 5) / 2;
+	
+	if ($value != 0 && $value != 5 && $value != 20 && $value != 45)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+function crateProbabilitiesPercentages($weapon_crates_byte, $health_crates_byte, $utility_crates_byte)
+{
+	if (max($weapon_crates_byte, $health_crates_byte, $utility_crates_byte) == 0) // Since the script will rely on a division, let's immediately avoid divisions by zero.
+	{
+		$results = array(0, 0, 0);
+		return $results;
+	}
+	else
+	{
+		$divider = 3;
+		
+		if ($weapon_crates_byte == 0)
+		{
+			$divider--;
+		}
+		if ($health_crates_byte == 0)
+		{
+			$divider--;
+		}
+		if ($utility_crates_byte == 0)
+		{
+			$divider--;
+		}
+		
+		$weapon_crates = round($weapon_crates_byte / $divider);
+		$health_crates = round($health_crates_byte / $divider);
+		$utility_crates = round($utility_crates_byte / $divider);
+		
+		$total = $weapon_crates + $health_crates + $utility_crates;
+		
+		if ($total > 100)
+		{
+			$difference = $total - 100;
+			
+			if ($difference > $utility_crates)
+			{
+				$utility_crates = 0;
+				$difference -= $utility_crates;
+				
+				if ($difference > $health_crates)
+				{
+					$health_crates = 0;
+					$difference -= $health_crates;
+					
+					$weapon_crates -= $difference;
+				}
+				else
+				{
+					$health_crates -= $difference;
+				}
+			}
+			else
+			{
+				$utility_crates -= $difference;
+			}
+		}
+		
+		$results = array($weapon_crates, $health_crates, $utility_crates);
+		return $results;
+	}
+}
 ?>
