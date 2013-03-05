@@ -111,7 +111,7 @@ if (isset($_GET['id'])) // Yeah, we should rather make sure we're viewing an exi
 						<fieldset><legend><?php echo $str['sch_editor_game_settings']; ?></legend>
 							<table class="table_no_borders" style="width: 296px; margin: auto;">
 								<tr>
-									<td style="width: 74px"><img src="images/php/initial-worm-energy.php?v=<?php echo ord($file_content[26]); ?>" alt="<?php echo $str['sch_editor_initial_worm_energy']; ?>: <?php echo ord($file_content[26]); ?>" width="68px" height="68px" /></td>
+									<td style="width: 74px"><img src="images/php/initial-worm-energy.php?v=<?php echo ord($file_content[26]); ?>" alt="<?php echo $str['sch_editor_initial_worm_energy']; ?>: <?php echo ord($file_content[26]); ?> HP." width="68px" height="68px" /></td>
 									<td style="width: 74px"><img src="images/php/wins-required.php?v=<?php echo ord($file_content[29]); ?>" alt="<?php echo $str['sch_editor_number_of_victories']; ?>: <?php echo ord($file_content[29]); ?>" width="68px" height="68px" /></td>
 									<td style="width: 74px"><img src="images/php/worm-select.php?v=<?php echo ord($file_content[14]); ?>" alt="<?php echo $str['sch_editor_worm_select']; ?>: <?php
 									if(ord($file_content[14]) == 0)
@@ -215,9 +215,42 @@ if (isset($_GET['id'])) // Yeah, we should rather make sure we're viewing an exi
 							</table>
 						</fieldset>
 					</td>
-					<td rowspan="3">
-						<fieldset><legend><?php echo $str['sch_editor_weapon_settings']; ?></legend>
-							<p><img src="images/png/weapons/weapon-panel.png" alt="" /></p>
+					<td rowspan="2">
+						<fieldset><legend><?php echo $str['sch_editor_weapon_upgrade_settings']; ?></legend>
+							<table class="table_no_borders" style="width: 148px; margin: auto;">
+								<tr>
+									<td><img src="images/php/turn-time.php?v=<?php echo ord($file_content[27]); ?>" alt="<?php echo $str['sch_editor_turn_time']; ?>: <?php echo ord($file_content[27]); ?>s" width="68px" height="68px" /></td>
+									<td><img src="images/php/round-time.php?v=<?php echo ord($file_content[28]); ?>" alt="<?php echo $str['sch_editor_round_time']; ?>: <?php
+									if(ord($file_content[28]) <= 127)
+									{
+										echo ord($file_content[28]).' min(s)';
+									}
+									else
+									{
+										$value = 256 - ord($file_content[28]); 
+										echo $value.'s';
+									}
+									?>" width="68px" height="68px" /></td>
+								</tr>
+								<tr>
+									<td><img src="images/php/land-retreat-time.php?v=<?php echo ord($file_content[6]); ?>" alt="<?php echo $str['sch_editor_retreat_time']; ?>: <?php echo ord($file_content[6]); ?>s" width="68px" height="68px" /></td>
+									<td><img src="images/php/rope-retreat-time.php?v=<?php echo ord($file_content[7]); ?>" alt="<?php echo $str['sch_editor_retreat_time']; ?>: <?php echo ord($file_content[7]); ?>s" width="68px" height="68px" /></td>
+								</tr>
+								<tr>
+									<td><img src="images/php/hotseat-time.php?v=<?php echo ord($file_content[5]); ?>" alt="<?php echo $str['sch_editor_hotseat_delay']; ?>: <?php echo ord($file_content[5]); ?>s" width="68px" height="68px" /></td>
+									<td><img src="images/php/display-round-time.php?v=<?php echo ord($file_content[8]); ?>" alt="<?php echo $str['sch_editor_round_time_display']; ?>: <?php
+									if(ord($file_content[8]) == 0)
+									{
+									echo $str['off'];
+									}
+									else
+									{
+									echo $str['on'];
+									}
+									?>" width="68px" height="68px" /></td>
+								</tr>
+							</table>
+							<!--<p><img src="images/png/weapons/weapon-panel.png" alt="" /></p>-->
 						</fieldset>
 					</td>
 				</tr>
@@ -286,16 +319,7 @@ if (isset($_GET['id'])) // Yeah, we should rather make sure we're viewing an exi
 								<tr>
 									<td><img src="images/png/crate-types/weapon-crate.png" alt="<?php echo $str['sch_editor_weapon_crate_probability']; ?>:" width="36px" height="36px" /></td>
 									<td><?php echo $crate_probabilities[0]; ?> %</td>
-									<td rowspan="3" style="padding-left: 18px;"><img src="images/php/sheep-heaven.php?v=<?php echo ord($file_content[32]); ?>" alt="<?php echo $str['sch_editor_sheep_heaven']; ?>: <?php echo ord($file_content[32]).':';
-									if(ord($file_content[32]) == 0)
-									{
-									echo $str['off'];
-									}
-									else
-									{
-									echo $str['on'];
-									}
-									?>" width="68px" height="68px" /></td>
+									<td rowspan="3" style="padding-left: 18px;"><img src="images/php/health-crate-energy.php?v=<?php echo ord($file_content[20]); ?>" alt="<?php echo $str['sch_editor_initial_worm_energy']; ?>: <?php echo ord($file_content[20]); ?> HP." width="68px" height="68px" /></td>
 								</tr>
 								<tr>
 									<td><img src="images/png/crate-types/health-crate.png" alt="<?php echo $str['sch_editor_health_crate_probability']; ?>:" width="36px" height="36px" /></td>

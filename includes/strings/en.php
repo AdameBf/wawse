@@ -37,7 +37,7 @@ $str['sch_editor_sch_list_replay_approving_interface_link'] = 'Handle'; // This 
 $str['sch_editor_sch_maker_title'] = 'Create a New Scheme';
 
 $str['sch_editor_sch_name'] = 'Scheme Name';
-$str['sch_editor_sch_name_hint'] = 'Unless you\'re ok to see your scheme being called Unnamed Scheme followed by the timestamp, you should name your scheme.';
+$str['sch_editor_sch_name_hint'] = 'Your scheme will recieve the default name Unnamed Scheme followed by a timestamp if you don\'t choose a name.';
 $str['sch_editor_sch_author'] = 'Your Nickname';
 $str['sch_editor_sch_author_hint'] = 'Optional field. If you don\'t give any nickname, then your nickname will be set to Anonymous in the database.';
 $str['sch_editor_sch_password'] = 'Scheme\'s Password';
@@ -59,7 +59,7 @@ $str['sch_editor_sch_example_replays_permissions_opt2'] = 'Everyone, without any
 
 $str['add'] = 'Add';
 $str['ammo'] = 'Ammo';
-$str['barrels'] = 'Oil Drums'; 
+$str['barrels'] = 'Oil Drums';
 $str['both'] = 'Both';
 $str['crate_probability'] = 'Crate Probability';
 $str['default'] = 'Default';
@@ -226,7 +226,7 @@ $str['sch_editor_rubber_wind_influence'] = 'Wind Influence';
 $str['sch_editor_rubber_wind_influence_hint'] = 'Here you can set how much the wind affects some of the flying objects. If you set an odd value, then wind affects worms too. A value of 255 corresponds to the wind susceptibility of the Bazooka. Note that this setting won\'t affect objets already affected by the wind (such as bazooka shells, poison, flames...). Crates, graves, barrels won\'t be affected either.';
 
 $str['sch_editor_rubber_version_override'] = 'Version Override';
-$str['sch_editor_rubber_version_override_hint'] = 'So, you want the scheme to be played with an older version of the game logic, in order to emulate old bugs and glitches for example? No problem, then, just select it here. Remember to take into consideration the limitations caused by the version you selected: for example, non-standard-sized maps and games with more than 18 worms are not supported.';
+$str['sch_editor_rubber_version_override_hint'] = 'So, you want the scheme to be played with an older version of the game logic, in order to emulate old bugs and glitches? No problem! Just select it here. Remember to take into consideration the limitations caused by the version you selected: for example, non-standard-sized maps and games with more than 18 worms are not supported.';
 
 $str['sch_editor_weapon_upgrade_settings'] = 'Weapon Upgrade Settings';
 $str['sch_editor_aqua_sheep'] = 'Aqua Sheep';
@@ -244,10 +244,10 @@ $str['sch_editor_weapon_settings'] = 'Weapon Settings';
 $str['sch_editor_double_damage'] = 'Double Damage On The First Turn';
 $str['sch_editor_double_damage_hint'] = 'If this option is enabled, damage inflicted on the first turn will be doubled. There\'s no way to port that to more turns or to the whole game.';
 $str['sch_editor_team_weapons'] = 'Team Weapons';
-$str['sch_editor_team_weapons_hint'] = 'When creating a team, players can choose his team weapons amongst 8 weapons. If this option is enabled, each player will start with the weapon he chose. These 8 weapons\' settings will be overridden.';
+$str['sch_editor_team_weapons_hint'] = 'When creating a team, players can choose his team weapons amongst 8 weapons. If this option is enabled, each player will start with the weapon he chose. These 8 weapons\' settings will be overwritten.';
 $str['sch_editor_super_weapons'] = 'Super Weapons';
 $str['sch_editor_super_weapons_hint'] = 'If you enable this option, super weapons may appear in some weapon crates.';
-$str['sch_editor_general_weapons_hint'] = 'Some tips before you start editing weapon settings: to give a weapon infinite ammunitions, type 10; to give a weapon an infinite delay (thus blocking it), type 128.';
+$str['sch_editor_general_weapons_hint'] = 'Some tips before you start editing weapon settings: to give a weapon infinite ammunition, type 10; to give a weapon an infinite delay (thus blocking it), type 128.';
 $str['sch_editor_jet_pack_power_message'] = 'Directly input the amount of fuel here (0-250; 0 means infinite and 30 is the default value).';
 
 $str['sch_editor_send'] = 'Ok, I\'m done. Let\'s go!';
@@ -257,7 +257,7 @@ $str['sch_editor_download_scheme_message'] = 'Download it here.';
 
 // Scheme uploader
 $str['sch_editor_sch_uploader_title'] = 'Upload a Scheme';
-$str['sch_editor_sch_uploader_intro'] = 'So, your scheme is already ready, and all you want is to upload it here? No problem, just use the following form. The scheme file you upload must be in *.wsc format and must be either 221 or 297 bytes long; replays file must be in *.WAgame format (max. 3 MB). All files must be valid.';
+$str['sch_editor_sch_uploader_intro'] = 'So, your scheme is ready, and all you want is to upload it here? No problem, just use the following form. The scheme file you upload must be in *.wsc format and must be either 221 or 297 bytes long; replays file must be in *.WAgame format (max. 3 MB). All files must be valid.';
 $str['sch_editor_sch_uploader_sch_file'] = 'Your Scheme File';
 $str['sch_editor_sch_upload_button'] = 'Send us your piece of art! =)';
 $str['sch_editor_sch_upload_error_invalid_scheme_file'] = 'Invalid scheme file. The following errors were found:';
@@ -353,13 +353,14 @@ $str['sch_editor_changelog_v0_4_1_item2'] = '[Fixed] Uploaded schemes without an
 $str['sch_editor_changelog_v0_4_1_item3'] = 'Plus some other minor fixes I\'ve released on the previous days and I didn\'t list.';
 $str['sch_editor_changelog_v0_4_2_item1'] = '[Improvement] Added custom knocking force setting, RubberWorm v0.0.1.12\'s new feature.';
 $str['sch_editor_changelog_v0_5_0_item1'] = '[Improvement] Example replays can now be attached to an uploaded scheme, and they\'re downloadable on the scheme list. (It should be possible to attach them to a scheme after its creation/upload in the future.) <em>(Downloading these replays actually didn\'t work: see explanation below.)</em>';
-$str['sch_editor_changelog_v0_5_0_item2'] = '[Fixed] Downloading a scheme with a parsed name now works succesfully. <em>(This fix actually broke every scheme downloads: the required file with the new function wasn\'t loaded on the page managing all scheme downloads - thus triggering a fatal error.)</em>';
+$str['sch_editor_changelog_v0_5_0_item2'] = '[Fixed] Downloading a scheme with a parsed name now works succesfully. <em>(This fix actually broke scheme download entirely: the required file with the new function wasn\'t loaded on the page managing all scheme downloads - thus triggering a fatal error.)</em>';
 $str['sch_editor_changelog_v0_5_1_item1'] = '[Fixed] Scheme and replay downloading, accidentally broken in v0.5.0 even with schemes/replays which name doesn\'t need parsing, is now possible again.';
 $str['sch_editor_changelog_v0_5_2_item1'] = '[Improvement] Added versions between 3.6.31.0 and 3.7.0.0 in the "Version Override" drop-down list, since it is possible to emulate them with RubberWorm v0.0.1.13.';
 $str['sch_editor_changelog_v0_5_2a_item1'] = '[Minor fix] The Rope Retreat Time and the Hot Seat Delay were still limited to 127 in the uploading scheme part. They\'re now limited to 255.';
 $str['sch_editor_changelog_v0_6_0_item1'] = '[Improvement] Example replays can now be attached after a scheme\'s creation or upload. Scheme authors can also decide who is allowed to upload replays (author only/everyone but there\'s an approvement system/everyone without approvements, though I can check from time to time or act upon request).';
-$str['sch_editor_changelog_v0_6_0_item2'] = '[Improvement] You can now attach more than 5 replays to a scheme, however you still only can upload 5 replays at once - if you want more, do it in two/three/four... times; I don\'t want my server to burn, you know =).';
+$str['sch_editor_changelog_v0_6_0_item2'] = '[Improvement] You can now attach more than 5 replays to a scheme, however you still only can upload 5 replays at once - if you want more, do it in two/three/four... times; I don\'t want my server to burn, you know. =)';
 $str['sch_editor_changelog_v0_6_0_item3'] = '[Fixed] The replay checking function has been slightly changed, because it used to block some valid replays while testing this version.';
+$str['sch_editor_changelog_v0_6_0a_item1'] = 'The English translation has been corrected by Clown.';
 
 // Link to the page that allows us to select another language
 $str['sch_editor_change_language'] = 'Select Another Language';

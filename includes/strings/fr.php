@@ -360,6 +360,7 @@ $str['sch_editor_changelog_v0_5_2a_item1'] = '[Correction mineure] À cause d\'un
 $str['sch_editor_changelog_v0_6_0_item1'] = '[Amélioration] Les replays d\'exemple peuvent désormais être attachés à un scheme après sa création ou son envoi sur le serveur. Les auteurs de schemes peuvent par ailleurs définir les permissions pour importer des replays (l\'auteur seul/tout le monde mais les replays doivent être approuvés par l\'auteur/tout le monde sans que les replays n\'aient besoin d\'être approuvés, cependant je peux vérifier de temps en temps ou bien agir sur demande expresse de l\'auteur).';
 $str['sch_editor_changelog_v0_6_0_item2'] = '[Amélioration] Vous pouvez désormais joindre plus de 5 replays d\'exemple à un scheme au total, cependant vous ne pouvez pas en importer plus de 5 d\'un coup - si vous voulez joindre plus de replays, faites-le en deux/trois/quatre... fois ; je ne veux pas que mon serveur prenne feu, surtout vu qu\'il n\'y a pas que moi dessus :P.';
 $str['sch_editor_changelog_v0_6_0_item3'] = '[Correction] La méthode de vérification des replays a été légèrement assouplie ; en effet, durant les tests de cette version, je me suis rendu compte que la méthode actuelle ne fonctionnait pas et bloquait certains replays tout à fait normaux.';
+$str['sch_editor_changelog_v0_6_0a_item1'] = 'La traduction anglais a été corrigée par Clown.';
 
 // Link to the page that allows us to select another language
 $str['sch_editor_change_language'] = 'Changer de langue';

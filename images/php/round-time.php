@@ -159,26 +159,26 @@ if (isset($_GET['v']) && $_GET['v'] >= 0 && $_GET['v'] <= 255)
 			// First part of the value
 			if ($value2 == 1 && $value1 == 1)
 			{
-			imagecopy($dest, $source, 17, 27, 0, 24 * $value1, 24, 24);
-			imagecopy($dest, $source, 27, 27, 0, 24 * $value2, 24, 24);
+			imagecopy($dest, $source, 17, 26, 0, 24 * $value1, 24, 24);
+			imagecopy($dest, $source, 27, 26, 0, 24 * $value2, 24, 24);
 			}
 			else if ($value1 == 1)
 			{
-			imagecopy($dest, $source, 16, 27, 0, 24 * $value1, 24, 24);
+			imagecopy($dest, $source, 16, 26, 0, 24 * $value1, 24, 24);
 			}
 			else if ($value1 == 9)
 			{
-			imagecopy($dest, $source, 15, 27, 0, 24 * $value1, 24, 24);
+			imagecopy($dest, $source, 15, 26, 0, 24 * $value1, 24, 24);
 			}
 			else
 			{
-			imagecopy($dest, $source, 15, 27, 0, 24 * $value1, 24, 24);
+			imagecopy($dest, $source, 15, 26, 0, 24 * $value1, 24, 24);
 			}
 
 			// Second part of the value
 			if ($value2 == 1 && $value1 != 1)
 			{
-			imagecopy($dest, $source, 28, 27, 0, 24 * $value2, 24, 24);
+			imagecopy($dest, $source, 28, 26, 0, 24 * $value2, 24, 24);
 			}
 			else if ($value2 == 1 && $value1 == 1)
 			{
@@ -186,11 +186,11 @@ if (isset($_GET['v']) && $_GET['v'] >= 0 && $_GET['v'] <= 255)
 			}
 			else if ($value2 == 9)
 			{
-			imagecopy($dest, $source, 26, 27, 0, 24 * $value2, 24, 24);
+			imagecopy($dest, $source, 26, 26, 0, 24 * $value2, 24, 24);
 			}
 			else
 			{
-			imagecopy($dest, $source, 28, 27, 0, 24 * $value2, 24, 24);
+			imagecopy($dest, $source, 28, 26, 0, 24 * $value2, 24, 24);
 			}
 			break;
 
@@ -202,13 +202,13 @@ if (isset($_GET['v']) && $_GET['v'] >= 0 && $_GET['v'] <= 255)
 			// First part of the value: it is always 1. However, plan a special centering method for 111.
 			if ($value1 == 1 && $value2 == 1 && $value3 == 1)
 			{
-			imagecopy($dest, $source, 11, 27, 0, 24 * $value1, 24, 24);
-			imagecopy($dest, $source, 22, 27, 0, 24 * $value2, 24, 24);
-			imagecopy($dest, $source, 33, 27, 0, 24 * $value3, 24, 24);
+			imagecopy($dest, $source, 11, 26, 0, 24 * $value1, 24, 24);
+			imagecopy($dest, $source, 22, 26, 0, 24 * $value2, 24, 24);
+			imagecopy($dest, $source, 33, 26, 0, 24 * $value3, 24, 24);
 			}
 			else
 			{
-			imagecopy($dest, $source, 10, 27, 0, 24 * $value1, 24, 24);
+			imagecopy($dest, $source, 10, 26, 0, 24 * $value1, 24, 24);
 			}
 
 			// Second part of the value: it is at most 2
@@ -218,11 +218,11 @@ if (isset($_GET['v']) && $_GET['v'] >= 0 && $_GET['v'] <= 255)
 			}
 			else if ($value2 == 1)
 			{
-			imagecopy($dest, $source, 22, 27, 0, 24 * $value2, 24, 24);
+			imagecopy($dest, $source, 22, 26, 0, 24 * $value2, 24, 24);
 			}
 			else
 			{
-			imagecopy($dest, $source, 21, 27, 0, 24 * $value2, 24, 24);
+			imagecopy($dest, $source, 21, 26, 0, 24 * $value2, 24, 24);
 			}
 
 			// Third part of the value: can be anything from 0 to 9
@@ -232,15 +232,15 @@ if (isset($_GET['v']) && $_GET['v'] >= 0 && $_GET['v'] <= 255)
 			}
 			else if ($value3 == 1)
 			{
-			imagecopy($dest, $source, 35, 27, 0, 24 * $value3, 24, 24);
+			imagecopy($dest, $source, 35, 26, 0, 24 * $value3, 24, 24);
 			}
 			else if ($value3 == 9)
 			{
-			imagecopy($dest, $source, 34, 27, 0, 24 * $value3, 24, 24);
+			imagecopy($dest, $source, 34, 26, 0, 24 * $value3, 24, 24);
 			}
 			else
 			{
-			imagecopy($dest, $source, 35, 27, 0, 24 * $value3, 24, 24);
+			imagecopy($dest, $source, 35, 26, 0, 24 * $value3, 24, 24);
 			}
 			break;
 			
