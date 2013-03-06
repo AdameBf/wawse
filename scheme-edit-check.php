@@ -131,7 +131,7 @@ if (isset($_POST['action']))
 
 		$file_name = 'schemes/'.$sch_name_2.'_by_'.$sch_author_2.'.wsc';
 	
-		// Latest version required to run the scheme. It will be an array where the highest data will be picked, with max()
+		// Version required to run the scheme. It will be an array where the highest entry will be picked, with max().
 		$version_required_array[] = 5; // Below, v2 schemes (might) crash the game.
 
 		if (isset($_POST['round_time_2']))
@@ -178,7 +178,7 @@ if (isset($_POST['action']))
 		$hazardous_object_type = (int) $_POST['object_type'];
 		$hazardous_object_count = (int) $_POST['object_count'];
 		$mine_fuse = (int) $_POST['mine_fuse'];
-		$worm_placement = (int) $_POST['mine_fuse'];
+		$worm_placement = (int) $_POST['worm_placement'];
 		$initial_worm_energy = (int) $_POST['initial_worm_energy'];
 		$number_of_victories = (int) $_POST['number_of_victories'];
 

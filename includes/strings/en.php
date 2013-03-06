@@ -361,6 +361,7 @@ $str['sch_editor_changelog_v0_6_0_item1'] = '[Improvement] Example replays can n
 $str['sch_editor_changelog_v0_6_0_item2'] = '[Improvement] You can now attach more than 5 replays to a scheme, however you still only can upload 5 replays at once - if you want more, do it in two/three/four... times; I don\'t want my server to burn, you know. =)';
 $str['sch_editor_changelog_v0_6_0_item3'] = '[Fixed] The replay checking function has been slightly changed, because it used to block some valid replays while testing this version.';
 $str['sch_editor_changelog_v0_6_0a_item1'] = 'The English translation has been corrected by Clown.';
+$str['sch_editor_changelog_v0_6_0b_item1'] = '[Fixed] When creating a scheme, the Mine Fuse value was accidentally also saved as the Worm Placement value.';
 
 // Link to the page that allows us to select another language
 $str['sch_editor_change_language'] = 'Select Another Language';
