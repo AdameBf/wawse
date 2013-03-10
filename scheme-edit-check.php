@@ -98,7 +98,7 @@ if (isset($_POST['action']))
 			
 			if (isset($_POST['sch_password']) AND !empty($_POST['sch_password']))
 			{
-				$sch_password = sha1($_POST['password']);
+				$sch_password = sha1($_POST['sch_password']);
 			}
 			else
 			{
@@ -120,14 +120,14 @@ if (isset($_POST['action']))
 			$sch_name .= $magic_number;
 		}
 
+		if (empty($sch_name))
+		{
+			$sch_name = 'Unnamed_scheme_'.time();
+		}
+		
 		//Let's replace characters in the author name and the file name
 		$sch_name_2 = fileNameParser($sch_name);
 		$sch_author_2 = fileNameParser($sch_author);
-		
-		if (empty($sch_name))
-		{
-			$sch_name_2 = 'Unnamed_scheme_'.time();
-		}
 
 		$file_name = 'schemes/'.$sch_name_2.'_by_'.$sch_author_2.'.wsc';
 	
@@ -685,6 +685,10 @@ if (isset($_POST['action']))
 		{
 		$version_required_string = '3.6.'.$version_required.' Beta';
 		}
+		else if ($version_required == 32)
+		{
+		$version_required_string = '3.7.0.0';
+		}
 		else
 		{
 		$version_required_string = '3.6.'.$version_required.'.0 Beta';
@@ -697,10 +701,6 @@ if (isset($_POST['action']))
 		if ($rubber_enabled AND $version_required === 31)
 		{
 		$version_required_string = '3.6.31.0 with RubberWorm31';
-		}
-		if ($rubber_enabled AND $version_required === 32)
-		{
-		$version_required_string = '3.7.0.0 with RubberWorm';
 		}
 		if ($laser_fix_enabled) // Flames limit feature
 		{
@@ -741,7 +741,7 @@ if (isset($_POST['action']))
 		'submit_date' => $timestamp,
 		'description' => $description,
 		'version_required_string' => $version_required_string,
-		'$example_replays_permissions' => $example_replays_permissions
+		'example_replays_permissions' => $example_replays_permissions
 		));
 
 		$scheme_get_id = $bdd->prepare('SELECT sch_id FROM schemes_list WHERE sch_name = :name');

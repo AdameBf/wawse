@@ -186,7 +186,7 @@
 		<?php
 		$counter = 0;
 		$water_rise_pixels = array (0, 5, 13, 20, 21, 29, 37, 45, 52, 53, 61, 64, 69, 77, 80, 84, 85, 93, 101, 109, 116, 117, 125, 133, 141, 148, 149, 157, 165, 173, 180, 181, 189, 197, 205, 208, 212, 213, 221, 229, 237, 244, 245, 253); // Those values will be shown to the user (at first I didn't know the formula).
-		$water_rise_bytes = array(0, 1, 19, 2, 55, 43, 47, 3, 26, 25, 27, 8, 33, 13, 4, 18, 23, 11, 15, 29, 22, 57, 5, 63, 45, 30, 9, 21, 17, 61, 6, 39, 37, 31, 51, 12, 14, 41, 53, 49, 35, 10, 7, 59); // Those values are used internally
+		$water_rise_bytes = array(0, 1, 19, 2, 55, 43, 47, 3, 26, 25, 27, 8, 33, 13, 4, 18, 23, 11, 15, 29, 22, 57, 5, 63, 45, 30, 9, 21, 17, 61, 6, 39, 37, 31, 51, 12, 14, 41, 53, 49, 35, 10, 7, 59); // Those values are used internally.
 	
 		while($counter <= 43)
 		{
@@ -227,7 +227,7 @@
 	</tr>
 	<tr>
 		<td><label for="mine_fuse"><?php echo $str['sch_editor_mine_fuse']; ?></label> <img src="../../images/sch-editor-hint-icon.png" alt="(Hover for a tip)" title="<?php echo $str['sch_editor_mine_fuse_hint']; ?>" /></td>
-		<td><input type="text" name="object_count" id="object_count" maxlength="3" size="2" value="4" style="font-size: 0.9em;" onchange="checkValue(this, 0, 127, 4, '<?php echo $language; ?>')" /></td>
+		<td><input type="text" name="mine_fuse" id="mine_fuse" maxlength="3" size="2" value="4" style="font-size: 0.9em;" onchange="checkValue(this, 0, 127, 4, '<?php echo $language; ?>')" /></td>
 	</tr>
 	<tr>
 		<td><label for="dud_mines"><?php echo $str['sch_editor_dud_mines']; ?></label> <img src="../../images/sch-editor-hint-icon.png" alt="(Hover for a tip)" title="<?php echo $str['sch_editor_dud_mines_hint']; ?>" /></td>

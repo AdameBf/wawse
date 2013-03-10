@@ -361,7 +361,12 @@ $str['sch_editor_changelog_v0_6_0_item1'] = '[Improvement] Example replays can n
 $str['sch_editor_changelog_v0_6_0_item2'] = '[Improvement] You can now attach more than 5 replays to a scheme, however you still only can upload 5 replays at once - if you want more, do it in two/three/four... times; I don\'t want my server to burn, you know. =)';
 $str['sch_editor_changelog_v0_6_0_item3'] = '[Fixed] The replay checking function has been slightly changed, because it used to block some valid replays while testing this version.';
 $str['sch_editor_changelog_v0_6_0a_item1'] = 'The English translation has been corrected by Clown.';
-$str['sch_editor_changelog_v0_6_0b_item1'] = '[Fixed] When creating a scheme, the Mine Fuse value was accidentally also saved as the Worm Placement value.';
+$str['sch_editor_changelog_v0_6_0b_item1'] = '[Fixed bug] When creating a scheme, the Mine Fuse value was accidentally also saved as the Worm Placement value. <em>(In fact there was no Mine Fuse value at all; see the related fix in v0.6.1.)</em>';
+$str['sch_editor_changelog_v0_6_1_item1'] = '[Fixed bug] An update on December 1st (the day where v0.5.1 was released) broke scheme creating; the database field storing example replays attaching permission was incorrectly called with an extra $ sign in front of its name. This is now fixed; scheme creating is working again. Credit goes to Patricio (a Chilean player) for reporting the bug.';
+$str['sch_editor_changelog_v0_6_1_item2'] = '[Fixed bug] Due to an error in the scheme creation validation script, the scheme password wasn\'t saved properly when creating a scheme.';
+$str['sch_editor_changelog_v0_6_1_item3'] = '[Fixed bug] Due to another error (blind copy-pasting, this time) in the scheme creation form, the Mine Fuse field actually allowed to input the Object Count value a second time.';
+$str['sch_editor_changelog_v0_6_1_item4'] = '[Fixed bug] For schemes requiring v3.7.0.0 (due to emulating a version between 3.6.31.0 and 3.7.0.0), the required version string called v3.7.0.0 "3.6.32.0".';
+$str['sch_editor_changelog_v0_6_1_item5'] = '[Fixed bug] Schemes without name were indeed named "Unnamed_scheme" when creating the file, but this wasn\'t stored in the database. As a result, it wasn\'t possible to download them. There again, thanks to Patricio for letting me know about this.';
 
 // Link to the page that allows us to select another language
 $str['sch_editor_change_language'] = 'Select Another Language';
