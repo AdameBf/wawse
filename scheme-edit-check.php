@@ -632,6 +632,10 @@ if (isset($_POST['action']))
 		{
 		$version_required_array[] = 31;
 		}
+		if ($rubber_version_override > 76)
+		{
+		$version_required_array[] = 29;
+		}
 		if ($rubber_version_override > 167)
 		{
 		$version_required_array[] = 32;
@@ -702,7 +706,7 @@ if (isset($_POST['action']))
 		{
 		$version_required_string = '3.6.31.0 with RubberWorm31';
 		}
-		if ($laser_fix_enabled) // Flames limit feature
+		if ($laser_fix_enabled) // Flames limit feature - should be shortened ideally.
 		{
 		$version_required_string = '3.6.29.0 with Laser Fix, 3.6.31.0 with RubberWorm31 or 3.7.0.0 with RubberWorm';
 		}
@@ -819,7 +823,7 @@ if (isset($_POST['action']))
 					echo '<p><strong>'.$str['warning'].'</strong> '.$str['error_scheme_name_by_scheme_author_already_exists'].'</p>';
 					$query_check->closeCursor();
 
-					// And the magic number is... the timestamp. :O
+					// The magic number will be the timestamp.
 					$magic_number = time();
 					$uploaded_file_name .= $magic_number;
 					$uploaded_file_name_2 .= $magic_number;
@@ -870,6 +874,7 @@ if (isset($_POST['action']))
 				{
 					$rubber_enabled = false;
 					$laser_fix_enabled = false;
+
 					for ($i = 5; $i < $file_size; $i++)
 					{
 						// Let's use a loop for the remainder of the file, and treat each case with a switch
@@ -878,64 +883,30 @@ if (isset($_POST['action']))
 						case 6: case 10: case 17: case 19: case 21:
 							if (ord($file_content[$i]) > 127)
 							{
-							$old_value = ord($file_content[$i]);
-							$file_content[$i] = chr(127);
+								$old_value = ord($file_content[$i]);
+								$file_content[$i] = chr(127);
 							
 								if ($i === 6)
 								{
-									if ($language === 'fr')
-									{
-									$fixes[] = 'Le temps de retraite a été remis à 127 (il était à '.$old_value.')';
-									}
-									else
-									{
-									$fixes[] = 'The Land Retreat Time byte value has been reset to 127 (was '.$old_value.')';
-									}
+									$fixes[] = str_replace('%1', $old_value, $str['sch_editor_sch_upload_retreat_time_fix']);
 								}
 								else if ($i === 17)
 								{
-									if ($language === 'fr')
-									{
-									$fixes[] = 'La probabilité d\'apparition d\'une caisse d\'armes a été remise à 127 (elle était à '.$old_value.')';
-									}
-									else
-									{
-									$fixes[] = 'The Weapon Crate Probability byte value has been reset to 127 (was '.$old_value.')';
-									}
+									$fixes[] = str_replace('%1', $old_value, $str['sch_editor_sch_upload_weapon_crate_probability_fix']);
 								}
 								else if ($i === 19)
 								{
-									if ($language === 'fr')
-									{
-									$fixes[] = 'La probabilité d\'apparition d\'une caisse de santé a été remise à 127 (elle était à '.$old_value.')';
-									}
-									else
-									{
-									$fixes[] = 'The Health Crate Probability byte value has been reset to 127 (was '.$old_value.')';
-									}
+									$fixes[] = str_replace('%1', $old_value, $str['sch_editor_sch_upload_health_crate_probability_fix']);
 								}
 								else if ($i === 21)
 								{
-									if ($language === 'fr')
-									{
-									$fixes[] = 'La probabilité d\'apparition d\'une caisse d\'utilitaires a été remise à 127 (elle était à '.$old_value.')';
-									}
-									else
-									{
-									$fixes[] = 'The Utility Crate Probability byte value has been reset to 127 (was '.$old_value.')';
-									}
+									$fixes[] = str_replace('%1', $old_value, $str['sch_editor_sch_upload_utility_crate_probability_fix']);
 								}
 								else
 								{
-								$file_content[$i] = chr(1); // Let's reset it to the default value.
-									if ($language === 'fr')
-									{
-									$fixes[] = 'L\'octet activant les dégâts de chute a été remis à 1 (il était à '.$old_value.')';
-									}
-									else
-									{
-									$fixes[] = 'The Fall Damage byte value has been reset to 1 (was '.$old_value.')';
-									}
+									$file_content[$i] = chr(1); // Let's reset it to the default value.
+
+									$fixes[] = str_replace('%1', $old_value, $str['sch_editor_sch_upload_fall_damage_fix']);
 								}
 							}
 						break;
@@ -943,97 +914,58 @@ if (isset($_POST['action']))
 						case 13: case 14:
 						if (ord($file_content[$i]) > 2)
 						{
-						$old_value = ord($file_content[$i]);
+							$old_value = ord($file_content[$i]);
 
 							if ($i === 13)
 							{
-							$file_content[$i] = chr(2);
-								if ($language === 'fr')
-								{
-								$fixes[] = 'La méthode de stockage des munitions a été mise à "anti-accumulation" (la valeur était à '.$old_value.')';
-								}
-								else
-								{
-								$fixes[] = 'The Stockpiling Mode byte value has been set to 2, i.e. anti-accumulative (was '.$old_value.')';
-								}
+								$file_content[$i] = chr(0);
+
+								$fixes[] = str_replace('%1', $old_value, $str['sch_editor_sch_upload_stockpiling_mode_fix']);
 							}
 							else
 							{
-							$file_content[$i] = chr(1);
-								if ($language == 'fr')
-								{
-								$fixes[] = 'La méthode de sélection de ver au début d\'un tour a été mise à "manuel" (la valeur était à '.$old_value.')';
-								}
-								else
-								{
-								$fixes[] = 'The Worm Selection method at the beginning of a turn has been set to "manual" (the byte value was '.$old_value.')';
-								}
+								$file_content[$i] = chr(1);
+
+								$fixes[] = str_replace('%1', $old_value, $str['sch_editor_sch_upload_worm_selection_method_fix']);
 							}
 						}
 						else if ($i === 14 AND ord($file_content[$i]) === 2)
 						{
-						$version_required_array[] = 29;
+							$version_required_array[] = 29; // Random Worm Order requires v3.6.29.0, or later.
 						}
 						break;
 						
 						case 15:
 						if (ord($file_content[$i]) > 3)
 						{
-						$old_value = ord($file_content[$i]);
-						$file_content[$i] = chr(3);
-							if ($language == 'fr')
-							{
-							$fixes[] = 'L\'évènement qui arrive à la mort subite a été mis à "montée de l\'eau uniquement" (la valeur était à '.$old_value.')';
-							}
-							else
-							{
-							$fixes[] = 'The Sudden Death Event has been set to "Water Rise only" (the byte value was '.$old_value.')';
-							}
+							$old_value = ord($file_content[$i]);
+							$file_content[$i] = chr(3);
+
+							$fixes[] = str_replace('%1', $old_value, $str['sch_editor_sch_upload_sudden_death_event_fix']);
 						}
 						break;
 						
 						case 16:
 						if (ord($file_content[$i]) > 63)
 						{
-						$old_value = ord($file_content[$i]);
-						$file_content[$i] = chr(2);
+							$old_value = ord($file_content[$i]);
+							$file_content[$i] = chr(2);
 
-							if ($language == 'fr')
-							{
-							$fixes[] = 'La vitesse de la montée de l\'eau à la mort subite a été mise à 20 pixels par tour (l\'octet valait '.$old_value.')';
-							}
-							else
-							{
-							$fixes[] = 'The Sudden Death Water Rise Speed has been set to 20 pixels/turn (the byte value was '.$old_value.')';
-							}
+							$fixes[] = str_replace('%1', $old_value, $str['sch_editor_sch_upload_sudden_death_water_rise_speed_fix']);
 						}
 						else if (ord($file_content[$i]) > 30 AND ord($file_content[$i]) % 2 === 0)
 						{
-						$old_value = ord($file_content[$i]);
-						$file_content[$i] = chr(2);
+							$old_value = ord($file_content[$i]);
+							$file_content[$i] = chr(2);
 
-							if ($language == 'fr')
-							{
-							$fixes[] = 'La vitesse de la montée de l\'eau à la mort subite a été mise à 20 pixels par tour (l\'octet valait '.$old_value.')';
-							}
-							else
-							{
-							$fixes[] = 'The Sudden Death Water Rise Speed has been set to 20 pixels/turn (the byte value was '.$old_value.')';
-							}
+							$fixes[] = str_replace('%1', $old_value, $str['sch_editor_sch_upload_sudden_death_water_rise_speed_fix']);
 						}
 						else if (ord($file_content[$i]) > 12 AND ord($file_content[$i]) % 4 === 0)
 						{
-						$old_value = ord($file_content[$i]);
-						$file_content[$i] = chr(2);
+							$old_value = ord($file_content[$i]);
+							$file_content[$i] = chr(2);
 
-							if ($language == 'fr')
-							{
-							$fixes[] = 'La vitesse de la montée de l\'eau à la mort subite a été mise à 20 pixels par tour (l\'octet valait '.$old_value.')';
-							}
-							else
-							{
-							$fixes[] = 'The Sudden Death Water Rise Speed has been set to 20 pixels/turn (the byte value was '.$old_value.')';
-							}
+							$fixes[] = str_replace('%1', $old_value, $str['sch_editor_sch_upload_sudden_death_water_rise_speed_fix']);
 						}
 						break;
 						
@@ -1042,42 +974,30 @@ if (isset($_POST['action']))
 						
 						if (in_array(ord($file_content[$i]), $invalid_values))
 						{
-						$old_value = ord($file_content[$i]);
-						$file_content[$i] = chr(5);
+							$old_value = ord($file_content[$i]);
+							$file_content[$i] = chr(5);
 
-							if ($language == 'fr')
-							{
-							$fixes[] = 'Le type d\'objets a été mis sur "les deux", et le nombre d\'objets à 8 (l\'octet stockant ces deux informations valait '.$old_value.')';
-							}
-							else
-							{
-							$fixes[] = 'The Hazardous Object Type has been set to "both", and the Max Object Count has been set to 8 (the byte controlling both settings\'s value was '.$old_value.')';
-							}
+							$fixes[] = str_replace('%1', $old_value, $str['sch_editor_sch_upload_object_type_and_count_fix']);
 						}
 						else if (ord($file_content[$i]) > 5) // Minimum version required: 3.6.28.0.
 						{
-						$version_required_array[] = 28;
+							$version_required_array[] = 28;
 						}
 						break;
 						
 						case 26: // Initial Worm Energy
 						if (ord($file_content[$i]) === 0)
 						{
-							if ($language == 'fr')
-							{
-							$fixes[] = 'La santé initiale des vers a été mise à 1 (elle était à 0)';
-							}
-							else
-							{
-							$fixes[] = 'The Initial Worm Energy has been set to 1 (was 0)';
-							}
+							$file_content[$i] = chr(1);
+							
+							$fixes[] = str_replace('%1', $old_value, $str['sch_editor_sch_upload_initial_worm_energy_fix']);
 						}
 						break;
 						
 						case 27: // Turn time
 						if (ord($file_content[$i]) >= 128)
 						{
-						$file_content[$i] = chr(128); // Let's use this version required calculation to reset the byte to 128
+						$file_content[$i] = chr(128); // While changing the required version, let's also set this value to 128.
 						$version_required_array[] = 19.17;
 						}
 						break;
@@ -1127,11 +1047,26 @@ if (isset($_POST['action']))
 						}
 						break;
 						
-						case 264:
-						if (ord($file_content[$i]) > 82)
+						case 264: // Version emulation.
+						if (ord($file_content[$i]) != 0)
 						{
-						$rubber_required = true;
-						$version_required_array[] = 31;
+							$rubber_required = true;
+							if (ord($file_content[$i]) > 167)
+							{
+								$version_required_array[] = 32;
+							}
+							else if (ord($file_content[$i]) > 82)
+							{
+								$version_required_array[] = 31;
+							}
+							else if (ord($file_content[$i]) > 76)
+							{
+								$version_required_array[] = 29;
+							}
+							else
+							{
+								$version_required_array[] = 28;
+							}
 						}
 						break;
 						
@@ -1151,201 +1086,75 @@ if (isset($_POST['action']))
 							
 								if ($i === 8)
 								{
-									if ($language === 'fr')
-									{
-									$fixes[] = 'L\'octet activant l\'affichage du temps de la manche a été remis à 1 (il était à '.$old_value.')';
-									}
-									else
-									{
-									$fixes[] = 'The Display Round Time byte value has been reset to 1 (was '.$old_value.')';
-									}
+									$fixes[] = str_replace('%1', $old_value, $str['sch_editor_sch_upload_display_round_time_fix']);
 								}
 								else if ($i === 9)
 								{
-									if ($language === 'fr')
-									{
-									$fixes[] = 'L\'octet activant les replays instantanés a été remis à 1 (il était à '.$old_value.')';
-									}
-									else
-									{
-									$fixes[] = 'The Action Replay byte value has been reset to 1 (was '.$old_value.')';
-									}
+									$fixes[] = str_replace('%1', $old_value, $str['sch_editor_sch_upload_action_replay_fix']);
 								}
 								else if ($i === 11)
 								{
-									if ($language == 'fr')
-									{
-									$fixes[] = 'L\'octet activant le mode artillerie a été remis à 1 (il était à '.$old_value.')';
-									}
-									else
-									{
-									$fixes[] = 'The Anchor Mode byte value has been reset to 1 (was '.$old_value.')';
-									}
+									$fixes[] = str_replace('%1', $old_value, $str['sch_editor_sch_upload_anchor_mode_fix']);
 								}
 								else if ($i === 18)
 								{
-									if ($language == 'fr')
-									{
-									$fixes[] = 'L\'octet activant les cartes de donneur a été remis à 1 (il était à '.$old_value.')';
-									}
-									else
-									{
-									$fixes[] = 'The Donor Cards byte value has been reset to 1 (was '.$old_value.')';
-									}
+									$fixes[] = str_replace('%1', $old_value, $str['sch_editor_sch_upload_donor_cards_fix']);
 								}
 								else if ($i === 24)
 								{
-									if ($language == 'fr')
-									{
-									$fixes[] = 'L\'octet activant les mines mortes a été remis à 1 (il était à '.$old_value.')';
-									}
-									else
-									{
-									$fixes[] = 'The Dud Mines byte value has been reset to 1 (was '.$old_value.')';
-									}
+									$fixes[] = str_replace('%1', $old_value, $str['sch_editor_sch_upload_dud_mines_fix']);
 								}
 								else if ($i === 25)
 								{
-									if ($language == 'fr')
-									{
-									$fixes[] = 'L\'octet activant le placement manuel a été remis à 1 (il était à '.$old_value.')';
-									}
-									else
-									{
-									$fixes[] = 'The Manual Placement byte value has been reset to 1 (was '.$old_value.')';
-									}
+									$fixes[] = str_replace('%1', $old_value, $str['sch_editor_sch_upload_manual_placement_fix']);
 								}
 								else if ($i === 30)
 								{
-									if ($language == 'fr')
-									{
-									$fixes[] = 'L\'octet activant le mode sang a été remis à 1 (il était à '.$old_value.')';
-									}
-									else
-									{
-									$fixes[] = 'The Blood Mode byte value has been reset to 1 (was '.$old_value.')';
-									}
+									$fixes[] = str_replace('%1', $old_value, $str['sch_editor_sch_upload_blood_mode_fix']);
 								}
 								else if ($i === 31)
 								{
-									if ($language == 'fr')
-									{
-									$fixes[] = 'L\'octet activant le mouton aquatique a été remis à 1 (il était à '.$old_value.')';
-									}
-									else
-									{
-									$fixes[] = 'The Aqua Sheep byte value has been reset to 1 (was '.$old_value.')';
-									}
+									$fixes[] = str_replace('%1', $old_value, $str['sch_editor_sch_upload_aqua_sheep_fix']);
 								}
 								else if ($i === 32)
 								{
-									if ($language == 'fr')
-									{
-									$fixes[] = 'L\'octet activant le mode paradis des moutons a été remis à 1 (il était à '.$old_value.')';
-									}
-									else
-									{
-									$fixes[] = 'The Sheep Heaven byte value has been reset to 1 (was '.$old_value.')';
-									}
+									$fixes[] = str_replace('%1', $old_value, $str['sch_editor_sch_upload_sheep_heaven_fix']);
 								}
 								else if ($i === 33)
 								{
-									if ($language == 'fr')
-									{
-									$fixes[] = 'L\'octet activant le mode divin a été remis à 1 (il était à '.$old_value.')';
-									}
-									else
-									{
-									$fixes[] = 'The God Mode byte value has been reset to 1 (was '.$old_value.')';
-									}
+									$fixes[] = str_replace('%1', $old_value, $str['sch_editor_sch_upload_god_mode_fix']);
 								}
 								else if ($i === 34)
 								{
-									if ($language == 'fr')
-									{
-									$fixes[] = 'L\'octet activant le mode terrain indestructible a été remis à 1 (il était à '.$old_value.')';
-									}
-									else
-									{
-									$fixes[] = 'The Indestructible Land byte value has been reset to 1 (was '.$old_value.')';
-									}
+									$fixes[] = str_replace('%1', $old_value, $str['sch_editor_sch_upload_indestructible_land_fix']);
 								}
 								else if ($i === 35)
 								{
-									if ($language == 'fr')
-									{
-									$fixes[] = 'L\'octet activant le mode grenade améliorée a été remis à 1 (il était à '.$old_value.')';
-									}
-									else
-									{
-									$fixes[] = 'The Upgraded Grenade byte value has been reset to 1 (was '.$old_value.')';
-									}
+									$fixes[] = str_replace('%1', $old_value, $str['sch_editor_sch_upload_upgraded_grenade_fix']);
 								}
 								else if ($i === 36)
 								{
-									if ($language == 'fr')
-									{
-									$fixes[] = 'L\'octet activant le mode fusil de chasse amélioré a été remis à 1 (il était à '.$old_value.')';
-									}
-									else
-									{
-									$fixes[] = 'The Upgraded Shotgun byte value has been reset to 1 (was '.$old_value.')';
-									}
+									$fixes[] = str_replace('%1', $old_value, $str['sch_editor_sch_upload_upgraded_shotgun_fix']);
 								}
 								else if ($i === 37)
 								{
-									if ($language == 'fr')
-									{
-									$fixes[] = 'L\'octet activant le mode armes à fragments améliorées a été remis à 1 (il était à '.$old_value.')';
-									}
-									else
-									{
-									$fixes[] = 'The Upgraded Clusters byte value has been reset to 1 (was '.$old_value.')';
-									}
+									$fixes[] = str_replace('%1', $old_value, $str['sch_editor_sch_upload_upgraded_clusters_fix']);
 								}
 								else if ($i === 38)
 								{
-									if ($language == 'fr')
-									{
-									$fixes[] = 'L\'octet activant le mode arc améliorée a été remis à 1 (il était à '.$old_value.')';
-									}
-									else
-									{
-									$fixes[] = 'The Upgraded Longbow byte value has been reset to 1 (was '.$old_value.')';
-									}
+									$fixes[] = str_replace('%1', $old_value, $str['sch_editor_sch_upload_upgraded_longbow_fix']);
 								}
 								else if ($i === 39)
 								{
-									if ($language == 'fr')
-									{
-									$fixes[] = 'L\'octet activant les armes d\'équipe a été remis à 1 (il était à '.$old_value.')';
-									}
-									else
-									{
-									$fixes[] = 'The Team Weapons byte value has been reset to 1 (was '.$old_value.')';
-									}
+									$fixes[] = str_replace('%1', $old_value, $str['sch_editor_sch_upload_team_weapons_fix']);
 								}
 								else if ($i === 40)
 								{
-									if ($language == 'fr')
-									{
-									$fixes[] = 'L\'octet activant les super armes a été remis à 1 (il était à '.$old_value.')';
-									}
-									else
-									{
-									$fixes[] = 'The Super Weapons byte value has been reset to 1 (was '.$old_value.')';
-									}
+									$fixes[] = str_replace('%1', $old_value, $str['sch_editor_sch_upload_super_weapons_fix']);
 								}
 								else
 								{
-									if ($language == 'fr')
-									{
-									$fixes[] = 'L\'octet activant les dégâts doublés au premier tour a été remis à 1 (il était à '.$old_value.')';
-									}
-									else
-									{
-									$fixes[] = 'The Double Damage On First Turn byte value has been reset to 1 (was '.$old_value.')';
-									}
+									$fixes[] = str_replace('%1', $old_value, $str['sch_editor_sch_upload_double_damage_fix']);
 								}
 							}
 						break;
@@ -1358,388 +1167,143 @@ if (isset($_POST['action']))
 							
 								if ($i === 200)
 								{
-									if ($language === 'fr')
-									{
-									$fixes[] = 'Les chances de trouver un jet pack dans une caisse ont été remises à 0 (elles étaient à '.$old_value.') - l\'option n\'a aucun effet.';
-									}
-									else
-									{
-									$fixes[] = 'The Jet Pack Crate Probability byte value has been reset to 0 (was '.$old_value.') - this setting has no effect.';
-									}
+									$fixes[] = str_replace('%1', $old_value, $str['sch_editor_sch_upload_jp_cp_fix']);
 								}
 								else if ($i === 202)
 								{
-									if ($language === 'fr')
-									{
-									$fixes[] = 'La puissance de la faible pesanteur a été remise à 0 (elle était à '.$old_value.') - l\'option n\'a aucun effet.';
-									}
-									else
-									{
-									$fixes[] = 'The Low Gravity Power setting\'s byte value has been reset to 0 (was '.$old_value.' - this setting has no effect.)';
-									}
+									$fixes[] = str_replace('%1', $old_value, $str['sch_editor_sch_upload_lg_p_fix']);
 								}
 								else if ($i === 204)
 								{
-									if ($language === 'fr')
-									{
-									$fixes[] = 'Les chances de trouver une faible pesanteur dans une caisse ont été remises à 0 (elles étaient à '.$old_value.') - l\'option n\'a aucun effet.';
-									}
-									else
-									{
-									$fixes[] = 'The Low Gravity Crate Probability byte value has been reset to 0 (was '.$old_value.') - this setting has no effect.';
-									}
+									$fixes[] = str_replace('%1', $old_value, $str['sch_editor_sch_upload_lg_cp_fix']);
 								}
 								else if ($i === 206)
 								{
-									if ($language === 'fr')
-									{
-									$fixes[] = 'La puissance de la visée laser a été remise à 0 (elle était à '.$old_value.') - l\'option n\'a aucun effet.';
-									}
-									else
-									{
-									$fixes[] = 'The Laser Sight Power setting\'s byte value has been reset to 0 (was '.$old_value.') - this setting has no effect.';
-									}
+									$fixes[] = str_replace('%1', $old_value, $str['sch_editor_sch_upload_ls_p_fix']);
 								}
 								else if ($i === 208)
 								{
-									if ($language === 'fr')
-									{
-									$fixes[] = 'Les chances de trouver une visée laser dans une caisse ont été remises à 0 (elles étaient à '.$old_value.') - l\'option n\'a aucun effet.';
-									}
-									else
-									{
-									$fixes[] = 'The Laser Sight Crate Probability byte value has been reset to 0 (was '.$old_value.') - this setting has no effect.';
-									}
+									$fixes[] = str_replace('%1', $old_value, $str['sch_editor_sch_upload_ls_cp_fix']);
 								}
 								else if ($i === 210)
 								{
-									if ($language === 'fr')
-									{
-									$fixes[] = 'La puissance de la marche rapide a été remise à 0 (elle était à '.$old_value.') - l\'option n\'a aucun effet.';
-									}
-									else
-									{
-									$fixes[] = 'The Fast Walk Power setting\'s byte value has been reset to 0 (was '.$old_value.') - this setting has no effect.';
-									}
+									$fixes[] = str_replace('%1', $old_value, $str['sch_editor_sch_upload_fw_p_fix']);
 								}
 								else if ($i === 212)
 								{
-									if ($language === 'fr')
-									{
-									$fixes[] = 'Les chances de trouver une marche rapide dans une caisse ont été remises à 0 (elles étaient à '.$old_value.') - l\'option n\'a aucun effet.';
-									}
-									else
-									{
-									$fixes[] = 'The Fast Walk Crate Probability byte value has been reset to 0 (was '.$old_value.') - this setting has no effect.';
-									}
+									$fixes[] = str_replace('%1', $old_value, $str['sch_editor_sch_upload_fw_cp_fix']);
 								}
 								else if ($i === 214)
 								{
-									if ($language === 'fr')
-									{
-									$fixes[] = 'La puissance de l\'invisibilité a été remise à 0 (elle était à '.$old_value.') - l\'option n\'a aucun effet.';
-									}
-									else
-									{
-									$fixes[] = 'The Invisibility Power setting\'s byte value has been reset to 0 (was '.$old_value.') - this setting has no effect.';
-									}
+									$fixes[] = str_replace('%1', $old_value, $str['sch_editor_sch_upload_invis_p_fix']);
 								}
 								else if ($i === 216)
 								{
-									if ($language === 'fr')
-									{
-									$fixes[] = 'Les chances de trouver l\'invisibilité dans une caisse ont été remises à 0 (elles étaient à '.$old_value.') - l\'option n\'a aucun effet.';
-									}
-									else
-									{
-									$fixes[] = 'The Invisibility Crate Probability byte value has been reset to 0 (was '.$old_value.') - this setting has no effect.';
-									}
+									$fixes[] = str_replace('%1', $old_value, $str['sch_editor_sch_upload_invis_cp_fix']);
 								}
 								else if ($i === 218)
 								{
-									if ($language === 'fr')
-									{
-									$fixes[] = 'La puissance des dégâts doublés (:O) a été remise à 0 (elle était à '.$old_value.') - l\'option n\'a aucun effet.';
-									}
-									else
-									{
-									$fixes[] = 'The Double Damage Power setting\'s byte value has been reset to 0 (was '.$old_value.') - this setting has no effect.';
-									}
+									$fixes[] = str_replace('%1', $old_value, $str['sch_editor_sch_upload_dd_p_fix']);
 								}
 								else if ($i === 219)
 								{
-									if ($language === 'fr')
-									{
-									$fixes[] = 'Le délai des dégâts doublés a été remise à 0 (il était à '.$old_value.') - l\'option n\'a aucun effet.';
-									}
-									else
-									{
-									$fixes[] = 'The Double Damage Delay setting has been reset to 0 (was '.$old_value.') - this setting has no effect.';
-									}
+									$fixes[] = str_replace('%1', $old_value, $str['sch_editor_sch_upload_dd_d_fix']);
 								}
 								else if ($i === 220)
 								{
-									if ($language === 'fr')
-									{
-									$fixes[] = 'Les chances de trouver les dégâts doublés dans une caisse ont été remises à 0 (elles étaient à '.$old_value.') - l\'option n\'a aucun effet.';
-									}
-									else
-									{
-									$fixes[] = 'The Double Damage Crate Probability byte value has been reset to 0 (was '.$old_value.') - this setting has no effect.';
-									}
+									$fixes[] = str_replace('%1', $old_value, $str['sch_editor_sch_upload_dd_cp_fix']);
 								}
 								else if ($i === 222)
 								{
-									if ($language === 'fr')
-									{
-									$fixes[] = 'La puissance du gel a été remise à 0 (elle était à '.$old_value.') - l\'option n\'a aucun effet.';
-									}
-									else
-									{
-									$fixes[] = 'The Freeze\'s Power setting\'s byte value has been reset to 0 (was '.$old_value.') - this setting has no effect.';
-									}
+									$fixes[] = str_replace('%1', $old_value, $str['sch_editor_sch_upload_freeze_p_fix']);
 								}
 								else if ($i === 224)
 								{
-									if ($language === 'fr')
-									{
-									$fixes[] = 'Les chances de trouver le gel dans une caisse ont été remises à 0 (elles étaient à '.$old_value.') - l\'option n\'a aucun effet.';
-									}
-									else
-									{
-									$fixes[] = 'The Freeze\'s Crate Probability byte value has been reset to 0 (was '.$old_value.') - this setting has no effect.';
-									}
+									$fixes[] = str_replace('%1', $old_value, $str['sch_editor_sch_upload_freeze_cp_fix']);
 								}
 								else if ($i === 226)
 								{
-									if ($language === 'fr')
-									{
-									$fixes[] = 'La puissance de la super bombe banane a été remise à 0 (elle était à '.$old_value.') - l\'option n\'a aucun effet.';
-									}
-									else
-									{
-									$fixes[] = 'The Super Banana Bomb Power setting\'s byte value has been reset to 0 (was '.$old_value.') - this setting has no effect.';
-									}
+									$fixes[] = str_replace('%1', $old_value, $str['sch_editor_sch_upload_sbb_p_fix']);
 								}
 								else if ($i === 230)
 								{
-									if ($language === 'fr')
-									{
-									$fixes[] = 'La puissance de l\'attaque à la mine a été remise à 0 (elle était à '.$old_value.') - l\'option n\'a aucun effet.';
-									}
-									else
-									{
-									$fixes[] = 'The Mine Strike Power setting\'s byte value has been reset to 0 (was '.$old_value.') - this setting has no effect.';
-									}
+									$fixes[] = str_replace('%1', $old_value, $str['sch_editor_sch_upload_minestr_p_fix']);
 								}
 								else if ($i === 234)
 								{
-									if ($language === 'fr')
-									{
-									$fixes[] = 'La puissance du kit de démarrage de poutres a été remise à 0 (elle était à '.$old_value.') - l\'option n\'a aucun effet, il faut éditer la puissance de la poutre.';
-									}
-									else
-									{
-									$fixes[] = 'The Girder Starter Pack Power setting\'s byte value has been reset to 0 (was '.$old_value.') - this setting has no effect; you need to edit the Girder\'s Power setting.';
-									}
+									$fixes[] = str_replace('%1', $old_value, $str['sch_editor_sch_upload_gsp_p_fix']);
 								}
 								else if ($i === 236)
 								{
-									if ($language === 'fr')
-									{
-									$fixes[] = 'Les chances de trouver le kit de démarrage de poutres dans une caisse ont été remises à 0 (elles étaient à '.$old_value.') - l\'option n\'a aucun effet.';
-									}
-									else
-									{
-									$fixes[] = 'The Girder Starter Pack Crate Probability byte value has been reset to 0 (was '.$old_value.') - this setting has no effect.';
-									}
+									$fixes[] = str_replace('%1', $old_value, $str['sch_editor_sch_upload_gsp_cp_fix']);
 								}
 								else if ($i === 238)
 								{
-									if ($language === 'fr')
-									{
-									$fixes[] = 'La puissance du séisme a été remise à 0 (elle était à '.$old_value.') - l\'option n\'a aucun effet.';
-									}
-									else
-									{
-									$fixes[] = 'The Earthquake Power setting\'s byte value has been reset to 0 (was '.$old_value.') - this setting has no effect.';
-									}
+									$fixes[] = str_replace('%1', $old_value, $str['sch_editor_sch_upload_eq_p_fix']);
 								}
 								else if ($i === 242)
 								{
-									if ($language === 'fr')
-									{
-									$fixes[] = 'La puissance de la balance de la justice a été remise à 0 (elle était à '.$old_value.') - l\'option n\'a aucun effet, et en fait je me demande comment vous voulez modifier les effets de cette arme =).';
-									}
-									else
-									{
-									$fixes[] = 'The Scales of Justice Power setting\'s byte value has been reset to 0 (was '.$old_value.') - this setting has no effect, and I actually wonder how you want to change the default effects of that weapon =).';
-									}
+									$fixes[] = str_replace('%1', $old_value, $str['sch_editor_sch_upload_scales_p_fix']);
 								}
 								else if ($i === 246)
 								{
-									if ($language === 'fr')
-									{
-									$fixes[] = 'La puissance du Vase Ming a été remise à 0 (elle était à '.$old_value.') - l\'option n\'a aucun effet.';
-									}
-									else
-									{
-									$fixes[] = 'The Ming Vase Power setting\'s byte value has been reset to 0 (was '.$old_value.') - this setting has no effect.';
-									}
+									$fixes[] = str_replace('%1', $old_value, $str['sch_editor_sch_upload_mvase_p_fix']);
 								}
 								else if ($i === 248)
 								{
-									if ($language === 'fr')
-									{
-									$fixes[] = 'Les chances de trouver le Vase Ming dans une caisse ont été remises à 0 (elles étaient à '.$old_value.') - l\'option n\'a d\'effet qu\'avec wkLaserFix, qui est fait pour une ancienne version de W:A (3.6.29.0).';
-									}
-									else
-									{
-									$fixes[] = 'The Ming Vase Crate Probability byte value has been reset to 0 (was '.$old_value.') - this setting only has effect in wkLaserFix, which is for an older W:A version (3.6.29.0).';
-									}
+									$fixes[] = str_replace('%1', $old_value, $str['sch_editor_sch_upload_mvase_cp_fix']);
 								}
 								else if ($i === 250)
 								{
-									if ($language === 'fr')
-									{
-									$fixes[] = 'La puissance de la bombe en tapis de Mike a été remise à 0 (elle était à '.$old_value.') - l\'option n\'a aucun effet.';
-									}
-									else
-									{
-									$fixes[] = 'The Mike\'s Carpet Bomb Power setting\'s byte value has been reset to 0 (was '.$old_value.') - this setting has no effect.';
-									}
+									$fixes[] = str_replace('%1', $old_value, $str['sch_editor_sch_upload_carp_p_fix']);
 								}
 								else if ($i === 252)
 								{
-									if ($language === 'fr')
-									{
-									$fixes[] = 'Les chances de trouver la bombe en tapis de Mike dans une caisse ont été remises à 0 (elles étaient à '.$old_value.') - l\'option n\'a d\'effet qu\'avec wkLaserFix, qui est fait pour une ancienne version de W:A (3.6.29.0).';
-									}
-									else
-									{
-									$fixes[] = 'The Mike\'s Carpet Bomb Crate Probability byte value has been reset to 0 (was '.$old_value.') - this setting only has effect in wkLaserFix, which is for an older W:A version (3.6.29.0).';
-									}
+									$fixes[] = str_replace('%1', $old_value, $str['sch_editor_sch_upload_carp_cp_fix']);
 								}
 								else if ($i === 254)
 								{
-									if ($language === 'fr')
-									{
-									$fixes[] = 'La puissance de la balle magique de Patsy a été remise à 0 (elle était à '.$old_value.') - l\'option n\'a aucun effet.';
-									}
-									else
-									{
-									$fixes[] = 'The Patsy\'s Magic Bullet Power setting\'s byte value has been reset to 0 (was '.$old_value.') - this setting has no effect.';
-									}
+									$fixes[] = str_replace('%1', $old_value, $str['sch_editor_sch_upload_bullet_p_fix']);
 								}
 								else if ($i === 258)
 								{
-									if ($language === 'fr')
-									{
-									$fixes[] = 'La puissance du test nucléaire indien a été remise à 0 (elle était à '.$old_value.') - l\'option n\'a aucun effet.';
-									}
-									else
-									{
-									$fixes[] = 'The Indian Nuclear Test Power setting\'s byte value has been reset to 0 (was '.$old_value.') - this setting has no effect.';
-									}
+									$fixes[] = str_replace('%1', $old_value, $str['sch_editor_sch_upload_nuke_p_fix']);
 								}
 								else if ($i === 262)
 								{
-									if ($language === 'fr')
-									{
-									$fixes[] = 'La puissance de la sélection de ver a été remise à 0 (elle était à '.$old_value.') - l\'option n\'a aucun effet et est inutile de toute manière.';
-									}
-									else
-									{
-									$fixes[] = 'The Select Worm Power setting\'s byte value has been reset to 0 (was '.$old_value.') - this setting has no effect and is useless anyway.';
-									}
+									$fixes[] = str_replace('%1', $old_value, $str['sch_editor_sch_upload_sw_p_fix']);
 								}
 								else if ($i === 266)
 								{
-									if ($language === 'fr')
-									{
-									$fixes[] = 'La puissance de l\'armée du salut a été remise à 0 (elle était à '.$old_value.') - l\'option n\'a aucun effet.';
-									}
-									else
-									{
-									$fixes[] = 'The Salvation Army Power setting\'s byte value has been reset to 0 (was '.$old_value.') - this setting has no effect.';
-									}
+									$fixes[] = str_replace('%1', $old_value, $str['sch_editor_sch_upload_sally_army_p_fix']);
 								}
 								else if ($i === 270)
 								{
-									if ($language === 'fr')
-									{
-									$fixes[] = 'La puissance de l\'escadron de taupes a été remise à 0 (elle était à '.$old_value.') - l\'option n\'a aucun effet.';
-									}
-									else
-									{
-									$fixes[] = 'The Mole Squadron Power setting\'s byte value has been reset to 0 (was '.$old_value.') - this setting has no effect.';
-									}
+									$fixes[] = str_replace('%1', $old_value, $str['sch_editor_sch_upload_msquad_p_fix']);
 								}
 								else if ($i === 274)
 								{
-									if ($language === 'fr')
-									{
-									$fixes[] = 'La puissance de la bombe MB a été remise à 0 (elle était à '.$old_value.') - l\'option n\'a aucun effet.';
-									}
-									else
-									{
-									$fixes[] = 'The MB Bomb Power setting\'s byte value has been reset to 0 (was '.$old_value.') - this setting has no effect.';
-									}
+									$fixes[] = str_replace('%1', $old_value, $str['sch_editor_sch_upload_mbbomb_p_fix']);
 								}
 								else if ($i === 278)
 								{
-									if ($language === 'fr')
-									{
-									$fixes[] = 'La puissance de l\'âne de ciment a été remise à 0 (elle était à '.$old_value.') - l\'option n\'a aucun effet.';
-									}
-									else
-									{
-									$fixes[] = 'The Concrete Donkey Power setting\'s byte value has been reset to 0 (was '.$old_value.') - this setting has no effect.';
-									}
+									$fixes[] = str_replace('%1', $old_value, $str['sch_editor_sch_upload_cdonkey_p_fix']);
 								}
 								else if ($i === 282)
 								{
-									if ($language === 'fr')
-									{
-									$fixes[] = 'La puissance du bombardier kamikaze a été remise à 0 (elle était à '.$old_value.') - l\'option n\'a aucun effet ; je me demande pourquoi cette arme si faible est considérée comme une super arme...';
-									}
-									else
-									{
-									$fixes[] = 'The Suicide Bomber Power setting\'s byte value has been reset to 0 (was '.$old_value.') - this setting has no effect; I always wondered why such a weak weapon is considered as a super weapon...';
-									}
+									$fixes[] = str_replace('%1', $old_value, $str['sch_editor_sch_upload_sbomber_p_fix']);
 								}
 								else if ($i === 286)
 								{
-									if ($language === 'fr')
-									{
-									$fixes[] = 'La puissance de l\'attaque au mouton français a été remise à 0 (elle était à '.$old_value.') - l\'option n\'a aucun effet.';
-									}
-									else
-									{
-									$fixes[] = 'The French Sheep Strike Power setting\'s byte value has been reset to 0 (was '.$old_value.') - this setting has no effect.';
-									}
+									$fixes[] = str_replace('%1', $old_value, $str['sch_editor_sch_upload_sheepstr_p_fix']);
 								}
 								else if ($i === 290)
 								{
-									if ($language === 'fr')
-									{
-									$fixes[] = 'La puissance de l\'attaque postale a été remise à 0 (elle était à '.$old_value.') - l\'option n\'a aucun effet.';
-									}
-									else
-									{
-									$fixes[] = 'The Mail Strike Power setting\'s byte value has been reset to 0 (was '.$old_value.') - this setting has no effect.';
-									}
+									$fixes[] = str_replace('%1', $old_value, $str['sch_editor_sch_upload_mailstr_p_fix']);
 								}
 								else
 								{
-									if ($language === 'fr')
-									{
-									$fixes[] = 'La puissance de l\'Armageddon a été remise à 0 (elle était à '.$old_value.') - l\'option n\'a aucun effet.';
-									}
-									else
-									{
-									$fixes[] = 'The Armageddon Power setting\'s byte value has been reset to 0 (was '.$old_value.') - this setting has no effect.';
-									}
+									$fixes[] = str_replace('%1', $old_value, $str['sch_editor_sch_upload_arma_p_fix']);
 								}
 							}
 						break;
@@ -1777,34 +1341,34 @@ if (isset($_POST['action']))
 					$description = htmlspecialchars($_POST['sch_desc']);
 					$version_required = max($version_required_array);
 					
-					if ($version_required == 0)
+					if ($version_required == 5)
 					{
-					$version_required_string = '3.0.0.0';
-					}
-					else if ($version_required == 5)
-					{
-					$version_required_string = '3.5 Beta 1';
+						$version_required_string = '3.5 Beta 1';
 					}
 					else if ($version_required == 19.17)
 					{
-					$version_required_string = '3.6.'.$version_required.' Beta';
+						$version_required_string = '3.6.'.$version_required.' Beta';
+					}
+					else if ($version_required == 32)
+					{
+						$version_required_string = '3.7.0.0';
 					}
 					else
 					{
-					$version_required_string = '3.6.'.$version_required.'.0 Beta';
+						$version_required_string = '3.6.'.$version_required.'.0 Beta';
 					}
 	
 					if ($rubber_enabled)
 					{
-					$version_required_string .= ' with RubberWorm';
+						$version_required_string .= ' with RubberWorm';
 					}
 					if ($rubber_enabled AND $version_required === 31)
 					{
-					$version_required_string = '3.6.31.0 with RubberWorm31';
+						$version_required_string = '3.6.31.0 with RubberWorm31';
 					}
 					if ($laser_fix_enabled) // Flames limit feature
 					{
-					$version_required_string = '3.6.29.0 with Laser Fix or 3.6.31.0 with RubberWorm31';
+						$version_required_string = '3.6.29.0 with Laser Fix, 3.6.31.0 with RubberWorm31 or 3.7.0.0 with RubberWorm';
 					}
 					
 					// Introduced in 0.5.1: who can upload example replays and do they have to be approved?
@@ -1928,11 +1492,11 @@ if (isset($_POST['action']))
 					{
 						echo '<p>'.$str['sch_editor_sch_upload_fixes_have_been_applied'].'</p>';
 						echo '<ul>';
-						$i = sizeof($errors);
+						$i = sizeof($fixes);
 
 						for ($c = 0; $c < $i; $c++)
 						{
-							echo '<li>'.$errors[$c].'</li>';
+							echo '<li>'.$fixes[$c].'</li>';
 						}
 				
 					echo '</ul>';

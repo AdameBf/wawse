@@ -56,16 +56,14 @@ include('../../includes/menu.php');
 ?>
 <h1><?php echo $str['sch_editor_changelog']; ?></h1>
 <p><?php echo $str['sch_editor_changelog_intro']; ?></p>
-<h4>0.6.1 - <?php
-if ($language == 'fr')
-{
-echo '9 mars 2013';
-}
-else
-{
-echo 'March 9th, 2013';
-}
- ?></h4>
+<h4>0.6.2 - <?php echo $str['sch_editor_changelog_v0_6_2_date']; ?></h4>
+<ul>
+	<li><?php echo $str['sch_editor_changelog_v0_6_2_item1']; ?></li>
+	<li><?php echo $str['sch_editor_changelog_v0_6_2_item2']; ?></li>
+	<li><?php echo $str['sch_editor_changelog_v0_6_2_item3']; ?></li>
+	<li><?php echo $str['sch_editor_changelog_v0_6_2_item4']; ?></li>
+</ul>
+<h4>0.6.1 - <?php echo $str['sch_editor_changelog_v0_6_1_date']; ?></h4>
 <ul>
 	<li><?php echo $str['sch_editor_changelog_v0_6_1_item1']; ?></li>
 	<li><?php echo $str['sch_editor_changelog_v0_6_1_item2']; ?></li>
@@ -73,219 +71,75 @@ echo 'March 9th, 2013';
 	<li><?php echo $str['sch_editor_changelog_v0_6_1_item4']; ?></li>
 	<li><?php echo $str['sch_editor_changelog_v0_6_1_item5']; ?></li>
 </ul>
-<h4>0.6.0b - <?php
-if ($language == 'fr')
-{
-echo '6 mars 2013';
-}
-else
-{
-echo 'March 6th, 2013';
-}
- ?></h4>
+<h4>0.6.0b - <?php echo $str['sch_editor_changelog_v0_6_0b_date']; ?></h4>
 <ul>
 	<li><?php echo $str['sch_editor_changelog_v0_6_0b_item1']; ?></li>
 </ul>
-<h4>0.6.0a - <?php
-if ($language == 'fr')
-{
-echo '5 mars 2013';
-}
-else
-{
-echo 'March 5th, 2013';
-}
- ?></h4>
+<h4>0.6.0a - <?php echo $str['sch_editor_changelog_v0_6_0a_date']; ?></h4>
 <ul>
 	<li><?php echo $str['sch_editor_changelog_v0_6_0a_item1']; ?></li>
 </ul>
-<h4>0.6.0 - <?php
-if ($language == 'fr')
-{
-echo '14 février 2013';
-}
-else
-{
-echo 'February 14th, 2013';
-}
- ?></h4>
+<h4>0.6.0 - <?php echo $str['sch_editor_changelog_v0_6_0_date']; ?></h4>
 <ul>
 	<li><?php echo $str['sch_editor_changelog_v0_6_0_item1']; ?></li>
 	<li><?php echo $str['sch_editor_changelog_v0_6_0_item2']; ?></li>
 	<li><?php echo $str['sch_editor_changelog_v0_6_0_item3']; ?></li>
 </ul>
-<h4>0.5.2a - <?php
-if ($language == 'fr')
-{
-echo '14 janvier 2013';
-}
-else
-{
-echo 'January 14th, 2013';
-}
- ?></h4>
+<h4>0.5.2a - <?php echo $str['sch_editor_changelog_v0_5_2a_date']; ?></h4>
 <ul>
 	<li><?php echo $str['sch_editor_changelog_v0_5_2a_item1']; ?></li>
 </ul>
-<h4>0.5.2 - <?php
-if ($language == 'fr')
-{
-echo '13 janvier 2013';
-}
-else
-{
-echo 'January 13th, 2013';
-}
- ?></h4>
+<h4>0.5.2 - <?php echo $str['sch_editor_changelog_v0_5_2_date']; ?></h4>
 <ul>
 	<li><?php echo $str['sch_editor_changelog_v0_5_2_item1']; ?></li>
 </ul>
-<h4>0.5.1 - <?php
-if ($language == 'fr')
-{
-echo '1<sup>er</sup> décembre 2012';
-}
-else
-{
-echo 'December 1st, 2012';
-}
- ?></h4>
+<h4>0.5.1 - <?php echo $str['sch_editor_changelog_v0_5_1_date']; ?></h4>
 <ul>
 	<li><?php echo $str['sch_editor_changelog_v0_5_1_item1']; ?></li>
 </ul>
-<h4>0.5.0 - <?php
-if ($language == 'fr')
-{
-echo '5 novembre 2012';
-}
-else
-{
-echo 'November 5th, 2012';
-}
- ?></h4>
+<h4>0.5.0 - <?php echo $str['sch_editor_changelog_v0_5_0_date']; ?></h4>
 <ul>
 	<li><?php echo $str['sch_editor_changelog_v0_5_0_item1']; ?></li>
 	<li><?php echo $str['sch_editor_changelog_v0_5_0_item2']; ?></li>
 </ul>
-<h4>0.4.2 - <?php
-if ($language == 'fr')
-{
-echo '24 octobre 2012';
-}
-else
-{
-echo 'October 24th, 2012';
-}
- ?></h4>
+<h4>0.4.2 - <?php echo $str['sch_editor_changelog_v0_4_2_date']; ?></h4>
 <ul>
 	<li><?php echo $str['sch_editor_changelog_v0_4_2_item1']; ?></li>
 </ul>
-<h4>0.4.1 - <?php
-if ($language == 'fr')
-{
-echo '6 octobre 2012';
-}
-else
-{
-echo 'October 6th, 2012';
-}
- ?></h4>
+<h4>0.4.1 - <?php echo $str['sch_editor_changelog_v0_4_1_date']; ?></h4>
 <ul>
 	<li><?php echo $str['sch_editor_changelog_v0_4_1_item1']; ?></li>
 	<li><?php echo $str['sch_editor_changelog_v0_4_1_item2']; ?></li>
 	<li><?php echo $str['sch_editor_changelog_v0_4_1_item3']; ?></li>
 </ul>
-<h4>0.4.0 - <?php
-if ($language == 'fr')
-{
-echo '16 septembre 2012';
-}
-else
-{
-echo 'September 16th, 2012';
-}
- ?></h4>
+<h4>0.4.0 - <?php echo $str['sch_editor_changelog_v0_4_0_date']; ?></h4>
 <ul>
 	<li><?php echo $str['sch_editor_changelog_v0_4_0_item1']; ?></li>
 </ul>
-<h4>0.3.0 - <?php
-if ($language == 'fr')
-{
-echo '14 septembre 2012';
-}
-else
-{
-echo 'September 14th, 2012';
-}
- ?></h4>
+<h4>0.3.0 - <?php echo $str['sch_editor_changelog_v0_3_0_date']; ?></h4>
 <ul>
 	<li><?php echo $str['sch_editor_changelog_v0_3_0_item1']; ?></li>
 </ul>
-<h4>0.2.1 - <?php
-if ($language == 'fr')
-{
-echo '3 septembre 2012';
-}
-else
-{
-echo 'September 3rd, 2012';
-}
- ?></h4>
+<h4>0.2.1 - <?php echo $str['sch_editor_changelog_v0_2_1_date']; ?></h4>
 <ul>
 	<li><?php echo $str['sch_editor_changelog_v0_2_1_item1']; ?></li>
 </ul>
-<h4>0.2.0 - <?php
-if ($language == 'fr')
-{
-echo '1<sup>er</sup> septembre 2012';
-}
-else
-{
-echo 'September 1st, 2012';
-}
- ?></h4>
+<h4>0.2.0 - <?php echo $str['sch_editor_changelog_v0_2_0_date']; ?></h4>
 <ul>
 	<li><?php echo $str['sch_editor_changelog_v0_2_0_item1']; ?></li>
 	<li><?php echo $str['sch_editor_changelog_v0_2_0_item2']; ?></li>
 </ul>
-<h4>0.1.2 - <?php
-if ($language == 'fr')
-{
-echo '31 août 2012';
-}
-else
-{
-echo 'August 31st, 2012';
-}
- ?></h4>
+<h4>0.1.2 - <?php echo $str['sch_editor_changelog_v0_1_2_date']; ?></h4>
 <ul>
 	<li><?php echo $str['sch_editor_changelog_v0_1_2_item1']; ?></li>
 	<li><?php echo $str['sch_editor_changelog_v0_1_2_item2']; ?></li>
 </ul>
-<h4>0.1.1 - <?php
-if ($language == 'fr')
-{
-echo '30 août 2012';
-}
-else
-{
-echo 'August 30th, 2012';
-}
- ?></h4>
+<h4>0.1.1 - <?php echo $str['sch_editor_changelog_v0_1_1_date']; ?></h4>
 <ul>
 	<li><?php echo $str['sch_editor_changelog_v0_1_1_item1']; ?></li>
 	<li><?php echo $str['sch_editor_changelog_v0_1_1_item2']; ?></li>
 </ul>
-<h4>0.1.0 - <?php
-if ($language == 'fr')
-{
-echo '29 août 2012';
-}
-else
-{
-echo 'August 29th, 2012';
-}
- ?></h4>
+<h4>0.1.0 - <?php echo $str['sch_editor_changelog_v0_1_0_date']; ?></h4>
 <ul>
 	<li><?php echo $str['sch_editor_changelog_v0_1_0_item1']; ?></li>
 </ul>

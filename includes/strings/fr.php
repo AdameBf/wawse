@@ -269,7 +269,73 @@ $str['sch_editor_sch_upload_error_incorrect_size_v2'] = 'Un fichier scheme versi
 $str['sch_editor_sch_upload_error_incorrect_version_byte'] = 'Version du scheme incorrecte.';
 $str['sch_editor_sch_upload_error_unknown'] = 'Erreur inconnue.';
 $str['sch_editor_scheme_succesfully_uploaded_message'] = 'Scheme importé avec succès !';
-$str['sch_editor_sch_upload_fixes_have_been_applied'] = '<strong>Note :</strong> les corrections suivantes ont été apportées :'; 
+$str['sch_editor_sch_upload_fixes_have_been_applied'] = '<strong>Note :</strong> les corrections suivantes ont été apportées :';
+
+$str['sch_editor_sch_upload_retreat_time_fix'] = 'Le temps de retraite a été remis à 127 (il était à %1).'; // Do not change any %1 or %2 in this translation file.
+$str['sch_editor_sch_upload_weapon_crate_probability_fix'] = 'La probabilité d\'apparition d\'une caisse d\'armes a été remise à 127 (elle était à %1).';
+$str['sch_editor_sch_upload_health_crate_probability_fix'] = 'La probabilité d\'apparition d\'une caisse de santé a été remise à 127 (elle était à %1).';
+$str['sch_editor_sch_upload_utility_crate_probability_fix'] = 'La probabilité d\'apparition d\'une caisse d\'utilitaires a été remise à 127 (elle était à %1).';
+$str['sch_editor_sch_upload_fall_damage_fix'] = 'L\'octet activant les dégâts de chute a été remis à 1 (il était à %1).';
+$str['sch_editor_sch_upload_stockpiling_mode_fix'] = 'La méthode de stockage des munitions a été mise à "normale" (la valeur était à %1).';
+$str['sch_editor_sch_upload_worm_selection_method_fix'] = 'La méthode de sélection de ver au début d\'un tour a été mise à "manuel" (la valeur était à %1).';
+$str['sch_editor_sch_upload_sudden_death_event'] = 'L\'évènement qui arrive à la mort subite a été mis à "montée de l\'eau uniquement" (la valeur était à %1).';
+$str['sch_editor_sch_upload_sudden_death_water_rise_speed_fix'] = 'La vitesse de la montée de l\'eau à la mort subite a été mise à 20 pixels par tour (l\'octet valait %1).';
+$str['sch_editor_sch_upload_object_type_and_count_fix'] = 'Le type d\'objets a été mis sur "les deux", et le nombre d\'objets à 8 (l\'octet stockant ces deux informations valait %1).';
+$str['sch_editor_sch_upload_initial_worm_energy_fix'] = 'La santé initiale des vers a été mise à 1 (elle était à 0).';
+$str['sch_editor_sch_upload_display_round_time_fix'] = 'L\'octet activant l\'affichage du temps de la manche a été remis à 1 (il était à %1).';
+$str['sch_editor_sch_upload_action_replay_fix'] = 'L\'octet activant les replays instantanés a été remis à 1 (il était à %1).';
+$str['sch_editor_sch_upload_anchor_mode_fix'] = 'L\'octet activant le mode artillerie a été remis à 1 (il était à %1).';
+$str['sch_editor_sch_upload_donor_cards_fix'] = 'L\'octet activant les cartes de donneur a été remis à 1 (il était à %1).';
+$str['sch_editor_sch_upload_dud_mines_fix'] = 'L\'octet activant les mines mortes a été remis à 1 (il était à %1).';
+$str['sch_editor_sch_upload_manual_placement_fix'] = 'L\'octet activant le placement manuel a été remis à 1 (il était à %1).';
+$str['sch_editor_sch_upload_blood_mode_fix'] = 'L\'octet activant le mode sang a été remis à 1 (il était à %1).';
+$str['sch_editor_sch_upload_aqua_sheep_fix'] = 'L\'octet activant le mouton aquatique a été remis à 1 (il était à %1).';
+$str['sch_editor_sch_upload_sheep_heaven_fix'] = 'L\'octet activant le mode paradis des moutons a été remis à 1 (il était à %1).';
+$str['sch_editor_sch_upload_god_mode_fix'] = 'L\'octet activant le mode divin a été remis à 1 (il était à %1).';
+$str['sch_editor_sch_upload_indestructible_land_fix'] = 'L\'octet activant le mode terrain indestructible a été remis à 1 (il était à %1).';
+$str['sch_editor_sch_upload_upgraded_grenade_fix'] = 'L\'octet activant le mode grenade améliorée a été remis à 1 (il était à %1).';
+$str['sch_editor_sch_upload_upgraded_shotgun_fix'] = 'L\'octet activant le mode fusil de chasse amélioré a été remis à 1 (il était à %1).';
+$str['sch_editor_sch_upload_upgraded_clusters_fix'] = 'L\'octet activant le mode armes à fragments améliorées a été remis à 1 (il était à %1).';
+$str['sch_editor_sch_upload_upgraded_longbow_fix'] = 'L\'octet activant le mode arc amélioré a été remis à 1 (il était à %1).';
+$str['sch_editor_sch_upload_team_weapons_fix'] = 'L\'octet activant les armes d\'équipe a été remis à 1 (il était à %1).';
+$str['sch_editor_sch_upload_super_weapons_fix'] = 'L\'octet activant les super armes a été remis à 1 (il était à %1).';
+$str['sch_editor_sch_upload_double_damage_fix'] = 'L\'octet activant les dégâts doublés au premier tour a été remis à 1 (il était à %1).';
+
+$str['sch_editor_sch_upload_jp_cp_fix'] = 'Les chances de trouver un jet pack dans une caisse ont été remises à 0 (elles étaient à %1) - l\'option n\'a aucun effet.'; // I'm listing weapons separately because some may need different articles in front of them in other languages (like in French, for example).
+$str['sch_editor_sch_upload_lg_p_fix'] = 'La puissance de la faible pesanteur a été remise à 0 (elle était à %1) - l\'option n\'a aucun effet.';
+$str['sch_editor_sch_upload_lg_cp_fix'] = 'Les chances de trouver une faible pesanteur dans une caisse ont été remises à 0 (elles étaient à %1) - l\'option n\'a aucun effet.';
+$str['sch_editor_sch_upload_ls_p_fix'] = 'La puissance de la visée laser a été remise à 0 (elle était à %1) - l\'option n\'a aucun effet.';
+$str['sch_editor_sch_upload_ls_cp_fix'] = 'Les chances de trouver une visée laser dans une caisse ont été remises à 0 (elles étaient à %1) - l\'option n\'a aucun effet.';
+$str['sch_editor_sch_upload_fw_p_fix'] = 'La puissance de la marche rapide a été remise à 0 (elle était à %1) - l\'option n\'a aucun effet.';
+$str['sch_editor_sch_upload_fw_cp_fix'] = 'Les chances de trouver une marche rapide dans une caisse ont été remises à 0 (elles étaient à %1) - l\'option n\'a aucun effet.';
+$str['sch_editor_sch_upload_invis_p_fix'] = 'La puissance de l\'invisibilité a été remise à 0 (elle était à %1) - l\'option n\'a aucun effet.';
+$str['sch_editor_sch_upload_invis_cp_fix'] = 'Les chances de trouver l\'invisibilité dans une caisse ont été remises à 0 (elles étaient à %1) - l\'option n\'a aucun effet.';
+$str['sch_editor_sch_upload_dd_p_fix'] = 'La puissance des dégâts doublés (:O) a été remise à 0 (elle était à %1) - l\'option n\'a aucun effet.';
+$str['sch_editor_sch_upload_dd_d_fix'] = 'Le délai des dégâts doublés a été remise à 0 (il était à %1) - l\'option n\'a aucun effet.';
+$str['sch_editor_sch_upload_dd_cp_fix'] = 'Les chances de trouver les dégâts doublés dans une caisse ont été remises à 0 (elles étaient à %1) - l\'option n\'a aucun effet.';
+$str['sch_editor_sch_upload_freeze_p_fix'] = 'La puissance du gel a été remise à 0 (elle était à %1) - l\'option n\'a aucun effet.';
+$str['sch_editor_sch_upload_freeze_cp_fix'] = 'Les chances de trouver le gel dans une caisse ont été remises à 0 (elles étaient à %1) - l\'option n\'a aucun effet.';
+$str['sch_editor_sch_upload_sbb_p_fix'] = 'La puissance de la super bombe banane a été remise à 0 (elle était à %1) - l\'option n\'a aucun effet.';
+$str['sch_editor_sch_upload_minestr_p_fix'] = 'La puissance de l\'attaque à la mine a été remise à 0 (elle était à %1) - l\'option n\'a aucun effet.';
+$str['sch_editor_sch_upload_gsp_p_fix'] = 'La puissance du kit de démarrage de poutres a été remise à 0 (elle était à %1) - l\'option n\'a aucun effet, il faut éditer la puissance de la poutre.';
+$str['sch_editor_sch_upload_gsp_cp_fix'] = 'Les chances de trouver le kit de démarrage de poutres dans une caisse ont été remises à 0 (elles étaient à %1) - l\'option n\'a aucun effet.';
+$str['sch_editor_sch_upload_eq_p_fix'] = 'La puissance du séisme a été remise à 0 (elle était à %1) - l\'option n\'a aucun effet.';
+$str['sch_editor_sch_upload_scales_p_fix'] = 'La puissance de la balance de la justice a été remise à 0 (elle était à %1) - l\'option n\'a aucun effet, et de toute façon je me demande bien comment vous voudriez modifier les effets de cette arme. =)';
+$str['sch_editor_sch_upload_mvase_p_fix'] = 'La puissance du Vase Ming a été remise à 0 (elle était à %1) - l\'option n\'a aucun effet.';
+$str['sch_editor_sch_upload_mvase_cp_fix'] = 'Les chances de trouver le Vase Ming dans une caisse ont été remises à 0 (elles étaient à %1) - l\'option n\'a d\'effet qu\'avec wkLaserFix, qui est fait pour une ancienne version de W:A (3.6.29.0).';
+$str['sch_editor_sch_upload_carp_p_fix'] = 'La puissance de la bombe en tapis de Mike a été remise à 0 (elle était à %1) - l\'option n\'a aucun effet.';
+$str['sch_editor_sch_upload_carp_cp_fix'] = 'Les chances de trouver la bombe en tapis de Mike dans une caisse ont été remises à 0 (elles étaient à %1) - l\'option n\'a d\'effet qu\'avec wkLaserFix, qui est fait pour une ancienne version de W:A (3.6.29.0).';
+$str['sch_editor_sch_upload_bullet_p_fix'] = 'La puissance de la balle magique de Patsy a été remise à 0 (elle était à %1) - l\'option n\'a aucun effet.';
+$str['sch_editor_sch_upload_nuke_p_fix'] = 'La puissance du test nucléaire indien a été remise à 0 (elle était à %1) - l\'option n\'a aucun effet.';
+$str['sch_editor_sch_upload_sw_p_fix'] = 'La puissance de la sélection de ver a été remise à 0 (elle était à %1) - l\'option n\'a aucun effet et serait inutile de toute manière.';
+$str['sch_editor_sch_upload_sally_army_p_fix'] = 'La puissance de l\'armée du salut a été remise à 0 (elle était à %1) - l\'option n\'a aucun effet.';
+$str['sch_editor_sch_upload_msquad_p_fix'] = 'La puissance de l\'escadron de taupes a été remise à 0 (elle était à %1) - l\'option n\'a aucun effet.';
+$str['sch_editor_sch_upload_mbbomb_p_fix'] = 'La puissance de la bombe MB a été remise à 0 (elle était à %1) - l\'option n\'a aucun effet.';
+$str['sch_editor_sch_upload_cdonkey_p_fix'] = 'La puissance de l\'âne de ciment a été remise à 0 (elle était à %1) - l\'option n\'a aucun effet.';
+$str['sch_editor_sch_upload_sbomber_p_fix'] = 'La puissance du bombardier kamikaze a été remise à 0 (elle était à %1) - l\'option n\'a aucun effet ; je me demande pourquoi cette arme si faible est considérée comme une super arme...';
+$str['sch_editor_sch_upload_sheepstr_p_fix'] = 'La puissance de l\'attaque au mouton français a été remise à 0 (elle était à %1) - l\'option n\'a aucun effet.';
+$str['sch_editor_sch_upload_mailstr_p_fix'] = 'La puissance de l\'attaque postale a été remise à 0 (elle était à %1) - l\'option n\'a aucun effet.';
+$str['sch_editor_sch_upload_arma_p_fix'] = 'La puissance de l\'Armageddon a été remise à 0 (elle était à %1) - l\'option n\'a aucun effet.';
 
 // Scheme viewer
 $str['sch_editor_sch_viewer_title'] = 'Infos à propos du scheme :';
@@ -338,35 +404,75 @@ $str['sch_editor_my_schemes_title'] = 'Mes schemes';
 // Changelog
 $str['sch_editor_changelog'] = 'Historique du module';
 $str['sch_editor_changelog_intro'] = 'Voici l\'historique de l\'éditeur de schemes.';
+
+$str['sch_editor_changelog_v0_1_0_date'] = '29 août 2012';
 $str['sch_editor_changelog_v0_1_0_item1'] = 'Création de l\'éditeur de schemes, permettant de créer un scheme et de le télécharger aussitôt après. Langues disponibles: français et anglais.';
+
+$str['sch_editor_changelog_v0_1_1_date'] = '30 août 2012';
 $str['sch_editor_changelog_v0_1_1_item1'] = '[Amélioration] Conversion de quelques zones d\'options en zones de saisie, comme suggéré par FFie (et avec son aide). Non terminé.';
 $str['sch_editor_changelog_v0_1_1_item2'] = 'Création de cette page.';
+
+$str['sch_editor_changelog_v0_1_2_date'] = '31 août 2012';
 $str['sch_editor_changelog_v0_1_2_item1'] = '[Correction de bug] Le temps de la manche est désormais correctement enregistré lorsqu\'il est défini en secondes. En v0.1.0, la valeur était incorrectement enregistrée (par exemple, si on mettait 90s, la valeur était enregistrée comme 39s) ; en v0.1.1, elle était toujours enregistrée en minutes.';
 $str['sch_editor_changelog_v0_1_2_item2'] = '[Correction de bug] Les dates étaient toujours affichées en français dans cet historique.';
+
+$str['sch_editor_changelog_v0_2_0_date'] = '1<sup>er</sup> septembre 2012';
 $str['sch_editor_changelog_v0_2_0_item1'] = '[Amélioration] Réorganisation du formulaire, pour répondre à une suggestion de GreeN.';
 $str['sch_editor_changelog_v0_2_0_item2'] = '[Amélioration] Suggestion de FFie entièrement appliquée.';
+
+$str['sch_editor_changelog_v0_2_1_date'] = '3 septembre 2012';
 $str['sch_editor_changelog_v0_2_1_item1'] = '[Correction] Certaines options (le délai entre les tours, le temps de retraite au sol et le temps de retraite après avoir lâché une arme depuis la corde) étaient limitées à 255 dans l\'éditeur alors que la vraie limite est 127. Cela est désormais corrigé.';
+
+$str['sch_editor_changelog_v0_3_0_date'] = '14 septembre 2012';
 $str['sch_editor_changelog_v0_3_0_item1'] = '[Amélioration] Il est désormais possible d\'importer des schemes sur le site.';
+
+$str['sch_editor_changelog_v0_4_0_date'] = '16 septembre 2012';
 $str['sch_editor_changelog_v0_4_0_item1'] = '[Amélioration] Ajout de la liste des schemes.';
+
+$str['sch_editor_changelog_v0_4_1_date'] = '6 octobre 2012';
 $str['sch_editor_changelog_v0_4_1_item1'] = '[Correction] Après des tests plus concrets, il se trouvait que seul le temps de retraite au sol était limité à 127. La limite des deux autres valeurs (délai entre les tours et temps de retraite sur la corde) a été remise à 255.';
 $str['sch_editor_changelog_v0_4_1_item2'] = '[Correction] Si un scheme était importé et que l\'uploadeur n\'a pas indiqué de nom d\'auteur, son nom sera maintenant mis à Anonymous. Un oubli accidentel avait fait que le nom resterait vide.';
 $str['sch_editor_changelog_v0_4_1_item3'] = 'Et quelques petites corrections que j\'ai faites les jours précédents et que je n\'ai pas listées.';
+
+$str['sch_editor_changelog_v0_4_2_date'] = '24 octobre 2012';
 $str['sch_editor_changelog_v0_4_2_item1'] = '[Amélioration] Ajout de la nouvelle option de RubberWorm v0.0.1.12.';
+
+$str['sch_editor_changelog_v0_5_0_date'] = '5 novembre 2012';
 $str['sch_editor_changelog_v0_5_0_item1'] = '[Amélioration] Ajout des replays d\'exemple, qui peuvent être attachés à un scheme importé uniquement. Ils sont téléchargables depuis la liste des schemes. (À l\'avenir, il devrait être possible de les ajouter après la création du scheme.) <em>(Télécharger ces replays ne fonctionnait pas : voyez l\'explication plus bas.)</em>';
 $str['sch_editor_changelog_v0_5_0_item2'] = '[Correction] Le téléchargement d\'un scheme dont le nom a été corrigé avant la création fonctionne désormais. <em>(En fait, cette correction a complètement empêché les téléchargements : un fichier requis pour la nouvelle fonction manquait sur la page qui s\'occupe des téléchargements.)</em>';
+
+$str['sch_editor_changelog_v0_5_1_date'] = '1<sup>er</sup> décembre 2012';
 $str['sch_editor_changelog_v0_5_1_item1'] = '[Correction] Le téléchargement de schemes et de replays, brisé par accident en v0.5.0, a été rétabli.';
+
+$str['sch_editor_changelog_v0_5_2_date'] = '13 janvier 2013';
 $str['sch_editor_changelog_v0_5_2_item1'] = '[Amélioration] Ajout des versions entre la 3.6.31.0 et la 3.7.0.0 dans les options d\'émulation de versions via RubberWorm, à l\'occasion de la sortie de RubberWorm v0.0.1.13.';
+
+$str['sch_editor_changelog_v0_5_2a_date'] = '14 janvier 2013';
 $str['sch_editor_changelog_v0_5_2a_item1'] = '[Correction mineure] À cause d\'un oubli, le temps de retraite sur la corde et le délai entre les tours étaient restés limités à 127 lors de l\'importation d\'un scheme. Ces limites sont revenues à 255.';
+
+$str['sch_editor_changelog_v0_6_0_date'] = '14 février 2013';
 $str['sch_editor_changelog_v0_6_0_item1'] = '[Amélioration] Les replays d\'exemple peuvent désormais être attachés à un scheme après sa création ou son envoi sur le serveur. Les auteurs de schemes peuvent par ailleurs définir les permissions pour importer des replays (l\'auteur seul/tout le monde mais les replays doivent être approuvés par l\'auteur/tout le monde sans que les replays n\'aient besoin d\'être approuvés, cependant je peux vérifier de temps en temps ou bien agir sur demande expresse de l\'auteur).';
 $str['sch_editor_changelog_v0_6_0_item2'] = '[Amélioration] Vous pouvez désormais joindre plus de 5 replays d\'exemple à un scheme au total, cependant vous ne pouvez pas en importer plus de 5 d\'un coup - si vous voulez joindre plus de replays, faites-le en deux/trois/quatre... fois ; je ne veux pas que mon serveur prenne feu, surtout vu qu\'il n\'y a pas que moi dessus :P.';
 $str['sch_editor_changelog_v0_6_0_item3'] = '[Correction] La méthode de vérification des replays a été légèrement assouplie ; en effet, durant les tests de cette version, je me suis rendu compte que la méthode actuelle ne fonctionnait pas et bloquait certains replays tout à fait normaux.';
+
+$str['sch_editor_changelog_v0_6_0a_date'] = '5 mars 2013';
 $str['sch_editor_changelog_v0_6_0a_item1'] = 'La traduction anglaise a été corrigée par Clown.';
+
+$str['sch_editor_changelog_v0_6_0a_date'] = '6 mars 2013';
 $str['sch_editor_changelog_v0_6_0b_item1'] = '[Correction de bug] Lors de la création d\'un scheme, la valeur de l\'option "temps de détonateur des mines" était également sauvegardée comme valeur de l\'octet représentant l\'option "méthode de placement des vers" par accident. <em>(En fait il se trouve qu\'il n\'y avait pas du tout de valeur "temps de détonateur des mines" ; cela a été corrigé en v0.6.1.)</em>';
+
+$str['sch_editor_changelog_v0_6_1_date'] = '9 mars 2013';
 $str['sch_editor_changelog_v0_6_1_item1'] = '[Correction de bug] Une mise à jour du 1<sup>er</sup> (le jour de la sortie de la v0.5.1) avait complètement empêché la création de schemes ; le champ de la base de données qui sauvegardait le mode de permissions pour attacher un replay au scheme était accidentellement appelé avec un symbole $ supplémentaire devant son nom. Ceci est désormais corrigé ; la création de scheme marche désormais à nouveau. Merci à Patricio (un joueur chilien) d\'avoir signalé le bug.';
 $str['sch_editor_changelog_v0_6_1_item2'] = '[Correction de bug] En raison d\'une erreur dans le script de la page validant la création de scheme, le mot de passe du scheme était incorrectement sauvegardé lors de la création d\'un scheme.';
 $str['sch_editor_changelog_v0_6_1_item3'] = '[Correction de bug] En raison d\'une erreur (un copier-coller aveugle, cette fois, je l\'avoue) dans le formulaire de création de scheme, le champ appelé Détonateur des mines permettait en fait d\'entrer la valeur de l\'option Nombre maximum d\'objets une seconde fois.';
 $str['sch_editor_changelog_v0_6_1_item4'] = '[Correction de bug] Pour les schemes requiérant la v3.7.0.0 (parce qu\'il y a émulation d\'une version comprise entre la 3.6.31.0 et la 3.7.0.0), le champ version requise appelait la v3.7.0.0 "3.6.32.0".';
 $str['sch_editor_changelog_v0_6_1_item5'] = '[Correction de bug] Les schemes sans nom étaient bel et bien nommés "Unnamed_scheme" lors de la création du fichier, mais ce nom de "Unnamed_scheme" n\'était pas sauvegardé dans la base de données. Du coup, il n\'était pas possible de les télécharger. Encore une fois, merci à Patricio de m\'avoir signalé ce bug.';
+
+$str['sch_editor_changelog_v0_6_2_date'] = '11 mars 2013';
+$str['sch_editor_changelog_v0_6_2_item1'] = '[Changement] Lorsque vous importez un scheme dont la valeur de l\'option "Méthode de stockage" est invalide, la valeur par défaut sera désormais la méthode de stockage "normale", et non plus le mode de stockage anti-accumulatif.';
+$str['sch_editor_changelog_v0_6_2_item2'] = '[Changement] Les chaînes de caractères qui étaient sauvegardées sur cette page et la page de validation de l\'importation de scheme ont été déplacées vers les fichiers de traduction. Cela permet de rendre la tâche de traduction moins complexe, étant donné que les chaînes de caractères ne sont plus séparés dans plusieurs fichiers. Cela a également eu l\'effet de réduire significativement la taille de la page de validation du formulaire d\'importation ou de création de schemes. Enfin, tant que j\'y étais, j\'ai également corrigé certaines des chaînes de caractères déplacées.';
+$str['sch_editor_changelog_v0_6_2_item3'] = '[Correction de bug] Lorsque vous importiez un scheme avec une énergie de départ des vers de 0, la valeur n\'était pas remise à 1 dans le fichier, contrairement à ce qu\'indiquait le message.';
+$str['sch_editor_changelog_v0_6_2_item4'] = '[Correction de bug] Lorsque vous importiez un scheme, l\'option "Émuler une ancienne version" ne définissait pas la version requise correctement : elle ne détectait pas la v3.6.29.0 ou la v3.7.0.0, et ne disait pas que RubberWorm était requis pour les versions émulables avec la v3.6.28.0 ou la v3.6.29.0.';
 
 // Link to the page that allows us to select another language
 $str['sch_editor_change_language'] = 'Changer de langue';

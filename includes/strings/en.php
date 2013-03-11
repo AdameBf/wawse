@@ -271,6 +271,72 @@ $str['sch_editor_sch_upload_error_unknown'] = 'Unknown error.';
 $str['sch_editor_scheme_succesfully_uploaded_message'] = 'Scheme successfully uploaded!';
 $str['sch_editor_sch_upload_fixes_have_been_applied'] = '<strong>Note:</strong> The following fixes have been applied:';
 
+$str['sch_editor_sch_upload_retreat_time_fix'] = 'The Land Retreat Time byte value has been reset to 127 (was %1)'; // Do not change any %1 or %2 in the translation file.
+$str['sch_editor_sch_upload_weapon_crate_probability_fix'] = 'The Weapon Crate Probability byte value has been reset to 127 (was %1).';
+$str['sch_editor_sch_upload_health_crate_probability_fix'] = 'The Health Crate Probability byte value has been reset to 127 (was %1).';
+$str['sch_editor_sch_upload_utility_crate_probability_fix'] = 'The Utility Crate Probability byte value has been reset to 127 (was %1).';
+$str['sch_editor_sch_upload_fall_damage_fix'] = 'The Fall Damage byte value has been reset to 1 (was %1).';
+$str['sch_editor_sch_upload_stockpiling_mode_fix'] = 'The Stockpiling Mode byte value has been set to 0, i.e. off (was %1).';
+$str['sch_editor_sch_upload_worm_selection_method_fix'] = 'The Worm Selection method at the beginning of a turn has been set to "manual" (the byte value was %1).';
+$str['sch_editor_sch_upload_sudden_death_event_fix'] = 'The Sudden Death Event has been set to "Water Rise only" (the byte value was %1).';
+$str['sch_editor_sch_upload_sudden_death_water_rise_speed_fix'] = 'The Sudden Death Water Rise Speed has been set to 20 pixels/turn, i.e. "Medium" in-game (the byte value was %1).';
+$str['sch_editor_sch_upload_object_type_and_count_fix'] = 'The Hazardous Object Type has been set to "both", and the Max Object Count has been set to 8 (the byte controlling both settings\'s value was %1).';
+$str['sch_editor_sch_upload_initial_worm_energy_fix'] = 'The Initial Worm Energy has been set to 1 (was 0).';
+$str['sch_editor_sch_upload_display_round_time_fix'] = 'The Display Round Time byte value has been reset to 1 (was %1).';
+$str['sch_editor_sch_upload_action_replay_fix'] = 'The Action Replay byte value has been reset to 1 (was %1).';
+$str['sch_editor_sch_upload_anchor_mode_fix'] = 'The Anchor Mode byte value has been reset to 1 (was %1).';
+$str['sch_editor_sch_upload_donor_cards_fix'] = 'The Donor Cards byte value has been reset to 1 (was %1).';
+$str['sch_editor_sch_upload_dud_mines_fix'] = 'The Dud Mines byte value has been reset to 1 (was %1).';
+$str['sch_editor_sch_upload_manual_placement_fix'] = 'The Manual Placement byte value has been reset to 1 (was %1).';
+$str['sch_editor_sch_upload_blood_mode_fix'] = 'The Blood Mode byte value has been reset to 1 (was %1).';
+$str['sch_editor_sch_upload_aqua_sheep_fix'] = 'The Aqua Sheep byte value has been reset to 1 (was %1).';
+$str['sch_editor_sch_upload_sheep_heaven_fix'] = 'The Sheep Heaven byte value has been reset to 1 (was %1).';
+$str['sch_editor_sch_upload_god_mode_fix'] = 'The God Mode byte value has been reset to 1 (was %1).';
+$str['sch_editor_sch_upload_indestructible_land_fix'] = 'The Indestructible Land byte value has been reset to 1 (was %1).';
+$str['sch_editor_sch_upload_upgraded_grenade_fix'] = 'The Upgraded Grenade byte value has been reset to 1 (was %1).';
+$str['sch_editor_sch_upload_upgraded_shotgun_fix'] = 'The Upgraded Shotgun byte value has been reset to 1 (was %1).';
+$str['sch_editor_sch_upload_upgraded_clusters_fix'] = 'The Upgraded Clusters byte value has been reset to 1 (was %1).';
+$str['sch_editor_sch_upload_upgraded_longbow_fix'] = 'The Upgraded Longbow byte value has been reset to 1 (was %1).';
+$str['sch_editor_sch_upload_team_weapons_fix'] = 'The Team Weapons byte value has been reset to 1 (was %1).';
+$str['sch_editor_sch_upload_super_weapons_fix'] = 'The Super Weapons byte value has been reset to 1 (was %1).';
+$str['sch_editor_sch_upload_double_damage_fix'] = 'The Double Damage On First Turn byte value has been reset to 1 (was %1).';
+
+$str['sch_editor_sch_upload_jp_cp_fix'] = 'The Jet Pack Crate Probability byte value has been reset to 0 (was %1) - this setting has no effect.'; // I'm listing weapons separately because some may need different articles in front of them in other languages (like in French, for example).
+$str['sch_editor_sch_upload_lg_p_fix'] = 'The Low Gravity Power setting\'s byte value has been reset to 0 (was %1) - this setting has no effect.';
+$str['sch_editor_sch_upload_lg_cp_fix'] = 'The Low Gravity Crate Probability byte value has been reset to 0 (was %1) - this setting has no effect.';
+$str['sch_editor_sch_upload_ls_p_fix'] = 'The Laser Sight Power setting\'s byte value has been reset to 0 (was %1) - this setting has no effect.';
+$str['sch_editor_sch_upload_ls_cp_fix'] = 'The Laser Sight Crate Probability byte value has been reset to 0 (was %1) - this setting has no effect.';
+$str['sch_editor_sch_upload_fw_p_fix'] = 'The Fast Walk Power setting\'s byte value has been reset to 0 (was %1) - this setting has no effect.';
+$str['sch_editor_sch_upload_fw_cp_fix'] = 'The Fast Walk Crate Probability byte value has been reset to 0 (was %1) - this setting has no effect.';
+$str['sch_editor_sch_upload_invis_p_fix'] = 'The Invisibility Power setting\'s byte value has been reset to 0 (was %1) - this setting has no effect.';
+$str['sch_editor_sch_upload_invis_cp_fix'] = 'The Invisibility Crate Probability byte value has been reset to 0 (was %1) - this setting has no effect.';
+$str['sch_editor_sch_upload_dd_p_fix'] = 'The Double Damage Power setting\'s byte value has been reset to 0 (was %1) - this setting has no effect.';
+$str['sch_editor_sch_upload_dd_d_fix'] = 'The Double Damage Delay setting has been reset to 0 (was %1) - this setting has no effect.';
+$str['sch_editor_sch_upload_dd_cp_fix'] = 'The Double Damage Crate Probability byte value has been reset to 0 (was %1) - this setting has no effect.';
+$str['sch_editor_sch_upload_freeze_p_fix'] = 'The Freeze\'s Power setting\'s byte value has been reset to 0 (was %1) - this setting has no effect.';
+$str['sch_editor_sch_upload_freeze_cp_fix'] = 'The Freeze\'s Crate Probability byte value has been reset to 0 (was %1) - this setting has no effect.';
+$str['sch_editor_sch_upload_sbb_p_fix'] = 'The Super Banana Bomb Power setting\'s byte value has been reset to 0 (was %1) - this setting has no effect.';
+$str['sch_editor_sch_upload_minestr_p_fix'] = 'The Mine Strike Power setting\'s byte value has been reset to 0 (was %1) - this setting has no effect.';
+$str['sch_editor_sch_upload_gsp_p_fix'] = 'The Girder Starter Pack Power setting\'s byte value has been reset to 0 (was %1) - this setting has no effect; you need to edit the Girder\'s Power setting.';
+$str['sch_editor_sch_upload_gsp_cp_fix'] = 'The Girder Starter Pack Crate Probability byte value has been reset to 0 (was %1) - this setting has no effect.';
+$str['sch_editor_sch_upload_eq_p_fix'] = 'The Earthquake Power setting\'s byte value has been reset to 0 (was %1) - this setting has no effect.';
+$str['sch_editor_sch_upload_scales_p_fix'] = 'The Scales of Justice Power setting\'s byte value has been reset to 0 (was %1) - this setting has no effect, and I actually wonder how you would have liked to change the default effects of that weapon anyway. =)';
+$str['sch_editor_sch_upload_mvase_p_fix'] = 'The Ming Vase Power setting\'s byte value has been reset to 0 (was %1) - this setting has no effect.';
+$str['sch_editor_sch_upload_mvase_cp_fix'] = 'The Ming Vase Crate Probability byte value has been reset to 0 (was %1) - this setting only has effect in wkLaserFix, which is for an older W:A version (3.6.29.0).';
+$str['sch_editor_sch_upload_carp_p_fix'] = 'The Mike\'s Carpet Bomb Power setting\'s byte value has been reset to 0 (was %1) - this setting has no effect.';
+$str['sch_editor_sch_upload_carp_cp_fix'] = 'The Mike\'s Carpet Bomb Crate Probability byte value has been reset to 0 (was %1) - this setting only has effect in wkLaserFix, which is for an older W:A version (3.6.29.0).';
+$str['sch_editor_sch_upload_bullet_p_fix'] = 'The Patsy\'s Magic Bullet Power setting\'s byte value has been reset to 0 (was %1) - this setting has no effect.';
+$str['sch_editor_sch_upload_nuke_p_fix'] = 'The Indian Nuclear Test Power setting\'s byte value has been reset to 0 (was %1) - this setting has no effect.';
+$str['sch_editor_sch_upload_sw_p_fix'] = 'The Select Worm Power setting\'s byte value has been reset to 0 (was %1) - this setting has no effect and would be useless anyway.';
+$str['sch_editor_sch_upload_sally_army_p_fix'] = 'The Salvation Army Power setting\'s byte value has been reset to 0 (was %1) - this setting has no effect.';
+$str['sch_editor_sch_upload_msquad_p_fix'] = 'The Mole Squadron Power setting\'s byte value has been reset to 0 (was %1) - this setting has no effect.';
+$str['sch_editor_sch_upload_mbbomb_p_fix'] = 'The MB Bomb Power setting\'s byte value has been reset to 0 (was %1) - this setting has no effect.';
+$str['sch_editor_sch_upload_cdonkey_p_fix'] = 'The Concrete Donkey Power setting\'s byte value has been reset to 0 (was %1) - this setting has no effect.';
+$str['sch_editor_sch_upload_sbomber_p_fix'] = 'The Suicide Bomber Power setting\'s byte value has been reset to 0 (was %1) - this setting has no effect; I always wondered why such a weak weapon is considered as a super weapon...';
+$str['sch_editor_sch_upload_sheepstr_p_fix'] = 'The French Sheep Strike Power setting\'s byte value has been reset to 0 (was %1) - this setting has no effect.';
+$str['sch_editor_sch_upload_mailstr_p_fix'] = 'The Mail Strike Power setting\'s byte value has been reset to 0 (was %1) - this setting has no effect.';
+$str['sch_editor_sch_upload_arma_p_fix'] = 'The Armageddon Power setting\'s byte value has been reset to 0 (was %1) - this setting has no effect.';
+
 // Scheme viewer
 $str['sch_editor_sch_viewer_title'] = 'View a Scheme:';
 $str['sch_editor_sch_viewer_by'] = 'by'; // It's on purpose that I didn't capitalize the "b".
@@ -338,35 +404,75 @@ $str['sch_editor_my_schemes_title'] = 'My Schemes';
 // Changelog
 $str['sch_editor_changelog'] = 'Changelog';
 $str['sch_editor_changelog_intro'] = 'Here\'s the scheme editor\'s changelog.';
+
+$str['sch_editor_changelog_v0_1_0_date'] = 'August 29th, 2012';
 $str['sch_editor_changelog_v0_1_0_item1'] = 'First release of the scheme editor, allowing the user to create a scheme and to download it. Available in French and English.';
+
+$str['sch_editor_changelog_v0_1_1_date'] = 'August 30th, 2012';
 $str['sch_editor_changelog_v0_1_1_item1'] = '[Improvement] On the scheme creation page: the first few numeric options now use text fields instead of option zones, as suggested by FFie (and with her help). Not finished yet.';
 $str['sch_editor_changelog_v0_1_1_item2'] = 'Created this changelog.';
+
+$str['sch_editor_changelog_v0_1_2_date'] = 'August 31st, 2012';
 $str['sch_editor_changelog_v0_1_2_item1'] = '[Fixed bug] The round time is now correctly stored if it is defined in seconds. In v0.1.0, the value was incorrectly stored (for example, the 90s value was stored as 39s); in v0.1.1, it was always stored in minutes.';
 $str['sch_editor_changelog_v0_1_2_item2'] = '[Fixed] Dates were always shown in French in this changelog.';
+
+$str['sch_editor_changelog_v0_2_0_date'] = 'September 1st, 2012';
 $str['sch_editor_changelog_v0_2_0_item1'] = '[Improvement] The creation form has been reorganised so it is smaller, as GreeN suggested.';
 $str['sch_editor_changelog_v0_2_0_item2'] = '[Improvement] Finished to apply FFie\'s suggestion.';
+
+$str['sch_editor_changelog_v0_2_1_date'] = 'September 3rd, 2012';
 $str['sch_editor_changelog_v0_2_1_item1'] = '[Fixed] Some values (Hotseat Delay, Land Retreat Time and Rope Retreat Time) could be set up to 255 in the editor while the real limit is 127.';
+
+$str['sch_editor_changelog_v0_3_0_date'] = 'September 14th, 2012';
 $str['sch_editor_changelog_v0_3_0_item1'] = '[Improvement] It is now possible to upload schemes on the database.';
+
+$str['sch_editor_changelog_v0_4_0_date'] = 'September 16th, 2012';
 $str['sch_editor_changelog_v0_4_0_item1'] = '[Improvement] Added the schemes list.';
+
+$str['sch_editor_changelog_v0_4_1_date'] = 'October 6th, 2012';
 $str['sch_editor_changelog_v0_4_1_item1'] = '[Fixed] After ingame testing, I realised that only the Land Retreat Time was limited to 127. The Hotseat Delay and the Rope Retreat Time can be set up to 255 again.';
 $str['sch_editor_changelog_v0_4_1_item2'] = '[Fixed] Uploaded schemes without any author name had an empty author field. Now, if no author name is given, the author name will be set to Anonymous.';
 $str['sch_editor_changelog_v0_4_1_item3'] = 'Plus some other minor fixes I\'ve released on the previous days and I didn\'t list.';
+
+$str['sch_editor_changelog_v0_4_2_date'] = 'October 24th, 2012';
 $str['sch_editor_changelog_v0_4_2_item1'] = '[Improvement] Added custom knocking force setting, RubberWorm v0.0.1.12\'s new feature.';
+
+$str['sch_editor_changelog_v0_5_0_date'] = 'November 5th, 2012';
 $str['sch_editor_changelog_v0_5_0_item1'] = '[Improvement] Example replays can now be attached to an uploaded scheme, and they\'re downloadable on the scheme list. (It should be possible to attach them to a scheme after its creation/upload in the future.) <em>(Downloading these replays actually didn\'t work: see explanation below.)</em>';
 $str['sch_editor_changelog_v0_5_0_item2'] = '[Fixed] Downloading a scheme with a parsed name now works succesfully. <em>(This "fix" actually broke scheme download entirely: the required file with the new function wasn\'t loaded on the page managing all scheme downloads - thus triggering a fatal error. Since the same "fix" was applied to replay downloads, it was broken as well.)</em>';
+
+$str['sch_editor_changelog_v0_5_1_date'] = 'December 1st, 2012';
 $str['sch_editor_changelog_v0_5_1_item1'] = '[Fixed] Scheme and replay downloading, accidentally broken in v0.5.0 even with schemes/replays which name doesn\'t need parsing, is now possible again.';
+
+$str['sch_editor_changelog_v0_5_2_date'] = 'January 13th, 2013';
 $str['sch_editor_changelog_v0_5_2_item1'] = '[Improvement] Added versions between 3.6.31.0 and 3.7.0.0 in the "Version Override" drop-down list, since it is possible to emulate them with RubberWorm v0.0.1.13.';
+
+$str['sch_editor_changelog_v0_5_2_date'] = 'January 14th, 2013';
 $str['sch_editor_changelog_v0_5_2a_item1'] = '[Minor fix] The Rope Retreat Time and the Hot Seat Delay were still limited to 127 in the uploading scheme part. They\'re now limited to 255.';
+
+$str['sch_editor_changelog_v0_6_0_date'] = 'February 14th, 2013';
 $str['sch_editor_changelog_v0_6_0_item1'] = '[Improvement] Example replays can now be attached after a scheme\'s creation or upload. Scheme authors can also decide who is allowed to upload replays (author only/everyone but there\'s an approvement system/everyone without approvements, though I can check from time to time or act upon request).';
 $str['sch_editor_changelog_v0_6_0_item2'] = '[Improvement] You can now attach more than 5 replays to a scheme, however you still only can upload 5 replays at once - if you want more, do it in two/three/four... times; I don\'t want my server to burn, you know. =)';
 $str['sch_editor_changelog_v0_6_0_item3'] = '[Fixed] The replay checking function has been slightly changed, because it used to block some valid replays while testing this version.';
+
+$str['sch_editor_changelog_v0_6_0a_date'] = 'March 5th, 2013';
 $str['sch_editor_changelog_v0_6_0a_item1'] = 'The English translation has been corrected by Clown.';
+
+$str['sch_editor_changelog_v0_6_0b_date'] = 'March 6th, 2013';
 $str['sch_editor_changelog_v0_6_0b_item1'] = '[Fixed bug] When creating a scheme, the Mine Fuse value was accidentally also saved as the Worm Placement value. <em>(In fact there was no Mine Fuse value at all; see the related fix in v0.6.1.)</em>';
+
+$str['sch_editor_changelog_v0_6_1_date'] = 'March 9th, 2013';
 $str['sch_editor_changelog_v0_6_1_item1'] = '[Fixed bug] An update on December 1st (the day where v0.5.1 was released) broke scheme creating; the database field storing example replays attaching permission was incorrectly called with an extra $ sign in front of its name. This is now fixed; scheme creating is working again. Credit goes to Patricio (a Chilean player) for reporting the bug.';
 $str['sch_editor_changelog_v0_6_1_item2'] = '[Fixed bug] Due to an error in the scheme creation validation script, the scheme password wasn\'t saved properly when creating a scheme.';
 $str['sch_editor_changelog_v0_6_1_item3'] = '[Fixed bug] Due to another error (blind copy-pasting, this time) in the scheme creation form, the Mine Fuse field actually allowed to input the Object Count value a second time.';
 $str['sch_editor_changelog_v0_6_1_item4'] = '[Fixed bug] For schemes requiring v3.7.0.0 (due to emulating a version between 3.6.31.0 and 3.7.0.0), the required version string called v3.7.0.0 "3.6.32.0".';
 $str['sch_editor_changelog_v0_6_1_item5'] = '[Fixed bug] Schemes without name were indeed named "Unnamed_scheme" when creating the file, but this wasn\'t stored in the database. As a result, it wasn\'t possible to download them. There again, thanks to Patricio for letting me know about this.';
+
+$str['sch_editor_changelog_v0_6_2_date'] = 'March 11th, 2013';
+$str['sch_editor_changelog_v0_6_2_item1'] = '[Change] When uploading a scheme with an invalid Stockpiling Mode value, the default is now to disable Stockpiling, rather than enabling Anti-Stockpiling mode.';
+$str['sch_editor_changelog_v0_6_2_item2'] = '[Change] Strings from the this page and the scheme uploading form validating page have been moved to the string files. This makes the translation process much easier, because strings aren\'t scattered in several files anymore. This also had the effet of decreasing the form validating page\'s size sigificantly. While I was at it, I also fixed some of the moved strings.';
+$str['sch_editor_changelog_v0_6_2_item3'] = '[Fixed bug] When uploading a scheme with an Initial Worm Energy byte value set to 0, this value wasn\'t change to 1 in the scheme file, despite the message saying otherwise.';
+$str['sch_editor_changelog_v0_6_2_item4'] = '[Fixed bug] When uploading a scheme, the Override Version RubberWorm setting didn\'t set the Required Version database field properly: it didn\'t detect v3.6.29.0 or v3.7.0.0, and didn\'t say that RubberWorm was required for versions emulatable with v3.6.28.0 or v3.6.29.0.';
 
 // Link to the page that allows us to select another language
 $str['sch_editor_change_language'] = 'Select Another Language';
