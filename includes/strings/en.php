@@ -447,7 +447,7 @@ $str['sch_editor_changelog_v0_5_1_item1'] = '[Fixed] Scheme and replay downloadi
 $str['sch_editor_changelog_v0_5_2_date'] = 'January 13th, 2013';
 $str['sch_editor_changelog_v0_5_2_item1'] = '[Improvement] Added versions between 3.6.31.0 and 3.7.0.0 in the "Version Override" drop-down list, since it is possible to emulate them with RubberWorm v0.0.1.13.';
 
-$str['sch_editor_changelog_v0_5_2_date'] = 'January 14th, 2013';
+$str['sch_editor_changelog_v0_5_2a_date'] = 'January 14th, 2013';
 $str['sch_editor_changelog_v0_5_2a_item1'] = '[Minor fix] The Rope Retreat Time and the Hot Seat Delay were still limited to 127 in the uploading scheme part. They\'re now limited to 255.';
 
 $str['sch_editor_changelog_v0_6_0_date'] = 'February 14th, 2013';
