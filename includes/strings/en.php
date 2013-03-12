@@ -439,7 +439,7 @@ $str['sch_editor_changelog_v0_4_2_item1'] = '[Improvement] Added custom knocking
 
 $str['sch_editor_changelog_v0_5_0_date'] = 'November 5th, 2012';
 $str['sch_editor_changelog_v0_5_0_item1'] = '[Improvement] Example replays can now be attached to an uploaded scheme, and they\'re downloadable on the scheme list. (It should be possible to attach them to a scheme after its creation/upload in the future.) <em>(Downloading these replays actually didn\'t work: see explanation below.)</em>';
-$str['sch_editor_changelog_v0_5_0_item2'] = '[Fixed] Downloading a scheme with a parsed name now works succesfully. <em>(This "fix" actually broke scheme download entirely: the required file with the new function wasn\'t loaded on the page managing all scheme downloads - thus triggering a fatal error. Since the same "fix" was applied to replay downloads, it was broken as well.)</em>';
+$str['sch_editor_changelog_v0_5_0_item2'] = '[Fixed] Downloading a scheme with a parsed name now works succesfully. <em>(This "fix" actually broke scheme download entirely: the required file with the new function wasn\'t loaded on the page managing all scheme downloads - thus triggering a fatal error. Since the same "fix" was applied to replay download, it was broken as well.)</em>';
 
 $str['sch_editor_changelog_v0_5_1_date'] = 'December 1st, 2012';
 $str['sch_editor_changelog_v0_5_1_item1'] = '[Fixed] Scheme and replay downloading, accidentally broken in v0.5.0 even with schemes/replays which name doesn\'t need parsing, is now possible again.';
