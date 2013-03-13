@@ -66,7 +66,9 @@ $str['default'] = 'Default';
 $str['delay'] = 'Delay';
 $str['health_points_abbr'] = 'HP';
 $str['hint'] = 'Hint';
-$str['infinite'] = 'Inf.';
+$str['infinite'] = 'Inf.'; // Either abbreviated or not, depending of how long "Infinite" is in your language.
+$str['infinite_abbr'] = 'Inf.'; // The previous string isn't abbreviated in French; hence the repeat in English.
+$str['invalid_value'] = 'Invalid Value';
 $str['manual'] = 'Manual';
 $str['mines'] = 'Mines';
 $str['none'] = 'None';
@@ -216,10 +218,10 @@ $str['sch_editor_rubber_speed'] = 'Speed';
 $str['sch_editor_rubber_speed_hint'] = 'You can edit objects\' max speed. 16: default, 32: like in current Test Stuff, 255: no limit, like in TS3. Requires RubberWorm for 3.6.31.0 or later.';
 $str['sch_editor_rubber_anti_worm_sink'] = 'Anti Worm Sink';
 $str['sch_editor_rubber_anti_worm_sink_hint'] = 'When a worm sinks, it\'ll respawn where it was before falling into the water. If it sinks again after respawning, then it\'ll die.';
-$str['sch_editor_rubber_swat'] = 'Select Worm Anytime during the Turn';
+$str['sch_editor_rubber_swat'] = 'Select Worm at Anytime during the Turn';
 $str['sch_editor_rubber_swat_hint'] = 'If you can manually select the worm that will play at the beginning of the turn, then with this setting enabled you can select another worm at anytime during any turn. Otherwise, you can only use this feature during a turn where you used the Select Worm weapon; it will last until the end of the current turn (like Low Gravity or Fast Walk for example). Requires RubberWorm for 3.6.31.0 or later.';
-$str['sch_editor_rubber_air_viscosity'] = 'Air Viscosity';
-$str['sch_editor_rubber_air_viscosity_hint'] = 'Here you can set how fast a flying object loses velocity. If you set an odd value, worms will be affected too.';
+$str['sch_editor_rubber_air_resistance'] = 'Air Resistance';
+$str['sch_editor_rubber_air_resistance_hint'] = 'Here you can set how fast a flying object loses velocity. If you set an odd value, worms will be affected too.';
 $str['sch_editor_rubber_gravity_modifications'] = 'Gravity Modifications';
 $str['sch_editor_rubber_gravity_modifications_hint'] = 'Here, you can do several things: you can alter the gravity ("grav##" settings) so it is stronger or lower, but not only. You can also reverse that gravity ("grav-##" settings), so worms will walk on the roof (walking is buggy thought), or even create a black hole. It will appear on the center of the map and will attract or push every objects and worms. Its attraction is either constant (meaning it is the same everywhere on the map: "cbh(-)##" settings) or proportional (the farther from the black hole the object is, the less it is attracted: "pbh(-)##" settings).';
 $str['sch_editor_rubber_wind_influence'] = 'Wind Influence';
@@ -354,13 +356,36 @@ $str['sch_editor_sch_viewer_sch_desc'] = 'Description:';
 
 $str['sch_editor_sch_view_action_replays'] = 'I. Replays'; // This string should be as short as this.
 
+$str['sch_editor_sch_viewer_no_weapons'] = 'There are no weapons in this scheme.';
+
 $str['sch_editor_sch_viewer_error_title'] = 'Scheme Viewing Error';
 $str['sch_editor_sch_viewer_error_scheme_not_found'] = 'Scheme not found.';
 $str['sch_editor_sch_viewer_error_no_id_specified'] = 'Errm, what scheme do you want me to load? I mean, I can\'t load schemes without an ID, a bit like calculators can\'t multiply any numbers if these numbers are not specified... (Well, I hope you got my point.)';
 $str['sch_editor_sch_viewer_error_invalid_sch_signature'] = 'Invalid scheme signature. There, how did that file land on this server, if it had an invalid signature? :O';
 
+$str['sch_editor_sch_viewer_weapon_column'] = '<abbr title="Weapon">W</abbr>';
+$str['sch_editor_sch_viewer_ammo_column'] = '<abbr title="Ammunition">A</abbr>';
+$str['sch_editor_sch_viewer_power_column'] = '<abbr title="Power">P</abbr>';
+$str['sch_editor_sch_viewer_delay_column'] = '<abbr title="Delay">D</abbr>';
+$str['sch_editor_sch_viewer_crate_prob_column'] = '<abbr title="Crate Probability">CP</abbr>';
+
+$str['sch_editor_sch_viewer_double_damage'] = 'Double Damage'; // Feel free to add a non-breaking space at the end of this string if your language needs one before ":" (a non-breaking space's can be typed with Alt+255).
+$str['sch_editor_sch_viewer_jp_power_hint'] = '(In fuel units.)';
+
+$str['sch_editor_sch_viewer_not_a_rubber_scheme'] = 'This scheme isn\'t a RubberWorm scheme.';
+$str['sch_editor_sch_viewer_with_crate_count_enabled'] = 'with Crate Count enabled';
+$str['sch_editor_sch_viewer_rubber_no_friction'] = 'No Friction';
+$str['sch_editor_sch_viewer_rubber_black_hole'] = 'Black Hole';
+$str['sch_editor_sch_viewer_rubber_version_override'] = 'Emulated Version';
+$str['sch_editor_sch_viewer_rubber_air_resistance_63'] = 'Identical to water\'s';
+$str['sch_editor_sch_viewer_rubber_affects_worms'] = 'affects both worms and objects';
+$str['sch_editor_sch_viewer_rubber_affects_objects'] = 'only affects objects';
+$str['sch_editor_sch_viewer_rubber_wind_influence_bazooka'] = 'Identical to the one applied to a Bazooka shell';
+$str['sch_editor_sch_viewer_rubber_proportional_black_hole'] = 'Proportional';
+$str['sch_editor_sch_viewer_rubber_central_black_hole'] = 'Central';
+
 // Upload example replays
-$str['sch_editor_sch_replay_uploader_title'] = 'Attach Example Replays to scheme'; // This string is completed by " #$id ($name $by $author)" - yes, the $by differs between languages.
+$str['sch_editor_sch_replay_uploader_title'] = 'Attach Example Replays to Scheme'; // This string is completed by " #$id ($name $by $author)" - yes, the $by differs between languages.
 $str['sch_editor_sch_replay_uploader_intro'] = 'Have good example replays to show how this scheme works? Well, just upload them!';
 $str['sch_editor_sch_replay_uploader_successful'] = 'Replays Successfully Uploaded.';
 $str['sch_editor_sch_replay_uploader_authoring_submit_button'] = 'Go!'; // By "authoring" I mean, typing the scheme author's name and his password. And this string corresponds to the text that appears on the submit button at the bottom of that "authoring" form.
@@ -370,7 +395,7 @@ $str['sch_editor_sch_replay_uploader_button'] = 'Send us these replays';
 $str['sch_editor_sch_replay_uploader_error_uatginam'] = 'Nice try getting me there :P.'; // UATGINAM = Uploading Although The Guy Is Not A Member.
 
 // Example replays approving interface
-$str['sch_editor_sch_replay_approving_interface_title'] = 'Approving Pending Example Replays for Scheme'; // Same as line 293.
+$str['sch_editor_sch_replay_approving_interface_title'] = 'Approving Pending Example Replays for Scheme'; // Same as line 374.
 $str['sch_editor_sch_replay_approving_interface_please_enter_sch_pwd'] = 'Please enter the scheme password';
 
 $str['sch_editor_sch_replay_approving_interface_please_login'] = 'Please log in to approve/reject replays (since the scheme\'s author is a member).';
@@ -473,6 +498,11 @@ $str['sch_editor_changelog_v0_6_2_item1'] = '[Change] When uploading a scheme wi
 $str['sch_editor_changelog_v0_6_2_item2'] = '[Change] Strings from the this page and the scheme uploading form validating page have been moved to the string files. This makes the translation process much easier, because strings aren\'t scattered in several files anymore. This also had the effet of decreasing the form validating page\'s size sigificantly. While I was at it, I also fixed some of the moved strings.';
 $str['sch_editor_changelog_v0_6_2_item3'] = '[Fixed bug] When uploading a scheme with an Initial Worm Energy byte value set to 0, this value wasn\'t change to 1 in the scheme file, despite the message saying otherwise.';
 $str['sch_editor_changelog_v0_6_2_item4'] = '[Fixed bug] When uploading a scheme, the Override Version RubberWorm setting didn\'t set the Required Version database field properly: it didn\'t detect v3.6.29.0 or v3.7.0.0, and didn\'t say that RubberWorm was required for versions emulatable with v3.6.28.0 or v3.6.29.0.';
+
+$str['sch_editor_changelog_v0_7_0_date'] = 'March 13th, 2012';
+$str['sch_editor_changelog_v0_7_0_item1'] = '[Improvement] Added the scheme viewer, so you can now view a scheme before downloading it.';
+$str['sch_editor_changelog_v0_7_0_item2'] = '[Fixed] The Air Viscosity option has been renamed to Air Resistance, for more consistency with what actually happens in-game (thanks to Deadcode).';
+$str['sch_editor_changelog_v0_7_0_item3'] = '[Fixed bug] The Scheme Upload validating page did not recognize the Custom Knocking force (Super Banana\'s Crate Probability) as a RubberWorm setting.';
 
 // Link to the page that allows us to select another language
 $str['sch_editor_change_language'] = 'Select Another Language';

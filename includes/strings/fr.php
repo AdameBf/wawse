@@ -67,6 +67,8 @@ $str['delay'] = 'Délai';
 $str['health_points_abbr'] = 'PV';
 $str['hint'] = 'Infos';
 $str['infinite'] = 'Infini';
+$str['infinite_abbr'] = 'Inf.';
+$str['invalid_value'] = 'Valeur invalide';
 $str['manual'] = 'Manuel';
 $str['mines'] = 'Mines';
 $str['none'] = 'Aucun';
@@ -205,8 +207,8 @@ $str['sch_editor_rubber_gravity_modifications'] = 'Modifications de la gravité';
 $str['sch_editor_rubber_gravity_modifications_hint'] = 'Là, vous avez pas mal de possibilités : vous pouvez augmenter ou diminuer la gravité de base en effet (options "grav##"), mais pas seulement. Vous pouvez aussi inverser cette gravité (options "grav-##"), ce qui fait que les vers marcheront au plafond (les déplacements sont difficiles cependant), ou bien encore, créer un trou noir. Celui-ci se trouvera au centre de la map et attirera ou repoussera tous les objets et les vers vers lui. Son attraction est soit constante (partout la même sur la carte, options "cbh(-)##") soit proportionnelle (plus l\'objet est loin moins l\'attraction est importante, options "pbh(-)##").';
 $str['sch_editor_rubber_swat'] = 'Sélection de ver n\'importe quand pendant le tour';
 $str['sch_editor_rubber_swat_hint'] = 'Si la sélection du ver au début du tour est manuelle, vous pourrez changer de ver à tout moment pendant votre tour. Sinon, vous ne pourrez changer de ver qu\'une fois avoir utilisé l\'arme sélection de ver, les effets ne durant qu\'un tour (un peu comme pour la faible pesanteur ou la marche rapide). Requiert RubberWorm31.';
-$str['sch_editor_rubber_air_viscosity'] = 'Perte de vitesse dans l\'air';
-$str['sch_editor_rubber_air_viscosity_hint'] = 'Ici, vous pouvez définir la vitesse à laquelle un objet volant perd de la vitesse. Si la valeur est impaire, alors cela s\'applique également aux vers.';
+$str['sch_editor_rubber_air_resistance'] = 'Perte de vitesse dans l\'air';
+$str['sch_editor_rubber_air_resistance_hint'] = 'Ici, vous pouvez définir la vitesse à laquelle un objet volant perd de la vitesse. Si la valeur est impaire, alors cette option s\'applique également aux vers.';
 $str['sch_editor_rubber_wind_influence'] = 'Influence du vent sur les objets';
 $str['sch_editor_rubber_wind_influence_hint'] = 'Ici, vous pouvez définir à quel point le vent influe sur certains objets volants. Si la valeur est impaire, alors cette influence s\'applique aussi aux vers. Une valeur de 255 fera en sorte que tous les objets (en dehors des caisses, des tombes, des barils...) et les vers soient aussi sensibles au vent qu\'un missile de Bazooka.';
 $str['sch_editor_rubber_worms_bounciness'] = 'Taux de rebondissement des vers';
@@ -357,7 +359,30 @@ $str['sch_editor_sch_view_action_replays'] = 'Repl. inst.';
 $str['sch_editor_sch_viewer_error_title'] = 'Erreur de visionnage de scheme';
 $str['sch_editor_sch_viewer_error_scheme_not_found'] = 'Scheme inexistant.';
 $str['sch_editor_sch_viewer_error_no_id_specified'] = 'Euh, vous voulez que je charge quel scheme, au juste ? Si vous ne m\'indiquez pas d\'ID je ne peux pas faire grand chose.';
-$str['sch_editor_sch_viewer_error_invalid_sch_signature'] = 'Signature du fichier scheme invalide (mais comment l\'auteur a-t-il pu envoyer ou créer ce scheme, si on a vérifié/créé de manière valide ?).';
+$str['sch_editor_sch_viewer_error_invalid_sch_signature'] = 'Signature du fichier scheme invalide (mais comment l\'auteur a-t-il pu envoyer ou créer ce scheme, si on l\'a vérifié/créé de manière valide ?).';
+
+$str['sch_editor_sch_viewer_no_weapons'] = 'Il n\'y a aucune arme dans ce scheme.';
+
+$str['sch_editor_sch_viewer_weapon_column'] = '<abbr title="Arme">A</abbr>';
+$str['sch_editor_sch_viewer_ammo_column'] = '<abbr title="Munitions">M</abbr>';
+$str['sch_editor_sch_viewer_power_column'] = '<abbr title="Puissance">P</abbr>';
+$str['sch_editor_sch_viewer_delay_column'] = '<abbr title="Délai">D</abbr>';
+$str['sch_editor_sch_viewer_crate_prob_column'] = '<abbr title="Probabilité de trouver cette arme dans une caisse">PC</abbr>';
+
+$str['sch_editor_sch_viewer_double_damage'] = 'Dégâts doublés ';
+$str['sch_editor_sch_viewer_jp_power_hint'] = '(En unités de carburant.)';
+
+$str['sch_editor_sch_viewer_not_a_rubber_scheme'] = 'Ce scheme n\'a pas d\'option spécifique à Rubber Worm.';
+$str['sch_editor_sch_viewer_with_crate_count_enabled'] = 'avec compteur de caisses activé';
+$str['sch_editor_sch_viewer_rubber_no_friction'] = 'Pas de friction';
+$str['sch_editor_sch_viewer_rubber_black_hole'] = 'Trou noir ';
+$str['sch_editor_sch_viewer_rubber_version_override'] = 'Version émulée ';
+$str['sch_editor_sch_viewer_rubber_air_resistance_63'] = 'Identique à la perte de vitesse dans l\'eau';
+$str['sch_editor_sch_viewer_rubber_affects_worms'] = 'affecte aussi bien les vers que les objets';
+$str['sch_editor_sch_viewer_rubber_affects_objects'] = 'n\'affecte que les objets';
+$str['sch_editor_sch_viewer_rubber_wind_influence_bazooka'] = 'Identique à celle exercée sur un projectile de bazooka';
+$str['sch_editor_sch_viewer_rubber_proportional_black_hole'] = 'Proportionnel';
+$str['sch_editor_sch_viewer_rubber_central_black_hole'] = 'Central';
 
 // Upload example replays
 $str['sch_editor_sch_replay_uploader_title'] = 'Attacher des replays de démonstration au scheme'; // This string is completed by " #$id ($name $by $author)" - yep, the $by differs between languages.
@@ -473,6 +498,11 @@ $str['sch_editor_changelog_v0_6_2_item1'] = '[Changement] Lorsque vous importez 
 $str['sch_editor_changelog_v0_6_2_item2'] = '[Changement] Les chaînes de caractères qui étaient sauvegardées sur cette page et la page de validation de l\'importation de scheme ont été déplacées vers les fichiers de traduction. Cela permet de rendre la tâche de traduction moins complexe, étant donné que les chaînes de caractères ne sont plus séparés dans plusieurs fichiers. Cela a également eu l\'effet de réduire significativement la taille de la page de validation du formulaire d\'importation ou de création de schemes. Enfin, tant que j\'y étais, j\'ai également corrigé certaines des chaînes de caractères déplacées.';
 $str['sch_editor_changelog_v0_6_2_item3'] = '[Correction de bug] Lorsque vous importiez un scheme avec une énergie de départ des vers de 0, la valeur n\'était pas remise à 1 dans le fichier, contrairement à ce qu\'indiquait le message.';
 $str['sch_editor_changelog_v0_6_2_item4'] = '[Correction de bug] Lorsque vous importiez un scheme, l\'option "Émuler une ancienne version" ne définissait pas la version requise correctement : elle ne détectait pas la v3.6.29.0 ou la v3.7.0.0, et ne disait pas que RubberWorm était requis pour les versions émulables avec la v3.6.28.0 ou la v3.6.29.0.';
+
+$str['sch_editor_changelog_v0_7_0_date'] = '13 mars 2013';
+$str['sch_editor_changelog_v0_7_0_item1'] = '[Amélioration] Vous pouvez désormais voir les options d\'un scheme avant de le télécharger.';
+$str['sch_editor_changelog_v0_7_0_item2'] = '[Correction] En anglais, l\'option "Air Viscosity" a changé de nom ; elle s\'appelle désormais "Air Resistance". Ce changement a été fait pour des raisons de cohérence par rapport à la façon dont le jeu applique ce paramètre physique (merci Deadcode).';
+$str['sch_editor_changelog_v0_7_0_item3'] = '[Correction de bug] La page de validation de l\'importation d\'un scheme ne reconaissait pas la force de poussée à la corde personnalisée (<em>"rope knocking"</em>) comme une option de RubberWorm.';
 
 // Link to the page that allows us to select another language
 $str['sch_editor_change_language'] = 'Changer de langue';

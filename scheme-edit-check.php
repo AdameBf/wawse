@@ -500,7 +500,7 @@ if (isset($_POST['action']))
 		$rubber_crate_rate = (int) $_POST['rubber_crate_rate'];
 		$rubber_version_override = (int) $_POST['rubber_version_override'];
 		$rubber_friction = (int) $_POST['rubber_friction'];
-		$rubber_air_viscosity = (int) $_POST['rubber_air_viscosity'];
+		$rubber_air_resistance = (int) $_POST['rubber_air_resistance'];
 		$rubber_wind_influence = (int) $_POST['rubber_wind_influence'];
 		$rubber_gravity_modifications = (int) $_POST['rubber_gravity_modifications'];
 		$rubber_worms_bounciness = (int) $_POST['rubber_worms_bounciness'];
@@ -641,7 +641,7 @@ if (isset($_POST['action']))
 		$version_required_array[] = 32;
 		}
 	
-		$rubber_settings = array(0, $rubber_knocking_force, $rubber_speed, 0, $rubber_earthquake, $rubber_flames_limit, 0, 0, $rubber_crate_limit, $rubber_crate_rate, $rubber_version_override, $rubber_friction, $rubber_mole_squadron, $rubber_swat, $rubber_air_viscosity, $rubber_wind_influence, $rubber_anti_sink, $rubber_gravity_modifications, $rubber_worms_bounciness);
+		$rubber_settings = array(0, $rubber_knocking_force, $rubber_speed, 0, $rubber_earthquake, $rubber_flames_limit, 0, 0, $rubber_crate_limit, $rubber_crate_rate, $rubber_version_override, $rubber_friction, $rubber_mole_squadron, $rubber_swat, $rubber_air_resistance, $rubber_wind_influence, $rubber_anti_sink, $rubber_gravity_modifications, $rubber_worms_bounciness);
 
 		$rubber_max_value = max($rubber_settings);
 		if ($rubber_max_value === 0)
@@ -1031,7 +1031,7 @@ if (isset($_POST['action']))
 						}
 						break;
 						
-						case 232: case 240: case 276: // Rubber 31 settings
+						case 228: case 232: case 240: case 276: // Rubber 31 settings
 						if (ord($file_content[$i]) !== 0)
 						{
 						$version_required_array[] = 31;
@@ -1039,7 +1039,7 @@ if (isset($_POST['action']))
 						}
 						break;
 						
-						case 244: // Flames limit, setting ported from LaserFix
+						case 244: // Flames Limit, setting ported from LaserFix
 						if (ord($file_content[$i]) !== 0)
 						{
 						$laser_fix_enabled = true;
@@ -1047,7 +1047,7 @@ if (isset($_POST['action']))
 						}
 						break;
 						
-						case 264: // Version emulation.
+						case 264: // Version Emulation.
 						if (ord($file_content[$i]) != 0)
 						{
 							$rubber_required = true;

@@ -239,7 +239,7 @@ function replayFileCheck($file) // Warning, this function hasn't been tested yet
 
 function echoWaterRiseSpeedTitleAttribute($byte_value) // Doesn't work; this will need some further investigating.
 {
-	$value = (pow($byte_value, 2) * 5) / 2;
+	$value = (pow(ord($byte_value), 2) * 5) / 2;
 	
 	if ($value != 0 && $value != 5 && $value != 20 && $value != 45)
 	{
@@ -310,6 +310,62 @@ function crateProbabilitiesPercentages($weapon_crates_byte, $health_crates_byte,
 		
 		$results = array($weapon_crates, $health_crates, $utility_crates);
 		return $results;
+	}
+}
+
+function weaponsInScheme($scheme_file_content) // Checks whether or not a scheme contains any weapons ammunition and crate probabilities.
+{
+	$bytes_array = array(); // This array will contain every weapon's ammuntion and every regular weapon's crate probability.
+
+	// Weapons ammunition.
+	$i = 0;
+	while ($i < 63)
+	{
+		$bytes_array[] = ord($scheme_file_content[41 + $i * 4]);
+		$i++;
+	}
+	
+	// Regular weapons crate probabilities.
+	$i = 0;
+	while ($i < 38)
+	{
+		$bytes_array[] = ord($scheme_file_content[44 + $i * 4]);
+		$i++;
+	}
+
+	// Checking if any of all those values exceeds 0.
+	if (max($bytes_array) == 0)
+	{
+		return false;
+	}
+	else
+	{
+		return true;
+	}
+}
+
+function isRubberScheme($scheme_file_content) // Checks whether or not a scheme is a RubberWorm scheme.
+{
+	$bytes_array = array(); // This array will contain every super weapon's crate probability that stores one or more RubberWorm settings.
+	
+	$i = 46;
+	while ($i < 64)
+	{
+		if ($i != 48 AND $i != 51 AND $i != 52)
+		{
+			$bytes_array[] = ord($scheme_file_content[44 + $i * 4]);
+		}
+
+		$i++;
+	}
+	
+	if (max($bytes_array) == 0)
+	{
+		return false;
+	}
+	else
+	{
+		return true;
 	}
 }
 ?>
