@@ -9,37 +9,20 @@ ini_set('session.use_trans_sid', '0');
 ini_set('url_rewriter.tags', '');
 session_start();
 
-if (isset($_COOKIE['wa_sch_edit_lang']))
+if (isset($_SESSION['wa_sch_edit_lang']))
 {
-	if ($_COOKIE['wa_sch_edit_lang'] === 'fr')
-	{
-	include('includes/strings/fr.php');
-	$language = 'fr';
-	}
-	else
-	{
-	include('includes/strings/en.php');
-	$language = 'en';
-	}
+	$language = setLanguage($_SESSION['wa_sch_edit_lang']);
 }
-else if (isset($_SESSION['wa_sch_edit_lang']))
+else if (isset($_COOKIE['wa_sch_edit_lang']))
 {
-	if ($_SESSION['wa_sch_edit_lang'] === 'fr')
-	{
-	include('includes/strings/fr.php');
-	$language = 'fr';
-	}
-	else
-	{
-	include('includes/strings/en.php');
-	$language = 'en';
-	}
+	$language = setLanguage($_COOKIE['wa_sch_edit_lang']);
 }
 else
 {
-include('includes/strings/en.php');
 $language = 'en';
 }
+
+include('includes/strings/'.$language.'.php');
 
 $parent_directory = 2;
 
@@ -589,59 +572,74 @@ if (isset($_POST['action']))
 	
 		if (!isset($_POST['rubber_sdet']))
 		{
-		$rubber_mole_squadron += 1;
+			$rubber_mole_squadron += 1;
 		}
 		if (!isset($_POST['rubber_ldet']))
 		{
-		$rubber_mole_squadron += 2;
+			$rubber_mole_squadron += 2;
 		}
 		if (isset($_POST['rubber_fdpt']))
 		{
-		$rubber_mole_squadron += 4;
+			$rubber_mole_squadron += 4;
 		}
 		if (isset($_POST['rubber_improved_rope']))
 		{
-		$rubber_mole_squadron += 8;
+			$rubber_mole_squadron += 8;
 		}
 		if (isset($_POST['rubber_ccs']))
 		{
-		$rubber_mole_squadron += 16;
+			$rubber_mole_squadron += 16;
 		}
 		if (isset($_POST['rubber_ope']))
 		{
-		$rubber_mole_squadron += 32;
-		$version_required_array[] = 31;
+			$rubber_mole_squadron += 32;
+			$version_required_array[] = 31;
 		}
 		if (isset($_POST['rubber_wdca']))
 		{
-		$rubber_mole_squadron += 64;
-		$version_required_array[] = 31;
+			$rubber_mole_squadron += 64;
+			$version_required_array[] = 31;
 		}
 		if (isset($_POST['rubber_fuseex']))
 		{
-		$rubber_mole_squadron += 128;
-		$version_required_array[] = 31;
+			$rubber_mole_squadron += 128;
+			$version_required_array[] = 31;
 		}
 
 		if ($rubber_flames_limit !== 0)
 		{
-		$laser_fix_enabled = true;
-		$version_required_array[] = 29;
+			$laser_fix_enabled = true;
+			$version_required_array[] = 29;
 		}
 		if ($rubber_speed !== 0 OR $rubber_version_override > 82 OR $rubber_knocking_force !== 0)
 		{
-		$version_required_array[] = 31;
+			$version_required_array[] = 31;
 		}
 		if ($rubber_version_override > 76)
 		{
-		$version_required_array[] = 29;
+			$version_required_array[] = 29;
 		}
 		if ($rubber_version_override > 167)
 		{
-		$version_required_array[] = 32;
+			$version_required_array[] = 32;
+		}
+		if ($rubber_version_override > 251)
+		{
+			$version_required_array[] = 33;
+		}
+		
+		if ($rubber_version_override > 255)
+		{
+			// Then 2 bytes will be used to store the version number.
+			$rubber_version_override -= 256; // Select Worm Crate Probability Byte Value.
+			$rubber_version_override_2 = 1; // Freeze Crate Probability Byte Value.
+		}
+		else
+		{
+			$rubber_version_override_2 = 0; // Freeze Crate Probability.
 		}
 	
-		$rubber_settings = array(0, $rubber_knocking_force, $rubber_speed, 0, $rubber_earthquake, $rubber_flames_limit, 0, 0, $rubber_crate_limit, $rubber_crate_rate, $rubber_version_override, $rubber_friction, $rubber_mole_squadron, $rubber_swat, $rubber_air_resistance, $rubber_wind_influence, $rubber_anti_sink, $rubber_gravity_modifications, $rubber_worms_bounciness);
+		$rubber_settings = array($rubber_version_override_2, $rubber_knocking_force, $rubber_speed, 0, $rubber_earthquake, $rubber_flames_limit, 0, 0, $rubber_crate_limit, $rubber_crate_rate, $rubber_version_override, $rubber_friction, $rubber_mole_squadron, $rubber_swat, $rubber_air_resistance, $rubber_wind_influence, $rubber_anti_sink, $rubber_gravity_modifications, $rubber_worms_bounciness);
 
 		$rubber_max_value = max($rubber_settings);
 		if ($rubber_max_value === 0)
@@ -693,6 +691,10 @@ if (isset($_POST['action']))
 		{
 		$version_required_string = '3.7.0.0';
 		}
+		else if ($version_required == 33)
+		{
+		$version_required_string = '3.7.2.1';
+		}
 		else
 		{
 		$version_required_string = '3.6.'.$version_required.'.0 Beta';
@@ -706,9 +708,9 @@ if (isset($_POST['action']))
 		{
 		$version_required_string = '3.6.31.0 with RubberWorm31';
 		}
-		if ($laser_fix_enabled) // Flames limit feature - should be shortened ideally.
+		if ($laser_fix_enabled) // Flames limit feature.
 		{
-		$version_required_string = '3.6.29.0 with Laser Fix, 3.6.31.0 with RubberWorm31 or 3.7.0.0 with RubberWorm';
+		$version_required_string = '3.6.29.0 with Laser Fix or 3.6.31.0+ with RubberWorm';
 		}
 	
 		if (isset($magic_number))
@@ -1047,11 +1049,29 @@ if (isset($_POST['action']))
 						}
 						break;
 						
+						case 224:
+						if (ord($file_content[$i]) != 0)
+						{
+							$rubber_required = true;
+							$version_required_array[] = 33;
+							
+							if (ord($file_content[$i]) != 1)
+							{
+								$old_value = ord($file_content[$i]);
+								$file_content[$i] = chr(1); // I'm not including any error message for now.
+							}
+						}
+						break;
+						
 						case 264: // Version Emulation.
 						if (ord($file_content[$i]) != 0)
 						{
 							$rubber_required = true;
-							if (ord($file_content[$i]) > 167)
+							if (ord($file_content[$i]) > 251)
+							{
+								$version_required_array[] = 33;
+							}
+							else if (ord($file_content[$i]) > 167)
 							{
 								$version_required_array[] = 32;
 							}
@@ -1066,6 +1086,12 @@ if (isset($_POST['action']))
 							else
 							{
 								$version_required_array[] = 28;
+							}
+							
+							if (ord($file_content[224]) == 1 AND ord($file_content[$i]) > 44)
+							{
+								$old_value = ord($file_content[$i]);
+								$file_content[$i] = chr(44);
 							}
 						}
 						break;
@@ -1159,7 +1185,7 @@ if (isset($_POST['action']))
 							}
 						break;
 						
-						case 200: case 202: case 204: case 206: case 208: case 210: case 212: case 214: case 216: case 218: case 219: case 220: case 222: case 224: case 226: case 230: case 234: case 236: case 238: case 242: case 246: case 248: case 250: case 252: case 254: case 258: case 262: case 266: case 270: case 274: case 278: case 282: case 286: case 290: case 294: // Unused bytes (there are 35 of them!)
+						case 200: case 202: case 204: case 206: case 208: case 210: case 212: case 214: case 216: case 218: case 219: case 220: case 222: case 226: case 230: case 234: case 236: case 238: case 242: case 246: case 248: case 250: case 252: case 254: case 258: case 262: case 266: case 270: case 274: case 278: case 282: case 286: case 290: case 294: // Unused bytes (there are 34 of them!).
 							if (ord($file_content[$i]) !== 0)
 							{
 							$old_value = ord($file_content[$i]);
@@ -1216,10 +1242,6 @@ if (isset($_POST['action']))
 								else if ($i === 222)
 								{
 									$fixes[] = str_replace('%1', $old_value, $str['sch_editor_sch_upload_freeze_p_fix']);
-								}
-								else if ($i === 224)
-								{
-									$fixes[] = str_replace('%1', $old_value, $str['sch_editor_sch_upload_freeze_cp_fix']);
 								}
 								else if ($i === 226)
 								{
@@ -1352,6 +1374,10 @@ if (isset($_POST['action']))
 					else if ($version_required == 32)
 					{
 						$version_required_string = '3.7.0.0';
+					}
+					else if ($version_required == 33)
+					{
+						$version_required_string = '3.7.2.1';
 					}
 					else
 					{

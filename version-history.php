@@ -9,37 +9,20 @@ ini_set('session.use_trans_sid', '0');
 ini_set('url_rewriter.tags', '');
 session_start();
 
-if (isset($_COOKIE['wa_sch_edit_lang']))
+if (isset($_SESSION['wa_sch_edit_lang']))
 {
-	if ($_COOKIE['wa_sch_edit_lang'] === 'fr')
-	{
-	include('includes/strings/fr.php');
-	$language = 'fr';
-	}
-	else
-	{
-	include('includes/strings/en.php');
-	$language = 'en';
-	}
+	$language = setLanguage($_SESSION['wa_sch_edit_lang']);
 }
-else if (isset($_SESSION['wa_sch_edit_lang']))
+else if (isset($_COOKIE['wa_sch_edit_lang']))
 {
-	if ($_SESSION['wa_sch_edit_lang'] === 'fr')
-	{
-	include('includes/strings/fr.php');
-	$language = 'fr';
-	}
-	else
-	{
-	include('includes/strings/en.php');
-	$language = 'en';
-	}
+	$language = setLanguage($_COOKIE['wa_sch_edit_lang']);
 }
 else
 {
-include('includes/strings/en.php');
 $language = 'en';
 }
+
+include('includes/strings/'.$language.'.php');
 
 $parent_directory = 2;
 $titre = 'Worms Armageddon - '.$str['sch_editor'].' - '.$str['sch_editor_changelog'];
@@ -56,6 +39,12 @@ include('../../includes/menu.php');
 ?>
 <h1><?php echo $str['sch_editor_changelog']; ?></h1>
 <p><?php echo $str['sch_editor_changelog_intro']; ?></p>
+<h4>0.7.0 - <?php echo $str['sch_editor_changelog_v0_7_0_date']; ?></h4>
+<ul>
+	<li><?php echo $str['sch_editor_changelog_v0_7_0_item1']; ?></li>
+	<li><?php echo $str['sch_editor_changelog_v0_7_0_item2']; ?></li>
+	<li><?php echo $str['sch_editor_changelog_v0_7_0_item3']; ?></li>
+</ul>
 <h4>0.6.2 - <?php echo $str['sch_editor_changelog_v0_6_2_date']; ?></h4>
 <ul>
 	<li><?php echo $str['sch_editor_changelog_v0_6_2_item1']; ?></li>

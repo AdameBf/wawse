@@ -258,8 +258,8 @@ $str['sch_editor_scheme_succesfully_created_message'] = 'Scheme créé avec succès
 $str['sch_editor_download_scheme_message'] = 'Téléchargez-le en cliquant sur ce lien.';
 
 // Scheme uploader
-$str['sch_editor_sch_uploader_title'] = 'Importer un scheme';
-$str['sch_editor_sch_uploader_intro'] = 'Donc, votre scheme est déjà prêt, et tout ce que vous voudriez ce serait de pouvoir de l\'importer ici, au lieu de le recréer? Aucun problème, il vous suffit simplement de remplir le formulaire ci-dessous. Le fichier scheme que vous importez doit être au format *.wsc (taille: 221 ou 297 octets), et les replays doivent être au format *.WAgame (max. 3 Mo). Les fichiers doivent être valides.';
+$str['sch_editor_sch_uploader_title'] = 'Importer un style de partie';
+$str['sch_editor_sch_uploader_intro'] = 'Donc, votre style de partie est déjà prêt, et tout ce que vous voudriez ce serait de pouvoir de l\'importer ici, plutôt que de le recréer ? Aucun problème, il vous suffit simplement de remplir le formulaire ci-dessous. Le fichier scheme que vous importez doit être au format *.wsc (taille: 221 ou 297 octets), et les replays doivent être au format *.WAgame (max. 3 Mo). Les fichiers doivent être valides.';
 $str['sch_editor_sch_uploader_sch_file'] = 'Votre fichier';
 $str['sch_editor_sch_upload_button'] = 'Envoyez-nous votre œuvre d\'art ! =)';
 $str['sch_editor_sch_upload_error_invalid_scheme_file'] = 'Fichier invalide. Les erreurs suivantes ont été trouvées :';
@@ -483,11 +483,11 @@ $str['sch_editor_changelog_v0_6_0_item3'] = '[Correction] La méthode de vérifica
 $str['sch_editor_changelog_v0_6_0a_date'] = '5 mars 2013';
 $str['sch_editor_changelog_v0_6_0a_item1'] = 'La traduction anglaise a été corrigée par Clown.';
 
-$str['sch_editor_changelog_v0_6_0a_date'] = '6 mars 2013';
+$str['sch_editor_changelog_v0_6_0b_date'] = '6 mars 2013';
 $str['sch_editor_changelog_v0_6_0b_item1'] = '[Correction de bug] Lors de la création d\'un scheme, la valeur de l\'option "temps de détonateur des mines" était également sauvegardée comme valeur de l\'octet représentant l\'option "méthode de placement des vers" par accident. <em>(En fait il se trouve qu\'il n\'y avait pas du tout de valeur "temps de détonateur des mines" ; cela a été corrigé en v0.6.1.)</em>';
 
 $str['sch_editor_changelog_v0_6_1_date'] = '9 mars 2013';
-$str['sch_editor_changelog_v0_6_1_item1'] = '[Correction de bug] Une mise à jour du 1<sup>er</sup> (le jour de la sortie de la v0.5.1) avait complètement empêché la création de schemes ; le champ de la base de données qui sauvegardait le mode de permissions pour attacher un replay au scheme était accidentellement appelé avec un symbole $ supplémentaire devant son nom. Ceci est désormais corrigé ; la création de scheme marche désormais à nouveau. Merci à Patricio (un joueur chilien) d\'avoir signalé le bug.';
+$str['sch_editor_changelog_v0_6_1_item1'] = '[Correction de bug] Une mise à jour du 1<sup>er</sup> décembre (le jour de la sortie de la v0.5.1) avait complètement empêché la création de schemes ; le champ de la base de données qui sauvegardait le mode de permissions pour attacher un replay au scheme était accidentellement appelé avec un symbole $ supplémentaire devant son nom. Ceci est désormais corrigé ; la création de scheme marche désormais à nouveau. Merci à Patricio (un joueur chilien) d\'avoir signalé le bug.';
 $str['sch_editor_changelog_v0_6_1_item2'] = '[Correction de bug] En raison d\'une erreur dans le script de la page validant la création de scheme, le mot de passe du scheme était incorrectement sauvegardé lors de la création d\'un scheme.';
 $str['sch_editor_changelog_v0_6_1_item3'] = '[Correction de bug] En raison d\'une erreur (un copier-coller aveugle, cette fois, je l\'avoue) dans le formulaire de création de scheme, le champ appelé Détonateur des mines permettait en fait d\'entrer la valeur de l\'option Nombre maximum d\'objets une seconde fois.';
 $str['sch_editor_changelog_v0_6_1_item4'] = '[Correction de bug] Pour les schemes requiérant la v3.7.0.0 (parce qu\'il y a émulation d\'une version comprise entre la 3.6.31.0 et la 3.7.0.0), le champ version requise appelait la v3.7.0.0 "3.6.32.0".';
@@ -495,14 +495,18 @@ $str['sch_editor_changelog_v0_6_1_item5'] = '[Correction de bug] Les schemes san
 
 $str['sch_editor_changelog_v0_6_2_date'] = '11 mars 2013';
 $str['sch_editor_changelog_v0_6_2_item1'] = '[Changement] Lorsque vous importez un scheme dont la valeur de l\'option "Méthode de stockage" est invalide, la valeur par défaut sera désormais la méthode de stockage "normale", et non plus le mode de stockage anti-accumulatif.';
-$str['sch_editor_changelog_v0_6_2_item2'] = '[Changement] Les chaînes de caractères qui étaient sauvegardées sur cette page et la page de validation de l\'importation de scheme ont été déplacées vers les fichiers de traduction. Cela permet de rendre la tâche de traduction moins complexe, étant donné que les chaînes de caractères ne sont plus séparés dans plusieurs fichiers. Cela a également eu l\'effet de réduire significativement la taille de la page de validation du formulaire d\'importation ou de création de schemes. Enfin, tant que j\'y étais, j\'ai également corrigé certaines des chaînes de caractères déplacées.';
+$str['sch_editor_changelog_v0_6_2_item2'] = '[Changement] Les chaînes de caractères qui étaient sauvegardées sur la page d\'historique (cette page) et la page de validation de l\'importation de scheme ont été déplacées vers les fichiers de traduction. Cela permet de rendre la tâche de traduction moins complexe, étant donné que les chaînes de caractères ne sont plus séparées dans plusieurs fichiers. Cela a également eu l\'effet de réduire significativement la taille de la page de validation du formulaire d\'importation ou de création de schemes. Enfin, tant que j\'y étais, j\'ai également corrigé certaines des chaînes de caractères déplacées.';
 $str['sch_editor_changelog_v0_6_2_item3'] = '[Correction de bug] Lorsque vous importiez un scheme avec une énergie de départ des vers de 0, la valeur n\'était pas remise à 1 dans le fichier, contrairement à ce qu\'indiquait le message.';
 $str['sch_editor_changelog_v0_6_2_item4'] = '[Correction de bug] Lorsque vous importiez un scheme, l\'option "Émuler une ancienne version" ne définissait pas la version requise correctement : elle ne détectait pas la v3.6.29.0 ou la v3.7.0.0, et ne disait pas que RubberWorm était requis pour les versions émulables avec la v3.6.28.0 ou la v3.6.29.0.';
 
 $str['sch_editor_changelog_v0_7_0_date'] = '13 mars 2013';
 $str['sch_editor_changelog_v0_7_0_item1'] = '[Amélioration] Vous pouvez désormais voir les options d\'un scheme avant de le télécharger.';
-$str['sch_editor_changelog_v0_7_0_item2'] = '[Correction] En anglais, l\'option "Air Viscosity" a changé de nom ; elle s\'appelle désormais "Air Resistance". Ce changement a été fait pour des raisons de cohérence par rapport à la façon dont le jeu applique ce paramètre physique (merci Deadcode).';
+$str['sch_editor_changelog_v0_7_0_item2'] = '[Correction] En anglais, l\'option "Air Viscosity" a changé de nom ; elle s\'appelle désormais "Air Resistance". Ce changement a été fait pour des raisons de cohérence par rapport à la façon dont le jeu applique ce paramètre physique (merci à Deadcode d\'avoir suggéré le nouveau nom).';
 $str['sch_editor_changelog_v0_7_0_item3'] = '[Correction de bug] La page de validation de l\'importation d\'un scheme ne reconaissait pas la force de poussée à la corde personnalisée (<em>"rope knocking"</em>) comme une option de RubberWorm.';
+
+$str['sch_editor_changelog_v0_7_1_date'] = '22 mars 2013';
+$str['sch_editor_changelog_v0_7_1_item1'] = '[Amélioration] Les versions entre la v3.7.0.0 et la v3.7.2.1 ont été ajoutées à la liste des versions émulables via RubberWorm, à l\'occasion de la sortie d\'une nouvelle version de RubberWorm pour la v3.7.2.1.';
+$str['sch_editor_changelog_v0_7_1_item2'] = '[Changement] Le chargement des fichiers de langue a été optimisé.';
 
 // Link to the page that allows us to select another language
 $str['sch_editor_change_language'] = 'Changer de langue';

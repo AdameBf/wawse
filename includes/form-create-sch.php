@@ -1016,7 +1016,7 @@
 		<?php
 		$counter = 0;
 	
-		while($counter <= 251)
+		while($counter < count($versions_list))
 		{
 			echo '<option value="'.$counter.'">'.$versions_list[$counter].'</option>';
 		

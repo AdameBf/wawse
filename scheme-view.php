@@ -9,13 +9,13 @@ ini_set('session.use_trans_sid', '0');
 ini_set('url_rewriter.tags', '');
 session_start();
 
-if (isset($_COOKIE['wa_sch_edit_lang']))
-{
-	$language = setLanguage($_COOKIE['wa_sch_edit_lang']);
-}
-else if (isset($_SESSION['wa_sch_edit_lang']))
+if (isset($_SESSION['wa_sch_edit_lang']))
 {
 	$language = setLanguage($_SESSION['wa_sch_edit_lang']);
+}
+else if (isset($_COOKIE['wa_sch_edit_lang']))
+{
+	$language = setLanguage($_COOKIE['wa_sch_edit_lang']);
 }
 else
 {
@@ -758,7 +758,7 @@ if (isset($_GET['id'])) // Yeah, we should rather make sure we're viewing an exi
 								}
 								
 								// Emulated Version.
-								$emulated_version = $versions_list[ord($file_content[264])];
+								$emulated_version = $versions_list[ord($file_content[264]) + ord($file_content[224]) * 256];
 
 								if ($emulated_version == 0)
 								{

@@ -499,10 +499,14 @@ $str['sch_editor_changelog_v0_6_2_item2'] = '[Change] Strings from the this page
 $str['sch_editor_changelog_v0_6_2_item3'] = '[Fixed bug] When uploading a scheme with an Initial Worm Energy byte value set to 0, this value wasn\'t change to 1 in the scheme file, despite the message saying otherwise.';
 $str['sch_editor_changelog_v0_6_2_item4'] = '[Fixed bug] When uploading a scheme, the Override Version RubberWorm setting didn\'t set the Required Version database field properly: it didn\'t detect v3.6.29.0 or v3.7.0.0, and didn\'t say that RubberWorm was required for versions emulatable with v3.6.28.0 or v3.6.29.0.';
 
-$str['sch_editor_changelog_v0_7_0_date'] = 'March 13th, 2012';
+$str['sch_editor_changelog_v0_7_0_date'] = 'March 13th, 2013';
 $str['sch_editor_changelog_v0_7_0_item1'] = '[Improvement] Added the scheme viewer, so you can now view a scheme before downloading it.';
 $str['sch_editor_changelog_v0_7_0_item2'] = '[Fixed] The Air Viscosity option has been renamed to Air Resistance, for more consistency with what actually happens in-game (thanks to Deadcode).';
 $str['sch_editor_changelog_v0_7_0_item3'] = '[Fixed bug] The Scheme Upload validating page did not recognize the Custom Knocking force (Super Banana\'s Crate Probability) as a RubberWorm setting.';
+
+$str['sch_editor_changelog_v0_7_1_date'] = 'March 22nd, 2013';
+$str['sch_editor_changelog_v0_7_1_item1'] = '[Improvement] Versions from 3.7.0.0 to 3.7.2.1 have been added for emulation, thus making the Scheme Editor fully compatible with RubberWorm for v3.7.2.1 settings.';
+$str['sch_editor_changelog_v0_7_1_item2'] = '[Change] Language files loading has been optimized.';
 
 // Link to the page that allows us to select another language
 $str['sch_editor_change_language'] = 'Select Another Language';
