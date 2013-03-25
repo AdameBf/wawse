@@ -508,6 +508,11 @@ $str['sch_editor_changelog_v0_7_1_date'] = '22 mars 2013';
 $str['sch_editor_changelog_v0_7_1_item1'] = '[Amélioration] Les versions entre la v3.7.0.0 et la v3.7.2.1 ont été ajoutées à la liste des versions émulables via RubberWorm, à l\'occasion de la sortie d\'une nouvelle version de RubberWorm pour la v3.7.2.1.';
 $str['sch_editor_changelog_v0_7_1_item2'] = '[Changement] Le chargement des fichiers de langue a été optimisé.';
 
+$str['sch_editor_changelog_v0_7_2_date'] = '25 mars 2013';
+$str['sch_editor_changelog_v0_7_2_item1'] = '[Correction de bug] En Anglais, sur la page permettant de voir les options d\'un scheme, un compteur de téléchargement terminant par "1" ou "2" (mais différent de "1" ou de "2") s\'affichait incorrectement. (Par exemple, au lieu de "downloaded 12 times", "download 1twice" était affiché.)';
+$str['sch_editor_changelog_v0_7_2_item2'] = '[Correction partielle] En v0.6.1, la sauvegarde des schemes sur la base de données avait été réparée. Cependant, les schemes créés entre le 1<sup>er</sup décembre 2012 et le 9 mars 2013 ne sont toujours pas dans la	 base de données. Deux d\'entre eux ont été ajoutés à la base de données.';
+$str['sch_editor_changelog_v0_7_2_item3'] = '[Correction de bug] La façon de sauvegarder les schemes sans nom avait également été corrigée en v0.6.1, mais encore une fois, cela n\'a pas été appliqué à l\'unique scheme affecté par le bug, empêchant ainsi le téléchargement ou la prévisualisation de ce scheme. Ce scheme peut désormais être prévisualisé ou téléchargé.';
+
 // Link to the page that allows us to select another language
 $str['sch_editor_change_language'] = 'Changer de langue';
 ?>

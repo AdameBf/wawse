@@ -104,8 +104,8 @@ function setLanguage($language)
 function onceTwice($text)
 {
 	// - English
-	$text = str_replace('1 times', 'once', $text);
-	$text = str_replace('2 times', 'twice', $text);
+	$text = str_replace(' 1 times', ' once', $text);
+	$text = str_replace(' 2 times', ' twice', $text);
 	
 	// - French: no changes.
 	

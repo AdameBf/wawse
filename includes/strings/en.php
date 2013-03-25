@@ -495,7 +495,7 @@ $str['sch_editor_changelog_v0_6_1_item5'] = '[Fixed bug] Schemes without name we
 
 $str['sch_editor_changelog_v0_6_2_date'] = 'March 11th, 2013';
 $str['sch_editor_changelog_v0_6_2_item1'] = '[Change] When uploading a scheme with an invalid Stockpiling Mode value, the default is now to disable Stockpiling, rather than enabling Anti-Stockpiling mode.';
-$str['sch_editor_changelog_v0_6_2_item2'] = '[Change] Strings from the this page and the scheme uploading form validating page have been moved to the string files. This makes the translation process much easier, because strings aren\'t scattered in several files anymore. This also had the effet of decreasing the form validating page\'s size sigificantly. While I was at it, I also fixed some of the moved strings.';
+$str['sch_editor_changelog_v0_6_2_item2'] = '[Change] Strings from this changelog page and the scheme uploading form validating page have been moved to the string files. This makes the translation process much easier, because strings aren\'t scattered in several files anymore. This also had the effet of decreasing the form validating page\'s size sigificantly. While I was at it, I also fixed some of the moved strings.';
 $str['sch_editor_changelog_v0_6_2_item3'] = '[Fixed bug] When uploading a scheme with an Initial Worm Energy byte value set to 0, this value wasn\'t change to 1 in the scheme file, despite the message saying otherwise.';
 $str['sch_editor_changelog_v0_6_2_item4'] = '[Fixed bug] When uploading a scheme, the Override Version RubberWorm setting didn\'t set the Required Version database field properly: it didn\'t detect v3.6.29.0 or v3.7.0.0, and didn\'t say that RubberWorm was required for versions emulatable with v3.6.28.0 or v3.6.29.0.';
 
@@ -507,6 +507,11 @@ $str['sch_editor_changelog_v0_7_0_item3'] = '[Fixed bug] The Scheme Upload valid
 $str['sch_editor_changelog_v0_7_1_date'] = 'March 22nd, 2013';
 $str['sch_editor_changelog_v0_7_1_item1'] = '[Improvement] Versions from 3.7.0.0 to 3.7.2.1 have been added for emulation, thus making the Scheme Editor fully compatible with RubberWorm for v3.7.2.1 settings.';
 $str['sch_editor_changelog_v0_7_1_item2'] = '[Change] Language files loading has been optimized.';
+
+$str['sch_editor_changelog_v0_7_2_date'] = 'March 25th, 2013';
+$str['sch_editor_changelog_v0_7_2_item1'] = '[Fixed bug] In English, on the Scheme Viewing page, a download count ending with (but different from) "1" or "2" was incorrectly shown. (For example, instead of "downloaded 12 times", "download 1twice" was shown.)';
+$str['sch_editor_changelog_v0_7_2_item2'] = '[Partial fix] V0.6.1 repaired scheme storing on the database. However, schemes created between December 1st, 2012 and March 9th, 2013 still aren\'t in the database. A couple of these schemes have been added to the database.';
+$str['sch_editor_changelog_v0_7_2_item3'] = '[Fixed bug] V0.6.1 also fixed how Unnamed Scheme are saved on the database, but there again, this hasn\'t been applied to schemes (well, there only was one in that case, actually) created before the fix, thus preventing the scheme from being viewed or downloaded. Now, the affected scheme can be downloaded or viewed properly.';
 
 // Link to the page that allows us to select another language
 $str['sch_editor_change_language'] = 'Select Another Language';
