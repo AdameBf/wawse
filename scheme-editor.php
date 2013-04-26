@@ -52,7 +52,29 @@ if (isset($_GET['action']))
 	include('includes/form-create-sch.php');
 	break;
 	
-	case 'edit'; // Please set the correct infos in order to be able to edit your scheme (i.e. scheme password)
+	case 'edit';
+	include('../../includes/connexion_pdo.php');
+	
+	if (isset($_GET['id']))
+	{
+		$get_schemes_infos = $bdd->prepare('SELECT * FROM schemes_list WHERE sch_id = :id');
+		$get_schemes_infos->bindValue(':id', $id, PDO::PARAM_INT);
+		$get_schemes_infos->execute();
+
+		$get_schemes_infos_result = $get_schemes_infos->fetch();
+		
+		if ($get_schemes_infos_result['sch_author_ismember'] != 0)
+		{
+		}
+		else
+		{
+		}
+	}
+	else
+	{
+		echo '<h1>'.$str['error'].'</h1>';
+		echo '<p>'.$str['sch_editor_error_no_id_specified'].'</p>';
+	}
 	break;
 	
 	default;

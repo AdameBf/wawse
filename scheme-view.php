@@ -35,7 +35,7 @@ if (isset($_GET['id'])) // Yeah, we should rather make sure we're viewing an exi
 	
 	$get_schemes_infos_result = $get_schemes_infos->fetch();
 	
-	if (!empty($get_schemes_infos_result)) // Now check the ID
+	if (!empty($get_schemes_infos_result)) // Now check the ID.
 	{
 		$sch_name = $get_schemes_infos_result['sch_name'];
 		$sch_author = $get_schemes_infos_result['sch_author'];
@@ -47,6 +47,31 @@ if (isset($_GET['id'])) // Yeah, we should rather make sure we're viewing an exi
 		
 		$sch_created_on = date('d\/m\/Y', $get_schemes_infos_result['sch_submit_date']);
 		$sch_last_edited_on = date('d\/m\/Y', $get_schemes_infos_result['sch_last_edit_date']);
+		
+		$get_schemes_infos->closeCursor();
+		
+		// Get example replays.
+		$get_example_replays = $bdd->prepare('SELECT * FROM sch_example_replays WHERE sch_id = :sch_id');
+		$get_example_replays->bindValue(':sch_id', $sch_id, PDO::PARAM_INT);
+		$get_example_replays->execute();
+		
+		$sch_example_replays = '';
+		
+		$c = 1;
+		while ($get_example_replays_results = $get_example_replays->fetch())
+		{
+			if ($get_example_replays_results['sch_exrep_approvement_level'] == 1)
+			{
+				$sch_example_replays .= ' <a href="download-example-replay.php?id='.$get_example_replays_results['sch_exrep_id'].'">'.$c.'</a>';
+			}
+
+			$c++;
+		}
+
+		if (empty($sch_example_replays))
+		{
+			$sch_example_replays = ' <em>'.$str['sch_editor_sch_viewer_sch_no_example_replays'].'</em>';
+		}
 
 		$parent_directory = 2;
 		$titre = 'Worms Armageddon - '.$str['sch_editor_sch_viewer_title'].' '.$sch_name.' '.$str['sch_editor_sch_viewer_by'].' '.$sch_author.' (#'.$sch_id.')';
@@ -80,22 +105,23 @@ if (isset($_GET['id'])) // Yeah, we should rather make sure we're viewing an exi
 			echo '<h1>'.$page_actuelle.'</h1>'; // = current page, can't rename the variable because it would break a part of the script
 			
 			// First show general informations about the scheme
-			$download_link_line = '<p><strong>'.$str['sch_editor_sch_viewer_sch_download_label'].'</strong> <a href="download.php?id='.$sch_id.'">'.$str['sch_editor_sch_viewer_sch_download_link'].'</a> ('.$str['sch_editor_sch_viewer_sch_download_count_downloaded'].' '.$get_schemes_infos_result['sch_download_count'].' '.$str['sch_editor_sch_viewer_sch_download_count_times'].').</p>';
+			$download_link_line = '<p><strong>'.$str['sch_editor_sch_viewer_sch_download_label'].'</strong> <a href="download.php?id='.$sch_id.'">'.$str['sch_editor_sch_viewer_sch_download_link'].'</a> ('.$str['sch_editor_sch_viewer_sch_download_count_downloaded'].' '.$get_schemes_infos_result['sch_download_count'].' '.$str['sch_editor_sch_viewer_sch_download_count_times'].').<br />';
 			$download_link_line = onceTwice($download_link_line);
 			echo $download_link_line;
-			
+			echo '<strong>'.$str['sch_editor_sch_viewer_sch_example_replays'].'</strong>'.$sch_example_replays.'.</p>';
+
 			echo '<p><strong>'.$str['sch_editor_sch_viewer_sch_name'].'</strong> '.$sch_name.'.<br />';
 			echo '<strong>'.$str['sch_editor_sch_viewer_sch_author'].'</strong> '.$sch_author.'.</p>';
-			
+
 			echo '<p><strong>'.$str['sch_editor_sch_viewer_sch_created_on'].'</strong> '.$sch_created_on.'.<br />';
 			echo '<strong>'.$str['sch_editor_sch_viewer_sch_last_edited_on'].'</strong> '.$sch_last_edited_on.'.</p>';
 
 			echo '<p><strong>'.$str['sch_editor_sch_viewer_sch_required_version'].'</strong> '.$sch_version_required.'.<br />';
 			echo '<strong>'.$str['sch_editor_sch_viewer_sch_desc'].'</strong><br />'.$sch_description.'</p>';
-			
+
 			// Now, let's go with the settings. I think it should be better to get the whole file's content now.
 			$file_content = file_get_contents($file_name);
-			
+
 			// Now let's start displaying informations.
 			?>
 			<table class="table_no_borders" style="width: 610px; margin-left: 3%;">
@@ -356,7 +382,7 @@ if (isset($_GET['id'])) // Yeah, we should rather make sure we're viewing an exi
 								</tr>
 							</table>
 							<?php
-							if (weaponsInScheme($file_content) == true) // I don't get why my functions are reversed, but I'll probably have a look at it later.
+							if (weaponsInScheme($file_content) == true)
 							{
 							?>
 							<!--[if lte IE 6]>
@@ -887,11 +913,11 @@ if (isset($_GET['id'])) // Yeah, we should rather make sure we're viewing an exi
 								
 								if ($air_resistance % 2 == 1 OR $air_resistance == 63)
 								{
-									$air_resistance .= ' - '.$str['sch_editor_sch_viewer_affects_worms'];
+									$air_resistance .= ' - '.$str['sch_editor_sch_viewer_rubber_affects_worms'];
 								}
 								else if ($air_resistance != 0)
 								{
-									$air_resistance .= ' - '.$str['sch_editor_sch_viewer_affects_objects'];
+									$air_resistance .= ' - '.$str['sch_editor_sch_viewer_rubber_affects_objects'];
 								}
 								
 								// Wind Influence
@@ -908,11 +934,11 @@ if (isset($_GET['id'])) // Yeah, we should rather make sure we're viewing an exi
 
 								if ($wind_influence % 2 == 1 OR $wind_influence == 255)
 								{
-									$wind_influence .= ' - '.$str['sch_editor_sch_viewer_affects_worms'];
+									$wind_influence .= ' - '.$str['sch_editor_sch_viewer_rubber_affects_worms'];
 								}
 								else if ($wind_influence != 0)
 								{
-									$wind_influence .= ' - '.$str['sch_editor_sch_viewer_affects_objects'];
+									$wind_influence .= ' - '.$str['sch_editor_sch_viewer_rubber_affects_objects'];
 								}
 								
 								// Anti Worm Sink.

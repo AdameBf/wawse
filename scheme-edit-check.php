@@ -631,8 +631,8 @@ if (isset($_POST['action']))
 		if ($rubber_version_override > 255)
 		{
 			// Then 2 bytes will be used to store the version number.
-			$rubber_version_override -= 256; // Select Worm Crate Probability Byte Value.
-			$rubber_version_override_2 = 1; // Freeze Crate Probability Byte Value.
+			$rubber_version_override -= 256; // Select Worm Crate Probability Byte Value will be truncated.
+			$rubber_version_override_2 = 1; // Freeze Crate Probability Byte Value will be set to 1 to reflect the truncation.
 		}
 		else
 		{
@@ -681,36 +681,36 @@ if (isset($_POST['action']))
 
 		if ($version_required == 5)
 		{
-		$version_required_string = '3.5 Beta 1';
+			$version_required_string = '3.5 Beta 1 or later';
 		}
 		else if ($version_required == 19.17)
 		{
-		$version_required_string = '3.6.'.$version_required.' Beta';
+			$version_required_string = '3.6.'.$version_required.' Beta or later';
 		}
 		else if ($version_required == 32)
 		{
-		$version_required_string = '3.7.0.0';
+			$version_required_string = '3.7.0.0 or later';
 		}
 		else if ($version_required == 33)
 		{
-		$version_required_string = '3.7.2.1';
+			$version_required_string = '3.7.2.1 or later';
 		}
 		else
 		{
-		$version_required_string = '3.6.'.$version_required.'.0 Beta';
+			$version_required_string = '3.6.'.$version_required.'.0 Beta or later';
 		}
 	
 		if ($rubber_enabled)
 		{
-		$version_required_string .= ' with RubberWorm';
+			$version_required_string .= ' with RubberWorm';
 		}
-		if ($rubber_enabled AND $version_required === 31)
+		if ($laser_fix_enabled AND !$rubber_enabled) // Flames limit feature
 		{
-		$version_required_string = '3.6.31.0 with RubberWorm31';
+			$version_required_string = '3.6.29.0 with Laser Fix or 3.6.31.0+ with RubberWorm';
 		}
-		if ($laser_fix_enabled) // Flames limit feature.
+		else if ($laser_fix_enabled AND $rubber_enabled AND $version_required == 29)
 		{
-		$version_required_string = '3.6.29.0 with Laser Fix or 3.6.31.0+ with RubberWorm';
+			$version_required_string = '3.6.29.0 with Laser Fix and RubberWorm or 3.6.31.0+ with RubberWorm';
 		}
 	
 		if (isset($magic_number))
@@ -1365,23 +1365,23 @@ if (isset($_POST['action']))
 					
 					if ($version_required == 5)
 					{
-						$version_required_string = '3.5 Beta 1';
+						$version_required_string = '3.5 Beta 1 or later';
 					}
 					else if ($version_required == 19.17)
 					{
-						$version_required_string = '3.6.'.$version_required.' Beta';
+						$version_required_string = '3.6.'.$version_required.' Beta or later';
 					}
 					else if ($version_required == 32)
 					{
-						$version_required_string = '3.7.0.0';
+						$version_required_string = '3.7.0.0 or later';
 					}
 					else if ($version_required == 33)
 					{
-						$version_required_string = '3.7.2.1';
+						$version_required_string = '3.7.2.1 or later';
 					}
 					else
 					{
-						$version_required_string = '3.6.'.$version_required.'.0 Beta';
+						$version_required_string = '3.6.'.$version_required.'.0 Beta or later';
 					}
 	
 					if ($rubber_enabled)
@@ -1390,11 +1390,15 @@ if (isset($_POST['action']))
 					}
 					if ($rubber_enabled AND $version_required === 31)
 					{
-						$version_required_string = '3.6.31.0 with RubberWorm31';
+						$version_required_string = '3.6.31.0 or later with RubberWorm';
 					}
-					if ($laser_fix_enabled) // Flames limit feature
+					if ($laser_fix_enabled AND !$rubber_enabled) // Flames limit feature only.
 					{
-						$version_required_string = '3.6.29.0 with Laser Fix, 3.6.31.0 with RubberWorm31 or 3.7.0.0 with RubberWorm';
+						$version_required_string = '3.6.29.0 with Laser Fix or 3.6.31.0+ with RubberWorm';
+					}
+					else if ($laser_fix_enabled AND $rubber_enabled AND $version_required == 29) // Flames limit + other Rubber features that don't require 3.6.31.0 or later.
+					{
+						$version_required_string = '3.6.29.0 with Laser Fix and RubberWorm or 3.6.31.0+ with RubberWorm';
 					}
 					
 					// Introduced in 0.5.1: who can upload example replays and do they have to be approved?

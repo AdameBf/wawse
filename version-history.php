@@ -39,6 +39,23 @@ include('../../includes/menu.php');
 ?>
 <h1><?php echo $str['sch_editor_changelog']; ?></h1>
 <p><?php echo $str['sch_editor_changelog_intro']; ?></p>
+<h4>0.7.4 - <?php echo $str['sch_editor_changelog_v0_7_4_date']; ?></h4>
+<ul>
+	<li><?php echo $str['sch_editor_changelog_v0_7_4_item1']; ?>
+	<ul>
+		<li><?php echo $str['sch_editor_changelog_v0_7_4_item1a']; ?></li>
+		<li><?php echo $str['sch_editor_changelog_v0_7_4_item1b']; ?></li>
+		<li><?php echo $str['sch_editor_changelog_v0_7_4_item1c']; ?></li>
+	</ul></li>
+	<li><?php echo $str['sch_editor_changelog_v0_7_4_item2']; ?></li>
+	<li><?php echo $str['sch_editor_changelog_v0_7_4_item3']; ?></li>
+	<li><?php echo $str['sch_editor_changelog_v0_7_4_item4']; ?></li>
+</ul>
+<h4>0.7.3 - <?php echo $str['sch_editor_changelog_v0_7_3_date']; ?></h4>
+<ul>
+	<li><?php echo $str['sch_editor_changelog_v0_7_3_item1']; ?></li>
+	<li><?php echo $str['sch_editor_changelog_v0_7_3_item2']; ?></li>
+</ul>
 <h4>0.7.2 - <?php echo $str['sch_editor_changelog_v0_7_2_date']; ?></h4>
 <ul>
 	<li><?php echo $str['sch_editor_changelog_v0_7_2_item1']; ?></li>

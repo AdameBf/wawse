@@ -254,6 +254,8 @@ $str['sch_editor_jet_pack_power_message'] = 'Directly input the amount of fuel h
 
 $str['sch_editor_send'] = 'Ok, I\'m done. Let\'s go!';
 
+$str['sch_editor_error_no_id_specified'] = 'Error: No scheme specified.';
+
 $str['sch_editor_scheme_succesfully_created_message'] = 'Scheme successfully created!';
 $str['sch_editor_download_scheme_message'] = 'Download it here.';
 
@@ -343,7 +345,7 @@ $str['sch_editor_sch_upload_arma_p_fix'] = 'The Armageddon Power setting\'s byte
 $str['sch_editor_sch_viewer_title'] = 'View a Scheme:';
 $str['sch_editor_sch_viewer_by'] = 'by'; // It's on purpose that I didn't capitalize the "b".
 
-$str['sch_editor_sch_viewer_sch_download_label'] = 'Download:';
+$str['sch_editor_sch_viewer_sch_download_label'] = 'Download:'; // With a colon because in some languages (scuh as French), there is a non-breaking space (Alt+0160) in front of that colon.
 $str['sch_editor_sch_viewer_sch_download_link'] = 'Download';
 $str['sch_editor_sch_viewer_sch_download_count_downloaded'] = 'downloaded';
 $str['sch_editor_sch_viewer_sch_download_count_times'] = 'times';
@@ -353,6 +355,8 @@ $str['sch_editor_sch_viewer_sch_created_on'] = 'Created on:';
 $str['sch_editor_sch_viewer_sch_last_edited_on'] = 'Last edited on:';
 $str['sch_editor_sch_viewer_sch_required_version'] = 'Required Version:';
 $str['sch_editor_sch_viewer_sch_desc'] = 'Description:';
+$str['sch_editor_sch_viewer_sch_example_replays'] = 'Example Replays:';
+$str['sch_editor_sch_viewer_sch_no_example_replays'] = 'None';
 
 $str['sch_editor_sch_view_action_replays'] = 'I. Replays'; // This string should be as short as this.
 
@@ -496,22 +500,35 @@ $str['sch_editor_changelog_v0_6_1_item5'] = '[Fixed bug] Schemes without name we
 $str['sch_editor_changelog_v0_6_2_date'] = 'March 11th, 2013';
 $str['sch_editor_changelog_v0_6_2_item1'] = '[Change] When uploading a scheme with an invalid Stockpiling Mode value, the default is now to disable Stockpiling, rather than enabling Anti-Stockpiling mode.';
 $str['sch_editor_changelog_v0_6_2_item2'] = '[Change] Strings from this changelog page and the scheme uploading form validating page have been moved to the string files. This makes the translation process much easier, because strings aren\'t scattered in several files anymore. This also had the effet of decreasing the form validating page\'s size sigificantly. While I was at it, I also fixed some of the moved strings.';
-$str['sch_editor_changelog_v0_6_2_item3'] = '[Fixed bug] When uploading a scheme with an Initial Worm Energy byte value set to 0, this value wasn\'t change to 1 in the scheme file, despite the message saying otherwise.';
-$str['sch_editor_changelog_v0_6_2_item4'] = '[Fixed bug] When uploading a scheme, the Override Version RubberWorm setting didn\'t set the Required Version database field properly: it didn\'t detect v3.6.29.0 or v3.7.0.0, and didn\'t say that RubberWorm was required for versions emulatable with v3.6.28.0 or v3.6.29.0.';
+$str['sch_editor_changelog_v0_6_2_item3'] = '[Fixed bug] When uploading a scheme with an Initial Worm Energy byte value set to 0, this value wasn\'t changed to 1 in the scheme file, despite the message saying otherwise.';
+$str['sch_editor_changelog_v0_6_2_item4'] = '[Fixed bug] When uploading a scheme, the Override Version RubberWorm setting didn\'t set the Required Version database field properly: it didn\'t detect v3.6.29.0 or v3.7.0.0, and didn\'t say that RubberWorm was required for versions emulable with v3.6.28.0 or v3.6.29.0.';
 
 $str['sch_editor_changelog_v0_7_0_date'] = 'March 13th, 2013';
 $str['sch_editor_changelog_v0_7_0_item1'] = '[Improvement] Added the scheme viewer, so you can now view a scheme before downloading it.';
-$str['sch_editor_changelog_v0_7_0_item2'] = '[Fixed] The Air Viscosity option has been renamed to Air Resistance, for more consistency with what actually happens in-game (thanks to Deadcode).';
+$str['sch_editor_changelog_v0_7_0_item2'] = '[Change] The Air Viscosity option has been renamed to Air Resistance, for more consistency with what actually happens in-game (thanks to Deadcode).';
 $str['sch_editor_changelog_v0_7_0_item3'] = '[Fixed bug] The Scheme Upload validating page did not recognize the Custom Knocking force (Super Banana\'s Crate Probability) as a RubberWorm setting.';
 
 $str['sch_editor_changelog_v0_7_1_date'] = 'March 22nd, 2013';
-$str['sch_editor_changelog_v0_7_1_item1'] = '[Improvement] Versions from 3.7.0.0 to 3.7.2.1 have been added for emulation, thus making the Scheme Editor fully compatible with RubberWorm for v3.7.2.1 settings.';
+$str['sch_editor_changelog_v0_7_1_item1'] = '[Improvement] Versions from 3.7.0.0 to 3.7.2.1 have been added for emulation, thus making the Scheme Editor fully compatible with RubberWorm for v3.7.2.1\'s settings.';
 $str['sch_editor_changelog_v0_7_1_item2'] = '[Change] Language files loading has been optimized.';
 
 $str['sch_editor_changelog_v0_7_2_date'] = 'March 25th, 2013';
 $str['sch_editor_changelog_v0_7_2_item1'] = '[Fixed bug] In English, on the Scheme Viewing page, a download count ending with (but different from) "1" or "2" was incorrectly shown. (For example, instead of "downloaded 12 times", "download 1twice" was shown.)';
 $str['sch_editor_changelog_v0_7_2_item2'] = '[Partial fix] V0.6.1 repaired scheme storing on the database. However, schemes created between December 1st, 2012 and March 9th, 2013 still aren\'t in the database. A couple of these schemes have been added to the database.';
 $str['sch_editor_changelog_v0_7_2_item3'] = '[Fixed bug] V0.6.1 also fixed how Unnamed Scheme are saved on the database, but there again, this hasn\'t been applied to schemes (well, there only was one in that case, actually) created before the fix, thus preventing the scheme from being viewed or downloaded. Now, the affected scheme can be downloaded or viewed properly.';
+
+$str['sch_editor_changelog_v0_7_3_date'] = 'April 14th, 2013';
+$str['sch_editor_changelog_v0_7_3_item1'] = '[Improvement] It is now possible to download Example Replays from the Scheme Viewing page (rather than just from the Scheme List page, which is inconsistent).';
+$str['sch_editor_changelog_v0_7_3_item2'] = '[Fixed bug] In French, in this Changelog, the second v0.7.2 entry was cut, due to a missing diple ("&gt;").';
+
+$str['sch_editor_changelog_v0_7_4_date'] = 'April 26th, 2013';
+$str['sch_editor_changelog_v0_7_4_item1'] = '[Fixed bug] With a tweaked Flames Limit setting, the Version Required field was misleading in some cases:';
+$str['sch_editor_changelog_v0_7_4_item1a'] = 'If a scheme was uploaded with a tweaked Flames Limit setting, the Version Required field would pretend the scheme wouldn\'t be compatible with RubberWorm for 3.7.2.1.';
+$str['sch_editor_changelog_v0_7_4_item1b'] = 'If other features were changed in addition to Flames Limit, and if none of them required RubberWorm for 3.6.31.0 or 3.7.x.x, the Version Required field would pretend the scheme doesn\'t require RubberWorm in v3.6.29.0.';
+$str['sch_editor_changelog_v0_7_4_item1c'] = 'If other features were changed in addition to Flames Limit, and if any of them required RubberWorm for 3.6.31.0 or 3.7.x.x, the Version Required field would still pretend the scheme is compatible with LaserFix for v3.6.29.0.';
+$str['sch_editor_changelog_v0_7_4_item2'] = '[Change] For more consistency, the "or later" mention has been added where applicable in the Version Required database field.';
+$str['sch_editor_changelog_v0_7_4_item3'] = 'Note that the above changes don\'t apply to existing schemes.';
+$str['sch_editor_changelog_v0_7_4_item4'] = '[Fixed bug] Due to an error, "Wind Influence" and "Air Resistance" settings\' values were showing as "n - .", with no text after the hyphen.';
 
 // Link to the page that allows us to select another language
 $str['sch_editor_change_language'] = 'Select Another Language';
