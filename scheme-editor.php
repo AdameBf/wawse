@@ -19,24 +19,10 @@ else if (isset($_COOKIE['wa_sch_edit_lang']))
 }
 else
 {
-$language = 'en';
+	$language = 'en';
 }
 
 include('includes/strings/'.$language.'.php');
-
-$parent_directory = 2;
-$titre = 'Worms Armageddon - '.$str['sch_editor_sch_maker_title'];
-include('../../includes/haut-sans-session-start.php');
-
-$jeu = $str['category'];
-
-//Chemin de fer (2 août 2012)
-$lien1 = array($str['index'], '../../index.php');
-$lien2 = array('Worms Armageddon', '../index.php');
-$lien3 = array($str['sch_editor'], 'index.php');
-$page_actuelle = $str['sch_editor_sch_maker_title'];
-
-include('../../includes/menu.php');
 
 if (isset($_GET['action']))
 {
@@ -45,10 +31,36 @@ if (isset($_GET['action']))
 	switch ($action)
 	{
 	case 'create';
+	$parent_directory = 2;
+	$titre = 'Worms Armageddon - '.$str['sch_editor_sch_maker_title'];
+	include('../../includes/haut-sans-session-start.php');
+
+	$jeu = $str['category'];
+
+	//Chemin de fer (2 août 2012)
+	$lien1 = array($str['index'], '../../index.php');
+	$lien2 = array('Worms Armageddon', '../index.php');
+	$lien3 = array($str['sch_editor'], 'index.php');
+	$page_actuelle = $str['sch_editor_sch_maker_title'];
+	include('../../includes/menu.php');
+
 	include('includes/form-create-sch.php');
 	break;
 	
 	case 'creer';
+	$parent_directory = 2;
+	$titre = 'Worms Armageddon - '.$str['sch_editor_sch_maker_title'];
+	include('../../includes/haut-sans-session-start.php');
+
+	$jeu = $str['category'];
+
+	//Chemin de fer (2 août 2012)
+	$lien1 = array($str['index'], '../../index.php');
+	$lien2 = array('Worms Armageddon', '../index.php');
+	$lien3 = array($str['sch_editor'], 'index.php');
+	$page_actuelle = $str['sch_editor_sch_maker_title'];
+	include('../../includes/menu.php');
+	
 	include('includes/form-create-sch.php');
 	break;
 	
@@ -57,33 +69,143 @@ if (isset($_GET['action']))
 	
 	if (isset($_GET['id']))
 	{
-		$get_schemes_infos = $bdd->prepare('SELECT * FROM schemes_list WHERE sch_id = :id');
-		$get_schemes_infos->bindValue(':id', $id, PDO::PARAM_INT);
-		$get_schemes_infos->execute();
+		$get_scheme_info = $bdd->prepare('SELECT * FROM schemes_list WHERE sch_id = :id');
+		$get_scheme_info->bindValue(':id', $_GET['id'], PDO::PARAM_INT);
+		$get_scheme_info->execute();
 
-		$get_schemes_infos_result = $get_schemes_infos->fetch();
+		$get_scheme_info_result = $get_scheme_info->fetch();
 		
-		if ($get_schemes_infos_result['sch_author_ismember'] != 0)
+		if (!empty($get_scheme_info_result))
 		{
+			$parent_directory = 2;
+			$titre = 'Worms Armageddon - '.$str['sch_editor_sch_editing_title'].' '.$get_scheme_info_result['sch_name'].' '.$str['sch_editor_sch_viewer_by'].' '.$get_scheme_info_result['sch_author'].' (#'.$_GET['id'].')';
+			include('../../includes/haut-sans-session-start.php');
+			
+			$jeu = $str['category'];
+
+			// Chemin de fer (2 août 2012)
+			$lien1 = array($str['index'], '../../index.php');
+			$lien2 = array('Worms Armageddon', '../index.php');
+			$lien3 = array($str['sch_editor'], 'index.php');
+			$page_actuelle = $str['sch_editor_sch_editing_title'].' '.$get_scheme_info_result['sch_name'].' '.$str['sch_editor_sch_viewer_by'].' '.$get_scheme_info_result['sch_author'].' (#'.$_GET['id'].')';
+			include('../../includes/menu.php');
+			
+			if ($get_scheme_info_result['sch_auth_ismember'] == 0)
+			{
+				if (isset($_POST['sch_password']) AND sha1($_POST['sch_password']) == $get_scheme_info_result['sch_password'] OR isset($_POST['sch_password']) && $_POST['sch_password'] == '' && $get_scheme_info_result['sch_password'] == NULL)
+				{
+					// Load the scheme file.
+					$file_name = 'schemes/'.fileNameParser($get_scheme_info_result['sch_name']).'_by_'.fileNameParser($get_scheme_info_result['sch_author']).'.wsc';
+					$file_content = file_get_contents($file_name);
+					
+					// Then include the editing page.
+					include('includes/form-edit-sch.php');
+				}
+				else
+				{
+					// Ask for a password.
+					?>
+					<h1><?php echo $str['sch_editor_sch_replay_approving_interface_please_enter_sch_pwd']; ?></h1>
+					<form method="post" action="?action=edit&amp;id=<?php echo $_GET['id']; ?>">
+						<p><label for="sch_password" class="aligner"><?php echo $str['sch_editor_sch_password']; ?></label><input type="password" name="sch_password" id="sch_password" /></p>
+
+						<p><input type="submit" value="<?php echo $str['sch_editor_sch_replay_uploader_authoring_submit_button']; ?>" class="bouton" /></p>
+					</form>
+					<?php
+				}
+			}
+			else
+			{
+				if (isset($_SESSION['pseudo']) AND $_SESSION['pseudo'] == $get_schemes_infos_result['sch_author'])
+				{
+					// Load the scheme file.
+					$file_name = 'schemes/'.fileNameParser($get_scheme_info_result['sch_name']).'_by_'.fileNameParser($get_scheme_info_result['sch_author']).'.wsc';
+					$file_content = file_get_contents($file_name);
+					
+					// Then include the editing page.
+					include('includes/form-edit-sch.php');
+				}
+				else
+				{
+					// Show an error message.
+					echo '<h1>'.$str['error'].'</h1>';
+					echo '<p>'.$str['sch_editor_sch_replay_uploader_wrong_user'].'</p>';
+				}
+			}
 		}
 		else
 		{
+			$parent_directory = 2;
+			$titre = 'Worms Armageddon - '.$str['sch_editor'].' - '.$str['error'];
+			include('../../includes/haut-sans-session-start.php');
+
+			$jeu = $str['category'];
+
+			// Chemin de fer (2 août 2012)
+			$lien1 = array($str['index'], '../../index.php');
+			$lien2 = array('Worms Armageddon', '../index.php');
+			$lien3 = array($str['sch_editor'], 'index.php');
+			$page_actuelle = $str['sch_editor_sch_editing_title'];
+			include('../../includes/menu.php');
+			
+			echo '<h1>'.$str['error'].'</h1>';
+			echo '<p>'.$str['sch_editor_error_scheme_does_not_exist'].'</p>';
 		}
 	}
 	else
 	{
+		$parent_directory = 2;
+		$titre = 'Worms Armageddon - '.$str['sch_editor'].' - '.$str['error'];
+		include('../../includes/haut-sans-session-start.php');
+
+		$jeu = $str['category'];
+
+		// Chemin de fer (2 août 2012)
+		$lien1 = array($str['index'], '../../index.php');
+		$lien2 = array('Worms Armageddon', '../index.php');
+		$lien3 = array($str['sch_editor'], 'index.php');
+		$page_actuelle = $str['sch_editor_sch_editing_title'];
+		include('../../includes/menu.php');
+		
 		echo '<h1>'.$str['error'].'</h1>';
 		echo '<p>'.$str['sch_editor_error_no_id_specified'].'</p>';
 	}
 	break;
 	
 	default;
+	$parent_directory = 2;
+	$titre = 'Worms Armageddon - '.$str['sch_editor'].' - '.$str['error'];
+	include('../../includes/haut-sans-session-start.php');
+
+	$jeu = $str['category'];
+
+	// Chemin de fer (2 août 2012)
+	$lien1 = array($str['index'], '../../index.php');
+	$lien2 = array('Worms Armageddon', '../index.php');
+	$lien3 = array($str['sch_editor'], 'index.php');
+	$page_actuelle = $str['sch_editor_sch_editing_title'];
+	include('../../includes/menu.php');
+	
 	echo '<h1>'.$str['error'].'</h1>';
 	echo '<p>'.$str['error_invalid_action'].'</p>';
+	break;
 	}
 }
 else
 {
+	$parent_directory = 2;
+	$titre = 'Worms Armageddon - '.$str['sch_editor'].' - '.$str['error'];
+	include('../../includes/haut-sans-session-start.php');
+
+	$jeu = $str['category'];
+
+	// Chemin de fer (2 août 2012)
+	$lien1 = array($str['index'], '../../index.php');
+	$lien2 = array('Worms Armageddon', '../index.php');
+	$lien3 = array($str['sch_editor'], 'index.php');
+	$page_actuelle = $str['sch_editor_sch_editing_title'];
+	include('../../includes/menu.php');
+
 	echo '<h1>'.$str['error'].'</h1>';
 	echo '<p>'.$str['error_no_action'].'</p>';
 }

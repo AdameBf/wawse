@@ -27,6 +27,7 @@ $str['sch_editor_sch_list_last_edit_date_column'] = 'Last Edited on';
 $str['sch_editor_sch_list_version_required_column'] = 'W:A Version Required';
 $str['sch_editor_sch_list_download_count_column'] = 'Download Count';
 $str['sch_editor_sch_list_download_column'] = 'Download';
+$str['sch_editor_sch_list_edit_column'] = 'Edit';
 $str['sch_editor_sch_list_download_example_replays'] = 'Download Example Replays';
 
 $str['sch_editor_sch_list_no_example_replays'] = 'No Example Replay';
@@ -227,7 +228,7 @@ $str['sch_editor_rubber_swat_hint'] = 'If you can manually select the worm that 
 $str['sch_editor_rubber_air_resistance'] = 'Air Resistance';
 $str['sch_editor_rubber_air_resistance_hint'] = 'Here you can set how fast a flying object loses velocity. If you set an odd value, worms will be affected too.';
 $str['sch_editor_rubber_gravity_modifications'] = 'Gravity Modifications';
-$str['sch_editor_rubber_gravity_modifications_hint'] = 'Here, you can do several things: you can alter the gravity ("grav##" settings) so it is stronger or lower, but not only. You can also reverse that gravity ("grav-##" settings), so worms will walk on the roof (walking is buggy though), or even create a black hole. It will appear on the center of the map and will attract or push every objects and worms. Its attraction is either constant (meaning it is the same everywhere on the map: "cbh(-)##" settings) or proportional (the farther from the black hole the object is, the less it is attracted: "pbh(-)##" settings).';
+$str['sch_editor_rubber_gravity_modifications_hint'] = 'Here, you can do several things: you can alter the gravity (grav## settings) so it is stronger or lower, but not only. You can also reverse that gravity (grav-## settings), so worms will walk on the roof (walking will be buggy though), or even create a black hole. It will appear on the center of the map and will attract or push every objects and worms. Its attraction is either constant (meaning it is the same everywhere on the map: cbh(-)## settings) or proportional (the farther from the black hole the object is, the less it is attracted: pbh(-)## settings).';
 $str['sch_editor_rubber_wind_influence'] = 'Wind Influence';
 $str['sch_editor_rubber_wind_influence_hint'] = 'Here you can set how much the wind affects some of the flying objects. If you set an odd value, then wind affects worms too. A value of 255 corresponds to the wind susceptibility of the Bazooka. Note that this setting won\'t affect objets already affected by the wind (such as bazooka shells, poison, flames...). Crates, graves, barrels won\'t be affected either.';
 
@@ -259,8 +260,10 @@ $str['sch_editor_jet_pack_power_message'] = 'Directly input the amount of fuel h
 $str['sch_editor_send'] = 'Ok, I\'m done. Let\'s go!';
 
 $str['sch_editor_error_no_id_specified'] = 'Error: No scheme specified.';
+$str['sch_editor_error_scheme_does_not_exist'] = 'Error: No scheme has this ID in the database.';
 
 $str['sch_editor_scheme_succesfully_created_message'] = 'Scheme successfully created!';
+$str['sch_editor_scheme_succesfully_edited_message'] = 'Scheme successfully edited!';
 $str['sch_editor_download_scheme_message'] = 'Download it here.';
 
 // Scheme uploader
@@ -541,17 +544,22 @@ $str['sch_editor_changelog_v0_7_4_item2'] = '[Change] For more consistency, the 
 $str['sch_editor_changelog_v0_7_4_item3'] = 'Note that the above changes don\'t apply to existing schemes.';
 $str['sch_editor_changelog_v0_7_4_item4'] = '[Fixed bug] Due to an error, "Wind Influence" and "Air Resistance" settings\' values were showing as "n - .", with no text after the hyphen.';
 
-$str['sch_editor_changelog_v0_7_5_date'] = 'April 28th, 2013';
-$str['sch_editor_changelog_v0_7_5_item1'] = '[Improvement] It is now possible to rename a scheme you\'re Uploading.';
-$str['sch_editor_changelog_v0_7_5_item2'] = '[Fixed bug] On the Scheme Uploading page, a &lt;td&gt; tag was closed, but never opened. It has been removed. (Note that this doesn\'t affect the displayed page; it only made the page invalid according to the W3C XHTML 1.0 Strict standards.)';
-$str['sch_editor_changelog_v0_7_5_item3'] = '[Fixed bug] Due to an error, the paging system on the Scheme List didn\'t work: it would only show the page with the oldest schemes. Note that this didn\'t affect the public version of the scheme editor, because at that time schemes were still fitting on a single page; the bug has been noticed on my local version.';
-$str['sch_editor_changelog_v0_7_5_item4'] = '[Fixed bug] Due to another error, the paging system on the Scheme List would be affected by example replays if more than one was attached to any of the displayed schemes: for example, only 27 schemes (instead of 30) would be shown on a page where 4 example replays were attached to the same scheme.';
-
-$str['sch_editor_changelog_v1_0_0_date'] = 'Very soon';
+$str['sch_editor_changelog_v1_0_0_date'] = 'April 28th, 2013';
 $str['sch_editor_changelog_v1_0_0_item1'] = '[New feature] It is now possible to Edit a Scheme.';
-$str['sch_editor_changelog_v1_0_0_item2'] = '[Improvement] Example Replays Adding and Handling interfaces are now accessible via the Scheme Viewing page.';
-$str['sch_editor_changelog_v1_0_0_item3'] = '[Fixed] On the Scheme Viewing page, if the Description field is empty, a "None" mention will now be shown (before, nothing was shown at all).';
-$str['sch_editor_changelog_v1_0_0_item4'] = '[Fixed bug] Due to an error on the Scheme Viewing page, the "Automatic Reaiming" and "Circular Aiming" displayed values actually were reversed: enabling one of them would cause the Scheme Viewer to mark it as "Off", and disabling one of them would cause the Scheme Viewer to mark it as "On".';
+$str['sch_editor_changelog_v1_0_0_item2'] = '[Improvement] It is now possible to rename a scheme you\'re Uploading.';
+$str['sch_editor_changelog_v1_0_0_item3'] = '[Improvement] Example Replays Adding and Handling interfaces are now accessible via the Scheme Viewing page.';
+$str['sch_editor_changelog_v1_0_0_item4'] = '[Fixed] On the Scheme Viewing page, if the Description field is empty, a "None" mention will now be shown (before, nothing was shown at all).';
+$str['sch_editor_changelog_v1_0_0_item5'] = '[Fixed bug] Due to an error on the Scheme Viewing page, the "Automatic Reaiming" and "Circular Aiming" displayed values actually were reversed: enabling one of them would cause the Scheme Viewer to mark it as "Off", and disabling one of them would cause the Scheme Viewer to mark it as "On".';
+$str['sch_editor_changelog_v1_0_0_item6'] = '[Fixed bugs] Bugs making some pages invalid according to the W3C XHTML 1.0 Strict standards:';
+$str['sch_editor_changelog_v1_0_0_item6a'] = 'On the Scheme Uploading page, a &lt;td&gt; tag was closed, but never opened. It has been removed.';
+$str['sch_editor_changelog_v1_0_0_item6b'] = 'On the Scheme Creating page, two &lt;td&gt; tag were opened, but never closed. They`\'re now closed.';
+$str['sch_editor_changelog_v1_0_0_item6c'] = 'Note that these bugs didn\'t affect the displayed page; they\'ve been fixed only because they made the affected pages invalid.';
+$str['sch_editor_changelog_v1_0_0_item7'] = '[Fixed bugs] Bugs with the Scheme List\'s paging system:';
+$str['sch_editor_changelog_v1_0_0_item7a'] = 'Due to an error, the paging system on the Scheme List didn\'t work: it would only show the page with the oldest schemes. Note that this didn\'t affect the public version of the scheme editor, because at that time schemes were still fitting on a single page; the bug has been noticed on my local version.';
+$str['sch_editor_changelog_v1_0_0_item7b'] = 'Due to another error, the paging system on the Scheme List would be affected by example replays if more than one was attached to any of the displayed schemes: for example, only 27 schemes (instead of 30) would be shown on a page where 4 example replays were attached to the same scheme.';
+$str['sch_editor_changelog_v1_0_0_item8'] = '[Fixed bugs] Bugs with functions checking user input in the Scheme Creation form:';
+$str['sch_editor_changelog_v1_0_0_item8a'] = 'If an invalid Victories Count value was entered, the value was reset to 100 instead of 1.';
+$str['sch_editor_changelog_v1_0_0_item8b'] = 'Weapon Power and Weapon Crate Probability check functions weren\'t working, due to missing quotation marks (and sometimes commas).';
 
 // Link to the page that allows us to select another language
 $str['sch_editor_change_language'] = 'Select Another Language';

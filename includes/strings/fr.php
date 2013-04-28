@@ -27,6 +27,7 @@ $str['sch_editor_sch_list_last_edit_date_column'] = 'Date de dernière édition';
 $str['sch_editor_sch_list_version_required_column'] = 'Version requise de W:A';
 $str['sch_editor_sch_list_download_count_column'] = 'Nombre de téléchargements';
 $str['sch_editor_sch_list_download_column'] = 'Télécharger';
+$str['sch_editor_sch_list_edit_column'] = 'Éditer';
 $str['sch_editor_sch_list_download_example_replays'] = 'Télécharger les replays de démonstration';
 
 $str['sch_editor_sch_list_no_example_replays'] = 'Pas de replay';
@@ -202,13 +203,13 @@ $str['sch_editor_rubber_crate_limit_hint'] = 'S\'il y a trop de caisses, plus au
 $str['sch_editor_rubber_friction'] = 'Adhérence';
 $str['sch_editor_rubber_friction_hint'] = 'En éditant cette option, vous changez la façon dont la vitesse d\'un ver qui glisse varie. 1-95: haute adhérence, 96: adhérence normale, 97-99: faible adhérence, 100: pas d\'adhérence, plus de 100: la vitesse augmente pendant la glissade, au lieu de diminuer.';
 $str['sch_editor_rubber_flames_limit'] = 'Nombre maximum de flammes';
-$str['sch_editor_rubber_flames_limit_hint'] = 'Peut être mis jusqu\'à 25 500 (255×100). Requiert RubberWorm31 (pour la v3.6.31.0),  RubberWorm (pour la v3.7.0.0) ou LaserFix (pour la v3.6.29.0).';
+$str['sch_editor_rubber_flames_limit_hint'] = 'Peut être mis jusqu\'à 25 500 (255×100). Requiert RubberWorm pour la v3.6.31.0 ou une version ultérieure, ou LaserFix pour la v3.6.29.0.';
 $str['sch_editor_rubber_speed'] = 'Vitesse';
 $str['sch_editor_rubber_speed_hint'] = 'Vous pouvez modifier la vitesse maximale des objets. 16: par défaut (utile pour activer TS en gardant la vitesse par défaut), 32: comme dans le Test Stuff actuel, 255: sans limite, comme dans TS3. Requiert RubberWorm31.';
 $str['sch_editor_rubber_anti_worm_sink'] = 'Les vers ne coulent pas';
 $str['sch_editor_rubber_anti_worm_sink_hint'] = 'Quand un ver coule, il sera retéléporté là où il était juste avant de couler. S\'il coule juste après avoir été retéléporté (parce que le terrain n\'existe plus), il meurt bel et bien.';
 $str['sch_editor_rubber_gravity_modifications'] = 'Modifications de la gravité';
-$str['sch_editor_rubber_gravity_modifications_hint'] = 'Là, vous avez pas mal de possibilités : vous pouvez augmenter ou diminuer la gravité de base en effet (options "grav##"), mais pas seulement. Vous pouvez aussi inverser cette gravité (options "grav-##"), ce qui fait que les vers marcheront au plafond (les déplacements sont difficiles cependant), ou bien encore, créer un trou noir. Celui-ci se trouvera au centre de la map et attirera ou repoussera tous les objets et les vers vers lui. Son attraction est soit constante (partout la même sur la carte, options "cbh(-)##") soit proportionnelle (plus l\'objet est loin moins l\'attraction est importante, options "pbh(-)##").';
+$str['sch_editor_rubber_gravity_modifications_hint'] = 'Là, vous avez pas mal de possibilités : vous pouvez augmenter ou diminuer la gravité de base en effet (options grav##), mais pas seulement. Vous pouvez aussi inverser cette gravité (options grav-##), ce qui fait que les vers marcheront au plafond (les déplacements sont difficiles cependant), ou bien encore, créer un trou noir. Celui-ci se trouvera au centre de la map et attirera ou repoussera tous les objets et les vers vers lui. Son attraction est soit constante (partout la même sur la carte, options cbh(-)##) soit proportionnelle (plus l\'objet est loin moins l\'attraction est importante, options pbh(-)##).';
 $str['sch_editor_rubber_swat'] = 'Sélection de ver n\'importe quand pendant le tour';
 $str['sch_editor_rubber_swat_hint'] = 'Si la sélection du ver au début du tour est manuelle, vous pourrez changer de ver à tout moment pendant votre tour. Sinon, vous ne pourrez changer de ver qu\'une fois avoir utilisé l\'arme sélection de ver, les effets ne durant qu\'un tour (un peu comme pour la faible pesanteur ou la marche rapide). Requiert RubberWorm31.';
 $str['sch_editor_rubber_air_resistance'] = 'Perte de vitesse dans l\'air';
@@ -259,8 +260,10 @@ $str['sch_editor_jet_pack_power_message'] = 'Indiquez directement la quantité de
 $str['sch_editor_send'] = 'Voilà, j\'ai fini. Allons-y !';
 
 $str['sch_editor_error_no_id_specified'] = 'Erreur : Aucun scheme spécifié.';
+$str['sch_editor_error_scheme_does_not_exist'] = 'Erreur : Aucun scheme ne porte ce numéro dans la base de données.';
 
 $str['sch_editor_scheme_succesfully_created_message'] = 'Scheme créé avec succès !';
+$str['sch_editor_scheme_succesfully_edited_message'] = 'Scheme modifié avec succès !';
 $str['sch_editor_download_scheme_message'] = 'Téléchargez-le en cliquant sur ce lien.';
 
 // Scheme uploader
@@ -541,17 +544,22 @@ $str['sch_editor_changelog_v0_7_4_item2'] = '[Changement] Pour plus de cohérence
 $str['sch_editor_changelog_v0_7_4_item3'] = 'Notez que les changements ci-dessus ne s\'appliquent pas aux schemes existants.';
 $str['sch_editor_changelog_v0_7_4_item4'] = '[Correction de bug] En raison d\'une erreur, les valeurs des options de RubberWorm "Influence du vent" et "Perte de vitesse dans l\'air" s\'affichaient sous la forme "n - .", sans texte après le tiret.';
 
-$str['sch_editor_changelog_v0_7_5_date'] = '28 avril 2013';
-$str['sch_editor_changelog_v0_7_5_item1'] = '[Amélioration] Il est désormais possible de renommer un scheme lors de son importation.';
-$str['sch_editor_changelog_v0_7_5_item2'] = '[Correction de bug] Sur la page d\'importation de schemes, une balise &lt;td&gt; était fermée alors qu\'elle n\'avait jamais été ouverte. Elle a été retirée. (Notez que cela n\'affecte pas la page affichée à l\'écran ; mais cela a tout de même rendu la page non conforme aux standards XHTML 1.0 Strict du W3C.)';
-$str['sch_editor_changelog_v0_7_5_item3'] = '[Correction de bug] Une erreur faisait que le système de pagination de la liste des schemes ne fonctionnait pas : seule la page avec les schemes les plus anciens s\'affichait, quelque soit le numéro de la page consultée. Notez que ce bug ne concernait pas la version en ligne de l\'éditeur, parce que tous les schemes tenaient sur une seule page ; c\'est sur ma version locale que j\'ai remarqué ce bug.';
-$str['sch_editor_changelog_v0_7_5_item4'] = '[Correction de bug] Une autre erreur faisait que le système de pagination de la liste des schemes était affecté par les replays d\'exemple, si plusieurs replays étaient attachés à un même scheme : par exemple, il n\'y avait que 27 schemes (au lieu de 30) qui apparaissaient sur une page où 4 replays d\'exemple étaient attachés à un même scheme.';
-
-$str['sch_editor_changelog_v1_0_0_date'] = 'Très bientôt';
+$str['sch_editor_changelog_v1_0_0_date'] = '28 avril 2013';
 $str['sch_editor_changelog_v1_0_0_item1'] = '[Nouvelle fonctionnalité] Il est désormais possible d\'éditer un scheme.';
-$str['sch_editor_changelog_v1_0_0_item2'] = '[Amélioration] Les interfaces d\'ajout et de gestion des replays de démonstration d\'un scheme sont désormais accessibles via la page permettant de voir les options d\'un scheme.';
-$str['sch_editor_changelog_v1_0_0_item3'] = '[Correction] Sur la page permettant de voir les options d\'un scheme, si le champ "Description" est vide, il y a désormais une mention "Aucune".';
-$str['sch_editor_changelog_v1_0_0_item4'] = '[Correction de bug] Une erreur sur la page permettant de voir les options d\'un scheme faisait que les valeurs des options "Changement d\'angle de visée automatique" et "Visée 360°"  affichées sur la page étaient inversées : si l\'une de ces options était activée, l\'option activée était marquée comme étant désactivée, et si l\'une de ces options était désactivée, l\'option désactvée était marquée comme activée.';
+$str['sch_editor_changelog_v1_0_0_item2'] = '[Amélioration] Il est désormais possible de renommer un scheme lors de son importation.';
+$str['sch_editor_changelog_v1_0_0_item3'] = '[Amélioration] Les interfaces d\'ajout et de gestion des replays de démonstration d\'un scheme sont désormais accessibles via la page permettant de voir les options d\'un scheme.';
+$str['sch_editor_changelog_v1_0_0_item4'] = '[Correction] Sur la page permettant de voir les options d\'un scheme, si le champ "Description" est vide, il y a désormais une mention "Aucune".';
+$str['sch_editor_changelog_v1_0_0_item5'] = '[Correction de bug] Une erreur sur la page permettant de voir les options d\'un scheme faisait que les valeurs des options "Changement d\'angle de visée automatique" et "Visée 360°"  affichées sur la page étaient inversées : si l\'une de ces options était activée, l\'option activée était marquée comme étant désactivée, et si l\'une de ces options était désactivée, l\'option désactvée était marquée comme activée.';
+$str['sch_editor_changelog_v1_0_0_item6'] = '[Corrections de bugs] Bugs rendant certaines pages non conformes aux standards XHTML 1.0 Strict du W3C :'
+$str['sch_editor_changelog_v1_0_0_item6a'] = 'Sur la page d\'importation de schemes, une balise &lt;td&gt; était fermée alors qu\'elle n\'avait jamais été ouverte. Elle a été retirée.';
+$str['sch_editor_changelog_v1_0_0_item6b'] = 'Sur la page de création de schemes, deux balises &lt;td&gt; étaient ouvertes alors qu\'elles n\'avaient jamais été fermées. Elles ont été fermées.';
+$str['sch_editor_changelog_v1_0_0_item6c'] = 'Notez que ces bugs n\'affectent pas la page affichée à l\'écran : ils ont été corrigés afin d\'être conforme aux standards.';
+$str['sch_editor_changelog_v1_0_0_item7'] = '[Corrections de bugs] Bugs du système de pagination de la liste des schemes :';
+$str['sch_editor_changelog_v1_0_0_item7a']'Une erreur faisait que le système de pagination ne fonctionnait pas : seule la page avec les schemes les plus anciens s\'affichait, quelque soit le numéro de la page consultée. Notez que ce bug ne concernait pas la version en ligne de l\'éditeur, parce que tous les schemes tenaient sur une seule page ; c\'est sur ma version locale que j\'ai remarqué ce bug.';
+$str['sch_editor_changelog_v1_0_0_item7b'] = 'Une autre erreur faisait que le système de pagination de la liste des schemes était affecté par les replays d\'exemple, si plusieurs replays étaient attachés à un même scheme : par exemple, il n\'y avait que 27 schemes (au lieu de 30) qui apparaissaient sur une page où 4 replays d\'exemple étaient attachés à un même scheme.';
+$str['sch_editor_changelog_v1_0_0_item8'] = '[Corrections de bugs] Vérification des valeurs saisies par l\'utilisateur dans le formulaire de création d\'un scheme :';
+$str['sch_editor_changelog_v1_0_0_item8a'] ='Si un nombre de victoires invalide était saisi, la valeur était remise à 100 au lieu d\'être remise à 1.';
+$str['sch_editor_changelog_v1_0_0_item8b'] = 'Les fonctions vérifiant si les puissances et les probabilités d\'apparition dans les caisses des armes ne fonctionnait pas, à cause de paires d\'apostrophes manquantes (il manquait également parfois une virgule).';
 
 // Link to the page that allows us to select another language
 $str['sch_editor_change_language'] = 'Changer de langue';

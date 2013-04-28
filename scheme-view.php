@@ -29,26 +29,31 @@ if (isset($_GET['id'])) // Yeah, we should rather make sure we're viewing an exi
 	$id = (int) $_GET['id'];
 	include('../../includes/connexion_pdo.php');
 	
-	$get_schemes_infos = $bdd->prepare('SELECT * FROM schemes_list WHERE sch_id = :id');
-	$get_schemes_infos->bindValue(':id', $id, PDO::PARAM_INT);
-	$get_schemes_infos->execute();
+	$get_schemes_info = $bdd->prepare('SELECT * FROM schemes_list WHERE sch_id = :id');
+	$get_schemes_info->bindValue(':id', $id, PDO::PARAM_INT);
+	$get_schemes_info->execute();
 	
-	$get_schemes_infos_result = $get_schemes_infos->fetch();
+	$get_schemes_info_result = $get_schemes_info->fetch();
 	
-	if (!empty($get_schemes_infos_result)) // Now check the ID.
+	if (!empty($get_schemes_info_result)) // Now check the ID.
 	{
-		$sch_name = $get_schemes_infos_result['sch_name'];
-		$sch_author = $get_schemes_infos_result['sch_author'];
+		$sch_name = $get_schemes_info_result['sch_name'];
+		$sch_author = $get_schemes_info_result['sch_author'];
 		
-		$sch_id = $get_schemes_infos_result['sch_id'];
-		$sch_version_required = $get_schemes_infos_result['sch_version_required'];
-		$sch_download_count = $get_schemes_infos_result['sch_download_count'];
-		$sch_description = nl2br($get_schemes_infos_result['sch_desc']);
+		$sch_id = $get_schemes_info_result['sch_id'];
+		$sch_version_required = $get_schemes_info_result['sch_version_required'];
+		$sch_download_count = $get_schemes_info_result['sch_download_count'];
+		$sch_description = nl2br($get_schemes_info_result['sch_desc']);
 		
-		$sch_created_on = date('d\/m\/Y', $get_schemes_infos_result['sch_submit_date']);
-		$sch_last_edited_on = date('d\/m\/Y', $get_schemes_infos_result['sch_last_edit_date']);
+		if ($sch_description == '')
+		{
+			$sch_description = '<em>'.$str['sch_editor_sch_viewer_sch_no_desc'].'</em>.';
+		}
 		
-		$get_schemes_infos->closeCursor();
+		$sch_created_on = date('d\/m\/Y', $get_schemes_info_result['sch_submit_date']);
+		$sch_last_edited_on = date('d\/m\/Y', $get_schemes_info_result['sch_last_edit_date']);
+		
+		$get_schemes_info->closeCursor();
 		
 		// Get example replays.
 		$get_example_replays = $bdd->prepare('SELECT * FROM sch_example_replays WHERE sch_id = :sch_id');
@@ -102,10 +107,11 @@ if (isset($_GET['id'])) // Yeah, we should rather make sure we're viewing an exi
 		if ($signature == 'SCHM')
 		{
 			// Let's continue if the signature is correct
-			echo '<h1>'.$page_actuelle.'</h1>'; // = current page, can't rename the variable because it would break a part of the script
+			echo '<h1>'.$page_actuelle.'</h1>'; // = current page, can't rename the variable because it would break a part of the script.
+			echo '<p><strong>'.$str['sch_editor_sch_viewer_actions'].'</strong> <a href="scheme-editor.php?action=edit&amp;id='.$sch_id.'">'.$str['sch_editor_sch_viewer_edit_link'].'</a> - <a href="attach-replays.php?id='.$sch_id.'">'.$str['sch_editor_sch_viewer_add_exrep_link'].'</a> - <a href="replay-approving-interface.php?id='.$sch_id.'">'.$str['sch_editor_sch_viewer_handle_exrep_link'].'</a>.</p>';
 			
 			// First show general informations about the scheme
-			$download_link_line = '<p><strong>'.$str['sch_editor_sch_viewer_sch_download_label'].'</strong> <a href="download.php?id='.$sch_id.'">'.$str['sch_editor_sch_viewer_sch_download_link'].'</a> ('.$str['sch_editor_sch_viewer_sch_download_count_downloaded'].' '.$get_schemes_infos_result['sch_download_count'].' '.$str['sch_editor_sch_viewer_sch_download_count_times'].').<br />';
+			$download_link_line = '<p><strong>'.$str['sch_editor_sch_viewer_sch_download_label'].'</strong> <a href="download.php?id='.$sch_id.'">'.$str['sch_editor_sch_viewer_sch_download_link'].'</a> ('.$str['sch_editor_sch_viewer_sch_download_count_downloaded'].' '.$get_schemes_info_result['sch_download_count'].' '.$str['sch_editor_sch_viewer_sch_download_count_times'].').<br />';
 			$download_link_line = onceTwice($download_link_line);
 			echo $download_link_line;
 			echo '<strong>'.$str['sch_editor_sch_viewer_sch_example_replays'].'</strong>'.$sch_example_replays.'.</p>';
@@ -122,7 +128,7 @@ if (isset($_GET['id'])) // Yeah, we should rather make sure we're viewing an exi
 			// Now, let's go with the settings. I think it should be better to get the whole file's content now.
 			$file_content = file_get_contents($file_name);
 
-			// Now let's start displaying informations.
+			// Now let's start displaying information.
 			?>
 			<table class="table_no_borders" style="width: 610px; margin-left: 3%;">
 				<tr>
@@ -686,27 +692,27 @@ if (isset($_GET['id'])) // Yeah, we should rather make sure we're viewing an exi
 								// - Automatic Reaiming.
 								if ($earthquake_crate_probability % 2 == 1)
 								{
-									$auto_reaim = $str['off']; // Reversing because I actually labelled that setting as Shot Ends Turn.
+									$auto_reaim = $str['on'];
 								}
 								else
 								{
-									$auto_reaim  = $str['on'];
+									$auto_reaim  = $str['off'];
 								}
 
 								// - Circular Aiming.
 								if ($earthquake_crate_probability % 4 >= 2)
 								{
-									$cira = $str['off']; // Reversing because I actually labelled that setting as Loss of Control Ends Turn.
+									$cira = $str['on'];
 								}
 								else
 								{
-									$cira = $str['on'];
+									$cira = $str['off'];
 								}
 
 								// - Antilock Power.
 								if ($earthquake_crate_probability % 8 >= 4)
 								{
-									$alp = $str['on']; // And now I'm breaking a broken consistency, or something like that. Whatever.
+									$alp = $str['on'];
 								}
 								else
 								{

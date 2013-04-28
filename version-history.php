@@ -39,12 +39,29 @@ include('../../includes/menu.php');
 ?>
 <h1><?php echo $str['sch_editor_changelog']; ?></h1>
 <p><?php echo $str['sch_editor_changelog_intro']; ?></p>
-<h4>0.7.5 - <?php echo $str['sch_editor_changelog_v0_7_5_date']; ?></h4>
+<h4>1.0.0 - <?php echo $str['sch_editor_changelog_v1_0_0_date']; ?></h4>
 <ul>
-	<li><?php echo $str['sch_editor_changelog_v0_7_5_item1']; ?></li>
-	<li><?php echo $str['sch_editor_changelog_v0_7_5_item2']; ?></li>
-	<li><?php echo $str['sch_editor_changelog_v0_7_5_item3']; ?></li>
-	<li><?php echo $str['sch_editor_changelog_v0_7_5_item4']; ?></li>
+	<li><?php echo $str['sch_editor_changelog_v1_0_0_item1']; ?></li>
+	<li><?php echo $str['sch_editor_changelog_v1_0_0_item2']; ?></li>
+	<li><?php echo $str['sch_editor_changelog_v1_0_0_item3']; ?></li>
+	<li><?php echo $str['sch_editor_changelog_v1_0_0_item4']; ?></li>
+	<li><?php echo $str['sch_editor_changelog_v1_0_0_item5']; ?></li>
+	<li><?php echo $str['sch_editor_changelog_v1_0_0_item6']; ?>
+	<ul>
+		<li><?php echo $str['sch_editor_changelog_v1_0_0_item6a']; ?></li>
+		<li><?php echo $str['sch_editor_changelog_v1_0_0_item6b']; ?></li>
+		<li><?php echo $str['sch_editor_changelog_v1_0_0_item6c']; ?></li>
+	</ul></li>
+	<li><?php echo $str['sch_editor_changelog_v1_0_0_item7']; ?>
+	<ul>
+		<li><?php echo $str['sch_editor_changelog_v1_0_0_item7a']; ?></li>
+		<li><?php echo $str['sch_editor_changelog_v1_0_0_item7b']; ?></li>
+	</ul></li>
+	<li><?php echo $str['sch_editor_changelog_v1_0_0_item8']; ?>
+	<ul>
+		<li><?php echo $str['sch_editor_changelog_v1_0_0_item8a']; ?></li>
+		<li><?php echo $str['sch_editor_changelog_v1_0_0_item8b']; ?></li>
+	</ul></li>
 </ul>
 <h4>0.7.4 - <?php echo $str['sch_editor_changelog_v0_7_4_date']; ?></h4>
 <ul>

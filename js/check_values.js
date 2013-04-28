@@ -66,11 +66,12 @@ var value = parseInt(elem.value);
 			alert('Error: this value must be a number between 0 and 508.');
 			}
 		}
+
 		elem.value = fall_back_value;
 	}
 }
 
-function checkValueHazardousObjectCount(elem, language = 'en')
+function checkValueHazardousObjectCount(elem, language = 'en', fall_back_value = 8)
 {
 var value = parseInt(elem.value);
 	if (isNaN(value) || value < 1 || value > 250) // Out of boundaries values
@@ -105,7 +106,8 @@ var value = parseInt(elem.value);
 			alert('Error: this value must be a number between 1 and 250.');
 			}
 		}
-		elem.value = 8; // Let's reset this to the only value that was accepted in the past
+
+		elem.value = fall_back_value;
 	}
 	else if (value > 30 && value <= 100)
 	{
@@ -197,7 +199,7 @@ var value = parseInt(elem.value);
 	}
 }
 
-function checkValueWeaponAmmo(elem, language = 'en')
+function checkValueWeaponAmmo(elem, language = 'en', fall_back_value = 0)
 {
 	var value = parseInt(elem.value);
 	if (isNaN(value) || value < 0 || value > 127)
@@ -207,7 +209,7 @@ function checkValueWeaponAmmo(elem, language = 'en')
 			if (isNaN(value))
 			{
 			alert('Erreur : cette valeur doit être un nombre!');
-			elem.value = 0;
+			elem.value = fall_back_value;
 			}
 			else if (value > 127 && value < 256)
 			{
@@ -216,7 +218,7 @@ function checkValueWeaponAmmo(elem, language = 'en')
 			else
 			{
 			alert('Erreur : cette valeur doit être comprise entre 0 et 127.');
-			elem.value = 0;
+			elem.value = fall_back_value;
 			}
 		}
 		else
@@ -224,7 +226,7 @@ function checkValueWeaponAmmo(elem, language = 'en')
 			if (isNaN(value))
 			{
 			alert('Error: this value must be a number!');
-			elem.value = 0;
+			elem.value = fall_back_value;
 			}
 			else if (value > 127 && value < 256)
 			{
@@ -233,13 +235,13 @@ function checkValueWeaponAmmo(elem, language = 'en')
 			else
 			{
 			alert('Error: this value must be a number between 0 and 127.');
-			elem.value = 0;
+			elem.value = fall_back_value;
 			}
 		}
 	}
 }
 
-function checkValueJetpackPower(elem, language = 'en')
+function checkValueJetpackPower(elem, language = 'en', fall_back_value = 30)
 {
 	var value = parseInt(elem.value);
 	if (isNaN(value) || value < 0 || value > 250)
@@ -266,11 +268,12 @@ function checkValueJetpackPower(elem, language = 'en')
 			alert('Error: this value must be a number between 0 and 250.');
 			}
 		}
-	elem.value = 30;
+
+	elem.value = fall_back_value;
 	}
 }
 
-function checkValueWeaponDelay(elem, language = 'en')
+function checkValueWeaponDelay(elem, language = 'en', fall_back_value = 0)
 {
 	var value = parseInt(elem.value);
 	if (isNaN(value) || value < 0 || value > 128)
@@ -280,7 +283,7 @@ function checkValueWeaponDelay(elem, language = 'en')
 			if (isNaN(value))
 			{
 			alert('Erreur : cette valeur doit être un nombre!');
-			elem.value = 0;
+			elem.value = fall_back_value;
 			}
 			else if (value > 128 && value < 256)
 			{
@@ -289,7 +292,7 @@ function checkValueWeaponDelay(elem, language = 'en')
 			else
 			{
 			alert('Erreur : cette valeur doit être comprise entre 0 et 128.');
-			elem.value = 0;
+			elem.value = fall_back_value;
 			}
 		}
 		else
@@ -297,7 +300,7 @@ function checkValueWeaponDelay(elem, language = 'en')
 			if (isNaN(value))
 			{
 			alert('Error: this value must be a number!');
-			elem.value = 0;
+			elem.value = fall_back_value;
 			}
 			else if (value > 128 && value < 256)
 			{
@@ -306,7 +309,7 @@ function checkValueWeaponDelay(elem, language = 'en')
 			else
 			{
 			alert('Error: this value must be a number between 0 and 128.');
-			elem.value = 0;
+			elem.value = fall_back_value;
 			}
 		}
 	}

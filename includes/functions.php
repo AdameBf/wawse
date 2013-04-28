@@ -104,10 +104,12 @@ function setLanguage($language)
 function onceTwice($text)
 {
 	// - English
+	$text = str_replace('downloaded 0 times', 'never downloaded', $text);
 	$text = str_replace(' 1 times', ' once', $text);
 	$text = str_replace(' 2 times', ' twice', $text);
 	
-	// - French: no changes.
+	// - French:
+	$text = str_replace('téléchargé 0 fois', 'jamais téléchargé', $text);
 	
 	// Once we're done with all the languages, let's return the new text.
 	return $text;
@@ -255,7 +257,7 @@ function crateProbabilitiesPercentages($weapon_crates_byte, $health_crates_byte,
 {
 	if (max($weapon_crates_byte, $health_crates_byte, $utility_crates_byte) == 0) // Since the script will rely on a division, let's immediately avoid divisions by zero.
 	{
-		$results = array(0, 0, 0);
+		$results = array(0, 0, 0, 100);
 		return $results;
 	}
 	else
@@ -284,6 +286,7 @@ function crateProbabilitiesPercentages($weapon_crates_byte, $health_crates_byte,
 		if ($total > 100)
 		{
 			$difference = $total - 100;
+			$no_crates = 0;
 			
 			if ($difference > $utility_crates)
 			{
@@ -307,8 +310,12 @@ function crateProbabilitiesPercentages($weapon_crates_byte, $health_crates_byte,
 				$utility_crates -= $difference;
 			}
 		}
+		else
+		{
+			$no_crates = 100 - $total;
+		}
 		
-		$results = array($weapon_crates, $health_crates, $utility_crates);
+		$results = array($weapon_crates, $health_crates, $utility_crates, $no_crates);
 		return $results;
 	}
 }
