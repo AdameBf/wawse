@@ -474,8 +474,8 @@ if (isset($_POST['action']))
 	
 		// Some variables before starting
 		// First, simple ones
-		$rubber_enabled = false; // Will be changed below
-		$laser_fix_enabled = false; // Will be changed below, only depends on flames limit
+		$rubber_required = false; // Will be changed below
+		$laser_fix_required = false; // Will be changed below, only depends on flames limit
 
 		$rubber_speed = (int) $_POST['rubber_speed'];
 		$rubber_flames_limit = (int) $_POST['rubber_flames_limit'];
@@ -608,7 +608,7 @@ if (isset($_POST['action']))
 
 		if ($rubber_flames_limit !== 0)
 		{
-			$laser_fix_enabled = true;
+			$laser_fix_required = true;
 			$version_required_array[] = 29;
 		}
 		if ($rubber_speed !== 0 OR $rubber_version_override > 82 OR $rubber_knocking_force !== 0)
@@ -644,11 +644,11 @@ if (isset($_POST['action']))
 		$rubber_max_value = max($rubber_settings);
 		if ($rubber_max_value === 0)
 		{
-		$rubber_enabled = false;
+		$rubber_required = false;
 		}
 		else
 		{
-		$rubber_enabled = true;
+		$rubber_required = true;
 		$version_required_array[] = 28;
 		}
 	
@@ -700,15 +700,15 @@ if (isset($_POST['action']))
 			$version_required_string = '3.6.'.$version_required.'.0 Beta or later';
 		}
 	
-		if ($rubber_enabled)
+		if ($rubber_required)
 		{
 			$version_required_string .= ' with RubberWorm';
 		}
-		if ($laser_fix_enabled AND !$rubber_enabled) // Flames limit feature
+		if ($laser_fix_required AND !$rubber_required) // Flames limit feature
 		{
 			$version_required_string = '3.6.29.0 with Laser Fix or 3.6.31.0+ with RubberWorm';
 		}
-		else if ($laser_fix_enabled AND $rubber_enabled AND $version_required == 29)
+		else if ($laser_fix_required AND $rubber_required AND $version_required == 29)
 		{
 			$version_required_string = '3.6.29.0 with Laser Fix and RubberWorm or 3.6.31.0+ with RubberWorm';
 		}
@@ -791,8 +791,19 @@ if (isset($_POST['action']))
             // Is it the right format?
             $file_infos = pathinfo($_FILES['sch_file']['name']);
             $uploaded_file_format = $file_infos['extension'];
-            $uploaded_file_name = $file_infos['filename'];
-            $uploaded_file_name_2 = fileNameParser($file_infos['filename']);
+			$uploaded_file_name = $file_infos['filename'];
+			$uploaded_file_name_2 = fileNameParser($file_infos['filename']);
+			
+			if ($_POST['sch_name'] != '') // Introduced in v0.7.5: has the user specified a scheme name? 
+			{
+				$database_sch_name = htmlspecialchars($_POST['sch_name']);
+				$sch_file_name = fileNameParser($database_sch_name);
+			}
+			else // If it is empty, the uploaded file's name will be used instead.
+			{
+				$database_sch_name = $uploaded_file_name;
+				$sch_file_name = $uploaded_file_name_2;
+			}
             
             if ($uploaded_file_format == 'wsc')
             {
@@ -817,7 +828,7 @@ if (isset($_POST['action']))
 				}
 				
 				$query_check = $bdd->prepare('SELECT * FROM schemes_list WHERE sch_name = :sch_name AND sch_author = :sch_author');
-				$query_check->execute(array('sch_name' => $uploaded_file_name, 'sch_author' => $sch_author));
+				$query_check->execute(array('sch_name' => $database_sch_name, 'sch_author' => $sch_author));
 				$query_check_result = $query_check->fetch();
 
 				if (!empty($query_check_result))
@@ -827,12 +838,12 @@ if (isset($_POST['action']))
 
 					// The magic number will be the timestamp.
 					$magic_number = time();
-					$uploaded_file_name .= $magic_number;
-					$uploaded_file_name_2 .= $magic_number;
+					$database_sch_name .= $magic_number;
+					$sch_file_name .= $magic_number;
 				}
 
-				$name = $uploaded_file_name_2.'_by_'.$sch_author_2.'.'.$uploaded_file_format;
-				$sch_name = $uploaded_file_name_2.'_by_'.$sch_author_2; // Base name without extension
+				$sch_name = $sch_file_name.'_by_'.$sch_author_2; // Base name without extension
+				$name = $sch_name.'.wsc';
 
 				$file_content = file_get_contents($_FILES['sch_file']['tmp_name']);
 				$errors = array();
@@ -874,8 +885,8 @@ if (isset($_POST['action']))
 
 				if (isset($file_size)) // $file_size should be set only if the file size is valid
 				{
-					$rubber_enabled = false;
-					$laser_fix_enabled = false;
+					$rubber_required = false;
+					$laser_fix_required = false;
 
 					for ($i = 5; $i < $file_size; $i++)
 					{
@@ -1021,31 +1032,31 @@ if (isset($_POST['action']))
 						case 198: // Jetpack power setting
 						if (ord($file_content[$i]) >= 5)
 						{
-						$version_required_array[] = 29;
+							$version_required_array[] = 29;
 						}
 						break;
 						
-						case 256: case 260: case 268: case 280: case 284: case 288: case 292: case 296: // Rubber settings
+						case 256: case 260: case 268: case 280: case 284: case 288: case 292: case 296: // Rubber settings that have been implemented by Pisto.
 						if (ord($file_content[$i]) !== 0)
 						{
-						$version_required_array[] = 28;
-						$rubber_required = true;
+							$version_required_array[] = 28;
+							$rubber_required = true;
 						}
 						break;
 						
-						case 228: case 232: case 240: case 276: // Rubber 31 settings
-						if (ord($file_content[$i]) !== 0)
+						case 228: case 232: case 240: case 276: // Rubber31-specific bytes.
+						if (ord($file_content[$i]) != 0)
 						{
-						$version_required_array[] = 31;
-						$rubber_required = true;
+							$rubber_required = true;
+							$version_required_array[] = 31;
 						}
 						break;
 						
 						case 244: // Flames Limit, setting ported from LaserFix
 						if (ord($file_content[$i]) !== 0)
 						{
-						$laser_fix_enabled = true;
-						$version_required_array[] = 29;
+							$laser_fix_required = true;
+							$version_required_array[] = 29;
 						}
 						break;
 						
@@ -1067,6 +1078,7 @@ if (isset($_POST['action']))
 						if (ord($file_content[$i]) != 0)
 						{
 							$rubber_required = true;
+
 							if (ord($file_content[$i]) > 251)
 							{
 								$version_required_array[] = 33;
@@ -1099,8 +1111,13 @@ if (isset($_POST['action']))
 						case 272:
 						if (ord($file_content[$i]) > 31)
 						{
-						$rubber_required = true;
-						$version_required_array[] = 31;
+							$rubber_required = true;
+							$version_required_array[] = 31;
+						}
+						else if (ord($file_content[$i]) != 0)
+						{
+							$rubber_required = true;
+							$version_required_array[] = 28;
 						}
 						break;
 
@@ -1384,19 +1401,16 @@ if (isset($_POST['action']))
 						$version_required_string = '3.6.'.$version_required.'.0 Beta or later';
 					}
 	
-					if ($rubber_enabled)
+					if ($rubber_required)
 					{
 						$version_required_string .= ' with RubberWorm';
 					}
-					if ($rubber_enabled AND $version_required === 31)
-					{
-						$version_required_string = '3.6.31.0 or later with RubberWorm';
-					}
-					if ($laser_fix_enabled AND !$rubber_enabled) // Flames limit feature only.
+
+					if ($laser_fix_required AND $rubber_required == false AND $version_required == 29) // Flames limit feature only.
 					{
 						$version_required_string = '3.6.29.0 with Laser Fix or 3.6.31.0+ with RubberWorm';
 					}
-					else if ($laser_fix_enabled AND $rubber_enabled AND $version_required == 29) // Flames limit + other Rubber features that don't require 3.6.31.0 or later.
+					else if ($laser_fix_required AND $rubber_required AND $version_required == 29) // Flames limit + other Rubber features that don't require 3.6.31.0 or later.
 					{
 						$version_required_string = '3.6.29.0 with Laser Fix and RubberWorm or 3.6.31.0+ with RubberWorm';
 					}
@@ -1419,7 +1433,7 @@ if (isset($_POST['action']))
 					move_uploaded_file($_FILES['sch_file']['tmp_name'], 'schemes/'.basename($name));
 					$create_scheme_query = $bdd->prepare('INSERT INTO schemes_list VALUES(\'\', :name, :author, :is_member, :password, :submit_date, :submit_date, :description, :version_required_string, 0, :example_replays_permissions)');
 					$create_scheme_query->execute(array(
-					'name' => $uploaded_file_name,
+					'name' => $database_sch_name,
 					'author' => $sch_author,
 					'is_member' => $sch_author_is_member,
 					'password' => $sch_password,
@@ -1431,7 +1445,7 @@ if (isset($_POST['action']))
 					
 					$scheme_get_id = $bdd->prepare('SELECT sch_id FROM schemes_list WHERE sch_name = :name');
 					$scheme_get_id->execute(array(
-					'name' => $uploaded_file_name,
+					'name' => $database_sch_name,
 					));
 					$scheme_id = $scheme_get_id->fetch();
 					

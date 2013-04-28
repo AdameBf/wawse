@@ -1012,17 +1012,19 @@
 	</tr>
 	<tr>
 		<td><label for="rubber_version_override"><?php echo $str['sch_editor_rubber_version_override']; ?></label> <img src="../../images/sch-editor-hint-icon.png" alt="(Hover for a tip)" title="<?php echo $str['sch_editor_rubber_version_override_hint']; ?>" /></td>
-		<td colspan="3"><select name="rubber_version_override" id="rubber_version_override">
-		<?php
-		$counter = 0;
+		<td colspan="3">
+		<select name="rubber_version_override" id="rubber_version_override">
+			<option value="0"><?php echo $str['none_2']; ?></option>
+			<?php
+			$counter = 1;
 	
-		while($counter < count($versions_list))
-		{
-			echo '<option value="'.$counter.'">'.$versions_list[$counter].'</option>';
+			while($counter < count($versions_list))
+			{
+				echo '<option value="'.$counter.'">'.$versions_list[$counter].'</option>';
 		
-			$counter++;
-		}
-		?>
+				$counter++;
+			}
+			?>
 		</select></td>
 	</tr>
 	</table>

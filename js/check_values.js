@@ -31,7 +31,7 @@ function checkValue(elem, min, max, default_value = 0, language = 'en')
 	}
 }
 
-function checkValueFallDamage(elem, language = 'en')
+function checkValueFallDamage(elem, language = 'en', fall_back_value = 100)
 {
 var value = parseInt(elem.value);
 	if (isNaN(value) || value < 0 || value > 508 || value % 4 != 0)
@@ -66,7 +66,7 @@ var value = parseInt(elem.value);
 			alert('Error: this value must be a number between 0 and 508.');
 			}
 		}
-		elem.value = 100;
+		elem.value = fall_back_value;
 	}
 }
 

@@ -89,18 +89,45 @@ if ($pages_count > 0) // There would only be 0 pages if there are no schemes.
 		}
 	}
 
-	$beginning = ($pages_count - 1) * $schemes_per_page;
+	$beginning = ($current_page - 1) * $schemes_per_page;
 
-	$get_schemes_query = $bdd->prepare('SELECT schemes_list.*, sch_exrep_id, sch_example_replays.sch_id AS sch_id_2, sch_example_replays.sch_exrep_approvement_level FROM schemes_list LEFT JOIN sch_example_replays ON sch_example_replays.sch_id = schemes_list.sch_id ORDER BY schemes_list.sch_id DESC LIMIT :beginning, 30'); // (I hope I won't be blamed for not using more aliases.)
-	$get_schemes_query->bindValue(':beginning', $beginning, PDO::PARAM_INT);
+	$get_schemes_query = $bdd->prepare('SELECT schemes_list.*, sch_exrep_id, sch_example_replays.sch_id AS sch_id_2, sch_example_replays.sch_exrep_approvement_level FROM schemes_list LEFT JOIN sch_example_replays ON sch_example_replays.sch_id = schemes_list.sch_id ORDER BY schemes_list.sch_id DESC'); // (I hope I won't be blamed for not using more aliases.)
 	$get_schemes_query->execute();
 	
-	$i = 1;
+	$i = 1; // Replay count.
+	$k = 1; // Scheme count.
+	
+	// If we're not on page 1, we'll need to skip to the schemes that have to be listed. (I didn't use "LIMIT n, 30" in the query due to the fact that it will select 30 replays, not 30 schemes - and I don't want to change and risk breaking everything, at least not now.)
+	if ($beginning != 0)
+	{
+		$l = 1;
+		while ($scheme_data = $get_schemes_query->fetch() AND $l < $beginning)
+		{
+			if (!isset($previous_sch_id_skip)) // This means we're going to list the first scheme.
+			{
+				$l++;
+				$m = 1; // Replay count.
+			}
+			else if (isset($previous_sch_id_skip) AND $previous_sch_id_skip != $scheme_data['sch_id']) // This means we're starting listing a new scheme.
+			{
+				$l++;
+				$m = 1;
+			}
+
+			// Create a link to the replay we're currently on.
+			if ($scheme_data['sch_exrep_approvement_level'] == 1)
+			{
+				$m++;
+			}
+		
+			$previous_sch_id_skip = $scheme_data['sch_id']; // So we won't repeat a scheme if several replays are attached to it.
+		}
+	}
 	?>
 	<table>
 		<tr><th><?php echo $str['sch_editor_sch_list_id_column']; ?></th><th><?php echo $str['sch_editor_sch_list_name_column']; ?></th><th><?php echo $str['sch_editor_sch_list_author_column']; ?></th><th><?php echo $str['sch_editor_sch_list_submit_date_column']; ?></th><th><?php echo $str['sch_editor_sch_list_last_edit_date_column']; ?></th><th><?php echo $str['sch_editor_sch_list_version_required_column']; ?></th><th><?php echo $str['sch_editor_sch_list_download_count_column']; ?></th><th><?php echo $str['sch_editor_sch_list_download_column']; ?></th><th><?php echo $str['sch_editor_sch_list_download_example_replays']; ?></th></tr>
 	<?php
-	while ($scheme_data = $get_schemes_query->fetch())
+	while ($scheme_data = $get_schemes_query->fetch() AND $k <= 30)
 	{
 		$creation_date = date('d\-m\-Y', $scheme_data['sch_submit_date']);
 		$last_edit_date = date('d\-m\-Y', $scheme_data['sch_last_edit_date']);
@@ -111,6 +138,7 @@ if ($pages_count > 0) // There would only be 0 pages if there are no schemes.
 			echo '<tr><td>'.$scheme_data['sch_id'].'</td><td><a href="scheme-view.php?id='.$scheme_data['sch_id'].'">'.$scheme_data['sch_name'].'</a></td><td>'.$scheme_data['sch_author'].'</td><td>'.$creation_date.'</td><td>'.$last_edit_date.'</td><td>'.$scheme_data['sch_version_required'].'</td><td>'.$scheme_data['sch_download_count'].'</td><td><a href="download.php?id='.$scheme_data['sch_id'].'">'.$str['sch_editor_sch_list_download_column'].'</a></td><td style="text-align: center;">';
 			
 			$j = 1;
+			$k++;
 		}
 		else if (isset($previous_sch_id) AND $previous_sch_id != $scheme_data['sch_id']) // This means we're starting listing a new scheme.
 		{
@@ -130,9 +158,7 @@ if ($pages_count > 0) // There would only be 0 pages if there are no schemes.
 			echo '<tr><td>'.$scheme_data['sch_id'].'</td><td><a href="scheme-view.php?id='.$scheme_data['sch_id'].'">'.$scheme_data['sch_name'].'</a></td><td>'.$scheme_data['sch_author'].'</td><td>'.$creation_date.'</td><td>'.$last_edit_date.'</td><td>'.$scheme_data['sch_version_required'].'</td><td>'.$scheme_data['sch_download_count'].'</td><td><a href="download.php?id='.$scheme_data['sch_id'].'">'.$str['sch_editor_sch_list_download_column'].'</a></td><td style="text-align: center;">';
 			
 			$j = 1;
-		}
-		else // Yes, I always create else{} blocks, even if they're empty.
-		{
+			$k++;
 		}
 		
 		// Create a link to the replay we're currently on.

@@ -42,7 +42,9 @@ include('../../includes/connexion_pdo.php');
 <h1><?php echo $str['sch_editor_sch_uploader_title']; ?></h1>
 <p><?php echo $str['sch_editor_sch_uploader_intro']; ?></p>
 <form method="post" action="scheme-edit-check.php" enctype="multipart/form-data">
-<p><label for="sch_file" class="aligner"><?php echo $str['sch_editor_sch_uploader_sch_file']; ?></label><input type="file" name="sch_file" id="sch_file" class="champ" /></p>
+<p><label for="sch_file" class="aligner"><?php echo $str['sch_editor_sch_uploader_sch_file']; ?></label><input type="file" name="sch_file" id="sch_file" class="champ" /><br />
+<label for="sch_name" class="aligner"><?php echo $str['sch_editor_sch_name']; ?><br />
+<span class="sch_editor_hint"><?php echo $str['sch_editor_sch_name_hint']; ?></span></label><br /><input type="text" name="sch_name" id="sch_name" class="champ" /><br /><br /></p>
 <p>
 <?php if (!isset($_SESSION['id']))
 {
@@ -54,7 +56,7 @@ include('../../includes/connexion_pdo.php');
 ?>
 <label for="sch_desc" class="aligner"><?php echo $str['sch_editor_sch_desc']; ?></label><textarea name="sch_desc" id="sch_desc" rows="4" cols="35" class="champ"></textarea></p>
 <p><label for="sch_ex_rep1" class="aligner"><?php echo $str['sch_editor_sch_example_replays']; ?><br />
-<span class="sch_editor_hint"><?php echo $str['sch_editor_sch_example_replays_hint']; ?></span></label></td>
+<span class="sch_editor_hint"><?php echo $str['sch_editor_sch_example_replays_hint']; ?></span></label>
 <input type="file" name="sch_ex_rep1" id="sch_ex_rep1" class="champ" /><br />
 <input type="file" name="sch_ex_rep2" id="sch_ex_rep2" class="champ" /><br />
 <input type="file" name="sch_ex_rep3" id="sch_ex_rep3" class="champ" /><br />

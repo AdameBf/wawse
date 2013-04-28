@@ -35,13 +35,17 @@ $str['sch_editor_sch_list_replay_approving_interface_link'] = 'Gérer'; // This l
 
 // Scheme maker/editor page
 $str['sch_editor_sch_maker_title'] = 'Créer un scheme';
+$str['sch_editor_sch_editing_title'] = 'Éditer le scheme';
 
 $str['sch_editor_sch_name'] = 'Nom du scheme';
 $str['sch_editor_sch_name_hint'] = 'À moins que le fait que votre scheme s\'appelle scheme non-nommé en anglais suivi du nombre de secondes écoulées depuis le 01/01/1970 (timestamp) ne vous pose aucun problème, vous devriez donner un nom à votre scheme.';
+$str['sch_editor_sch_name_hint2'] = 'Il est pour le moment impossible de changer le nom d\'un scheme.';
 $str['sch_editor_sch_author'] = 'Votre pseudo';
 $str['sch_editor_sch_author_hint'] = 'Champ optionnel. Si vous n\'indiquez aucun pseudo, votre pseudo sera Anonymous dans la base de données.';
 $str['sch_editor_sch_password'] = 'Mot de passe d\'édition du scheme';
 $str['sch_editor_sch_password_hint'] = 'Cela vous permettra d\'éditer le scheme à l\'avenir, même si vous ne vous êtes pas inscrit sur le site.';
+$str['sch_editor_sch_password_hint2'] = 'Vous pouvez modifier le mot de passe nécessaire pour effectuer les prochaines éditions.';
+$str['sch_editor_no_password'] = 'Aucun mot de passe';
 $str['sch_editor_sch_desc'] = 'Description du scheme';
 $str['sch_editor_sch_desc_hint'] = 'Décrivez votre scheme ici (en anglais de préférence) ! Indiquez :</span>
 <ul class="sch_editor_hint">
@@ -263,6 +267,7 @@ $str['sch_editor_download_scheme_message'] = 'Téléchargez-le en cliquant sur ce 
 $str['sch_editor_sch_uploader_title'] = 'Importer un style de partie';
 $str['sch_editor_sch_uploader_intro'] = 'Donc, votre style de partie est déjà prêt, et tout ce que vous voudriez ce serait de pouvoir de l\'importer ici, plutôt que de le recréer ? Aucun problème, il vous suffit simplement de remplir le formulaire ci-dessous. Le fichier scheme que vous importez doit être au format *.wsc (taille: 221 ou 297 octets), et les replays doivent être au format *.WAgame (max. 3 Mo). Les fichiers doivent être valides.';
 $str['sch_editor_sch_uploader_sch_file'] = 'Votre fichier';
+$str['sch_editor_sch_name_hint'] = 'Si vous laissez ce champ vide, le nom du fichier importé sera utilisé à la place.';
 $str['sch_editor_sch_upload_button'] = 'Envoyez-nous votre œuvre d\'art ! =)';
 $str['sch_editor_sch_upload_error_invalid_scheme_file'] = 'Fichier invalide. Les erreurs suivantes ont été trouvées :';
 $str['sch_editor_sch_upload_error_incorrect_extension'] = 'Le fichier n\'a pas la bonne extension.';
@@ -355,8 +360,14 @@ $str['sch_editor_sch_viewer_sch_created_on'] = 'Créé le :';
 $str['sch_editor_sch_viewer_sch_last_edited_on'] = 'Dernière édition le :';
 $str['sch_editor_sch_viewer_sch_required_version'] = 'Version requise :';
 $str['sch_editor_sch_viewer_sch_desc'] = 'Description :';
+$str['sch_editor_sch_viewer_sch_no_desc'] = 'Aucune';
 $str['sch_editor_sch_viewer_sch_example_replays'] = 'Replays de démonstration :';
 $str['sch_editor_sch_viewer_sch_no_example_replays'] = 'Aucun';
+
+$str['sch_editor_sch_viewer_actions'] = 'Actions :';
+$str['sch_editor_sch_viewer_edit_link'] = 'Éditer ce scheme';
+$str['sch_editor_sch_viewer_add_exrep_link'] = 'Ajouter des replays de démonstration';
+$str['sch_editor_sch_viewer_handle_exrep_link'] = 'Gérer les replays de démonstration';
 
 $str['sch_editor_sch_view_action_replays'] = 'Repl. inst.';
 
@@ -522,13 +533,25 @@ $str['sch_editor_changelog_v0_7_3_item1'] = '[Amélioration] Il est désormais pos
 $str['sch_editor_changelog_v0_7_3_item2'] = '[Correction] En français, à cause d\'un chevron fermant oublié, la deuxième entrée de la v0.7.2 s\'affichait partiellement dans cet historique.';
 
 $str['sch_editor_changelog_v0_7_4_date'] = '26 avril 2013';
-$str['sch_editor_changelog_v0_7_4_item1'] = '[Correction de bug] Si l\'option "Nombre maximum de flammes" était modifiée, le champ de la base de données "Version requise" pouvait prêter à confusion dans certains cas :';
+$str['sch_editor_changelog_v0_7_4_item1'] = '[Correction de bugs] Si l\'option "Nombre maximum de flammes" était modifiée, le champ de la base de données "Version requise" pouvait prêter à confusion dans certains cas :';
 $str['sch_editor_changelog_v0_7_4_item1a'] = 'Si un scheme avec cette option modifiée était importé, le champ "Version requise" ne précisait pas que le scheme était également compatible avec la v3.7.2.1 + RubberWorm.';
 $str['sch_editor_changelog_v0_7_4_item1b'] = 'Si d\'autres options étaient modifiées en plus du nombre maximum de flammes, et si aucune d\'entre elles ne requiérait une version de RubberWorm pour la v3.6.31.0 ou les v3.7.x.x, le champ "Version requise" ne précisait pas que RubberWorm était également requis en v3.6.29.0.';
 $str['sch_editor_changelog_v0_7_4_item1c'] = 'Si d\'autres options étaient modifiées en plus du nombre maximum de flammes, et si au moins l\'une d\'entre elles requiérait une version de RubberWorm pour la v3.6.31.0 ou les v3.7.x.x, le champ "Version requise" indiquait tout de même que le scheme était compatible avec LaserFix (et donc avec la v3.6.29.0).';
 $str['sch_editor_changelog_v0_7_4_item2'] = '[Changement] Pour plus de cohérence, la mention "or later" (ou ultérieure en français) a été ajoutée là où elle peut s\'appliquer au champ de la base de données "Version requise".';
 $str['sch_editor_changelog_v0_7_4_item3'] = 'Notez que les changements ci-dessus ne s\'appliquent pas aux schemes existants.';
 $str['sch_editor_changelog_v0_7_4_item4'] = '[Correction de bug] En raison d\'une erreur, les valeurs des options de RubberWorm "Influence du vent" et "Perte de vitesse dans l\'air" s\'affichaient sous la forme "n - .", sans texte après le tiret.';
+
+$str['sch_editor_changelog_v0_7_5_date'] = '28 avril 2013';
+$str['sch_editor_changelog_v0_7_5_item1'] = '[Amélioration] Il est désormais possible de renommer un scheme lors de son importation.';
+$str['sch_editor_changelog_v0_7_5_item2'] = '[Correction de bug] Sur la page d\'importation de schemes, une balise &lt;td&gt; était fermée alors qu\'elle n\'avait jamais été ouverte. Elle a été retirée. (Notez que cela n\'affecte pas la page affichée à l\'écran ; mais cela a tout de même rendu la page non conforme aux standards XHTML 1.0 Strict du W3C.)';
+$str['sch_editor_changelog_v0_7_5_item3'] = '[Correction de bug] Une erreur faisait que le système de pagination de la liste des schemes ne fonctionnait pas : seule la page avec les schemes les plus anciens s\'affichait, quelque soit le numéro de la page consultée. Notez que ce bug ne concernait pas la version en ligne de l\'éditeur, parce que tous les schemes tenaient sur une seule page ; c\'est sur ma version locale que j\'ai remarqué ce bug.';
+$str['sch_editor_changelog_v0_7_5_item4'] = '[Correction de bug] Une autre erreur faisait que le système de pagination de la liste des schemes était affecté par les replays d\'exemple, si plusieurs replays étaient attachés à un même scheme : par exemple, il n\'y avait que 27 schemes (au lieu de 30) qui apparaissaient sur une page où 4 replays d\'exemple étaient attachés à un même scheme.';
+
+$str['sch_editor_changelog_v1_0_0_date'] = 'Très bientôt';
+$str['sch_editor_changelog_v1_0_0_item1'] = '[Nouvelle fonctionnalité] Il est désormais possible d\'éditer un scheme.';
+$str['sch_editor_changelog_v1_0_0_item2'] = '[Amélioration] Les interfaces d\'ajout et de gestion des replays de démonstration d\'un scheme sont désormais accessibles via la page permettant de voir les options d\'un scheme.';
+$str['sch_editor_changelog_v1_0_0_item3'] = '[Correction] Sur la page permettant de voir les options d\'un scheme, si le champ "Description" est vide, il y a désormais une mention "Aucune".';
+$str['sch_editor_changelog_v1_0_0_item4'] = '[Correction de bug] Une erreur sur la page permettant de voir les options d\'un scheme faisait que les valeurs des options "Changement d\'angle de visée automatique" et "Visée 360°"  affichées sur la page étaient inversées : si l\'une de ces options était activée, l\'option activée était marquée comme étant désactivée, et si l\'une de ces options était désactivée, l\'option désactvée était marquée comme activée.';
 
 // Link to the page that allows us to select another language
 $str['sch_editor_change_language'] = 'Changer de langue';

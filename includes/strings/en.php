@@ -35,13 +35,17 @@ $str['sch_editor_sch_list_replay_approving_interface_link'] = 'Handle'; // This 
 
 // Scheme maker/editor page
 $str['sch_editor_sch_maker_title'] = 'Create a New Scheme';
+$str['sch_editor_sch_editing_title'] = 'Edit Scheme';
 
 $str['sch_editor_sch_name'] = 'Scheme Name';
 $str['sch_editor_sch_name_hint'] = 'Your scheme will recieve the default name Unnamed Scheme followed by a timestamp if you don\'t choose a name.';
+$str['sch_editor_sch_name_hint2'] = 'It isn\'t possible to change a scheme\'s name after its creation or upload yet.';
 $str['sch_editor_sch_author'] = 'Your Nickname';
 $str['sch_editor_sch_author_hint'] = 'Optional field. If you don\'t give any nickname, then your nickname will be set to Anonymous in the database.';
 $str['sch_editor_sch_password'] = 'Scheme\'s Password';
 $str['sch_editor_sch_password_hint'] = 'This will allow you to edit your scheme later, even if you didn\'t register here - which is understandable if you don\'t speak French.';
+$str['sch_editor_sch_password_hint2'] = 'You can change the password required for further edits.';
+$str['sch_editor_no_password'] = 'No Password';
 $str['sch_editor_sch_desc'] = 'Scheme\'s Description';
 $str['sch_editor_sch_desc_hint'] = 'Describe your scheme here! You should tell:</span>
 <ul class="sch_editor_hint">
@@ -101,7 +105,7 @@ $str['sch_editor_turn_time_hint'] = 'If you want the turn time to be infinite, t
 $str['sch_editor_round_time'] = 'Round Time';
 $str['sch_editor_round_time_hint'] = 'Round time can be specified in minutes (0-127) or in seconds (1-128). Sudden death will start a few turns after the round time reached 0. Though setting 0 mins will always result in instant sudden death.';
 $str['sch_editor_round_time_display'] = 'Display Round Time';
-$str['sch_editor_round_time_display_hint'] = 'If this box is checked, the round time will be displayed under the turn time ingame, so players can see how much time remains until Sudden Death.';
+$str['sch_editor_round_time_display_hint'] = 'If this box is checked, the round time will be displayed under the turn time in-game, so players can see how much time remains until Sudden Death.';
 
 $str['sch_editor_game_settings'] = 'Game Settings';
 $str['sch_editor_fall_damage'] = 'Fall Damage';
@@ -223,7 +227,7 @@ $str['sch_editor_rubber_swat_hint'] = 'If you can manually select the worm that 
 $str['sch_editor_rubber_air_resistance'] = 'Air Resistance';
 $str['sch_editor_rubber_air_resistance_hint'] = 'Here you can set how fast a flying object loses velocity. If you set an odd value, worms will be affected too.';
 $str['sch_editor_rubber_gravity_modifications'] = 'Gravity Modifications';
-$str['sch_editor_rubber_gravity_modifications_hint'] = 'Here, you can do several things: you can alter the gravity ("grav##" settings) so it is stronger or lower, but not only. You can also reverse that gravity ("grav-##" settings), so worms will walk on the roof (walking is buggy thought), or even create a black hole. It will appear on the center of the map and will attract or push every objects and worms. Its attraction is either constant (meaning it is the same everywhere on the map: "cbh(-)##" settings) or proportional (the farther from the black hole the object is, the less it is attracted: "pbh(-)##" settings).';
+$str['sch_editor_rubber_gravity_modifications_hint'] = 'Here, you can do several things: you can alter the gravity ("grav##" settings) so it is stronger or lower, but not only. You can also reverse that gravity ("grav-##" settings), so worms will walk on the roof (walking is buggy though), or even create a black hole. It will appear on the center of the map and will attract or push every objects and worms. Its attraction is either constant (meaning it is the same everywhere on the map: "cbh(-)##" settings) or proportional (the farther from the black hole the object is, the less it is attracted: "pbh(-)##" settings).';
 $str['sch_editor_rubber_wind_influence'] = 'Wind Influence';
 $str['sch_editor_rubber_wind_influence_hint'] = 'Here you can set how much the wind affects some of the flying objects. If you set an odd value, then wind affects worms too. A value of 255 corresponds to the wind susceptibility of the Bazooka. Note that this setting won\'t affect objets already affected by the wind (such as bazooka shells, poison, flames...). Crates, graves, barrels won\'t be affected either.';
 
@@ -263,6 +267,7 @@ $str['sch_editor_download_scheme_message'] = 'Download it here.';
 $str['sch_editor_sch_uploader_title'] = 'Upload a Scheme';
 $str['sch_editor_sch_uploader_intro'] = 'So, your scheme is ready, and all you want is to upload it here? No problem, just use the following form. The scheme file you upload must be in *.wsc format and must be either 221 or 297 bytes long; replays file must be in *.WAgame format (max. 3 MB). All files must be valid.';
 $str['sch_editor_sch_uploader_sch_file'] = 'Your Scheme File';
+$str['sch_editor_sch_name_hint'] = 'If this field is empty, the uploaded file\'s name will be used instead.';
 $str['sch_editor_sch_upload_button'] = 'Send us your piece of art! =)';
 $str['sch_editor_sch_upload_error_invalid_scheme_file'] = 'Invalid scheme file. The following errors were found:';
 $str['sch_editor_sch_upload_error_incorrect_extension'] = 'Incorrect file extension.';
@@ -355,8 +360,14 @@ $str['sch_editor_sch_viewer_sch_created_on'] = 'Created on:';
 $str['sch_editor_sch_viewer_sch_last_edited_on'] = 'Last edited on:';
 $str['sch_editor_sch_viewer_sch_required_version'] = 'Required Version:';
 $str['sch_editor_sch_viewer_sch_desc'] = 'Description:';
+$str['sch_editor_sch_viewer_sch_no_desc'] = 'None';
 $str['sch_editor_sch_viewer_sch_example_replays'] = 'Example Replays:';
 $str['sch_editor_sch_viewer_sch_no_example_replays'] = 'None';
+
+$str['sch_editor_sch_viewer_actions'] = 'Actions:';
+$str['sch_editor_sch_viewer_edit_link'] = 'Edit this Scheme';
+$str['sch_editor_sch_viewer_add_exrep_link'] = 'Add Example Replays';
+$str['sch_editor_sch_viewer_handle_exrep_link'] = 'Handle Example Replays';
 
 $str['sch_editor_sch_view_action_replays'] = 'I. Replays'; // This string should be as short as this.
 
@@ -365,7 +376,7 @@ $str['sch_editor_sch_viewer_no_weapons'] = 'There are no weapons in this scheme.
 $str['sch_editor_sch_viewer_error_title'] = 'Scheme Viewing Error';
 $str['sch_editor_sch_viewer_error_scheme_not_found'] = 'Scheme not found.';
 $str['sch_editor_sch_viewer_error_no_id_specified'] = 'Errm, what scheme do you want me to load? I mean, I can\'t load schemes without an ID, a bit like calculators can\'t multiply any numbers if these numbers are not specified... (Well, I hope you got my point.)';
-$str['sch_editor_sch_viewer_error_invalid_sch_signature'] = 'Invalid scheme signature. There, how did that file land on this server, if it had an invalid signature? :O';
+$str['sch_editor_sch_viewer_error_invalid_sch_signature'] = 'Invalid scheme signature. There, how did that file land on this server, if it had an invalid signature? =o';
 
 $str['sch_editor_sch_viewer_weapon_column'] = '<abbr title="Weapon">W</abbr>';
 $str['sch_editor_sch_viewer_ammo_column'] = '<abbr title="Ammunition">A</abbr>';
@@ -459,7 +470,7 @@ $str['sch_editor_changelog_v0_4_0_date'] = 'September 16th, 2012';
 $str['sch_editor_changelog_v0_4_0_item1'] = '[Improvement] Added the schemes list.';
 
 $str['sch_editor_changelog_v0_4_1_date'] = 'October 6th, 2012';
-$str['sch_editor_changelog_v0_4_1_item1'] = '[Fixed] After ingame testing, I realised that only the Land Retreat Time was limited to 127. The Hotseat Delay and the Rope Retreat Time can be set up to 255 again.';
+$str['sch_editor_changelog_v0_4_1_item1'] = '[Fixed] After in-game testing, I realised that only the Land Retreat Time was limited to 127. The Hotseat Delay and the Rope Retreat Time can be set up to 255 again.';
 $str['sch_editor_changelog_v0_4_1_item2'] = '[Fixed] Uploaded schemes without any author name had an empty author field. Now, if no author name is given, the author name will be set to Anonymous.';
 $str['sch_editor_changelog_v0_4_1_item3'] = 'Plus some other minor fixes I\'ve released on the previous days and I didn\'t list.';
 
@@ -522,13 +533,25 @@ $str['sch_editor_changelog_v0_7_3_item1'] = '[Improvement] It is now possible to
 $str['sch_editor_changelog_v0_7_3_item2'] = '[Fixed bug] In French, in this Changelog, the second v0.7.2 entry was cut, due to a missing diple ("&gt;").';
 
 $str['sch_editor_changelog_v0_7_4_date'] = 'April 26th, 2013';
-$str['sch_editor_changelog_v0_7_4_item1'] = '[Fixed bug] With a tweaked Flames Limit setting, the Version Required field was misleading in some cases:';
+$str['sch_editor_changelog_v0_7_4_item1'] = '[Fixed bugs] With a tweaked Flames Limit setting, the Version Required field was misleading in some cases:';
 $str['sch_editor_changelog_v0_7_4_item1a'] = 'If a scheme was uploaded with a tweaked Flames Limit setting, the Version Required field would pretend the scheme wouldn\'t be compatible with RubberWorm for 3.7.2.1.';
 $str['sch_editor_changelog_v0_7_4_item1b'] = 'If other features were changed in addition to Flames Limit, and if none of them required RubberWorm for 3.6.31.0 or 3.7.x.x, the Version Required field would pretend the scheme doesn\'t require RubberWorm in v3.6.29.0.';
 $str['sch_editor_changelog_v0_7_4_item1c'] = 'If other features were changed in addition to Flames Limit, and if any of them required RubberWorm for 3.6.31.0 or 3.7.x.x, the Version Required field would still pretend the scheme is compatible with LaserFix for v3.6.29.0.';
 $str['sch_editor_changelog_v0_7_4_item2'] = '[Change] For more consistency, the "or later" mention has been added where applicable in the Version Required database field.';
 $str['sch_editor_changelog_v0_7_4_item3'] = 'Note that the above changes don\'t apply to existing schemes.';
 $str['sch_editor_changelog_v0_7_4_item4'] = '[Fixed bug] Due to an error, "Wind Influence" and "Air Resistance" settings\' values were showing as "n - .", with no text after the hyphen.';
+
+$str['sch_editor_changelog_v0_7_5_date'] = 'April 28th, 2013';
+$str['sch_editor_changelog_v0_7_5_item1'] = '[Improvement] It is now possible to rename a scheme you\'re Uploading.';
+$str['sch_editor_changelog_v0_7_5_item2'] = '[Fixed bug] On the Scheme Uploading page, a &lt;td&gt; tag was closed, but never opened. It has been removed. (Note that this doesn\'t affect the displayed page; it only made the page invalid according to the W3C XHTML 1.0 Strict standards.)';
+$str['sch_editor_changelog_v0_7_5_item3'] = '[Fixed bug] Due to an error, the paging system on the Scheme List didn\'t work: it would only show the page with the oldest schemes. Note that this didn\'t affect the public version of the scheme editor, because at that time schemes were still fitting on a single page; the bug has been noticed on my local version.';
+$str['sch_editor_changelog_v0_7_5_item4'] = '[Fixed bug] Due to another error, the paging system on the Scheme List would be affected by example replays if more than one was attached to any of the displayed schemes: for example, only 27 schemes (instead of 30) would be shown on a page where 4 example replays were attached to the same scheme.';
+
+$str['sch_editor_changelog_v1_0_0_date'] = 'Very soon';
+$str['sch_editor_changelog_v1_0_0_item1'] = '[New feature] It is now possible to Edit a Scheme.';
+$str['sch_editor_changelog_v1_0_0_item2'] = '[Improvement] Example Replays Adding and Handling interfaces are now accessible via the Scheme Viewing page.';
+$str['sch_editor_changelog_v1_0_0_item3'] = '[Fixed] On the Scheme Viewing page, if the Description field is empty, a "None" mention will now be shown (before, nothing was shown at all).';
+$str['sch_editor_changelog_v1_0_0_item4'] = '[Fixed bug] Due to an error on the Scheme Viewing page, the "Automatic Reaiming" and "Circular Aiming" displayed values actually were reversed: enabling one of them would cause the Scheme Viewer to mark it as "Off", and disabling one of them would cause the Scheme Viewer to mark it as "On".';
 
 // Link to the page that allows us to select another language
 $str['sch_editor_change_language'] = 'Select Another Language';
