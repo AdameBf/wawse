@@ -434,7 +434,7 @@ if (isset($_GET['id'])) // Yeah, we should rather make sure we're viewing an exi
 											{
 											?>
 											<tr>
-												<td style="vertical-align: middle;"><img src="images/php/weapon-icon.php?v=<?php echo $i; ?>" alt="<?php echo $str['weapons_list'][$i]; ?>" title="<?php echo $str['weapons_list'][$i]; ?>" /></td>
+												<td style="vertical-align: middle;"><img src="images/php/weapon-icon.php?v=<?php echo $i; ?>&amp;aquasheep=<?php echo ord($file_content[31]); ?>" alt="<?php echo $str['weapons_list'][$i]; ?>" title="<?php echo $str['weapons_list'][$i]; ?>" /></td>
 												<td><?php echo $ammo; ?></td>
 												<td><?php echo $power; ?></td>
 												<td><?php echo $delay; ?></td>
@@ -474,7 +474,7 @@ if (isset($_GET['id'])) // Yeah, we should rather make sure we're viewing an exi
 											{
 											?>
 											<tr>
-												<td style="vertical-align: middle;"><img src="images/php/weapon-icon.php?v=<?php echo $i; ?>" alt="<?php echo $str['weapons_list'][$i]; ?>" title="<?php echo $str['weapons_list'][$i]; ?>" /></td>
+												<td style="vertical-align: middle;"><img src="images/php/weapon-icon.php?v=<?php echo $i; ?>&amp;aquasheep=<?php echo ord($file_content[31]); ?>" alt="<?php echo $str['weapons_list'][$i]; ?>" title="<?php echo $str['weapons_list'][$i]; ?>" /></td>
 												<td><?php echo $ammo; ?></td>
 												<td><abbr title="<?php echo $str['sch_editor_sch_viewer_jp_power_hint']; ?>"><?php echo $power; ?></abbr></td>
 												<td><?php echo $delay; ?></td>
@@ -504,7 +504,7 @@ if (isset($_GET['id'])) // Yeah, we should rather make sure we're viewing an exi
 											{
 											?>
 											<tr>
-												<td style="vertical-align: middle;"><img src="images/php/weapon-icon.php?v=<?php echo $i; ?>" alt="<?php echo $str['weapons_list'][$i]; ?>" title="<?php echo $str['weapons_list'][$i]; ?>" /></td>
+												<td style="vertical-align: middle;"><img src="images/php/weapon-icon.php?v=<?php echo $i; ?>&amp;aquasheep=<?php echo ord($file_content[31]); ?>" alt="<?php echo $str['weapons_list'][$i]; ?>" title="<?php echo $str['weapons_list'][$i]; ?>" /></td>
 												<td><?php echo $ammo; ?></td>
 												<td>-</td>
 												<td><?php echo $delay; ?></td>
@@ -631,7 +631,7 @@ if (isset($_GET['id'])) // Yeah, we should rather make sure we're viewing an exi
 									?>" width="68px" height="68px" /></td>
 								</tr>
 								<tr>
-									<td><img src="images/php/god-mode.php?v=<?php echo ord($file_content[33]); ?>" alt="<?php echo $str['sch_editor_god_mode']; ?>: <?php echo ord($file_content[33]).':';
+									<td><img src="images/php/invincibility.php?v=<?php echo ord($file_content[33]); ?>" alt="<?php echo $str['sch_editor_invincibility']; ?>: <?php echo ord($file_content[33]).':';
 									if(ord($file_content[33]) == 0)
 									{
 									echo $str['off'];
@@ -641,7 +641,7 @@ if (isset($_GET['id'])) // Yeah, we should rather make sure we're viewing an exi
 									echo $str['on'];
 									}
 									?>" width="68px" height="68px" /></td>
-									<td><img src="images/php/indestructible-land.php?v=<?php echo ord($file_content[34]); ?>" alt="<?php echo $str['sch_editor_god_mode']; ?>: <?php echo ord($file_content[34]).':';
+									<td><img src="images/php/indestructible-land.php?v=<?php echo ord($file_content[34]); ?>" alt="<?php echo $str['sch_editor_invincibility']; ?>: <?php echo ord($file_content[34]).':';
 									if(ord($file_content[34]) == 0)
 									{
 									echo $str['off'];

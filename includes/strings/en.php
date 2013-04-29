@@ -169,8 +169,8 @@ $str['sch_editor_action_replays'] = 'Instant Action Replays';
 $str['sch_editor_action_replays_hint'] = '[Offline] Automatically replays a shot that caused lots of damage.';
 $str['sch_editor_blood_mode'] = 'Blood';
 $str['sch_editor_blood_mode_hint'] = 'If enabled, blood effects will be drawn when a worm are damaged.';
-$str['sch_editor_god_mode'] = 'God Mode';
-$str['sch_editor_god_mode_hint'] = 'If enabled, all worms will have infinite health.';
+$str['sch_editor_invincibility'] = 'Invincibility';
+$str['sch_editor_invincibility_hint'] = 'If enabled, all worms will have infinite health.';
 $str['sch_editor_sheep_heaven'] = 'Sheep Heaven';
 $str['sch_editor_sheep_heaven_hint'] = 'If this option is enabled, exploding sheeps will jump out from every destroyed crate, not only from crates containing sheep/super sheep. Furthermore, the super sheep\'s flight is longer.';
 $str['sch_editor_indestructible_landscape'] = 'Indestructible Landscape';
@@ -303,7 +303,7 @@ $str['sch_editor_sch_upload_manual_placement_fix'] = 'The Manual Placement byte 
 $str['sch_editor_sch_upload_blood_mode_fix'] = 'The Blood Mode byte value has been reset to 1 (was %1).';
 $str['sch_editor_sch_upload_aqua_sheep_fix'] = 'The Aqua Sheep byte value has been reset to 1 (was %1).';
 $str['sch_editor_sch_upload_sheep_heaven_fix'] = 'The Sheep Heaven byte value has been reset to 1 (was %1).';
-$str['sch_editor_sch_upload_god_mode_fix'] = 'The God Mode byte value has been reset to 1 (was %1).';
+$str['sch_editor_sch_upload_invincibility_fix'] = 'The Invincibility byte value has been reset to 1 (was %1).';
 $str['sch_editor_sch_upload_indestructible_land_fix'] = 'The Indestructible Land byte value has been reset to 1 (was %1).';
 $str['sch_editor_sch_upload_upgraded_grenade_fix'] = 'The Upgraded Grenade byte value has been reset to 1 (was %1).';
 $str['sch_editor_sch_upload_upgraded_shotgun_fix'] = 'The Upgraded Shotgun byte value has been reset to 1 (was %1).';
@@ -482,7 +482,7 @@ $str['sch_editor_changelog_v0_4_2_item1'] = '[Improvement] Added custom knocking
 
 $str['sch_editor_changelog_v0_5_0_date'] = 'November 5th, 2012';
 $str['sch_editor_changelog_v0_5_0_item1'] = '[Improvement] Example replays can now be attached to an uploaded scheme, and they\'re downloadable on the scheme list. (It should be possible to attach them to a scheme after its creation/upload in the future.) <em>(Downloading these replays actually didn\'t work: see explanation below.)</em>';
-$str['sch_editor_changelog_v0_5_0_item2'] = '[Fixed] Downloading a scheme with a parsed name now works succesfully. <em>(This "fix" actually broke scheme download entirely: the required file with the new function wasn\'t loaded on the page managing all scheme downloads - thus triggering a fatal error. Since the same "fix" was applied to replay download, it was broken as well.)</em>';
+$str['sch_editor_changelog_v0_5_0_item2'] = '[Fixed] Downloading a scheme with a parsed name now works successfully. <em>(This "fix" actually broke scheme download entirely: the required file with the new function wasn\'t loaded on the page managing all scheme downloads - thus triggering a fatal error. Since the same "fix" was applied to replay download, it was broken as well.)</em>';
 
 $str['sch_editor_changelog_v0_5_1_date'] = 'December 1st, 2012';
 $str['sch_editor_changelog_v0_5_1_item1'] = '[Fixed] Scheme and replay downloading, accidentally broken in v0.5.0 even with schemes/replays which name doesn\'t need parsing, is now possible again.';
@@ -560,6 +560,10 @@ $str['sch_editor_changelog_v1_0_0_item7b'] = 'Due to another error, the paging s
 $str['sch_editor_changelog_v1_0_0_item8'] = '[Fixed bugs] Bugs with functions checking user input in the Scheme Creation form:';
 $str['sch_editor_changelog_v1_0_0_item8a'] = 'If an invalid Victories Count value was entered, the value was reset to 100 instead of 1.';
 $str['sch_editor_changelog_v1_0_0_item8b'] = 'Weapon Power and Weapon Crate Probability check functions weren\'t working, due to missing quotation marks (and sometimes commas).';
+
+$str['sch_editor_changelog_v1_0_1_date'] = 'April 29th, 2013';
+$str['sch_editor_changelog_v1_0_1_item1'] = '[Fixed] On the Scheme Viewing page, if Aqua Sheep was disabled, the Aqua Sheep icon was still shown as the Super Sheep icon in the weapon settings table.';
+$str['sch_editor_changelog_v1_0_1_item2'] = '[Fixed] On the same page, most buttons\' corners weren\'t transparent.';
 
 // Link to the page that allows us to select another language
 $str['sch_editor_change_language'] = 'Select Another Language';

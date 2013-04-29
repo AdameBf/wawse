@@ -227,8 +227,8 @@ $str['sch_editor_action_replays'] = 'Replays instantanés automatiques';
 $str['sch_editor_action_replays_hint'] = '[Hors-Ligne] Remontre automatiquement un tir qui a causé beaucoup de dégâts.';
 $str['sch_editor_blood_mode'] = 'Mode sang';
 $str['sch_editor_blood_mode_hint'] = 'Si vous l\'activez, du sang apparaîtra quand un ver est blessé.';
-$str['sch_editor_god_mode'] = 'Mode divin';
-$str['sch_editor_god_mode_hint'] = 'Si vous l\'activez, tous les vers auront une quantité d\'énergie infinie.';
+$str['sch_editor_invincibility'] = 'Invincibilité';
+$str['sch_editor_invincibility_hint'] = 'Si vous l\'activez, tous les vers auront une quantité d\'énergie infinie.';
 $str['sch_editor_sheep_heaven'] = 'Paradis des moutons';
 $str['sch_editor_sheep_heaven_hint'] = 'Si vous activez cette option, un mouton sortira de chaque caisse détruite (pas seulement de celles qui contiennent un mouton ou un super mouton). Le temps de vol du super mouton est rallongé.';
 
@@ -303,7 +303,7 @@ $str['sch_editor_sch_upload_manual_placement_fix'] = 'L\'octet activant le place
 $str['sch_editor_sch_upload_blood_mode_fix'] = 'L\'octet activant le mode sang a été remis à 1 (il était à %1).';
 $str['sch_editor_sch_upload_aqua_sheep_fix'] = 'L\'octet activant le mouton aquatique a été remis à 1 (il était à %1).';
 $str['sch_editor_sch_upload_sheep_heaven_fix'] = 'L\'octet activant le mode paradis des moutons a été remis à 1 (il était à %1).';
-$str['sch_editor_sch_upload_god_mode_fix'] = 'L\'octet activant le mode divin a été remis à 1 (il était à %1).';
+$str['sch_editor_sch_upload_invincibility_fix'] = 'L\'octet activant l\'invincibilité a été remis à 1 (il était à %1).';
 $str['sch_editor_sch_upload_indestructible_land_fix'] = 'L\'octet activant le mode terrain indestructible a été remis à 1 (il était à %1).';
 $str['sch_editor_sch_upload_upgraded_grenade_fix'] = 'L\'octet activant le mode grenade améliorée a été remis à 1 (il était à %1).';
 $str['sch_editor_sch_upload_upgraded_shotgun_fix'] = 'L\'octet activant le mode fusil de chasse amélioré a été remis à 1 (il était à %1).';
@@ -550,16 +550,20 @@ $str['sch_editor_changelog_v1_0_0_item2'] = '[Amélioration] Il est désormais pos
 $str['sch_editor_changelog_v1_0_0_item3'] = '[Amélioration] Les interfaces d\'ajout et de gestion des replays de démonstration d\'un scheme sont désormais accessibles via la page permettant de voir les options d\'un scheme.';
 $str['sch_editor_changelog_v1_0_0_item4'] = '[Correction] Sur la page permettant de voir les options d\'un scheme, si le champ "Description" est vide, il y a désormais une mention "Aucune".';
 $str['sch_editor_changelog_v1_0_0_item5'] = '[Correction de bug] Une erreur sur la page permettant de voir les options d\'un scheme faisait que les valeurs des options "Changement d\'angle de visée automatique" et "Visée 360°"  affichées sur la page étaient inversées : si l\'une de ces options était activée, l\'option activée était marquée comme étant désactivée, et si l\'une de ces options était désactivée, l\'option désactvée était marquée comme activée.';
-$str['sch_editor_changelog_v1_0_0_item6'] = '[Corrections de bugs] Bugs rendant certaines pages non conformes aux standards XHTML 1.0 Strict du W3C :'
+$str['sch_editor_changelog_v1_0_0_item6'] = '[Corrections de bugs] Bugs rendant certaines pages non conformes aux standards XHTML 1.0 Strict du W3C :';
 $str['sch_editor_changelog_v1_0_0_item6a'] = 'Sur la page d\'importation de schemes, une balise &lt;td&gt; était fermée alors qu\'elle n\'avait jamais été ouverte. Elle a été retirée.';
 $str['sch_editor_changelog_v1_0_0_item6b'] = 'Sur la page de création de schemes, deux balises &lt;td&gt; étaient ouvertes alors qu\'elles n\'avaient jamais été fermées. Elles ont été fermées.';
 $str['sch_editor_changelog_v1_0_0_item6c'] = 'Notez que ces bugs n\'affectent pas la page affichée à l\'écran : ils ont été corrigés afin d\'être conforme aux standards.';
 $str['sch_editor_changelog_v1_0_0_item7'] = '[Corrections de bugs] Bugs du système de pagination de la liste des schemes :';
-$str['sch_editor_changelog_v1_0_0_item7a']'Une erreur faisait que le système de pagination ne fonctionnait pas : seule la page avec les schemes les plus anciens s\'affichait, quelque soit le numéro de la page consultée. Notez que ce bug ne concernait pas la version en ligne de l\'éditeur, parce que tous les schemes tenaient sur une seule page ; c\'est sur ma version locale que j\'ai remarqué ce bug.';
+$str['sch_editor_changelog_v1_0_0_item7a'] = 'Une erreur faisait que le système de pagination ne fonctionnait pas : seule la page avec les schemes les plus anciens s\'affichait, quelque soit le numéro de la page consultée. Notez que ce bug ne concernait pas la version en ligne de l\'éditeur, parce que tous les schemes tenaient sur une seule page ; c\'est sur ma version locale que j\'ai remarqué ce bug.';
 $str['sch_editor_changelog_v1_0_0_item7b'] = 'Une autre erreur faisait que le système de pagination de la liste des schemes était affecté par les replays d\'exemple, si plusieurs replays étaient attachés à un même scheme : par exemple, il n\'y avait que 27 schemes (au lieu de 30) qui apparaissaient sur une page où 4 replays d\'exemple étaient attachés à un même scheme.';
 $str['sch_editor_changelog_v1_0_0_item8'] = '[Corrections de bugs] Vérification des valeurs saisies par l\'utilisateur dans le formulaire de création d\'un scheme :';
 $str['sch_editor_changelog_v1_0_0_item8a'] ='Si un nombre de victoires invalide était saisi, la valeur était remise à 100 au lieu d\'être remise à 1.';
 $str['sch_editor_changelog_v1_0_0_item8b'] = 'Les fonctions vérifiant si les puissances et les probabilités d\'apparition dans les caisses des armes ne fonctionnait pas, à cause de paires d\'apostrophes manquantes (il manquait également parfois une virgule).';
+
+$str['sch_editor_changelog_v1_0_1_date'] = '29 avril 2013';
+$str['sch_editor_changelog_v1_0_1_item1'] = '[Correction] Sur la page permettant de voir les options d\'un schemes, si le mouton aquatique, l\'icône du super mouton qui s\'afficahit dans le tableau des options des armes était quand même celle du mouton aquatique.';
+$str['sch_editor_changelog_v1_0_1_item2'] = '[Correction] Toujours sur cette page, les coins de la plupart des boutons n\'étaient pas transparents.';
 
 // Link to the page that allows us to select another language
 $str['sch_editor_change_language'] = 'Changer de langue';

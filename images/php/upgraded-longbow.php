@@ -4,11 +4,11 @@ if (isset($_GET['v']) && $_GET['v'] == 0 || $_GET['v'] == 1)
 	header ('Content-type: image/png'); // PNG will be the best format for this kind of use.
 	if ($_GET['v'] == 0)
 	{
-		$image = imagecreatefrompng('../png/god-mode/off.png');
+		$image = imagecreatefrompng('../png/weapons/upgrades/longbow/off.png');
 	}
 	else
 	{
-		$image = imagecreatefrompng('../png/god-mode/on.png');
+		$image = imagecreatefrompng('../png/weapons/upgrades/longbow/on.png');
 	}
 
 	imagepng($image);

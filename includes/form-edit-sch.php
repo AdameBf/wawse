@@ -271,8 +271,8 @@
 		<td style="padding-left: 25px;"><input type="checkbox" name="blood_mode" id="blood_mode" <?php if (ord($file_content[30]) != 0) { echo 'checked="checked"'; } ?> /></td>
 	</tr>
 	<tr>
-		<td><label for="god_mode"><?php echo $str['sch_editor_god_mode']; ?></label> <img src="../../images/sch-editor-hint-icon.png" alt="(Hover for a tip)" title="<?php echo $str['sch_editor_god_mode_hint']; ?>" /></td>
-		<td style="padding-left: 25px;"><input type="checkbox" name="god_mode" id="god_mode" <?php if (ord($file_content[33]) != 0) { echo 'checked="checked"'; } ?> /></td>
+		<td><label for="invincibility"><?php echo $str['sch_editor_invincibility']; ?></label> <img src="../../images/sch-editor-hint-icon.png" alt="(Hover for a tip)" title="<?php echo $str['sch_editor_invincibility_hint']; ?>" /></td>
+		<td style="padding-left: 25px;"><input type="checkbox" name="invincibility" id="invincibility" <?php if (ord($file_content[33]) != 0) { echo 'checked="checked"'; } ?> /></td>
 	</tr>
 	<tr>
 		<td><label for="sheep_heaven"><?php echo $str['sch_editor_sheep_heaven']; ?></label> <img src="../../images/sch-editor-hint-icon.png" alt="(Hover for a tip)" title="<?php echo $str['sch_editor_sheep_heaven_hint']; ?>" /></td>

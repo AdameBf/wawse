@@ -238,13 +238,13 @@ if (isset($_POST['action']))
 		$sheep_heaven = 0x00;
 		}
 
-		if (isset($_POST['god_mode']))
+		if (isset($_POST['invincibility']))
 		{
-		$god_mode = 0x01;
+		$invincibility = 0x01;
 		}
 		else
 		{
-		$god_mode = 0x00;
+		$invincibility = 0x00;
 		}
 
 		if (isset($_POST['indestructible_landscape']))
@@ -397,7 +397,7 @@ if (isset($_POST['action']))
 		fputs($scheme_file, pack('h', $blood_mode)); // Char no.30
 		fputs($scheme_file, pack('h', $aqua_sheep)); // Char no.31
 		fputs($scheme_file, pack('h', $sheep_heaven)); // Char no.32
-		fputs($scheme_file, pack('h', $god_mode)); // Char no.33
+		fputs($scheme_file, pack('h', $invincibility)); // Char no.33
 		fputs($scheme_file, pack('h', $indestructible_landscape)); // Char no.34
 		fputs($scheme_file, pack('h', $upgraded_grenade)); // Char no.35
 		fputs($scheme_file, pack('h', $upgraded_shotgun)); // Char no.36
@@ -913,13 +913,13 @@ if (isset($_POST['action']))
 				$sheep_heaven = 0x00;
 			}
 
-			if (isset($_POST['god_mode']))
+			if (isset($_POST['invincibility']))
 			{
-				$god_mode = 0x01;
+				$invincibility = 0x01;
 			}
 			else
 			{
-				$god_mode = 0x00;
+				$invincibility = 0x00;
 			}
 
 			if (isset($_POST['indestructible_landscape']))
@@ -1074,7 +1074,7 @@ if (isset($_POST['action']))
 			fputs($scheme_file, pack('h', $blood_mode)); // Char no.30
 			fputs($scheme_file, pack('h', $aqua_sheep)); // Char no.31
 			fputs($scheme_file, pack('h', $sheep_heaven)); // Char no.32
-			fputs($scheme_file, pack('h', $god_mode)); // Char no.33
+			fputs($scheme_file, pack('h', $invincibility)); // Char no.33
 			fputs($scheme_file, pack('h', $indestructible_landscape)); // Char no.34
 			fputs($scheme_file, pack('h', $upgraded_grenade)); // Char no.35
 			fputs($scheme_file, pack('h', $upgraded_shotgun)); // Char no.36
@@ -1858,7 +1858,7 @@ if (isset($_POST['action']))
 								}
 								else if ($i === 33)
 								{
-									$fixes[] = str_replace('%1', $old_value, $str['sch_editor_sch_upload_god_mode_fix']);
+									$fixes[] = str_replace('%1', $old_value, $str['sch_editor_sch_upload_invincibility_fix']);
 								}
 								else if ($i === 34)
 								{
