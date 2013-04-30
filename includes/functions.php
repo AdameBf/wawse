@@ -89,15 +89,19 @@ function setLanguage($language)
 {
 	if ($language === 'fr')
 	{
-	return $language;
+		return $language;
 	}
 	else if ($language === 'en')
 	{
-	return $language;
+		return $language;
+	}
+	else if ($language === 'nl')
+	{
+		return $language;
 	}
 	else
 	{
-	return 'en';
+		return 'en';
 	}
 }
 
@@ -374,5 +378,18 @@ function isRubberScheme($scheme_file_content) // Checks whether or not a scheme 
 	{
 		return true;
 	}
+}
+
+function apostropheParse($text)
+{
+	if (strpos($text, "\'") !== false)
+	{
+		while (strpos($text, "\'") !== false)
+		{
+			$text = str_replace("\'", "'", $text);
+		}
+	}
+
+	return $text;
 }
 ?>

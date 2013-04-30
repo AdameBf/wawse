@@ -32,7 +32,7 @@ $str['sch_editor_sch_list_download_example_replays'] = 'Télécharger les replays 
 
 $str['sch_editor_sch_list_no_example_replays'] = 'Pas de replay';
 
-$str['sch_editor_sch_list_replay_approving_interface_link'] = 'Gérer'; // This link should be moved to the Scheme Viewing page once I'm done creating it.
+$str['sch_editor_sch_list_replay_approving_interface_link'] = 'Gérer';
 
 // Scheme maker/editor page
 $str['sch_editor_sch_maker_title'] = 'Créer un scheme';
@@ -85,7 +85,7 @@ $str['random'] = 'Aléatoire';
 $str['utilities'] = 'Utilitaires';
 $str['warning'] = 'Attention :';
 $str['weapon'] = 'Arme';
-$str['weapons_list'] = array('Jet Pack', 'Faible pesanteur', 'Marche rapide', 'Visée laser', 'Invisibilité', 'Bazooka', 'Missile autoguidé', 'Mortier', 'Pigeon voyageur', 'Lance-mouton', 'Grenade', 'Bombe à fragments', 'Bombe banane', 'Hache d\'armes', 'Séisme', 'Fusil de chasse', 'Pistolet', 'Uzi', 'Minicanon', 'Arc', 'Coup de poing de feu', 'Dragon Ball', 'Kamikaze', 'Bombardier kamikaze', 'Poussée', 'Dynamite', 'Mine', 'Mouton', 'Super Mouton', 'Bombe taupe', 'Raid aérien', 'Attaque au napalm', 'Attaque postale', 'Raid de mines', 'Esquadron de taupes', 'Chalumeau', 'Foreuse pneumatique', 'Poutre', 'Batte de base-ball', 'Kit de démarrage de poutres', 'Corde ninja', 'Élastique', 'Parachute', 'Téléporteur', 'Balance de la justice', 'Super bombe banane', 'Grenade sacrée', 'Lance-flammes', 'Armée du salut', 'Bombe MB', 'Cocktail molotov', 'Mouflette', 'Vase Ming précieux', 'Attaque au mouton français', 'Bombe en tapis de Mike', 'Vache folle', 'Vieille femme', 'Âne de ciment', 'Test nucléaire indien', 'Armageddon', 'Sélection de ver', 'Gel', 'Balle magique de Patsy');
+$str['weapons_list'] = array('Jet Pack', 'Faible pesanteur', 'Marche rapide', 'Visée laser', 'Invisibilité', 'Bazooka', 'Missile autoguidé', 'Mortier', 'Pigeon voyageur', 'Lance-mouton', 'Grenade', 'Bombe à fragments', 'Bombe banane', 'Hache de guerre', 'Séisme', 'Fusil de chasse', 'Pistolet', 'Uzi', 'Minicanon', 'Arc', 'Coup de poing de feu', 'Dragon Ball', 'Kamikaze', 'Bombardier kamikaze', 'Poussée', 'Dynamite', 'Mine', 'Mouton', 'Super Mouton', 'Bombe taupe', 'Raid aérien', 'Attaque au napalm', 'Attaque postale', 'Raid de mines', 'Esquadron de taupes', 'Chalumeau', 'Foreuse pneumatique', 'Poutre', 'Batte de base-ball', 'Kit de démarrage de poutres', 'Corde ninja', 'Élastique', 'Parachute', 'Téléporteur', 'Balance de la justice', 'Super bombe banane', 'Grenade sacrée', 'Lance-flammes', 'Armée du salut', 'Bombe MB', 'Cocktail molotov', 'Mouflette', 'Vase Ming précieux', 'Attaque au mouton français', 'Bombe en tapis de Mike', 'Vache folle', 'Vieille femme', 'Âne de ciment', 'Test nucléaire indien', 'Armageddon', 'Sélection de ver', 'Gel', 'Balle magique de Patsy');
 $str['weapons_hint']['jetpack'] = 'Dans la colonne puissance, les valeurs indiquent la quantité de carburant, pas la valeur de l\'octet. Si vous mettez 0 (carburant infini), il y a un compteur qui augmente à chaque unité de carburant utilisée. Cette option n\'a d\'effet qu\'à partir de la version 3.6.29.0. Valeur par défaut : 30.';
 $str['weapons_hint']['utilities'] = 'Vous ne pouvez pas éditer les chances pour qu\'un utilitaire apparaisse dans une caisse.';
 $str['weapons_hint']['super_weapon'] = 'Cette arme est une super arme, vous ne pouvez donc pas en éditer sa puissance ou ses chances d\'apparaître dans les caisses.';
@@ -282,8 +282,9 @@ $str['sch_editor_sch_upload_error_incorrect_version_byte'] = 'Version du scheme 
 $str['sch_editor_sch_upload_error_unknown'] = 'Erreur inconnue.';
 $str['sch_editor_scheme_succesfully_uploaded_message'] = 'Scheme importé avec succès !';
 $str['sch_editor_sch_upload_fixes_have_been_applied'] = '<strong>Note :</strong> les corrections suivantes ont été apportées :';
+$str['sch_editor_download_scheme_with_fixes_message'] = 'Télécharger le scheme avec les corrections.';
 
-$str['sch_editor_sch_upload_retreat_time_fix'] = 'Le temps de retraite a été remis à 127 (il était à %1).'; // Do not change any %1 or %2 in this translation file.
+$str['sch_editor_sch_upload_retreat_time_fix'] = 'Le temps de retraite a été remis à 127 (il était à %1).'; // Do not remove any %1 or %2 in this translation file - however, feel free to move them inside the string.
 $str['sch_editor_sch_upload_weapon_crate_probability_fix'] = 'La probabilité d\'apparition d\'une caisse d\'armes a été remise à 127 (elle était à %1).';
 $str['sch_editor_sch_upload_health_crate_probability_fix'] = 'La probabilité d\'apparition d\'une caisse de santé a été remise à 127 (elle était à %1).';
 $str['sch_editor_sch_upload_utility_crate_probability_fix'] = 'La probabilité d\'apparition d\'une caisse d\'utilitaires a été remise à 127 (elle était à %1).';
@@ -326,7 +327,7 @@ $str['sch_editor_sch_upload_dd_p_fix'] = 'La puissance des dégâts doublés (:O) a
 $str['sch_editor_sch_upload_dd_d_fix'] = 'Le délai des dégâts doublés a été remise à 0 (il était à %1) - l\'option n\'a aucun effet.';
 $str['sch_editor_sch_upload_dd_cp_fix'] = 'Les chances de trouver les dégâts doublés dans une caisse ont été remises à 0 (elles étaient à %1) - l\'option n\'a aucun effet.';
 $str['sch_editor_sch_upload_freeze_p_fix'] = 'La puissance du gel a été remise à 0 (elle était à %1) - l\'option n\'a aucun effet.';
-$str['sch_editor_sch_upload_freeze_cp_fix'] = 'Les chances de trouver le gel dans une caisse ont été remises à 0 (elles étaient à %1) - l\'option n\'a aucun effet.';
+$str['sch_editor_sch_upload_freeze_cp_fix'] = 'Les chances de trouver le gel dans une caisse ont été remises à 1 (elles étaient à %1) - il y a pour le moment moins de 512 versions émulables.';
 $str['sch_editor_sch_upload_sbb_p_fix'] = 'La puissance de la super bombe banane a été remise à 0 (elle était à %1) - l\'option n\'a aucun effet.';
 $str['sch_editor_sch_upload_minestr_p_fix'] = 'La puissance de l\'attaque à la mine a été remise à 0 (elle était à %1) - l\'option n\'a aucun effet.';
 $str['sch_editor_sch_upload_gsp_p_fix'] = 'La puissance du kit de démarrage de poutres a été remise à 0 (elle était à %1) - l\'option n\'a aucun effet, il faut éditer la puissance de la poutre.';
@@ -564,6 +565,14 @@ $str['sch_editor_changelog_v1_0_0_item8b'] = 'Les fonctions vérifiant si les pui
 $str['sch_editor_changelog_v1_0_1_date'] = '29 avril 2013';
 $str['sch_editor_changelog_v1_0_1_item1'] = '[Correction] Sur la page permettant de voir les options d\'un schemes, si le mouton aquatique, l\'icône du super mouton qui s\'afficahit dans le tableau des options des armes était quand même celle du mouton aquatique.';
 $str['sch_editor_changelog_v1_0_1_item2'] = '[Correction] Toujours sur cette page, les coins de la plupart des boutons n\'étaient pas transparents.';
+
+$str['sch_editor_changelog_v1_0_2_date'] = '30 avril 2013';
+$str['sch_editor_changelog_v1_0_2_item1'] = '[Nouvelle traduction] Un début de traduction néerlandaise proposé par Piki1802 (avec un peu d\'aide de DarkOne et de HHC) est désormais disponible.';
+$str['sch_editor_changelog_v1_0_2_item2'] = '[Changement] Cette page s\'appelle désormais changelog.php, et non plus version-history.php.';
+$str['sch_editor_changelog_v1_0_2_item3'] = '[Correction de bug] Le caractère apostrophe (\') est désormais correctement échappé dans la description des schemes.';
+$str['sch_editor_changelog_v1_0_2_item4'] = '[Correction] Lors de l\'importation d\'un scheme, l\'éditeur ne proposera à l\'utilisateur de télécharger le scheme qu\'il vient d\'importer que si le scheme en question a été corrigé (ce qui est plus logique).';
+$str['sch_editor_changelog_v1_0_2_item5'] = '[Correction] Si la valeur de l\'octet "probabilités d\'apparition dans les caisses du gel" était corrigée lors de l\'importation d\'un scheme, ce sera désormais mentionné dans les corrections.';
+$str['sch_editor_changelog_v1_0_2_item6'] = '[Correction] En français, la hache de guerre était appelée "hache d\'armes" (tout comme dans le jeu avant que ça n\'ait été corrigé, en v3.7.0.0 :/).';
 
 // Link to the page that allows us to select another language
 $str['sch_editor_change_language'] = 'Changer de langue';

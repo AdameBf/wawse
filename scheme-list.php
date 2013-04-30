@@ -129,8 +129,8 @@ if ($pages_count > 0) // There would only be 0 pages if there are no schemes.
 	<?php
 	while ($scheme_data = $get_schemes_query->fetch() AND $k <= 30)
 	{
-		$creation_date = date('d\-m\-Y', $scheme_data['sch_submit_date']);
-		$last_edit_date = date('d\-m\-Y', $scheme_data['sch_last_edit_date']);
+		$creation_date = date('d\-m\-Y\ H\:i\:s', $scheme_data['sch_submit_date']);
+		$last_edit_date = date('d\-m\-Y\ H\:i\:s', $scheme_data['sch_last_edit_date']);
 		
 		if (!isset($previous_sch_id)) // This means we're going to list the first scheme.
 		{

@@ -1329,7 +1329,7 @@ if (isset($_POST['action']))
 				$version_required_array[] = 28;
 			}
 		
-			// Time to store all that in the file, and we're finally done with it!
+			// Time to store all that in the file, and then we're finally done with it!
 			while($counter <= 63)
 			{
 				$rubber_settings_array_key = $counter - 45;
@@ -1762,7 +1762,8 @@ if (isset($_POST['action']))
 							if (ord($file_content[$i]) != 1)
 							{
 								$old_value = ord($file_content[$i]);
-								$file_content[$i] = chr(1); // I'm not including any error message for now.
+								$file_content[$i] = chr(1);
+								$fixes[] = str_replace('%1', $old_value, $str['sch_editor_sch_upload_freeze_cp_fix']);
 							}
 						}
 						break;
@@ -2069,10 +2070,11 @@ if (isset($_POST['action']))
 					{
 						file_put_contents($_FILES['sch_file']['tmp_name'], $file_content); // Let's update the file
 					}
-					
+
 					$description = htmlspecialchars($_POST['sch_desc']);
+
 					$version_required = max($version_required_array);
-					
+
 					if ($version_required == 5)
 					{
 						$version_required_string = '3.5 Beta 1 or later';
@@ -2135,12 +2137,6 @@ if (isset($_POST['action']))
 					'version_required_string' => $version_required_string,
 					'example_replays_permissions' => $example_replays_permissions
 					));
-					
-					$scheme_get_id = $bdd->prepare('SELECT sch_id FROM schemes_list WHERE sch_name = :name');
-					$scheme_get_id->execute(array(
-					'name' => $database_sch_name,
-					));
-					$scheme_id = $scheme_get_id->fetch();
 					
 					// Now, replay files.
 					$i = 1;
@@ -2221,9 +2217,8 @@ if (isset($_POST['action']))
 						$i++;
 					}
 					
-					// Last, but not least, let's show the user a friendly message telling the user his scheme has successfully been uploaded, and that he can even download it himself (even though he already have it).
+					// Last, but not least, let's show the user a friendly message telling the user his scheme has successfully been uploaded.
 					echo '<p>'.$str['sch_editor_scheme_succesfully_uploaded_message'].'</p>';
-					echo '<p><a href="download.php?id='.$scheme_id['sch_id'].'">'.$str['sch_editor_download_scheme_message'].'</a></p>';
 					
 					if (!empty($fixes))
 					{
@@ -2237,6 +2232,15 @@ if (isset($_POST['action']))
 						}
 				
 					echo '</ul>';
+					
+					// Get the scheme ID so you can offer the user to download the scheme with fixes.
+					$scheme_get_id = $bdd->prepare('SELECT sch_id FROM schemes_list WHERE sch_name = :name');
+					$scheme_get_id->execute(array(
+					'name' => $database_sch_name,
+					));
+					$scheme_id = $scheme_get_id->fetch();
+					
+					echo '<p><a href="download.php?id='.$scheme_id['sch_id'].'">'.$str['sch_editor_download_scheme_with_fixes_message'].'</a></p>';
 					}
 				}
 				else

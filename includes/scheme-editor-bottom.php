@@ -72,7 +72,7 @@ En tout, les pages du site ont été vues <?php echo $vues_total; ?> fois depuis l
 else
 {
 ?>
-Every page on this website have been viewed <?php echo $vues_total; ?> times since July 18th, 2011.</p>
+This website's pages have been loaded <?php echo $vues_total; ?> times since July 18th, 2011.</p>
 <?php
 }
 ?>

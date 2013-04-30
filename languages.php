@@ -15,8 +15,9 @@ include('../../includes/menu.php');
 <h1>Please select a language / Veuillez choisir une langue</h1>
 <form action="index.php" method="post">
 	<p>
-		<input type="radio" name="wa_sch_edit_lang" value="en" id="en" checked="checked" /><label for="en">English</label><br />
-		<input type="radio" name="wa_sch_edit_lang" value="fr" id="fr" /><label for="fr">Français</label>
+		<input type="radio" name="wa_sch_edit_lang" value="en" id="en" checked="checked" /><label for="en">English</label><br /><?php /* <input type="radio" name="wa_sch_edit_lang" value="es" id="es" /><label for="es">Español <em>(Patricio)</em></label><br /> */ // Commenting in PHP so it won't appear when viewing the source code. ?>
+		<input type="radio" name="wa_sch_edit_lang" value="fr" id="fr" /><label for="fr">Français</label><br /><?php /* <input type="radio" name="wa_sch_edit_lang" value="hu" id="hu" /><label for="hu">Magyar <em>(Balee)</em></label><br /> */ ?>
+		<input type="radio" name="wa_sch_edit_lang" value="nl" id="nl" /><label for="nl">Nederlands <em>(Piki1802, with some help from DarkOne and HHC)</em></label>
 	</p>
 	<p>
 		<input type="submit" />

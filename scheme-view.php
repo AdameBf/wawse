@@ -29,31 +29,31 @@ if (isset($_GET['id'])) // Yeah, we should rather make sure we're viewing an exi
 	$id = (int) $_GET['id'];
 	include('../../includes/connexion_pdo.php');
 	
-	$get_schemes_info = $bdd->prepare('SELECT * FROM schemes_list WHERE sch_id = :id');
-	$get_schemes_info->bindValue(':id', $id, PDO::PARAM_INT);
-	$get_schemes_info->execute();
+	$get_scheme_info = $bdd->prepare('SELECT * FROM schemes_list WHERE sch_id = :id');
+	$get_scheme_info->bindValue(':id', $id, PDO::PARAM_INT);
+	$get_scheme_info->execute();
 	
-	$get_schemes_info_result = $get_schemes_info->fetch();
+	$get_scheme_info_result = $get_scheme_info->fetch();
 	
-	if (!empty($get_schemes_info_result)) // Now check the ID.
+	if (!empty($get_scheme_info_result)) // Now check the ID.
 	{
-		$sch_name = $get_schemes_info_result['sch_name'];
-		$sch_author = $get_schemes_info_result['sch_author'];
+		$sch_name = apostropheParse($get_scheme_info_result['sch_name']);
+		$sch_author = apostropheParse($get_scheme_info_result['sch_author']);
 		
-		$sch_id = $get_schemes_info_result['sch_id'];
-		$sch_version_required = $get_schemes_info_result['sch_version_required'];
-		$sch_download_count = $get_schemes_info_result['sch_download_count'];
-		$sch_description = nl2br($get_schemes_info_result['sch_desc']);
+		$sch_id = $get_scheme_info_result['sch_id'];
+		$sch_version_required = $get_scheme_info_result['sch_version_required'];
+		$sch_download_count = $get_scheme_info_result['sch_download_count'];
+		$sch_description = nl2br(apostropheParse($get_scheme_info_result['sch_desc']));
 		
 		if ($sch_description == '')
 		{
 			$sch_description = '<em>'.$str['sch_editor_sch_viewer_sch_no_desc'].'</em>.';
 		}
 		
-		$sch_created_on = date('d\/m\/Y', $get_schemes_info_result['sch_submit_date']);
-		$sch_last_edited_on = date('d\/m\/Y', $get_schemes_info_result['sch_last_edit_date']);
+		$sch_created_on = date('d\/m\/Y\ H\:i\:s', $get_scheme_info_result['sch_submit_date']);
+		$sch_last_edited_on = date('d\/m\/Y H\:i\:s', $get_scheme_info_result['sch_last_edit_date']);
 		
-		$get_schemes_info->closeCursor();
+		$get_scheme_info->closeCursor();
 		
 		// Get example replays.
 		$get_example_replays = $bdd->prepare('SELECT * FROM sch_example_replays WHERE sch_id = :sch_id');
@@ -111,7 +111,7 @@ if (isset($_GET['id'])) // Yeah, we should rather make sure we're viewing an exi
 			echo '<p><strong>'.$str['sch_editor_sch_viewer_actions'].'</strong> <a href="scheme-editor.php?action=edit&amp;id='.$sch_id.'">'.$str['sch_editor_sch_viewer_edit_link'].'</a> - <a href="attach-replays.php?id='.$sch_id.'">'.$str['sch_editor_sch_viewer_add_exrep_link'].'</a> - <a href="replay-approving-interface.php?id='.$sch_id.'">'.$str['sch_editor_sch_viewer_handle_exrep_link'].'</a>.</p>';
 			
 			// First show general informations about the scheme
-			$download_link_line = '<p><strong>'.$str['sch_editor_sch_viewer_sch_download_label'].'</strong> <a href="download.php?id='.$sch_id.'">'.$str['sch_editor_sch_viewer_sch_download_link'].'</a> ('.$str['sch_editor_sch_viewer_sch_download_count_downloaded'].' '.$get_schemes_info_result['sch_download_count'].' '.$str['sch_editor_sch_viewer_sch_download_count_times'].').<br />';
+			$download_link_line = '<p><strong>'.$str['sch_editor_sch_viewer_sch_download_label'].'</strong> <a href="download.php?id='.$sch_id.'">'.$str['sch_editor_sch_viewer_sch_download_link'].'</a> ('.$str['sch_editor_sch_viewer_sch_download_count_downloaded'].' '.$get_scheme_info_result['sch_download_count'].' '.$str['sch_editor_sch_viewer_sch_download_count_times'].').<br />';
 			$download_link_line = onceTwice($download_link_line);
 			echo $download_link_line;
 			echo '<strong>'.$str['sch_editor_sch_viewer_sch_example_replays'].'</strong>'.$sch_example_replays.'.</p>';
@@ -530,7 +530,7 @@ if (isset($_GET['id'])) // Yeah, we should rather make sure we're viewing an exi
 								echo '<p><em>'.$str['sch_editor_sch_viewer_no_weapons'].'</em></p>';
 							}
 							?>
-							<p style="margin-top: 6px;"><?php echo $str['sch_editor_sch_viewer_double_damage']; ?>: <?php
+							<p style="margin-top: 6px;"><?php echo $str['sch_editor_sch_viewer_double_damage'].': ';
 							if (ord($file_content[217]) == 1)
 							{
 								echo $str['on'];
@@ -575,7 +575,7 @@ if (isset($_GET['id'])) // Yeah, we should rather make sure we're viewing an exi
 						<fieldset><legend><?php echo $str['sch_editor_sudden_death_settings_abbr']; ?></legend>
 							<table class="table_no_borders" style="margin: auto;">
 								<tr>
-									<td><img src="images/php/sudden-death-event.php?v=<?php echo ord($file_content[15]); ?>" alt="<?php echo $str['sch_editor_sudden_death_event']; ?>: <?php echo ord($file_content[15]).':';
+									<td><img src="images/php/sudden-death-event.php?v=<?php echo ord($file_content[15]); ?>" alt="<?php echo $str['sch_editor_sudden_death_event'].':';
 									if(ord($file_content[15]) == 0)
 									{
 									echo $str['sch_edit_sd_round_ends'];
@@ -609,7 +609,7 @@ if (isset($_GET['id'])) // Yeah, we should rather make sure we're viewing an exi
 						<fieldset><legend><?php echo $str['sch_editor_general_settings']; ?></legend>
 							<table class="table_no_borders" style="margin: auto;">
 								<tr>
-									<td><img src="images/php/blood.php?v=<?php echo ord($file_content[30]); ?>" alt="<?php echo $str['sch_editor_blood_mode']; ?>: <?php echo ord($file_content[30]).':';
+									<td><img src="images/php/blood.php?v=<?php echo ord($file_content[30]); ?>" alt="<?php echo $str['sch_editor_blood_mode'].': ';
 									if(ord($file_content[30]) == 0)
 									{
 									echo $str['off'];
@@ -619,7 +619,7 @@ if (isset($_GET['id'])) // Yeah, we should rather make sure we're viewing an exi
 									echo $str['on'];
 									}
 									?>" width="68px" height="68px" /></td>
-									<td><img src="images/php/sheep-heaven.php?v=<?php echo ord($file_content[32]); ?>" alt="<?php echo $str['sch_editor_sheep_heaven']; ?>: <?php echo ord($file_content[32]).':';
+									<td><img src="images/php/sheep-heaven.php?v=<?php echo ord($file_content[32]); ?>" alt="<?php echo $str['sch_editor_sheep_heaven'].': ';
 									if(ord($file_content[32]) == 0)
 									{
 									echo $str['off'];
@@ -631,7 +631,7 @@ if (isset($_GET['id'])) // Yeah, we should rather make sure we're viewing an exi
 									?>" width="68px" height="68px" /></td>
 								</tr>
 								<tr>
-									<td><img src="images/php/invincibility.php?v=<?php echo ord($file_content[33]); ?>" alt="<?php echo $str['sch_editor_invincibility']; ?>: <?php echo ord($file_content[33]).':';
+									<td><img src="images/php/invincibility.php?v=<?php echo ord($file_content[33]); ?>" alt="<?php echo $str['sch_editor_invincibility'].': ';
 									if(ord($file_content[33]) == 0)
 									{
 									echo $str['off'];
@@ -641,7 +641,7 @@ if (isset($_GET['id'])) // Yeah, we should rather make sure we're viewing an exi
 									echo $str['on'];
 									}
 									?>" width="68px" height="68px" /></td>
-									<td><img src="images/php/indestructible-land.php?v=<?php echo ord($file_content[34]); ?>" alt="<?php echo $str['sch_editor_invincibility']; ?>: <?php echo ord($file_content[34]).':';
+									<td><img src="images/php/indestructible-land.php?v=<?php echo ord($file_content[34]); ?>" alt="<?php echo $str['sch_editor_invincibility'].': ';
 									if(ord($file_content[34]) == 0)
 									{
 									echo $str['off'];
