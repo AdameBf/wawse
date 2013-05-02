@@ -29,6 +29,7 @@ $str['sch_editor_sch_list_download_count_column'] = 'Nombre de téléchargements';
 $str['sch_editor_sch_list_download_column'] = 'Télécharger';
 $str['sch_editor_sch_list_edit_column'] = 'Éditer';
 $str['sch_editor_sch_list_download_example_replays'] = 'Télécharger les replays de démonstration';
+$str['sch_editor_sch_list_based_on'] = 'Basé sur le scheme';
 
 $str['sch_editor_sch_list_no_example_replays'] = 'Pas de replay';
 
@@ -37,6 +38,9 @@ $str['sch_editor_sch_list_replay_approving_interface_link'] = 'Gérer';
 // Scheme maker/editor page
 $str['sch_editor_sch_maker_title'] = 'Créer un scheme';
 $str['sch_editor_sch_editing_title'] = 'Éditer le scheme';
+$str['sch_editor_sch_editing_title_2'] = 'Éditer un scheme';
+$str['sch_editor_sch_creation_based_on_title'] = 'Créer un scheme basé sur le scheme';
+$str['sch_editor_sch_creation_based_on_title_2'] = 'Créer un scheme basé sur un scheme existant';
 
 $str['sch_editor_sch_name'] = 'Nom du scheme';
 $str['sch_editor_sch_name_hint'] = 'À moins que le fait que votre scheme s\'appelle scheme non-nommé en anglais suivi du nombre de secondes écoulées depuis le 01/01/1970 (timestamp) ne vous pose aucun problème, vous devriez donner un nom à votre scheme.';
@@ -61,6 +65,9 @@ $str['sch_editor_sch_example_replays_permissions_label'] = 'Qui peut importer de
 $str['sch_editor_sch_example_replays_permissions_opt0'] = 'L\'auteur (vous) uniquement.';
 $str['sch_editor_sch_example_replays_permissions_opt1'] = 'Tout le monde (l\'auteur doit valider les replays).';
 $str['sch_editor_sch_example_replays_permissions_opt2'] = 'Tout le monde (l\'auteur ne valide pas les replays, mais je peux toujours agir en cas de problème).';
+
+$str['sch_editor_sch_creation_do_not_save_on_database'] = 'Ne pas sauvegarder ce scheme sur la base de données';
+$str['sch_editor_sch_creation_do_not_save_on_database_hint'] = 'Si vous cochez cette case, vous téléchargerez directement votre scheme, sans qu\'il ne soit créé sur le serveur et dans la base de données.';
 
 $str['add'] = 'Ajouter';
 $str['ammo'] = 'Munitions';
@@ -270,7 +277,7 @@ $str['sch_editor_download_scheme_message'] = 'Téléchargez-le en cliquant sur ce 
 $str['sch_editor_sch_uploader_title'] = 'Importer un style de partie';
 $str['sch_editor_sch_uploader_intro'] = 'Donc, votre style de partie est déjà prêt, et tout ce que vous voudriez ce serait de pouvoir de l\'importer ici, plutôt que de le recréer ? Aucun problème, il vous suffit simplement de remplir le formulaire ci-dessous. Le fichier scheme que vous importez doit être au format *.wsc (taille: 221 ou 297 octets), et les replays doivent être au format *.WAgame (max. 3 Mo). Les fichiers doivent être valides.';
 $str['sch_editor_sch_uploader_sch_file'] = 'Votre fichier';
-$str['sch_editor_sch_name_hint'] = 'Si vous laissez ce champ vide, le nom du fichier importé sera utilisé à la place.';
+$str['sch_editor_sch_uploader_sch_name_hint'] = 'Si vous laissez ce champ vide, le nom du fichier importé sera utilisé à la place.';
 $str['sch_editor_sch_upload_button'] = 'Envoyez-nous votre œuvre d\'art ! =)';
 $str['sch_editor_sch_upload_error_invalid_scheme_file'] = 'Fichier invalide. Les erreurs suivantes ont été trouvées :';
 $str['sch_editor_sch_upload_error_incorrect_extension'] = 'Le fichier n\'a pas la bonne extension.';
@@ -367,9 +374,12 @@ $str['sch_editor_sch_viewer_sch_desc'] = 'Description :';
 $str['sch_editor_sch_viewer_sch_no_desc'] = 'Aucune';
 $str['sch_editor_sch_viewer_sch_example_replays'] = 'Replays de démonstration :';
 $str['sch_editor_sch_viewer_sch_no_example_replays'] = 'Aucun';
+$str['sch_editor_sch_viewer_sch_based_on_the_current_one'] = 'Schemes basés sur celui-ci :';
+$str['sch_editor_sch_viewer_sch_based_on_the_current_one_sg'] = 'Scheme basé sur celui-ci :';
 
 $str['sch_editor_sch_viewer_actions'] = 'Actions :';
 $str['sch_editor_sch_viewer_edit_link'] = 'Éditer ce scheme';
+$str['sch_editor_sch_viewer_create_based_on_link'] = 'Créer un nouveau scheme à partir de ce scheme';
 $str['sch_editor_sch_viewer_add_exrep_link'] = 'Ajouter des replays de démonstration';
 $str['sch_editor_sch_viewer_handle_exrep_link'] = 'Gérer les replays de démonstration';
 
@@ -382,7 +392,7 @@ $str['sch_editor_sch_viewer_error_invalid_sch_signature'] = 'Signature du fichie
 
 $str['sch_editor_sch_viewer_no_weapons'] = 'Il n\'y a aucune arme dans ce scheme.';
 
-$str['sch_editor_sch_viewer_weapon_column'] = '<abbr title="Arme">A</abbr>';
+$str['sch_editor_sch_viewer_weapon_column'] = '<abbr title="Arme">A</abbr>'; // These are abbreviations shown on top of the weapons table. Translate the words between "" and change the abbreviation between > and <.
 $str['sch_editor_sch_viewer_ammo_column'] = '<abbr title="Munitions">M</abbr>';
 $str['sch_editor_sch_viewer_power_column'] = '<abbr title="Puissance">P</abbr>';
 $str['sch_editor_sch_viewer_delay_column'] = '<abbr title="Délai">D</abbr>';
@@ -569,11 +579,17 @@ $str['sch_editor_changelog_v1_0_1_item2'] = '[Correction] Toujours sur cette pag
 $str['sch_editor_changelog_v1_0_2_date'] = '30 avril 2013';
 $str['sch_editor_changelog_v1_0_2_item1'] = '[Nouvelle traduction] Un début de traduction néerlandaise proposé par Piki1802 (avec un peu d\'aide de DarkOne et de HHC) est désormais disponible.';
 $str['sch_editor_changelog_v1_0_2_item2'] = '[Changement] Cette page s\'appelle désormais changelog.php, et non plus version-history.php.';
-$str['sch_editor_changelog_v1_0_2_item3'] = '[Correction de bug] Le caractère apostrophe (\') est désormais correctement échappé dans la description des schemes.';
+$str['sch_editor_changelog_v1_0_2_item3'] = '[Correction de bug] Le caractère apostrophe (\') est désormais correctement échappé dans la description des schemes (merci à Piki1802 de m\'avoir permis de m\'en apercevoir). <em class="ziprar">(Cette correction était incomplète, et rendait la prévisualisation de schemes créés avec une apostrophe dans leur nom ou dans le nom du créateur - l\'éditeur convertissant les apostrophes en accent grave et l\'antislash en point. La correction a été complétée en v1.0.3.)</em>';
 $str['sch_editor_changelog_v1_0_2_item4'] = '[Correction] Lors de l\'importation d\'un scheme, l\'éditeur ne proposera à l\'utilisateur de télécharger le scheme qu\'il vient d\'importer que si le scheme en question a été corrigé (ce qui est plus logique).';
 $str['sch_editor_changelog_v1_0_2_item5'] = '[Correction] Si la valeur de l\'octet "probabilités d\'apparition dans les caisses du gel" était corrigée lors de l\'importation d\'un scheme, ce sera désormais mentionné dans les corrections.';
 $str['sch_editor_changelog_v1_0_2_item6'] = '[Correction] En français, la hache de guerre était appelée "hache d\'armes" (tout comme dans le jeu avant que ça n\'ait été corrigé, en v3.7.0.0 :/).';
 
-// Link to the page that allows us to select another language
-$str['sch_editor_change_language'] = 'Changer de langue';
+$str['sch_editor_changelog_v1_0_3_date'] = '1<sup>er</sup> mai 2013';
+$str['sch_editor_changelog_v1_0_3_item1'] = '[Correction de bug] En raison d\'un underscore manquant sur la page d\'accueil de l\'éditeur, il fallait, à chaque nouveau passage sur la page d\'accueil, sélectionner à nouveau sa langue.';
+$str['sch_editor_changelog_v1_0_3_item2'] = '[Correction de bug] Depuis la v1.0.2, il était impossible de prévisualiser un scheme dont le nom contient une apostrophe (là aussi, merci à Piki1802 de m\'avoir permis de m\'en apercevoir).';
+
+$str['sch_editor_changelog_v1_1_0_date'] = '2 mai 2013';
+$str['sch_editor_changelog_v1_1_0_item1'] = '[Nouvelle fonctionnalité] Il est désormais possible de créer des schemes à partir d\'autres schemes existants.';
+$str['sch_editor_changelog_v1_1_0_item2'] = '[Nouvelle fonctionnalité] Il est désormais possible de créer des schemes sans les sauvegarder sur la base de données.';
+$str['sch_editor_changelog_v1_1_0_item3'] = '[Changement] Les liens "Changer de langue" ne sont plus traduisibles. Qui plus est, ce sont des liens temporaires le temps que je mette en place des drapeaux.';
 ?>

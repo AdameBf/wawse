@@ -44,7 +44,7 @@ include('../../includes/connexion_pdo.php');
 <form method="post" action="scheme-edit-check.php" enctype="multipart/form-data">
 <p><label for="sch_file" class="aligner"><?php echo $str['sch_editor_sch_uploader_sch_file']; ?></label><input type="file" name="sch_file" id="sch_file" class="champ" /><br />
 <label for="sch_name" class="aligner"><?php echo $str['sch_editor_sch_name']; ?><br />
-<span class="sch_editor_hint"><?php echo $str['sch_editor_sch_name_hint']; ?></span></label><br /><input type="text" name="sch_name" id="sch_name" class="champ" /><br /><br /></p>
+<span class="sch_editor_hint"><?php echo $str['sch_editor_sch_uploader_sch_name_hint']; ?></span></label><br /><input type="text" name="sch_name" id="sch_name" class="champ" /><br /><br /></p>
 <p>
 <?php if (!isset($_SESSION['id']))
 {

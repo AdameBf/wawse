@@ -1,6 +1,6 @@
 <h1><?php echo $str['sch_editor_sch_maker_title']; ?></h1>
 <form method="post" action="scheme-edit-check.php" enctype="multipart/form-data">
-	<table class="table_no_borders">
+<table class="table_no_borders">
 	<tr>
 		<td style="width:200px;"><label for="sch_name"><?php echo $str['sch_editor_sch_name']; ?></label></td>
 		<td style="width:250px;"><input type="text" name="sch_name" id="sch_name" maxlength="30" /></td>
@@ -33,7 +33,12 @@
 		<input type="radio" name="sch_exrep_permissions" value="1" id="opt1" checked="checked" /> <label for="opt1" class="sch_editor_hint"><?php echo $str['sch_editor_sch_example_replays_permissions_opt1']; ?></label><br />
 		<input type="radio" name="sch_exrep_permissions" value="2" id="opt2" /> <label for="opt2" class="sch_editor_hint"><?php echo $str['sch_editor_sch_example_replays_permissions_opt2']; ?></label></td>
 	</tr>
-	</table>
+	<tr>
+		<td style="width:280px;"><label for="no_database"><?php echo $str['sch_editor_sch_creation_do_not_save_on_database']; ?></label></td>
+		<td style="padding-left: 25px; width: 80px;"><input type="checkbox" name="no_database" id="no_database" /></td>
+		<td><span class="sch_editor_hint"><?php echo $str['sch_editor_sch_creation_do_not_save_on_database_hint']; ?></span></td>
+	</tr>
+</table>
 	
 <table class="table_no_borders_2">
 <tr>

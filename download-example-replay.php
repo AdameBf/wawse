@@ -35,7 +35,7 @@ if (!empty($query_result))
 	$query_update_counter->execute();
 
 	// 3. Let the user download the replay
-	header('Location: replays/'.$file_name.'.WAgame');
+	header('Location: replays/'.fileNameParser(apostropheParse($file_name)).'.WAgame');
 }
 else
 {

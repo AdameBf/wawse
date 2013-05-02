@@ -29,6 +29,7 @@ $str['sch_editor_sch_list_download_count_column'] = 'Download Count';
 $str['sch_editor_sch_list_download_column'] = 'Download';
 $str['sch_editor_sch_list_edit_column'] = 'Edit';
 $str['sch_editor_sch_list_download_example_replays'] = 'Download Example Replays';
+$str['sch_editor_sch_list_based_on'] = 'Based on Scheme';
 
 $str['sch_editor_sch_list_no_example_replays'] = 'No Example Replay';
 
@@ -36,7 +37,10 @@ $str['sch_editor_sch_list_replay_approving_interface_link'] = 'Handle';
 
 // Scheme maker/editor page
 $str['sch_editor_sch_maker_title'] = 'Create a New Scheme';
-$str['sch_editor_sch_editing_title'] = 'Edit Scheme';
+$str['sch_editor_sch_editing_title'] = 'Edit Scheme'; // Followed by the scheme name.
+$str['sch_editor_sch_editing_title_2'] = 'Edit a Scheme'; // Different from the above "Edit [The] Scheme"; "Edit a Scheme" is shown when there is an error.
+$str['sch_editor_sch_creation_based_on_title'] = 'Create a New Scheme based on scheme'; // Followed by the scheme name.
+$str['sch_editor_sch_creation_based_on_title_2'] = 'Create a New Scheme based on an existing scheme'; // Same as $str['sch_editor_sch_editing_title_2'].
 
 $str['sch_editor_sch_name'] = 'Scheme Name';
 $str['sch_editor_sch_name_hint'] = 'Your scheme will receive the default name Unnamed Scheme followed by a timestamp if you don\'t choose a name.';
@@ -61,6 +65,9 @@ $str['sch_editor_sch_example_replays_permissions_label'] = 'Who can upload examp
 $str['sch_editor_sch_example_replays_permissions_opt0'] = 'You (the author) only.';
 $str['sch_editor_sch_example_replays_permissions_opt1'] = 'Everyone, but replays have to be approved by the author - I might take over inactive authors though.';
 $str['sch_editor_sch_example_replays_permissions_opt2'] = 'Everyone, without any approvement required (I may still act behind though - for example, when the guy didn\'t get how to play the scheme).';
+
+$str['sch_editor_sch_creation_do_not_save_on_database'] = 'Don\'t save this scheme on the database';
+$str['sch_editor_sch_creation_do_not_save_on_database_hint'] = 'If you tick this box, then upon submitting the form, you\'ll download the scheme right away, without it is saved on the server and on the database.';
 
 $str['add'] = 'Add';
 $str['ammo'] = 'Ammo';
@@ -270,7 +277,7 @@ $str['sch_editor_download_scheme_message'] = 'Download it here.';
 $str['sch_editor_sch_uploader_title'] = 'Upload a Scheme';
 $str['sch_editor_sch_uploader_intro'] = 'So, your scheme is ready, and all you want is to upload it here? No problem, just use the following form. The scheme file you upload must be in *.wsc format and must be either 221 or 297 bytes long; replays file must be in *.WAgame format (max. 3 MB). All files must be valid.';
 $str['sch_editor_sch_uploader_sch_file'] = 'Your Scheme File';
-$str['sch_editor_sch_name_hint'] = 'If this field is empty, the uploaded file\'s name will be used instead.';
+$str['sch_editor_sch_uploader_sch_name_hint'] = 'If this field is empty, the uploaded file\'s name will be used instead.';
 $str['sch_editor_sch_upload_button'] = 'Send us your piece of art! =)';
 $str['sch_editor_sch_upload_error_invalid_scheme_file'] = 'Invalid scheme file. The following errors were found:';
 $str['sch_editor_sch_upload_error_incorrect_extension'] = 'Incorrect file extension.';
@@ -354,7 +361,7 @@ $str['sch_editor_sch_upload_arma_p_fix'] = 'The Armageddon Power setting\'s byte
 $str['sch_editor_sch_viewer_title'] = 'View a Scheme:';
 $str['sch_editor_sch_viewer_by'] = 'by'; // It's on purpose that I didn't capitalize the "b".
 
-$str['sch_editor_sch_viewer_sch_download_label'] = 'Download:'; // With a colon because in some languages (scuh as French), there is a non-breaking space (Alt+0160) in front of that colon.
+$str['sch_editor_sch_viewer_sch_download_label'] = 'Download:'; // With a colon because in some languages (such as French), there is a non-breaking space (Alt+0160) in front of that colon.
 $str['sch_editor_sch_viewer_sch_download_link'] = 'Download';
 $str['sch_editor_sch_viewer_sch_download_count_downloaded'] = 'downloaded';
 $str['sch_editor_sch_viewer_sch_download_count_times'] = 'times';
@@ -367,9 +374,12 @@ $str['sch_editor_sch_viewer_sch_desc'] = 'Description:';
 $str['sch_editor_sch_viewer_sch_no_desc'] = 'None';
 $str['sch_editor_sch_viewer_sch_example_replays'] = 'Example Replays:';
 $str['sch_editor_sch_viewer_sch_no_example_replays'] = 'None';
+$str['sch_editor_sch_viewer_sch_based_on_the_current_one'] = 'Schemes based on this scheme:';
+$str['sch_editor_sch_viewer_sch_based_on_the_current_one_sg'] = 'Scheme based on this scheme:'; // Singular.
 
 $str['sch_editor_sch_viewer_actions'] = 'Actions:';
 $str['sch_editor_sch_viewer_edit_link'] = 'Edit this Scheme';
+$str['sch_editor_sch_viewer_create_based_on_link'] = 'Create a New Scheme based on this one';
 $str['sch_editor_sch_viewer_add_exrep_link'] = 'Add Example Replays';
 $str['sch_editor_sch_viewer_handle_exrep_link'] = 'Handle Example Replays';
 
@@ -382,7 +392,7 @@ $str['sch_editor_sch_viewer_error_scheme_not_found'] = 'Scheme not found.';
 $str['sch_editor_sch_viewer_error_no_id_specified'] = 'Errm, what scheme do you want me to load? I mean, I can\'t load schemes without an ID, a bit like calculators can\'t multiply any numbers if these numbers are not specified... (Well, I hope you got my point.)';
 $str['sch_editor_sch_viewer_error_invalid_sch_signature'] = 'Invalid scheme signature. There, how did that file land on this server, if it had an invalid signature? =o';
 
-$str['sch_editor_sch_viewer_weapon_column'] = '<abbr title="Weapon">W</abbr>';
+$str['sch_editor_sch_viewer_weapon_column'] = '<abbr title="Weapon">W</abbr>'; // These are abbreviations shown on top of the weapons table. Translate the words between "" and change the abbreviation between > and <.
 $str['sch_editor_sch_viewer_ammo_column'] = '<abbr title="Ammunition">A</abbr>';
 $str['sch_editor_sch_viewer_power_column'] = '<abbr title="Power">P</abbr>';
 $str['sch_editor_sch_viewer_delay_column'] = '<abbr title="Delay">D</abbr>';
@@ -468,10 +478,10 @@ $str['sch_editor_changelog_v0_2_1_date'] = 'September 3rd, 2012';
 $str['sch_editor_changelog_v0_2_1_item1'] = '[Fixed] Some values (Hotseat Delay, Land Retreat Time and Rope Retreat Time) could be set up to 255 in the editor while the real limit is 127.';
 
 $str['sch_editor_changelog_v0_3_0_date'] = 'September 14th, 2012';
-$str['sch_editor_changelog_v0_3_0_item1'] = '[Improvement] It is now possible to upload schemes on the database.';
+$str['sch_editor_changelog_v0_3_0_item1'] = '[New feature] It is now possible to upload schemes on the database.';
 
 $str['sch_editor_changelog_v0_4_0_date'] = 'September 16th, 2012';
-$str['sch_editor_changelog_v0_4_0_item1'] = '[Improvement] Added the schemes list.';
+$str['sch_editor_changelog_v0_4_0_item1'] = '[New feature] Added the schemes list.';
 
 $str['sch_editor_changelog_v0_4_1_date'] = 'October 6th, 2012';
 $str['sch_editor_changelog_v0_4_1_item1'] = '[Fixed] After in-game testing, I realised that only the Land Retreat Time was limited to 127. The Hotseat Delay and the Rope Retreat Time can be set up to 255 again.';
@@ -482,8 +492,8 @@ $str['sch_editor_changelog_v0_4_2_date'] = 'October 24th, 2012';
 $str['sch_editor_changelog_v0_4_2_item1'] = '[Improvement] Added custom knocking force setting, RubberWorm v0.0.1.12\'s new feature.';
 
 $str['sch_editor_changelog_v0_5_0_date'] = 'November 5th, 2012';
-$str['sch_editor_changelog_v0_5_0_item1'] = '[Improvement] Example replays can now be attached to an uploaded scheme, and they\'re downloadable on the scheme list. (It should be possible to attach them to a scheme after its creation/upload in the future.) <em>(Downloading these replays actually didn\'t work: see explanation below.)</em>';
-$str['sch_editor_changelog_v0_5_0_item2'] = '[Fixed] Downloading a scheme with a parsed name now works successfully. <em>(This "fix" actually broke scheme download entirely: the required file with the new function wasn\'t loaded on the page managing all scheme downloads - thus triggering a fatal error. Since the same "fix" was applied to replay download, it was broken as well.)</em>';
+$str['sch_editor_changelog_v0_5_0_item1'] = '[New feature] Example replays can now be attached to an uploaded scheme, and they\'re downloadable on the scheme list. (It should be possible to attach them to a scheme after its creation/upload in the future.) <em class="ziprar">(Downloading these replays actually didn\'t work: see explanation below.)</em>';
+$str['sch_editor_changelog_v0_5_0_item2'] = '[Fixed] Downloading a scheme with a parsed name now works successfully. <em class="ziprar">(This "fix" actually broke scheme download entirely: the required file with the new function wasn\'t loaded on the page managing all scheme downloads - thus triggering a fatal error. Since the same "fix" was applied to replay download, it was broken as well.)</em>';
 
 $str['sch_editor_changelog_v0_5_1_date'] = 'December 1st, 2012';
 $str['sch_editor_changelog_v0_5_1_item1'] = '[Fixed] Scheme and replay downloading, accidentally broken in v0.5.0 even with schemes/replays which name doesn\'t need parsing, is now possible again.';
@@ -495,7 +505,7 @@ $str['sch_editor_changelog_v0_5_2a_date'] = 'January 14th, 2013';
 $str['sch_editor_changelog_v0_5_2a_item1'] = '[Minor fix] The Rope Retreat Time and the Hot Seat Delay were still limited to 127 in the uploading scheme part. They\'re now limited to 255.';
 
 $str['sch_editor_changelog_v0_6_0_date'] = 'February 14th, 2013';
-$str['sch_editor_changelog_v0_6_0_item1'] = '[Improvement] Example replays can now be attached after a scheme\'s creation or upload. Scheme authors can also decide who is allowed to upload replays (author only/everyone but there\'s an approvement system/everyone without approvements, though I can check from time to time or act upon request).';
+$str['sch_editor_changelog_v0_6_0_item1'] = '[New feature] Example replays can now be attached after a scheme\'s creation or upload. Scheme authors can also decide who is allowed to upload replays (author only/everyone but there\'s an approvement system/everyone without approvements, though I can check from time to time or act upon request).';
 $str['sch_editor_changelog_v0_6_0_item2'] = '[Improvement] You can now attach more than 5 replays to a scheme, however you still only can upload 5 replays at once - if you want more, do it in two/three/four... times; I don\'t want my server to burn, you know. =)';
 $str['sch_editor_changelog_v0_6_0_item3'] = '[Fixed] The replay checking function has been slightly changed, because it used to block some valid replays while testing this version.';
 
@@ -503,7 +513,7 @@ $str['sch_editor_changelog_v0_6_0a_date'] = 'March 5th, 2013';
 $str['sch_editor_changelog_v0_6_0a_item1'] = 'The English translation has been corrected by Clown.';
 
 $str['sch_editor_changelog_v0_6_0b_date'] = 'March 6th, 2013';
-$str['sch_editor_changelog_v0_6_0b_item1'] = '[Fixed bug] When creating a scheme, the Mine Fuse value was accidentally also saved as the Worm Placement value. <em>(In fact there was no Mine Fuse value at all; see the related fix in v0.6.1.)</em>';
+$str['sch_editor_changelog_v0_6_0b_item1'] = '[Fixed bug] When creating a scheme, the Mine Fuse value was accidentally also saved as the Worm Placement value. <em class="ziprar">(In fact there was no Mine Fuse value at all; see the related fix in v0.6.1.)</em>';
 
 $str['sch_editor_changelog_v0_6_1_date'] = 'March 9th, 2013';
 $str['sch_editor_changelog_v0_6_1_item1'] = '[Fixed bug] An update on December 1st (the day where v0.5.1 was released) broke scheme creating; the database field storing example replays attaching permission was incorrectly called with an extra $ sign in front of its name. This is now fixed; scheme creating is working again. Credit goes to Patricio (a Chilean player) for reporting the bug.';
@@ -514,12 +524,12 @@ $str['sch_editor_changelog_v0_6_1_item5'] = '[Fixed bug] Schemes without name we
 
 $str['sch_editor_changelog_v0_6_2_date'] = 'March 11th, 2013';
 $str['sch_editor_changelog_v0_6_2_item1'] = '[Change] When uploading a scheme with an invalid Stockpiling Mode value, the default is now to disable Stockpiling, rather than enabling Anti-Stockpiling mode.';
-$str['sch_editor_changelog_v0_6_2_item2'] = '[Change] Strings from this changelog page and the scheme uploading form validating page have been moved to the string files. This makes the translation process much easier, because strings aren\'t scattered in several files anymore. This also had the effet of decreasing the form validating page\'s size sigificantly. While I was at it, I also fixed some of the moved strings.';
+$str['sch_editor_changelog_v0_6_2_item2'] = '[Change] Strings from this changelog page and the scheme uploading form validating page have been moved to the string files. This makes the translation process much easier, because strings aren\'t scattered in several files anymore. This also had the effet of decreasing the form validating page\'s size significantly. While I was at it, I also fixed some of the moved strings.';
 $str['sch_editor_changelog_v0_6_2_item3'] = '[Fixed bug] When uploading a scheme with an Initial Worm Energy byte value set to 0, this value wasn\'t changed to 1 in the scheme file, despite the message saying otherwise.';
 $str['sch_editor_changelog_v0_6_2_item4'] = '[Fixed bug] When uploading a scheme, the Override Version RubberWorm setting didn\'t set the Required Version database field properly: it didn\'t detect v3.6.29.0 or v3.7.0.0, and didn\'t say that RubberWorm was required for versions emulable with v3.6.28.0 or v3.6.29.0.';
 
 $str['sch_editor_changelog_v0_7_0_date'] = 'March 13th, 2013';
-$str['sch_editor_changelog_v0_7_0_item1'] = '[Improvement] Added the scheme viewer, so you can now view a scheme before downloading it.';
+$str['sch_editor_changelog_v0_7_0_item1'] = '[New feature] Added the scheme viewer, so you can now view a scheme before downloading it.';
 $str['sch_editor_changelog_v0_7_0_item2'] = '[Change] The Air Viscosity option has been renamed to Air Resistance, for more consistency with what actually happens in-game (thanks to Deadcode).';
 $str['sch_editor_changelog_v0_7_0_item3'] = '[Fixed bug] The Scheme Upload validating page did not recognize the Custom Knocking force (Super Banana\'s Crate Probability) as a RubberWorm setting.';
 
@@ -553,7 +563,7 @@ $str['sch_editor_changelog_v1_0_0_item4'] = '[Fixed] On the Scheme Viewing page,
 $str['sch_editor_changelog_v1_0_0_item5'] = '[Fixed bug] Due to an error on the Scheme Viewing page, the "Automatic Reaiming" and "Circular Aiming" displayed values actually were reversed: enabling one of them would cause the Scheme Viewer to mark it as "Off", and disabling one of them would cause the Scheme Viewer to mark it as "On".';
 $str['sch_editor_changelog_v1_0_0_item6'] = '[Fixed bugs] Bugs making some pages invalid according to the W3C XHTML 1.0 Strict standards:';
 $str['sch_editor_changelog_v1_0_0_item6a'] = 'On the Scheme Uploading page, a &lt;td&gt; tag was closed, but never opened. It has been removed.';
-$str['sch_editor_changelog_v1_0_0_item6b'] = 'On the Scheme Creating page, two &lt;td&gt; tags were opened, but never closed. They`\'re now closed.';
+$str['sch_editor_changelog_v1_0_0_item6b'] = 'On the Scheme Creating page, two &lt;td&gt; tags were opened, but never closed. They\'re now closed.';
 $str['sch_editor_changelog_v1_0_0_item6c'] = 'Note that these bugs didn\'t affect the displayed page; they\'ve been fixed only because they made the affected pages invalid.';
 $str['sch_editor_changelog_v1_0_0_item7'] = '[Fixed bugs] Bugs with the Scheme List\'s paging system:';
 $str['sch_editor_changelog_v1_0_0_item7a'] = 'Due to an error, the paging system on the Scheme List didn\'t work: it would only show the page with the oldest schemes. Note that this didn\'t affect the public version of the scheme editor, because at that time schemes were still fitting on a single page; the bug has been noticed on my local version.';
@@ -569,11 +579,17 @@ $str['sch_editor_changelog_v1_0_1_item2'] = '[Fixed] On the same page, most butt
 $str['sch_editor_changelog_v1_0_2_date'] = 'April 30th, 2013';
 $str['sch_editor_changelog_v1_0_2_item1'] = '[New translation] A partial Dutch translation by Piki1802 (with some help from DarkOne and HHC) is now available.';
 $str['sch_editor_changelog_v1_0_2_item2'] = '[Change] This page is now named changelog.php instead of version-history.php.';
-$str['sch_editor_changelog_v1_0_2_item3'] = '[Fixed bug] The \' char is now correctly parsed in Scheme Names, Authors\' Names, and Descriptions.';
+$str['sch_editor_changelog_v1_0_2_item3'] = '[Fixed bug] The apostrophe (\') char is now correctly parsed in Scheme Names, Authors\' Names, and Descriptions (thanks to Piki1802 for helping me realizing the bug was here). <em class="ziprar">(This fix was incomplete, and Viewing a Scheme with an apostrophe in its name or author name became impossible - note that the editor converts apostrophes to grave accents and antislashes to periods in file names. The fix has been completed in v1.0.3.)</em>';
 $str['sch_editor_changelog_v1_0_2_item4'] = '[Fixed] When uploading a scheme, the user will now only be offered to download the uploaded scheme if fixes have been applied to it (which is more consistent).';
 $str['sch_editor_changelog_v1_0_2_item5'] = '[Fixed] If the Freeze Crate Probability byte value has been fixed when uploading a scheme, it will now be mentioned among fixes.';
 $str['sch_editor_changelog_v1_0_2_item6'] = '[Fixed] In French, the Battle Axe was incorrectly called "hache d\'armes", which means "Weapon Axe" (just like in W:A before it was fixed in v3.7.0.0).';
 
-// Link to the page that allows us to select another language
-$str['sch_editor_change_language'] = 'Select Another Language';
+$str['sch_editor_changelog_v1_0_3_date'] = 'May 1st, 2013';
+$str['sch_editor_changelog_v1_0_3_item1'] = '[Fixed bug] Due to a missing underscore on the main page of the editor, you had to reselect your language every time you visited that main page (as the missing underscore prevented the language cookie from being recognized).';
+$str['sch_editor_changelog_v1_0_3_item2'] = '[Fixed bug] Since v1.0.2, it was impossible to View a Scheme with an apostrophe in its name/author name (there again, thanks to Piki1802 for helping me realizing the bug was present).';
+
+$str['sch_editor_changelog_v1_1_0_date'] = 'May 2nd, 2013';
+$str['sch_editor_changelog_v1_1_0_item1'] = '[New feature] It is now possible to create a scheme based on an existing one.';
+$str['sch_editor_changelog_v1_1_0_item2'] = '[New feature] It is now possible to create a scheme without saving it on the server and in the database.';
+$str['sch_editor_changelog_v1_1_0_item3'] = '[Change] The "Select Another Language" links are no longer translatable. These links are a stopgap until I implement flags anyway.';
 ?>

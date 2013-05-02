@@ -164,7 +164,79 @@ if (isset($_GET['action']))
 		$lien1 = array($str['index'], '../../index.php');
 		$lien2 = array('Worms Armageddon', '../index.php');
 		$lien3 = array($str['sch_editor'], 'index.php');
-		$page_actuelle = $str['sch_editor_sch_editing_title'];
+		$page_actuelle = $str['sch_editor_sch_editing_title_2'];
+		include('../../includes/menu.php');
+		
+		echo '<h1>'.$str['error'].'</h1>';
+		echo '<p>'.$str['sch_editor_error_no_id_specified'].'</p>';
+	}
+	break;
+	
+	case 'create-based-on';
+	include('../../includes/connexion_pdo.php');
+	
+	if (isset($_GET['id']))
+	{
+		$get_scheme_info = $bdd->prepare('SELECT * FROM schemes_list WHERE sch_id = :id');
+		$get_scheme_info->bindValue(':id', $_GET['id'], PDO::PARAM_INT);
+		$get_scheme_info->execute();
+
+		$get_scheme_info_result = $get_scheme_info->fetch();
+		
+		if (!empty($get_scheme_info_result))
+		{
+			$parent_directory = 2;
+			$titre = 'Worms Armageddon - '.$str['sch_editor_sch_creation_based_on_title'].' '.$get_scheme_info_result['sch_name'].' '.$str['sch_editor_sch_viewer_by'].' '.$get_scheme_info_result['sch_author'].' (#'.$_GET['id'].')';
+			include('../../includes/haut-sans-session-start.php');
+
+			$jeu = $str['category'];
+
+			// Chemin de fer (2 août 2012)
+			$lien1 = array($str['index'], '../../index.php');
+			$lien2 = array('Worms Armageddon', '../index.php');
+			$lien3 = array($str['sch_editor'], 'index.php');
+			$page_actuelle = $str['sch_editor_sch_creation_based_on_title'].' '.$get_scheme_info_result['sch_name'].' '.$str['sch_editor_sch_viewer_by'].' '.$get_scheme_info_result['sch_author'].' (#'.$_GET['id'].')';
+			include('../../includes/menu.php');
+
+			// Load the scheme file.
+			$file_name = 'schemes/'.fileNameParser($get_scheme_info_result['sch_name']).'_by_'.fileNameParser($get_scheme_info_result['sch_author']).'.wsc';
+			$file_content = file_get_contents($file_name);
+
+			// Then include the editing page.
+			include('includes/form-create-based-on-sch.php');
+		}
+		else
+		{
+			$parent_directory = 2;
+			$titre = 'Worms Armageddon - '.$str['sch_editor'].' - '.$str['error'];
+			include('../../includes/haut-sans-session-start.php');
+
+			$jeu = $str['category'];
+
+			// Chemin de fer (2 août 2012)
+			$lien1 = array($str['index'], '../../index.php');
+			$lien2 = array('Worms Armageddon', '../index.php');
+			$lien3 = array($str['sch_editor'], 'index.php');
+			$page_actuelle = $str['sch_editor_sch_creation_based_on_title_2'];
+			include('../../includes/menu.php');
+			
+			echo '<h1>'.$str['error'].'</h1>';
+			echo '<p>'.$str['sch_editor_error_scheme_does_not_exist'].'</p>';
+		}
+	}
+	else
+	{
+		$parent_directory = 2;
+		$titre = 'Worms Armageddon - '.$str['sch_editor'].' - '.$str['error'];
+		include('../../includes/haut-sans-session-start.php');
+
+		$jeu = $str['category'];
+
+		// Chemin de fer (2 août 2012)
+		$lien1 = array($str['index'], '../../index.php');
+		$lien2 = array('Worms Armageddon', '../index.php');
+		$lien3 = array($str['sch_editor'], 'index.php');
+		$page_actuelle = $str['sch_editor_sch_creation_based_on_title_2'];
 		include('../../includes/menu.php');
 		
 		echo '<h1>'.$str['error'].'</h1>';
@@ -183,7 +255,7 @@ if (isset($_GET['action']))
 	$lien1 = array($str['index'], '../../index.php');
 	$lien2 = array('Worms Armageddon', '../index.php');
 	$lien3 = array($str['sch_editor'], 'index.php');
-	$page_actuelle = $str['sch_editor_sch_editing_title'];
+	$page_actuelle = $str['sch_editor_sch_creation_based_on_title_2'];
 	include('../../includes/menu.php');
 	
 	echo '<h1>'.$str['error'].'</h1>';
@@ -203,7 +275,7 @@ else
 	$lien1 = array($str['index'], '../../index.php');
 	$lien2 = array('Worms Armageddon', '../index.php');
 	$lien3 = array($str['sch_editor'], 'index.php');
-	$page_actuelle = $str['sch_editor_sch_editing_title'];
+	$page_actuelle = $str['error'];
 	include('../../includes/menu.php');
 
 	echo '<h1>'.$str['error'].'</h1>';

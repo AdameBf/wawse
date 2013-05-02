@@ -42,55 +42,61 @@ if (isset($_POST['action']))
 	switch ($action)
 	{
 	case 'create';
-	
-	$titre = 'Worms Armageddon - '.$str['sch_editor_sch_maker_title'];
-	include('../../includes/haut-sans-session-start.php');
 
-	$page_actuelle = $str['sch_editor_sch_maker_title'];
-	include('../../includes/menu.php');
+	$sch_name = htmlspecialchars(apostropheParse($_POST['sch_name']));
 
-	$sch_name = htmlspecialchars($_POST['sch_name']);
-	
-	echo '<h1>'.$str['sch_editor_sch_maker_title'].': '.$sch_name.'</h1>';
+	// Introduced in v1.1.0: Schemes that aren't saved on the database can now be created. They're downloaded right ahead, without showing any confirmation page.
+	if (!isset($_POST['no_database']))
+	{
+		$titre = 'Worms Armageddon - '.$str['sch_editor_sch_maker_title'];
+		include('../../includes/haut-sans-session-start.php');
 
-		// First, let's make sure that we won't override a scheme before actually writing the file.
-		if (isset($_SESSION['id']))
+		$page_actuelle = $str['sch_editor_sch_maker_title'];
+		include('../../includes/menu.php');
+
+		echo '<h1>'.$str['sch_editor_sch_maker_title'].': '.$sch_name.'</h1>';
+	}
+
+	// First, let's make sure that we won't override a scheme before actually writing the file.
+	if (isset($_SESSION['id']))
+	{
+		$sch_author_is_member = 1;
+	}
+	else
+	{
+		$sch_author_is_member = 0;
+	}
+
+	if ($sch_author_is_member === 1)
+	{
+		$sch_author = apostropheParse($_SESSION['pseudo']);
+		$sch_password = null;
+	}
+	else
+	{
+		if(isset($_POST['sch_author']) AND !empty($_POST['sch_author']))
 		{
-			$sch_author_is_member = 1;
+			$sch_author = apostropheParse($_POST['sch_author']);
 		}
 		else
 		{
-			$sch_author_is_member = 0;
+			$sch_author = 'Anonymous';
 		}
 
-		if ($sch_author_is_member === 1)
+		if (isset($_POST['sch_password']) AND !empty($_POST['sch_password']))
 		{
-			$sch_author = $_SESSION['pseudo'];
+			$sch_password = sha1($_POST['sch_password']);
+		}
+		else
+		{
 			$sch_password = null;
 		}
-		else
-		{
-			if(isset($_POST['sch_author']) AND !empty($_POST['sch_author']))
-			{
-				$sch_author = $_POST['sch_author'];
-			}
-			else
-			{
-				$sch_author = 'Anonymous';
-			}
-			
-			if (isset($_POST['sch_password']) AND !empty($_POST['sch_password']))
-			{
-				$sch_password = sha1($_POST['sch_password']);
-			}
-			else
-			{
-				$sch_password = null;
-			}
-		}
+	}
 
+	if (!isset($_POST['no_database']))
+	{
 		$query_check = $bdd->prepare('SELECT * FROM schemes_list WHERE sch_name = :sch_name AND sch_author = :sch_author');
-		$query_check->execute(array('sch_name' => fileNameParser($sch_name), 'sch_author' => fileNameParser($sch_author)));
+		$query_check->execute(array('sch_name' => apostropheParse($sch_name), 'sch_author' => apostropheParse($sch_author)));
 		$query_check_result = $query_check->fetch();
 
 		if (!empty($query_check_result))
@@ -102,17 +108,33 @@ if (isset($_POST['action']))
 			$magic_number = time();
 			$sch_name .= $magic_number;
 		}
+	}
 
-		if (empty($sch_name))
-		{
+	if (empty($sch_name))
+	{
 			$sch_name = 'Unnamed_scheme_'.time();
-		}
-		
-		//Let's replace characters in the author name and the file name
-		$sch_name_2 = fileNameParser($sch_name);
-		$sch_author_2 = fileNameParser($sch_author);
+	}
 
-		$file_name = 'schemes/'.$sch_name_2.'_by_'.$sch_author_2.'.wsc';
+	// Let's replace characters in the author name and the file name
+	$sch_name_2 = fileNameParser($sch_name);
+	$sch_author_2 = fileNameParser($sch_author);
+
+		if (!isset($_POST['no_database']))
+		{
+			$file_name = 'schemes/'.$sch_name_2.'_by_'.$sch_author_2.'.wsc';
+		}
+		else
+		{
+			$file_name = $sch_name_2.'_by_'.$sch_author_2.'.wsc';
+			
+			// Code found on Stack Overflow.
+			header('Cache-Control: public');
+			header('Content-Description: File Transfer');
+			header('Content-Length: '. filesize($file_name));
+			header('Content-Disposition: attachment; filename='.$file_name);
+			header('Content-Type: application/wa-scheme'); 
+			header('Content-Transfer-Encoding: binary');
+		}
 	
 		// Version required to run the scheme. It will be an array where the highest entry will be picked, with max().
 		$version_required_array[] = 5; // Below, v2 schemes (might) crash the game.
@@ -168,263 +190,317 @@ if (isset($_POST['action']))
 		// "Bool" values
 		if (isset($_POST['round_time_display']))
 		{
-		$display_round_time = 0x01;
+			$display_round_time = 0x01;
 		}
 		else
 		{
-		$display_round_time = 0x00;
+			$display_round_time = 0x00;
 		}
 
 		if (isset($_POST['action_replays']))
 		{
-		$action_replays = 0x01;
+			$action_replays = 0x01;
 		}
 		else
 		{
-		$action_replays = 0x00;
+			$action_replays = 0x00;
 		}
 
 		if (isset($_POST['anchor_mode']))
 		{
-		$anchor_mode = 0x01;
+			$anchor_mode = 0x01;
 		}
 		else
 		{
-		$anchor_mode = 0x00;
+			$anchor_mode = 0x00;
 		}
 
 		if (isset($_POST['donor_cards']))
 		{
-		$donor_cards = 0x01;
+			$donor_cards = 0x01;
 		}
 		else
 		{
-		$donor_cards = 0x00;
+			$donor_cards = 0x00;
 		}
 
 		if (isset($_POST['dud_mines']))
 		{
-		$dud_mines = 0x01;
+			$dud_mines = 0x01;
 		}
 		else
 		{
-		$dud_mines = 0x00;
+			$dud_mines = 0x00;
 		}
 
 		if (isset($_POST['blood_mode']))
 		{
-		$blood_mode = 0x01;
+			$blood_mode = 0x01;
 		}
 		else
 		{
-		$blood_mode = 0x00;
+			$blood_mode = 0x00;
 		}
 
 		if (isset($_POST['aqua_sheep']))
 		{
-		$aqua_sheep = 0x01;
+			$aqua_sheep = 0x01;
 		}
 		else
 		{
-		$aqua_sheep = 0x00;
+			$aqua_sheep = 0x00;
 		}
 
 		if (isset($_POST['sheep_heaven']))
 		{
-		$sheep_heaven = 0x01;
+			$sheep_heaven = 0x01;
 		}
 		else
 		{
-		$sheep_heaven = 0x00;
+			$sheep_heaven = 0x00;
 		}
 
 		if (isset($_POST['invincibility']))
 		{
-		$invincibility = 0x01;
+			$invincibility = 0x01;
 		}
 		else
 		{
-		$invincibility = 0x00;
+			$invincibility = 0x00;
 		}
 
 		if (isset($_POST['indestructible_landscape']))
 		{
-		$indestructible_landscape = 0x01;
+			$indestructible_landscape = 0x01;
 		}
 		else
 		{
-		$indestructible_landscape = 0x00;
+			$indestructible_landscape = 0x00;
 		}
 
 		if (isset($_POST['upgraded_grenade']))
 		{
-		$upgraded_grenade = 0x01;
+			$upgraded_grenade = 0x01;
 		}
 		else
 		{
-		$upgraded_grenade = 0x00;
+			$upgraded_grenade = 0x00;
 		}
 
 		if (isset($_POST['upgraded_shotgun']))
 		{
-		$upgraded_shotgun = 0x01;
+			$upgraded_shotgun = 0x01;
 		}
 		else
 		{
-		$upgraded_shotgun = 0x00;
+			$upgraded_shotgun = 0x00;
 		}
 
 		if (isset($_POST['upgraded_clusters']))
 		{
-		$upgraded_clusters = 0x01;
+			$upgraded_clusters = 0x01;
 		}
 		else
 		{
-		$upgraded_clusters = 0x00;
+			$upgraded_clusters = 0x00;
 		}
 
 		if (isset($_POST['upgraded_longbow']))
 		{
-		$upgraded_longbow = 0x01;
+			$upgraded_longbow = 0x01;
 		}
 		else
 		{
-		$upgraded_longbow = 0x00;
+			$upgraded_longbow = 0x00;
 		}
 
 		if (isset($_POST['team_weapons']))
 		{
-		$team_weapons = 0x01;
+			$team_weapons = 0x01;
 		}
 		else
 		{
-		$team_weapons = 0x00;
+			$team_weapons = 0x00;
 		}
 	
 		if (isset($_POST['upgraded_longbow']))
 		{
-		$super_weapons = 0x01;
+			$super_weapons = 0x01;
 		}
 		else
 		{
-		$super_weapons = 0x00;
+			$super_weapons = 0x00;
 		}
 	
 		if (isset($_POST['double_damage']))
 		{
-		$double_damage = 0x01;
+			$double_damage = 0x01;
 		}
 		else
 		{
-		$double_damage = 0x00;
+			$double_damage = 0x00;
 		}
 
 
 		if ($hazardous_object_type === 0)
 		{
-		$hazardous_objects_byte = 0;
+			$hazardous_objects_byte = 0;
 		}
 		else if ($hazardous_object_type === 1 AND $hazardous_object_count === 8)
 		{
-		$hazardous_objects_byte = 1;
+			$hazardous_objects_byte = 1;
 		}
 		else if ($hazardous_object_type === 2 AND $hazardous_object_count === 8)
 		{
-		$hazardous_objects_byte = 2;
+			$hazardous_objects_byte = 2;
 		}
 		else if ($hazardous_object_type === 3 AND $hazardous_object_count === 8)
 		{
-		$hazardous_objects_byte = 5;
+			$hazardous_objects_byte = 5;
 		}
 		else
 		{
-		$hazardous_objects_byte = 8 + $hazardous_object_type + ($hazardous_object_count * 4);
-		$version_required_array[] = 28;
+			$hazardous_objects_byte = 8 + $hazardous_object_type + ($hazardous_object_count * 4);
+			$version_required_array[] = 28;
 		}
 
 
 		if ($turn_time >= 128)
 		{
-		$version_required_array[] = 19.17;
+			$version_required_array[] = 19.17;
 		}
 		if ($round_time >= 128)
 		{
-		$version_required_array[] = 28;
+			$version_required_array[] = 28;
 		}
 		if ($worm_select === 2)
 		{
-		$version_required_array[] = 29;
+			$version_required_array[] = 29;
 		}
 		if ($number_of_victories === 0)
 		{
-		$version_required_array[] = 29;
+			$version_required_array[] = 29;
 		}
 
 
-		// Now, time to create the file.
-		$scheme_file = fopen($file_name, 'w');
-		fputs($scheme_file, 'SCHM'); // Scheme magic number (chars no.0-3)
+		if (!isset($_POST['no_database']))
+		{
+			// Now, time to create the file.
+			$scheme_file = fopen($file_name, 'w');
+			fputs($scheme_file, 'SCHM'); // Scheme magic number (chars no.0-3)
 
-		// Scheme version
-		$sch_version = pack('h', 0x02);
-		fputs($scheme_file, $sch_version); // Char no.4
+			// Scheme version
+			$sch_version = pack('h', 0x02);
+			fputs($scheme_file, $sch_version); // Char no.4
 
-		fputs($scheme_file, pack(packingFormat($hot_seat_delay), dechex($hot_seat_delay))); // Char no.5
-		fputs($scheme_file, pack(packingFormat($retreat_time), dechex($retreat_time))); // Char no.6
-		fputs($scheme_file, pack(packingFormat($rope_retreat_time), dechex($rope_retreat_time))); // Char no.7
-		fputs($scheme_file, pack('h', $display_round_time)); // Char no.8
-		fputs($scheme_file, pack('h', $action_replays)); // Char no.9
-		fputs($scheme_file, pack(packingFormat($fall_damage_byte), $fall_damage_byte)); // Char no.10
-		fputs($scheme_file, pack('h', $anchor_mode)); // Char no.11
-		fputs($scheme_file, pack('H2', dechex(0x5F))); // Char no.12, a byte unused by the game. I'll set a magic number telling the scheme has been created by this editor. Hex value: 0x5F, dec value: 95.
-		fputs($scheme_file, pack('h', $stockpiling_mode)); // Char no.13
-		fputs($scheme_file, pack('h', $worm_select)); // Char no.14
-		fputs($scheme_file, pack('h', $sudden_death_event)); // Char no.15
-		fputs($scheme_file, pack(packingFormat($water_rise_speed), dechex($water_rise_speed))); // Char no.16
-		fputs($scheme_file, pack(packingFormat($weapon_crate_probability), dechex($weapon_crate_probability))); // Char no.17
-		fputs($scheme_file, pack('h', $donor_cards)); // Char no.18
-		fputs($scheme_file, pack(packingFormat($health_crate_probability), dechex($health_crate_probability))); // Char no.19
-		fputs($scheme_file, pack(packingFormat($health_crate_energy), dechex($health_crate_energy))); // Char no.20
-		fputs($scheme_file, pack(packingFormat($utility_crate_probability), dechex($utility_crate_probability))); // Char no.21
-		fputs($scheme_file, pack(packingFormat($hazardous_objects_byte), dechex($hazardous_objects_byte))); // Char no.22
-		fputs($scheme_file, pack(packingFormat($mine_fuse), dechex($mine_fuse))); // Char no.23
-		fputs($scheme_file, pack('h', $dud_mines)); // Char no.24
-		fputs($scheme_file, pack('h', $worm_placement)); // Char no.25
-		fputs($scheme_file, pack(packingFormat($initial_worm_energy), dechex($initial_worm_energy))); // Char no.26
-		fputs($scheme_file, pack(packingFormat($turn_time), dechex($turn_time))); // Char no.27
-		fputs($scheme_file, pack(packingFormat($round_time), dechex($round_time))); // Char no.28
-		fputs($scheme_file, pack(packingFormat($number_of_victories), dechex($number_of_victories))); // Char no.29
-		fputs($scheme_file, pack('h', $blood_mode)); // Char no.30
-		fputs($scheme_file, pack('h', $aqua_sheep)); // Char no.31
-		fputs($scheme_file, pack('h', $sheep_heaven)); // Char no.32
-		fputs($scheme_file, pack('h', $invincibility)); // Char no.33
-		fputs($scheme_file, pack('h', $indestructible_landscape)); // Char no.34
-		fputs($scheme_file, pack('h', $upgraded_grenade)); // Char no.35
-		fputs($scheme_file, pack('h', $upgraded_shotgun)); // Char no.36
-		fputs($scheme_file, pack('h', $upgraded_clusters)); // Char no.37
-		fputs($scheme_file, pack('h', $upgraded_longbow)); // Char no.38
-		fputs($scheme_file, pack('h', $team_weapons)); // Char no.39
-		fputs($scheme_file, pack('h', $super_weapons)); // Char no.40
+			fputs($scheme_file, pack(packingFormat($hot_seat_delay), dechex($hot_seat_delay))); // Char no.5
+			fputs($scheme_file, pack(packingFormat($retreat_time), dechex($retreat_time))); // Char no.6
+			fputs($scheme_file, pack(packingFormat($rope_retreat_time), dechex($rope_retreat_time))); // Char no.7
+			fputs($scheme_file, pack('h', $display_round_time)); // Char no.8
+			fputs($scheme_file, pack('h', $action_replays)); // Char no.9
+			fputs($scheme_file, pack(packingFormat($fall_damage_byte), dechex($fall_damage_byte))); // Char no.10
+			fputs($scheme_file, pack('h', $anchor_mode)); // Char no.11
+			fputs($scheme_file, pack('H2', dechex(0x5F))); // Char no.12, a byte unused by the game. I'll set a magic number telling the scheme has been created by this editor. Hex value: 0x5F, dec value: 95.
+			fputs($scheme_file, pack('h', $stockpiling_mode)); // Char no.13
+			fputs($scheme_file, pack('h', $worm_select)); // Char no.14
+			fputs($scheme_file, pack('h', $sudden_death_event)); // Char no.15
+			fputs($scheme_file, pack(packingFormat($water_rise_speed), dechex($water_rise_speed))); // Char no.16
+			fputs($scheme_file, pack(packingFormat($weapon_crate_probability), dechex($weapon_crate_probability))); // Char no.17
+			fputs($scheme_file, pack('h', $donor_cards)); // Char no.18
+			fputs($scheme_file, pack(packingFormat($health_crate_probability), dechex($health_crate_probability))); // Char no.19
+			fputs($scheme_file, pack(packingFormat($health_crate_energy), dechex($health_crate_energy))); // Char no.20
+			fputs($scheme_file, pack(packingFormat($utility_crate_probability), dechex($utility_crate_probability))); // Char no.21
+			fputs($scheme_file, pack(packingFormat($hazardous_objects_byte), dechex($hazardous_objects_byte))); // Char no.22
+			fputs($scheme_file, pack(packingFormat($mine_fuse), dechex($mine_fuse))); // Char no.23
+			fputs($scheme_file, pack('h', $dud_mines)); // Char no.24
+			fputs($scheme_file, pack('h', $worm_placement)); // Char no.25
+			fputs($scheme_file, pack(packingFormat($initial_worm_energy), dechex($initial_worm_energy))); // Char no.26
+			fputs($scheme_file, pack(packingFormat($turn_time), dechex($turn_time))); // Char no.27
+			fputs($scheme_file, pack(packingFormat($round_time), dechex($round_time))); // Char no.28
+			fputs($scheme_file, pack(packingFormat($number_of_victories), dechex($number_of_victories))); // Char no.29
+			fputs($scheme_file, pack('h', $blood_mode)); // Char no.30
+			fputs($scheme_file, pack('h', $aqua_sheep)); // Char no.31
+			fputs($scheme_file, pack('h', $sheep_heaven)); // Char no.32
+			fputs($scheme_file, pack('h', $invincibility)); // Char no.33
+			fputs($scheme_file, pack('h', $indestructible_landscape)); // Char no.34
+			fputs($scheme_file, pack('h', $upgraded_grenade)); // Char no.35
+			fputs($scheme_file, pack('h', $upgraded_shotgun)); // Char no.36
+			fputs($scheme_file, pack('h', $upgraded_clusters)); // Char no.37
+			fputs($scheme_file, pack('h', $upgraded_longbow)); // Char no.38
+			fputs($scheme_file, pack('h', $team_weapons)); // Char no.39
+			fputs($scheme_file, pack('h', $super_weapons)); // Char no.40
+		}
+		else
+		{
+			echo 'SCHM';
+			echo chr(2);
+			echo chr($hot_seat_delay);
+			echo chr($retreat_time);
+			echo chr($rope_retreat_time);
+			echo chr($display_round_time);
+			echo chr($action_replays);
+			echo chr($fall_damage_byte);
+			echo chr($anchor_mode);
+			echo chr(95);
+			echo chr($stockpiling_mode);
+			echo chr($worm_select);
+			echo chr($sudden_death_event);
+			echo chr($water_rise_speed);
+			echo chr($weapon_crate_probability);
+			echo chr($donor_cards);
+			echo chr($health_crate_probability);
+			echo chr($health_crate_energy);
+			echo chr($utility_crate_probability);
+			echo chr($hazardous_objects_byte);
+			echo chr($mine_fuse);
+			echo chr($dud_mines);
+			echo chr($worm_placement);
+			echo chr($initial_worm_energy);
+			echo chr($turn_time);
+			echo chr($round_time);
+			echo chr($number_of_victories);
+			echo chr($blood_mode);
+			echo chr($aqua_sheep);
+			echo chr($sheep_heaven);
+			echo chr($invincibility);
+			echo chr($indestructible_landscape);
+			echo chr($upgraded_grenade);
+			echo chr($upgraded_shotgun);
+			echo chr($upgraded_clusters);
+			echo chr($upgraded_longbow);
+			echo chr($team_weapons);
+			echo chr($super_weapons);
+		}
 	
 		// Weapons time! Good thing is that I can do some super-loops! :O
 		$counter = 0;
 	
 		while($counter <= 38) // 1. All weapons supporting crate probabilities and power settings
 		{
-		$ammo = (int) $_POST['weap'.$counter.'_ammo'];
-		$power = (int) $_POST['weap'.$counter.'_power'] - 1;
-		$delay = (int) $_POST['weap'.$counter.'_delay'];
-		$crates = (int) $_POST['weap'.$counter.'_crates'];
+			$ammo = (int) $_POST['weap'.$counter.'_ammo'];
+			$power = (int) $_POST['weap'.$counter.'_power'] - 1;
+			$delay = (int) $_POST['weap'.$counter.'_delay'];
+			$crates = (int) $_POST['weap'.$counter.'_crates'];
 
-		fputs($scheme_file, pack(packingFormat($ammo), dechex($ammo)));	
-		fputs($scheme_file, pack(packingFormat($power), dechex($power)));	
-		fputs($scheme_file, pack(packingFormat($delay), dechex($delay)));	
-		fputs($scheme_file, pack(packingFormat($crates), dechex($crates)));
+			if (!isset($_POST['no_database']))
+			{
+				fputs($scheme_file, pack(packingFormat($ammo), dechex($ammo)));	
+				fputs($scheme_file, pack(packingFormat($power), dechex($power)));	
+				fputs($scheme_file, pack(packingFormat($delay), dechex($delay)));	
+				fputs($scheme_file, pack(packingFormat($crates), dechex($crates)));
+			}
+			else
+			{
+				echo chr($ammo);
+				echo chr($power);
+				echo chr($delay);
+				echo chr($crates);
+			}
 
 		$counter++;
 		}
 	
-		// 2. We just finished with standard weapons, so $counter === 39. The 39th (well, 40th actually) weapon is Jet Pack.
+		// 2. We just finished with standard weapons, so $counter == 39. The 39th (well, 40th actually) weapon is Jet Pack.
 		$ammo = (int) $_POST['weap'.$counter.'_ammo'];
 		$power = (int) 5 + $_POST['weap'.$counter.'_power'];
 		$delay = (int) $_POST['weap'.$counter.'_delay'];
@@ -432,17 +508,27 @@ if (isset($_POST['action']))
 	
 		if ($power === 35) // Default value (5 + 30)
 		{
-		$power = 0; // Considered as power 1 in game
+			$power = 0; // Considered as power 1 in game
 		}
 		if ($power >= 5)
 		{
-		$version_required_array[] = 29;
+			$version_required_array[] = 29;
 		}
-	
-		fputs($scheme_file, pack(packingFormat($ammo), dechex($ammo)));	
-		fputs($scheme_file, pack(packingFormat($power), dechex($power)));	
-		fputs($scheme_file, pack(packingFormat($delay), dechex($delay)));	
-		fputs($scheme_file, pack('h', dechex($crates)));
+		
+		if (!isset($_POST['no_database']))
+		{
+			fputs($scheme_file, pack(packingFormat($ammo), dechex($ammo)));	
+			fputs($scheme_file, pack(packingFormat($power), dechex($power)));	
+			fputs($scheme_file, pack(packingFormat($delay), dechex($delay)));	
+			fputs($scheme_file, pack('h', dechex($crates)));
+		}
+		else
+		{
+			echo chr($ammo);
+			echo chr($power);
+			echo chr($delay);
+			echo chr(0);
+		}
 
 		$counter++;
 
@@ -453,20 +539,40 @@ if (isset($_POST['action']))
 		$power = 0;
 		$delay = (int) $_POST['weap'.$counter.'_delay'];
 		$crates = 0;
-	
-		fputs($scheme_file, pack(packingFormat($ammo), dechex($ammo)));	
-		fputs($scheme_file, pack('h', dechex($power)));	
-		fputs($scheme_file, pack(packingFormat($delay), dechex($delay)));	
-		fputs($scheme_file, pack('h', dechex($crates)));
+
+		if (!isset($_POST['no_database']))
+		{
+			fputs($scheme_file, pack(packingFormat($ammo), dechex($ammo)));	
+			fputs($scheme_file, pack('h', dechex($power)));	
+			fputs($scheme_file, pack(packingFormat($delay), dechex($delay)));	
+			fputs($scheme_file, pack('h', dechex($crates)));
+		}
+		else
+		{
+			echo chr($ammo);
+			echo chr(0);
+			echo chr($delay);
+			echo chr(0);
+		}
 
 		$counter++;
 		}
 
 		// 4. Double damage
-		fputs($scheme_file, pack('h', dechex($double_damage)));	
-		fputs($scheme_file, pack('h', 0));	
-		fputs($scheme_file, pack('h', 0));	
-		fputs($scheme_file, pack('h', 0));
+		if (!isset($_POST['no_database']))
+		{
+			fputs($scheme_file, pack('h', dechex($double_damage)));
+			fputs($scheme_file, pack('h', 0));
+			fputs($scheme_file, pack('h', 0));
+			fputs($scheme_file, pack('h', 0));
+		}
+		else
+		{
+			echo chr($double_damage);
+			echo chr(0);
+			echo chr(0);
+			echo chr(0);
+		}
 	
 		$counter++;
 	
@@ -492,22 +598,22 @@ if (isset($_POST['action']))
 		// Anti sink
 		if (isset($_POST['rubber_anti_sink']))
 		{
-		$rubber_anti_sink = 1;
+			$rubber_anti_sink = 1;
 		}
 		else
 		{
-		$rubber_anti_sink = 0;
+			$rubber_anti_sink = 0;
 		}
 	
 		// Select worm anytime during the turn
 		if (isset($_POST['rubber_swat']))
 		{
-		$rubber_swat = 1;
-		$version_required = 31;
+			$rubber_swat = 1;
+			$version_required = 31;
 		}
 		else
 		{
-		$rubber_swat = 0;
+			$rubber_swat = 0;
 		}
 	
 		// Earthquake
@@ -515,50 +621,51 @@ if (isset($_POST['action']))
 	
 		if (isset($_POST['rubber_auto_reaim']))
 		{
-		$rubber_earthquake += 1;
+			$rubber_earthquake += 1;
 		}
 		if (isset($_POST['rubber_circular_aim']))
 		{
-		$rubber_earthquake += 2;
+			$rubber_earthquake += 2;
 		}
 		if (isset($_POST['rubber_antilock_power']))
 		{
-		$rubber_earthquake += 4;
+			$rubber_earthquake += 4;
 		}
 		if (isset($_POST['rubber_usw']))
 		{
-		$rubber_earthquake += 8;
+			$rubber_earthquake += 8;
 		}
 		if (isset($_POST['rubber_kaosmod'])) // It should be weird if the value doesn't exist, but nvm.
 		{
-		$rubber_kaosmod = (int) $_POST['rubber_kaosmod'];
+			$rubber_kaosmod = (int) $_POST['rubber_kaosmod'];
+
 			switch($rubber_kaosmod)
 			{
-			case 0;
-			break;
-		
-			case 1;
-			$rubber_earthquake += 16;
-			break;
-		
-			case 2;
-			$rubber_earthquake += 48;
-			break;
-		
-			case 3;
-			$rubber_earthquake += 80;
-			break;
-		
-			case 4;
-			$rubber_earthquake += 112;
-			break;
-		
-			case 5;
-			$rubber_earthquake += 144;
-			break;
-		
-			default;
-			break;
+				case 0;
+				break;
+			
+				case 1;
+				$rubber_earthquake += 16;
+				break;
+			
+				case 2;
+				$rubber_earthquake += 48;
+				break;
+			
+				case 3;
+				$rubber_earthquake += 80;
+				break;
+			
+				case 4;
+				$rubber_earthquake += 112;
+				break;
+			
+				case 5;
+				$rubber_earthquake += 144;
+				break;
+			
+				default;
+				break;
 			}
 		}
 
@@ -638,128 +745,154 @@ if (isset($_POST['action']))
 		{
 			$rubber_version_override_2 = 0; // Freeze Crate Probability.
 		}
-	
+
 		$rubber_settings = array($rubber_version_override_2, $rubber_knocking_force, $rubber_speed, 0, $rubber_earthquake, $rubber_flames_limit, 0, 0, $rubber_crate_limit, $rubber_crate_rate, $rubber_version_override, $rubber_friction, $rubber_mole_squadron, $rubber_swat, $rubber_air_resistance, $rubber_wind_influence, $rubber_anti_sink, $rubber_gravity_modifications, $rubber_worms_bounciness);
 
 		$rubber_max_value = max($rubber_settings);
+
 		if ($rubber_max_value === 0)
 		{
-		$rubber_required = false;
+			$rubber_required = false;
 		}
 		else
 		{
-		$rubber_required = true;
-		$version_required_array[] = 28;
+			$rubber_required = true;
+			$version_required_array[] = 28;
 		}
 	
 		// Time to store all that in the file, and we're finally done with it!
 		while($counter <= 63)
 		{
-		$rubber_settings_array_key = $counter - 45;
-	
-		$ammo = (int) $_POST['weap'.$counter.'_ammo'];
-		$power = 0;
-		$delay = (int) $_POST['weap'.$counter.'_delay'];
-		$crates = $rubber_settings[$rubber_settings_array_key];
-	
-		fputs($scheme_file, pack(packingFormat($ammo), dechex($ammo)));	
-		fputs($scheme_file, pack('h', dechex($power)));	
-		fputs($scheme_file, pack(packingFormat($delay), dechex($delay)));	
-		fputs($scheme_file, pack(packingFormat($crates), dechex($crates)));
-	
-		$counter++;
-		}
-
-		// We're done, finally. Now we can close that file.
-		fclose($scheme_file);
-	
-		// Time to know the required version.
-		$version_required = (string) max($version_required_array);
-	
-		// Parse description so it can be saved in the database
-		$description = htmlspecialchars($_POST['sch_desc']);
-
-		if ($version_required == 5)
-		{
-			$version_required_string = '3.5 Beta 1 or later';
-		}
-		else if ($version_required == 19.17)
-		{
-			$version_required_string = '3.6.'.$version_required.' Beta or later';
-		}
-		else if ($version_required == 32)
-		{
-			$version_required_string = '3.7.0.0 or later';
-		}
-		else if ($version_required == 33)
-		{
-			$version_required_string = '3.7.2.1 or later';
-		}
-		else
-		{
-			$version_required_string = '3.6.'.$version_required.'.0 Beta or later';
-		}
-	
-		if ($rubber_required)
-		{
-			$version_required_string .= ' with RubberWorm';
-		}
-		if ($laser_fix_required AND !$rubber_required) // Flames limit feature
-		{
-			$version_required_string = '3.6.29.0 with Laser Fix or 3.6.31.0+ with RubberWorm';
-		}
-		else if ($laser_fix_required AND $rubber_required AND $version_required == 29)
-		{
-			$version_required_string = '3.6.29.0 with Laser Fix and RubberWorm or 3.6.31.0+ with RubberWorm';
-		}
-	
-		if (isset($magic_number))
-		{
-		$timestamp = $magic_number;
-		}
-		else
-		{
-		$timestamp = time();
-		}
+			$rubber_settings_array_key = $counter - 45;
 		
-		// Introduced in 0.5.1: who can upload example replays and do they have to be approved?
-		if (isset($_POST['sch_exrep_permissions']))
-		{
-			$example_replays_permissions = (int) $_POST['sch_exrep_permissions'];
+			$ammo = (int) $_POST['weap'.$counter.'_ammo'];
+			$power = 0;
+			$delay = (int) $_POST['weap'.$counter.'_delay'];
+			$crates = $rubber_settings[$rubber_settings_array_key];
+		
+			if (!isset($_POST['no_database']))
+			{
+				fputs($scheme_file, pack(packingFormat($ammo), dechex($ammo)));
+				fputs($scheme_file, pack('h', dechex($power)));
+				fputs($scheme_file, pack(packingFormat($delay), dechex($delay)));
+				fputs($scheme_file, pack(packingFormat($crates), dechex($crates)));
+			}
+			else
+			{
+				echo chr($ammo);
+				echo chr(0);
+				echo chr($delay);
+				echo chr($crates);
+			}
+		
+			$counter++;
+		}
 
-			if ($example_replays_permissions < 0 && $example_replays_permissions > 2)
+		if (!isset($_POST['no_database']))
+		{
+			// We're done, finally. Now we can close that file.
+			fclose($scheme_file);
+		
+			// Time to know the required version.
+			$version_required = (string) max($version_required_array);
+		
+			// Parse description so it can be saved in the database
+			$description = htmlspecialchars($_POST['sch_desc']);
+
+			if ($version_required == 5)
+			{
+				$version_required_string = '3.5 Beta 1 or later';
+			}
+			else if ($version_required == 19.17)
+			{
+				$version_required_string = '3.6.'.$version_required.' Beta or later';
+			}
+			else if ($version_required == 32)
+			{
+				$version_required_string = '3.7.0.0 or later';
+			}
+			else if ($version_required == 33)
+			{
+				$version_required_string = '3.7.2.1 or later';
+			}
+			else
+			{
+				$version_required_string = '3.6.'.$version_required.'.0 Beta or later';
+			}
+		
+			if ($rubber_required)
+			{
+				$version_required_string .= ' with RubberWorm';
+			}
+			if ($laser_fix_required AND !$rubber_required) // Flames limit feature
+			{
+				$version_required_string = '3.6.29.0 with Laser Fix or 3.6.31.0+ with RubberWorm';
+			}
+			else if ($laser_fix_required AND $rubber_required AND $version_required == 29)
+			{
+				$version_required_string = '3.6.29.0 with Laser Fix and RubberWorm or 3.6.31.0+ with RubberWorm';
+			}
+		
+			if (isset($magic_number))
+			{
+			$timestamp = $magic_number;
+			}
+			else
+			{
+			$timestamp = time();
+			}
+			
+			// Introduced in 0.5.1: who can upload example replays and do they have to be approved?
+			if (isset($_POST['sch_exrep_permissions']))
+			{
+				$example_replays_permissions = (int) $_POST['sch_exrep_permissions'];
+
+				if ($example_replays_permissions < 0 && $example_replays_permissions > 2)
+				{
+				$example_replays_permissions = 0;
+				}
+			}
+			else
 			{
 			$example_replays_permissions = 0;
 			}
+
+			// Introduced in v1.1.0: is the scheme based on another one?
+			if (isset($_POST['sch_id']))
+			{
+				$sch_based_on = (int) $_POST['sch_id'];
+			}
+			else
+			{
+				$sch_based_on = 0;
+			}
+			
+			// We can store the scheme on the database, that thing I logged on almost 600 lines above.
+			$create_scheme_query = $bdd->prepare('INSERT INTO schemes_list VALUES(\'\', :name, :author, :is_member, :password, :submit_date, :submit_date, :description, :version_required_string, 0, :example_replays_permissions, :based_on)');
+			$create_scheme_query->execute(array(
+			'name' => $sch_name,
+			'author' => $sch_author,
+			'is_member' => $sch_author_is_member,
+			'password' => $sch_password,
+			'submit_date' => $timestamp,
+			'description' => $description,
+			'version_required_string' => $version_required_string,
+			'example_replays_permissions' => $example_replays_permissions,
+			'based_on' => $sch_based_on));
+
+			$scheme_get_id = $bdd->prepare('SELECT sch_id FROM schemes_list WHERE sch_name = :name');
+			$scheme_get_id->execute(array('name' => $sch_name));
+			$scheme_id = $scheme_get_id->fetch();
+		
+			// Last, but not least, let's show the user a friendly message telling the user his scheme has successfully been created, and that he can even download it himself.
+			echo '<p>'.$str['sch_editor_scheme_succesfully_created_message'].'</p>';
+			echo '<p><a href="download.php?id='.$scheme_id['sch_id'].'">'.$str['sch_editor_download_scheme_message'].'</a></p>';
 		}
 		else
 		{
-		$example_replays_permissions = 0;
+			// Much shorter: all there is to do is to read the file.
+			readfile($file_name);
 		}
-	
-		// We can store the scheme on the database, that thing I logged on almost 600 lines above.
-		$create_scheme_query = $bdd->prepare('INSERT INTO schemes_list VALUES(\'\', :name, :author, :is_member, :password, :submit_date, :submit_date, :description, :version_required_string, 0, :example_replays_permissions)');
-		$create_scheme_query->execute(array(
-		'name' => $sch_name,
-		'author' => $sch_author,
-		'is_member' => $sch_author_is_member,
-		'password' => $sch_password,
-		'submit_date' => $timestamp,
-		'description' => $description,
-		'version_required_string' => $version_required_string,
-		'example_replays_permissions' => $example_replays_permissions
-		));
-
-		$scheme_get_id = $bdd->prepare('SELECT sch_id FROM schemes_list WHERE sch_name = :name');
-		$scheme_get_id->execute(array(
-		'name' => $sch_name,
-		));
-		$scheme_id = $scheme_get_id->fetch();
-	
-		// Last, but not least, let's show the user a friendly message telling the user his scheme has successfully been created, and that he can even download it himself.
-		echo '<p>'.$str['sch_editor_scheme_succesfully_created_message'].'</p>';
-		echo '<p><a href="download.php?id='.$scheme_id['sch_id'].'">'.$str['sch_editor_download_scheme_message'].'</a></p>';
-
 	break;
 
 
@@ -1037,7 +1170,7 @@ if (isset($_POST['action']))
 
 
 			// Now, time to edit the file: I'll just overwrite the previous one.
-			$file_name = 'schemes/'.fileNameParser($query_check_result['sch_name']).'_by_'.fileNameParser($query_check_result['sch_author']).'.wsc';
+			$file_name = 'schemes/'.fileNameParser(apostropheParse($query_check_result['sch_name'])).'_by_'.fileNameParser(apostropheParse($query_check_result['sch_author'])).'.wsc';
 			
 			$scheme_file = fopen($file_name, 'w');
 			fputs($scheme_file, 'SCHM'); // Scheme magic number (chars no.0-3)
@@ -1484,12 +1617,12 @@ if (isset($_POST['action']))
             // Is it the right format?
             $file_infos = pathinfo($_FILES['sch_file']['name']);
             $uploaded_file_format = $file_infos['extension'];
-			$uploaded_file_name = $file_infos['filename'];
+			$uploaded_file_name = apostropheParse($file_infos['filename']);
 			$uploaded_file_name_2 = fileNameParser($file_infos['filename']);
 			
-			if ($_POST['sch_name'] != '') // Introduced in v0.7.5: has the user specified a scheme name? 
+			if ($_POST['sch_name'] != '') // Introduced in v1.0.0: has the user specified a scheme name? 
 			{
-				$database_sch_name = htmlspecialchars($_POST['sch_name']);
+				$database_sch_name = htmlspecialchars(apostropheParse($_POST['sch_name']));
 				$sch_file_name = fileNameParser($database_sch_name);
 			}
 			else // If it is empty, the uploaded file's name will be used instead.

@@ -125,7 +125,7 @@ if ($pages_count > 0) // There would only be 0 pages if there are no schemes.
 	}
 	?>
 	<table>
-		<tr><th><?php echo $str['sch_editor_sch_list_id_column']; ?></th><th><?php echo $str['sch_editor_sch_list_name_column']; ?></th><th><?php echo $str['sch_editor_sch_list_author_column']; ?></th><th><?php echo $str['sch_editor_sch_list_submit_date_column']; ?></th><th><?php echo $str['sch_editor_sch_list_last_edit_date_column']; ?></th><th><?php echo $str['sch_editor_sch_list_version_required_column']; ?></th><th><?php echo $str['sch_editor_sch_list_download_count_column']; ?></th><th><?php echo $str['sch_editor_sch_list_download_column']; ?></th><th><?php echo $str['sch_editor_sch_list_edit_column']; ?></th><th><?php echo $str['sch_editor_sch_list_download_example_replays']; ?></th></tr>
+		<tr><th><?php echo $str['sch_editor_sch_list_id_column']; ?></th><th><?php echo $str['sch_editor_sch_list_name_column']; ?></th><th><?php echo $str['sch_editor_sch_list_author_column']; ?></th><th><?php echo $str['sch_editor_sch_list_submit_date_column']; ?></th><th><?php echo $str['sch_editor_sch_list_last_edit_date_column']; ?></th><th><?php echo $str['sch_editor_sch_list_version_required_column']; ?></th><th><?php echo $str['sch_editor_sch_list_download_count_column']; ?></th><th><?php echo $str['sch_editor_sch_list_download_column']; ?></th><th><?php echo $str['sch_editor_sch_list_edit_column']; ?></th><th><?php echo $str['sch_editor_sch_list_download_example_replays']; ?></th><th><?php echo $str['sch_editor_sch_list_based_on']; ?></th></tr>
 	<?php
 	while ($scheme_data = $get_schemes_query->fetch() AND $k <= 30)
 	{
@@ -136,6 +136,8 @@ if ($pages_count > 0) // There would only be 0 pages if there are no schemes.
 		{
 			// Let's start the table row and set the replay counter to 1.
 			echo '<tr><td>'.$scheme_data['sch_id'].'</td><td><a href="scheme-view.php?id='.$scheme_data['sch_id'].'">'.$scheme_data['sch_name'].'</a></td><td>'.$scheme_data['sch_author'].'</td><td>'.$creation_date.'</td><td>'.$last_edit_date.'</td><td>'.$scheme_data['sch_version_required'].'</td><td>'.$scheme_data['sch_download_count'].'</td><td><a href="download.php?id='.$scheme_data['sch_id'].'">'.$str['sch_editor_sch_list_download_column'].'</a></td><td><a href="scheme-editor.php?action=edit&amp;id='.$scheme_data['sch_id'].'">'.$str['sch_editor_sch_list_edit_column'].'</a></td><td style="text-align: center;">';
+			
+			$sch_based_on = $scheme_data['sch_based_on'];
 			
 			$j = 1;
 			$k++;
@@ -152,10 +154,23 @@ if ($pages_count > 0) // There would only be 0 pages if there are no schemes.
 				echo '<em>'.$str['sch_editor_sch_list_no_example_replays'].' - </em>';
 			}
 			
-			echo '<a href="attach-replays.php?id='.$previous_sch_id.'">'.$str['add'].'</a> / <a href="replay-approving-interface.php?id='.$previous_sch_id.'">'.$str['sch_editor_sch_list_replay_approving_interface_link'].'</a>.</td></tr>';
+			echo '<a href="attach-replays.php?id='.$previous_sch_id.'">'.$str['add'].'</a> / <a href="replay-approving-interface.php?id='.$previous_sch_id.'">'.$str['sch_editor_sch_list_replay_approving_interface_link'].'</a>.</td>';
+
+			if ($sch_based_on != 0)
+			{
+				echo '<td><a href="scheme-view.php?id='.$sch_based_on.'">#'.$sch_based_on.'</a></td>';
+			}
+			else
+			{
+				echo '<td>-</td>';
+			}
+
+			echo '</tr>';
 			
 			// Then, let's start the new one and reset the replay counter.
 			echo '<tr><td>'.$scheme_data['sch_id'].'</td><td><a href="scheme-view.php?id='.$scheme_data['sch_id'].'">'.$scheme_data['sch_name'].'</a></td><td>'.$scheme_data['sch_author'].'</td><td>'.$creation_date.'</td><td>'.$last_edit_date.'</td><td>'.$scheme_data['sch_version_required'].'</td><td>'.$scheme_data['sch_download_count'].'</td><td><a href="download.php?id='.$scheme_data['sch_id'].'">'.$str['sch_editor_sch_list_download_column'].'</a></td><td><a href="scheme-editor.php?action=edit&amp;id='.$scheme_data['sch_id'].'">'.$str['sch_editor_sch_list_edit_column'].'</a></td><td style="text-align: center;">';
+			
+			$sch_based_on = $scheme_data['sch_based_on'];
 			
 			$j = 1;
 			$k++;
@@ -183,9 +198,17 @@ if ($pages_count > 0) // There would only be 0 pages if there are no schemes.
 		echo '<em>'.$str['sch_editor_sch_list_no_example_replays'].' - </em>';
 	}
 			
-	echo '<a href="attach-replays.php?id='.$previous_sch_id.'">'.$str['add'].'</a> / <a href="replay-approving-interface.php?id='.$previous_sch_id.'">'.$str['sch_editor_sch_list_replay_approving_interface_link'].'</a>.</td></tr>';
-	
-	echo '</table>';
+	echo '<a href="attach-replays.php?id='.$previous_sch_id.'">'.$str['add'].'</a> / <a href="replay-approving-interface.php?id='.$previous_sch_id.'">'.$str['sch_editor_sch_list_replay_approving_interface_link'].'</a>.</td>';
+	if ($scheme_data['sch_based_on'] != 0)
+	{
+		echo '<td>'.$scheme_data['sch_based_on'].'</td>';
+	}
+	else
+	{
+		echo '<td>-</td>';
+	}
+	echo '</tr>
+	</table>';
 	
 	// Show the pages on the bottom as well.
 	echo '<p class="pages">'.$str['sch_editor_sch_list_pages_label'].' ';
@@ -211,7 +234,7 @@ if ($pages_count > 0) // There would only be 0 pages if there are no schemes.
 }
 else
 {
-echo '<p>No schemes yet.</p>';
+	echo '<p>No schemes yet.</p>';
 }
 
 include('includes/scheme-editor-bottom.php');

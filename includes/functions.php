@@ -2,16 +2,17 @@
 function fileNameParser($text)
 {
 	$text = str_replace(' ', '_', $text);
-	$text = str_replace('<', '\[', $text);
-	$text = str_replace('>', '\]', $text);
-	$text = str_replace('/', '\.', $text);
-	$text = str_replace('|', '\.', $text);
-	$text = str_replace('\\', '\.', $text);
-	$text = str_replace('"', '', $text);
+	$text = str_replace('<', '[', $text);
+	$text = str_replace('>', ']', $text);
+	$text = str_replace('/', '.', $text);
+	$text = str_replace('|', '.', $text);
+	$text = str_replace('\\', '.', $text);
+	$text = str_replace('"', '``', $text);
 	$text = str_replace('\'', '`', $text);
-	$text = str_replace('\*', '', $text);
-	$text = str_replace(':', '', $text);
-	$text = str_replace('\?', '', $text);
+	$text = str_replace('*', '', $text);
+	$text = str_replace(':', '.', $text);
+	$text = str_replace('?', '.', $text);
+	$text = str_replace('!', '.', $text);
 	$text = str_replace('%', '', $text);
 	$text = str_replace('á', 'a', $text);
 	$text = str_replace('Á', 'A', $text);

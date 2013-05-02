@@ -38,16 +38,30 @@ if (isset($_GET['id'])) // Yeah, we should rather make sure we're viewing an exi
 	if (!empty($get_scheme_info_result)) // Now check the ID.
 	{
 		$sch_name = apostropheParse($get_scheme_info_result['sch_name']);
+		$sch_name_2 = $get_scheme_info_result['sch_name'];
+
 		$sch_author = apostropheParse($get_scheme_info_result['sch_author']);
+		$sch_author_2 = $get_scheme_info_result['sch_author'];
 		
 		$sch_id = $get_scheme_info_result['sch_id'];
 		$sch_version_required = $get_scheme_info_result['sch_version_required'];
 		$sch_download_count = $get_scheme_info_result['sch_download_count'];
 		$sch_description = nl2br(apostropheParse($get_scheme_info_result['sch_desc']));
 		
+		$sch_based_on = $get_scheme_info_result['sch_based_on'];
+		
 		if ($sch_description == '')
 		{
 			$sch_description = '<em>'.$str['sch_editor_sch_viewer_sch_no_desc'].'</em>.';
+		}
+		
+		if ($sch_based_on == 0)
+		{
+			$show_based_on = false;
+		}
+		else
+		{
+			$show_based_on = true;
 		}
 		
 		$sch_created_on = date('d\/m\/Y\ H\:i\:s', $get_scheme_info_result['sch_submit_date']);
@@ -77,6 +91,31 @@ if (isset($_GET['id'])) // Yeah, we should rather make sure we're viewing an exi
 		{
 			$sch_example_replays = ' <em>'.$str['sch_editor_sch_viewer_sch_no_example_replays'].'</em>';
 		}
+		
+		$get_example_replays->closeCursor();
+		
+		$get_other_schemes_based_on_this_one = $bdd->prepare('SELECT sch_id FROM schemes_list WHERE sch_based_on = :sch_id');
+		$get_other_schemes_based_on_this_one->bindValue(':sch_id', $sch_id, PDO::PARAM_INT);
+		$get_other_schemes_based_on_this_one->execute();
+		
+		$show_other_schemes_based_on_this_one = false;
+		
+		$other_schemes_based_on_this_one = '';
+			
+		while ($result_other_schemes_based_on_this_one = $get_other_schemes_based_on_this_one->fetch())
+		{
+			if (empty($other_schemes_based_on_this_one))
+			{
+				$other_schemes_based_on_this_one .= '<a href="scheme-view.php?id='.$result_other_schemes_based_on_this_one['sch_id'].'">#'.$result_other_schemes_based_on_this_one['sch_id'].'</a>';
+				$show_other_schemes_based_on_this_one = true;
+				$osboto_singular = true;
+			}
+			else
+			{
+				$other_schemes_based_on_this_one .= ', <a href="scheme-view.php?id='.$result_other_schemes_based_on_this_one['sch_id'].'">#'.$result_other_schemes_based_on_this_one['sch_id'].'</a>';
+				$osboto_singular = true;
+			}
+		}
 
 		$parent_directory = 2;
 		$titre = 'Worms Armageddon - '.$str['sch_editor_sch_viewer_title'].' '.$sch_name.' '.$str['sch_editor_sch_viewer_by'].' '.$sch_author.' (#'.$sch_id.')';
@@ -88,12 +127,13 @@ if (isset($_GET['id'])) // Yeah, we should rather make sure we're viewing an exi
 		$lien1 = array($str['index'], '../../index.php');
 		$lien2 = array('Worms Armageddon', '../index.php');
 		$lien3 = array($str['sch_editor'], 'index.php');
+		$lien4 = array($str['sch_editor_sch_list_title'], 'scheme-list.php');
 		$page_actuelle = $str['sch_editor_sch_viewer_title'].' '.$sch_name.' '.$str['sch_editor_sch_viewer_by'].' '.$sch_author.' (#'.$sch_id.')';
 
 		include('../../includes/menu.php');
 		
 		// First of all, let's open the scheme file.
-		$file_name = 'schemes/'.fileNameParser($sch_name).'_by_'.fileNameParser($sch_author).'.wsc';
+		$file_name = 'schemes/'.fileNameParser($sch_name_2).'_by_'.fileNameParser($sch_author_2).'.wsc';
 		$sch_file = fopen($file_name, 'r');
 
 		$signature = '';
@@ -108,9 +148,9 @@ if (isset($_GET['id'])) // Yeah, we should rather make sure we're viewing an exi
 		{
 			// Let's continue if the signature is correct
 			echo '<h1>'.$page_actuelle.'</h1>'; // = current page, can't rename the variable because it would break a part of the script.
-			echo '<p><strong>'.$str['sch_editor_sch_viewer_actions'].'</strong> <a href="scheme-editor.php?action=edit&amp;id='.$sch_id.'">'.$str['sch_editor_sch_viewer_edit_link'].'</a> - <a href="attach-replays.php?id='.$sch_id.'">'.$str['sch_editor_sch_viewer_add_exrep_link'].'</a> - <a href="replay-approving-interface.php?id='.$sch_id.'">'.$str['sch_editor_sch_viewer_handle_exrep_link'].'</a>.</p>';
+			echo '<p><strong>'.$str['sch_editor_sch_viewer_actions'].'</strong> <a href="scheme-editor.php?action=edit&amp;id='.$sch_id.'">'.$str['sch_editor_sch_viewer_edit_link'].'</a> - <a href="scheme-editor.php?action=create-based-on&amp;id='.$sch_id.'">'.$str['sch_editor_sch_viewer_create_based_on_link'].'</a> - <a href="attach-replays.php?id='.$sch_id.'">'.$str['sch_editor_sch_viewer_add_exrep_link'].'</a> - <a href="replay-approving-interface.php?id='.$sch_id.'">'.$str['sch_editor_sch_viewer_handle_exrep_link'].'</a>.</p>';
 			
-			// First show general informations about the scheme
+			// First, show general informations about the scheme
 			$download_link_line = '<p><strong>'.$str['sch_editor_sch_viewer_sch_download_label'].'</strong> <a href="download.php?id='.$sch_id.'">'.$str['sch_editor_sch_viewer_sch_download_link'].'</a> ('.$str['sch_editor_sch_viewer_sch_download_count_downloaded'].' '.$get_scheme_info_result['sch_download_count'].' '.$str['sch_editor_sch_viewer_sch_download_count_times'].').<br />';
 			$download_link_line = onceTwice($download_link_line);
 			echo $download_link_line;
@@ -125,6 +165,32 @@ if (isset($_GET['id'])) // Yeah, we should rather make sure we're viewing an exi
 			echo '<p><strong>'.$str['sch_editor_sch_viewer_sch_required_version'].'</strong> '.$sch_version_required.'.<br />';
 			echo '<strong>'.$str['sch_editor_sch_viewer_sch_desc'].'</strong><br />'.$sch_description.'</p>';
 
+			if ($show_based_on OR $show_other_schemes_based_on_this_one)
+			{
+				echo '<p>';
+
+				if ($show_based_on)
+				{
+					echo '<strong>'.$str['sch_editor_sch_list_based_on'].' <a href="scheme-view.php?id='.$sch_based_on.'">#'.$sch_based_on.'</a></strong>.';
+				}
+				else
+				{
+					echo '<strong>';
+					if ($osboto_singular)
+					{
+						echo $str['sch_editor_sch_viewer_sch_based_on_the_current_one_sg'];
+					}
+					else
+					{
+						echo $str['sch_editor_sch_viewer_sch_based_on_the_current_one'];
+					}
+					
+					echo '</strong> '.$other_schemes_based_on_this_one.'</a>.';
+				}
+
+				echo '</p>';
+			}
+			
 			// Now, let's go with the settings. I think it should be better to get the whole file's content now.
 			$file_content = file_get_contents($file_name);
 
