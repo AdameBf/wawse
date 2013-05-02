@@ -44,6 +44,7 @@ include('../../includes/menu.php');
 	<li><?php echo $str['sch_editor_changelog_v1_1_0_item1']; ?></li>
 	<li><?php echo $str['sch_editor_changelog_v1_1_0_item2']; ?></li>
 	<li><?php echo $str['sch_editor_changelog_v1_1_0_item3']; ?></li>
+	<li><?php echo $str['sch_editor_changelog_v1_1_0_item4']; ?></li>
 </ul>
 <h4>1.0.3 - <?php echo $str['sch_editor_changelog_v1_0_3_date']; ?></h4>
 <ul>

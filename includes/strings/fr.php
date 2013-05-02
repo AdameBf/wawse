@@ -591,5 +591,6 @@ $str['sch_editor_changelog_v1_0_3_item2'] = '[Correction de bug] Depuis la v1.0.
 $str['sch_editor_changelog_v1_1_0_date'] = '2 mai 2013';
 $str['sch_editor_changelog_v1_1_0_item1'] = '[Nouvelle fonctionnalité] Il est désormais possible de créer des schemes à partir d\'autres schemes existants.';
 $str['sch_editor_changelog_v1_1_0_item2'] = '[Nouvelle fonctionnalité] Il est désormais possible de créer des schemes sans les sauvegarder sur la base de données.';
-$str['sch_editor_changelog_v1_1_0_item3'] = '[Changement] Les liens "Changer de langue" ne sont plus traduisibles. Qui plus est, ce sont des liens temporaires le temps que je mette en place des drapeaux.';
+$str['sch_editor_changelog_v1_1_0_item3'] = '[Traduction] La traduction néerlandais a été complétée par Piki1802.';
+$str['sch_editor_changelog_v1_1_0_item4'] = '[Changement] Les liens "Changer de langue" ne sont plus traduisibles. Qui plus est, ce sont des liens temporaires le temps que je mette en place des drapeaux.';
 ?>

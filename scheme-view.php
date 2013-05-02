@@ -151,7 +151,14 @@ if (isset($_GET['id'])) // Yeah, we should rather make sure we're viewing an exi
 			echo '<p><strong>'.$str['sch_editor_sch_viewer_actions'].'</strong> <a href="scheme-editor.php?action=edit&amp;id='.$sch_id.'">'.$str['sch_editor_sch_viewer_edit_link'].'</a> - <a href="scheme-editor.php?action=create-based-on&amp;id='.$sch_id.'">'.$str['sch_editor_sch_viewer_create_based_on_link'].'</a> - <a href="attach-replays.php?id='.$sch_id.'">'.$str['sch_editor_sch_viewer_add_exrep_link'].'</a> - <a href="replay-approving-interface.php?id='.$sch_id.'">'.$str['sch_editor_sch_viewer_handle_exrep_link'].'</a>.</p>';
 			
 			// First, show general informations about the scheme
-			$download_link_line = '<p><strong>'.$str['sch_editor_sch_viewer_sch_download_label'].'</strong> <a href="download.php?id='.$sch_id.'">'.$str['sch_editor_sch_viewer_sch_download_link'].'</a> ('.$str['sch_editor_sch_viewer_sch_download_count_downloaded'].' '.$get_scheme_info_result['sch_download_count'].' '.$str['sch_editor_sch_viewer_sch_download_count_times'].').<br />';
+			if ($language == 'nl') // In Dutch, the word order has to be different from English and French's.
+			{
+				$download_link_line = '<p><strong>'.$str['sch_editor_sch_viewer_sch_download_label'].'</strong> <a href="download.php?id='.$sch_id.'">'.$str['sch_editor_sch_viewer_sch_download_link'].'</a> ('.$get_scheme_info_result['sch_download_count'].' '.$str['sch_editor_sch_viewer_sch_download_count_times'].' '.$str['sch_editor_sch_viewer_sch_download_count_downloaded'].').<br />';
+			}
+			else
+			{
+				$download_link_line = '<p><strong>'.$str['sch_editor_sch_viewer_sch_download_label'].'</strong> <a href="download.php?id='.$sch_id.'">'.$str['sch_editor_sch_viewer_sch_download_link'].'</a> ('.$str['sch_editor_sch_viewer_sch_download_count_downloaded'].' '.$get_scheme_info_result['sch_download_count'].' '.$str['sch_editor_sch_viewer_sch_download_count_times'].').<br />';
+			}
 			$download_link_line = onceTwice($download_link_line);
 			echo $download_link_line;
 			echo '<strong>'.$str['sch_editor_sch_viewer_sch_example_replays'].'</strong>'.$sch_example_replays.'.</p>';

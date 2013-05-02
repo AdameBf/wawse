@@ -113,8 +113,11 @@ function onceTwice($text)
 	$text = str_replace(' 1 times', ' once', $text);
 	$text = str_replace(' 2 times', ' twice', $text);
 	
-	// - French:
+	// - French
 	$text = str_replace('téléchargé 0 fois', 'jamais téléchargé', $text);
+	
+	// - Dutch
+	$text = str_replace('0 keer gedownload' , 'nooit gedownload', $text);
 	
 	// Once we're done with all the languages, let's return the new text.
 	return $text;

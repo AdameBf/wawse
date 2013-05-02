@@ -591,5 +591,6 @@ $str['sch_editor_changelog_v1_0_3_item2'] = '[Fixed bug] Since v1.0.2, it was im
 $str['sch_editor_changelog_v1_1_0_date'] = 'May 2nd, 2013';
 $str['sch_editor_changelog_v1_1_0_item1'] = '[New feature] It is now possible to create a scheme based on an existing one.';
 $str['sch_editor_changelog_v1_1_0_item2'] = '[New feature] It is now possible to create a scheme without saving it on the server and in the database.';
-$str['sch_editor_changelog_v1_1_0_item3'] = '[Change] The "Select Another Language" links are no longer translatable. These links are a stopgap until I implement flags anyway.';
+$str['sch_editor_changelog_v1_1_0_item3'] = '[Translation] The Dutch translation has been completed by Piki1802.';
+$str['sch_editor_changelog_v1_1_0_item4'] = '[Change] The "Select Another Language" links are no longer translatable. These links are a stopgap until I implement flags anyway.';
 ?>

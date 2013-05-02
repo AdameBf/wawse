@@ -33,21 +33,21 @@ $str['sch_editor_sch_list_based_on'] = 'Based on Scheme';
 
 $str['sch_editor_sch_list_no_example_replays'] = 'Geen Voorbeeld Herhalingen';
 
-$str['sch_editor_sch_list_replay_approving_interface_link'] = 'Handle';
+$str['sch_editor_sch_list_replay_approving_interface_link'] = 'Handel';
 
 // Scheme maker/editor page
 $str['sch_editor_sch_maker_title'] = 'Maak een nieuwe Speel Stijl';
 $str['sch_editor_sch_editing_title'] = 'Bewerk Speel Stijl';
-$str['sch_editor_sch_editing_title_2'] = 'Edit a Scheme'; // Different from the above "Edit [The] Scheme [X]"; "Edit a Scheme" is shown when there is an error.
-$str['sch_editor_sch_creation_based_on_title'] = 'Create a New Scheme based on scheme'; // Followed by the scheme's name.
-$str['sch_editor_sch_creation_based_on_title_2'] = 'Create a New Scheme based on an existing scheme'; // Same as $str['sch_editor_sch_editing_title_2'].
+$str['sch_editor_sch_editing_title_2'] = 'Bewerk een speel stijl'; // Different from the above "Edit [The] Scheme [X]"; "Edit a Scheme" is shown when there is an error.
+$str['sch_editor_sch_creation_based_on_title'] = 'Maak een nieuwe speel sttijl gebasseerd op een andere speel stijl'; // Followed by the scheme's name.
+$str['sch_editor_sch_creation_based_on_title_2'] = 'Maak een nieuwe speel stijl gebasseerd op een andere bestaande speel stijl.'; // Same as $str['sch_editor_sch_editing_title_2'].
 
 $str['sch_editor_sch_name'] = 'Speel Stijl Naam';
 $str['sch_editor_sch_name_hint'] = 'Uw speel stijl zal de standardnaam Naamloos speel stijl gevolgd door een tijdstempel ontvangen als u geen naam kiest.';
 $str['sch_editor_sch_name_hint2'] = 'Het is nog niet mogelijk om een schema\'s naam te wijzigen nadat het is opgericht of nadat geupload.';
 $str['sch_editor_sch_author'] = 'Uw gebruikersnaam';
 $str['sch_editor_sch_author_hint'] = 'Optioneel veld. Als je geen gebruikersnaam invoert, zal je gebruikersnaam gedoopt worden naar Anonymous in de database.';
-$str['sch_editor_sch_password'] = 'Speel Stijls\'s Wachtwoord';
+$str['sch_editor_sch_password'] = 'Speel Stijl\'s Wachtwoord';
 $str['sch_editor_sch_password_hint'] = 'Dit geeft je de mogelijkheid om de speel stijl later te bewerken, zelfs als je hier niet geregristreed bent - Wat begrijpelijk is als je niet Frans praat.';
 $str['sch_editor_sch_password_hint2'] = 'U kunt het wachtwoord dat nodig is voor verdere bewerkingen wijzigen.';
 $str['sch_editor_no_password'] = 'Geen Wachtwoord';
@@ -66,15 +66,15 @@ $str['sch_editor_sch_example_replays_permissions_opt0'] = 'U (de auteur) alleen.
 $str['sch_editor_sch_example_replays_permissions_opt1'] = 'Iedereen, maar de herhalingen moeten worden goedgekeurd door de auteur - Ik neem misschien inactieve auteurs over.';
 $str['sch_editor_sch_example_replays_permissions_opt2'] = 'Iedereen, zonder enige goedkeuring vereist (Ik go toch misschien achter alles nog optreden - voor bijvoorbeeld, de persoon niet snapte hoe hij de speel stijl moest spelen).';
 
-$str['sch_editor_sch_creation_do_not_save_on_database'] = 'Don\'t save this scheme on the database';
-$str['sch_editor_sch_creation_do_not_save_on_database_hint'] = 'If you tick this box, then upon submitting the form, you\'ll download the scheme right away, without it is saved on the server and on the database.';
+$str['sch_editor_sch_creation_do_not_save_on_database'] = 'Zet deze speel stijl niet op de database';
+$str['sch_editor_sch_creation_do_not_save_on_database_hint'] = 'Als je hierop klikt en ja alles verstuurt, download je de speel stijl meteen, zonder dat het op onze database wordt gezet.';
 
 $str['add'] = 'Erbij doen';
 $str['ammo'] = 'Munitie';
 $str['barrels'] = 'Olie vaten';
 $str['both'] = 'Beide';
 $str['crate_probability'] = 'Krat Kans';
-$str['default'] = 'Default';
+$str['default'] = 'Normaal';
 $str['delay'] = 'Vertraging';
 $str['health_points_abbr'] = 'HP';
 $str['hint'] = 'Hint';
@@ -96,7 +96,7 @@ $str['weapons_list'] = array('Jet Pack', 'Minder Zwaartekracht', 'Extra Snelheid
 $str['weapons_hint']['jetpack'] = 'In de kracht kolom, de waarde die u bewerkt is de hoeveelheid brandstof en niet de bytewaarde. Als je het op 0 zet (oneindig brandstof), gaat de brandstof teller steeds omhoog. Dit vermogen om de jet pack \'s hoeveelheid brandstof te veranderen is geïntroduceerd in 3.6.29.0. Het normale waarde is: 30.';
 $str['weapons_hint']['utilities'] = 'Je kan de kracht (Behalve van de jet pack) van voorwerpen en krat kans van voorwerpen niet bepalen. De kracht van de meeste voorwerpen bewerken is normaal toch zinloos.';
 $str['weapons_hint']['super_weapon'] = 'Dit is een super wapen, dus kun je de kracht en kans dat hij in een krat is niet bepalen.';
-$str['weapons_hint']['select_worm'] = 'Select Worm\'s crate probability is set to 0.5 and will always appear if super weapons are disabled and if all regular weapon\'s crate probability is set to 0. If you want Select Worm to never appear in crates, give it infinite ammunitions or an infinite delay.';
+$str['weapons_hint']['select_worm'] = 'Kies worm zijn krat kans is gezet naar 0.5 en komt altijd in kratten als alle andere wapens niet in een krat kunnen zijn en zlefs als super wapens uit zijn. Als je wilt dat kies worm niet in een krat kan komen, zet er dan oneindig veel van of geef een oneindige vertraging.';
 $str['weapons_hint']['girder_starter_pack'] = 'De balk startpak zijn kracht wordt bepaald door de kracht van de balk.';
 $str['weapons_hint']['girder'] = 'Wanneer je de kracht van de balk bewerkt, bewerk je eigenlijk hoe ver je de balk van jezelf af kan plaatsen, in stappen van 200 pixels. 5 = 1,000 pixels; 256 = 51,000 pixels.';
 $str['weapons_hint']['ninja_rope'] = 'Wanneer je de kracht van de ninja touw bewerkt, bepaal je eigenlijk hoeveel shoten je hebt per touw, maximale lengte en de hoek waarin je kan shieten. 5 = oneindig veel schoten.';
@@ -289,73 +289,73 @@ $str['sch_editor_sch_upload_error_incorrect_version_byte'] = 'Incorrecte speel s
 $str['sch_editor_sch_upload_error_unknown'] = 'Onbekende fout.';
 $str['sch_editor_scheme_succesfully_uploaded_message'] = 'Speel stijl is met succes geupload!';
 $str['sch_editor_sch_upload_fixes_have_been_applied'] = '<strong>Noteer:</strong> De volgende verbeteringen zijn toegepast:';
-$str['sch_editor_download_scheme_with_fixes_message'] = 'Download the scheme with the fixes';
+$str['sch_editor_download_scheme_with_fixes_message'] = 'Download de speel stijl met de volgende verbeteringen';
 
 $str['sch_editor_sch_upload_retreat_time_fix'] = 'De Land Terug Trek Tijd byte waarde is gereset naar 127 (was %1)'; // Do not change any %1 or %2 in the translation file.
 $str['sch_editor_sch_upload_weapon_crate_probability_fix'] = 'De Wapen krat Kans byte waarde is gereset naar 127 (was %1).';
 $str['sch_editor_sch_upload_health_crate_probability_fix'] = 'De eerste-hulp-krat kans byte waarde is gereset naar 127 (was %1).';
-$str['sch_editor_sch_upload_utility_crate_probability_fix'] = 'The Utility Crate kans byte waarde is gereset naar 127 (was %1).';
-$str['sch_editor_sch_upload_fall_damage_fix'] = 'The Fall Damage byte value has been reset to 1 (was %1).';
-$str['sch_editor_sch_upload_stockpiling_mode_fix'] = 'The Stockpiling Mode byte waarde has been set to 0, i.e. off (was %1).';
-$str['sch_editor_sch_upload_worm_selection_method_fix'] = 'The Worm Selection method at the beginning of a turn has been set to "manual" (the byte value was %1).';
-$str['sch_editor_sch_upload_sudden_death_event_fix'] = 'The Sudden Death Event has been set to "Water Rise only" (the byte value was %1).';
-$str['sch_editor_sch_upload_sudden_death_water_rise_speed_fix'] = 'The Sudden Death Water Rise Speed has been set to 20 pixels/turn, i.e. "Medium" in-game (the byte value was %1).';
-$str['sch_editor_sch_upload_object_type_and_count_fix'] = 'The Hazardous Object Type has been set to "both", and the Max Object Count has been set to 8 (the byte controlling both settings\'s value was %1).';
-$str['sch_editor_sch_upload_initial_worm_energy_fix'] = 'The Initial Worm Energy has been set to 1 (was 0).';
-$str['sch_editor_sch_upload_display_round_time_fix'] = 'The Display Round Time byte value has been reset to 1 (was %1).';
-$str['sch_editor_sch_upload_action_replay_fix'] = 'The Action Replay byte waarde has been reset to 1 (was %1).';
-$str['sch_editor_sch_upload_anchor_mode_fix'] = 'The Anchor Mode byte waarde has been reset to 1 (was %1).';
-$str['sch_editor_sch_upload_donor_cards_fix'] = 'The Donor Cards byte waarde has been reset to 1 (was %1).';
-$str['sch_editor_sch_upload_dud_mines_fix'] = 'The Dud Mines byte waarde has been reset to 1 (was %1).';
-$str['sch_editor_sch_upload_manual_placement_fix'] = 'The Manual Placement byte vwaarde has been reset to 1 (was %1).';
-$str['sch_editor_sch_upload_blood_mode_fix'] = 'The Blood Mode byte waarde has been reset to 1 (was %1).';
-$str['sch_editor_sch_upload_aqua_sheep_fix'] = 'The Aqua Sheep byte waarde has been reset to 1 (was %1).';
-$str['sch_editor_sch_upload_sheep_heaven_fix'] = 'The Sheep Heaven byte waarde has been reset to 1 (was %1).';
-$str['sch_editor_sch_upload_invincibility_fix'] = 'The Invincibility byte waarde has been reset to 1 (was %1).';
-$str['sch_editor_sch_upload_indestructible_land_fix'] = 'The Indestructible Land byte value has been reset to 1 (was %1).';
-$str['sch_editor_sch_upload_upgraded_grenade_fix'] = 'The Upgraded Grenade byte waarde has been reset to 1 (was %1).';
-$str['sch_editor_sch_upload_upgraded_shotgun_fix'] = 'The Upgraded Shotgun byte waarde has been reset to 1 (was %1).';
-$str['sch_editor_sch_upload_upgraded_clusters_fix'] = 'The Upgraded Clusters byte waarde has been reset to 1 (was %1).';
-$str['sch_editor_sch_upload_upgraded_longbow_fix'] = 'The Upgraded Longbow byte waarde has been reset to 1 (was %1).';
-$str['sch_editor_sch_upload_team_weapons_fix'] = 'The Team Weapons byte waarde has been reset to 1 (was %1).';
-$str['sch_editor_sch_upload_super_weapons_fix'] = 'The Super Weapons byte waarde has been reset to 1 (was %1).';
-$str['sch_editor_sch_upload_double_damage_fix'] = 'The Double Damage On First Turn byte waarde has been reset to 1 (was %1).';
+$str['sch_editor_sch_upload_utility_crate_probability_fix'] = 'The Voorwerps krat kans byte waarde is gereset naar 127 (was %1).';
+$str['sch_editor_sch_upload_fall_damage_fix'] = ' ValSchade byte waarde is gereset naar 1 (was %1).';
+$str['sch_editor_sch_upload_stockpiling_mode_fix'] = 'Ophopings modus byte waarde is gereset naar 0, dus uit (was %1).';
+$str['sch_editor_sch_upload_worm_selection_method_fix'] = 'De Worm Selection methode aan het begin van een beurt is gereset naar "handmatig" (de byte waarde was %1).';
+$str['sch_editor_sch_upload_sudden_death_event_fix'] = 'De Sudden Death Gebeurtenis is gereset naar "Water Stijgt Alleen" (de byte waarde was %1).';
+$str['sch_editor_sch_upload_sudden_death_water_rise_speed_fix'] = 'De Sudden Death Water stijgings vaart is gereset naar 20 pixels/per beurt, ook bekend als "Middelmatig" in het game (de byte waarde was %1).';
+$str['sch_editor_sch_upload_object_type_and_count_fix'] = 'De Gevaarlijke Objecten Type is gereset naar "beide" en het mazimale aantal objecten is gereset naar 8 (De byte kontrole na beide instellingen was de waarde %1).';
+$str['sch_editor_sch_upload_initial_worm_energy_fix'] = 'De Initiale Worm Energie is gereset naar 1 (was 0).';
+$str['sch_editor_sch_upload_display_round_time_fix'] = 'De vertoning van Ronde Tijd byte waarde is gereset naar 1 (was %1).';
+$str['sch_editor_sch_upload_action_replay_fix'] = 'De Directe Actie Herhaling byte waarde is gereset naar 1 (was %1).';
+$str['sch_editor_sch_upload_anchor_mode_fix'] = 'De Anker Modus byte waarde is gereset naar 1 (was %1).';
+$str['sch_editor_sch_upload_donor_cards_fix'] = 'De Donor Cordicillen byte waarde is gereset naar 1 (was %1).';
+$str['sch_editor_sch_upload_dud_mines_fix'] = 'De Nep Mijnen byte waarde is gereset naar 1 (was %1).';
+$str['sch_editor_sch_upload_manual_placement_fix'] = 'De Handmatige PLaatsing byte waarde is gereset naar 1 (was %1).';
+$str['sch_editor_sch_upload_blood_mode_fix'] = 'De Bloed Modus byte waarde is gereset naar 1 (was %1).';
+$str['sch_editor_sch_upload_aqua_sheep_fix'] = 'Het Water Schaap byte waarde is gereset naar 1 (was %1).';
+$str['sch_editor_sch_upload_sheep_heaven_fix'] = 'De schapen Hemel byte waarde is gereset naar 1 (was %1).';
+$str['sch_editor_sch_upload_invincibility_fix'] = 'het Onoverwinnelijkheid byte waarde is gereset naar 1 (was %1).';
+$str['sch_editor_sch_upload_indestructible_land_fix'] = 'Het Onverwoestbaar land byte waarde is gereset naar 1 (was %1).';
+$str['sch_editor_sch_upload_upgraded_grenade_fix'] = 'De Geupgrade Handgranaat byte waarde is gereset naar 1 (was %1).';
+$str['sch_editor_sch_upload_upgraded_shotgun_fix'] = 'Het Geupgrade Jachtgeweer byte waarde is gereset naar 1 (was %1).';
+$str['sch_editor_sch_upload_upgraded_clusters_fix'] = 'De Geupgrade Cluster Wapens byte waarde is gereset naar 1 (was %1).';
+$str['sch_editor_sch_upload_upgraded_longbow_fix'] = 'De Geupgrade Handboog byte waarde is gereset naar 1 (was %1).';
+$str['sch_editor_sch_upload_team_weapons_fix'] = 'De Team Wapens byte waarde is gereset naar 1 (was %1).';
+$str['sch_editor_sch_upload_super_weapons_fix'] = 'The Super Weapons byte waarde is gereset naar 1 (was %1).';
+$str['sch_editor_sch_upload_double_damage_fix'] = 'Het Dubbele Schade Op de eerste beurt byte waarde is gereset naar 1 (was %1).';
 
-$str['sch_editor_sch_upload_jp_cp_fix'] = 'The Jet Pack Crate Probability byte waarde has been reset to 0 (was %1) - this setting has no effect.'; // I'm listing weapons separately because some may need different articles in front of them in other languages (like in French, for example).
-$str['sch_editor_sch_upload_lg_p_fix'] = 'The Low Gravity Power setting\'s byte waarde has been reset to 0 (was %1) - this setting has no effect.';
-$str['sch_editor_sch_upload_lg_cp_fix'] = 'The Low Gravity Crate Probability byte waarde has been reset to 0 (was %1) - this setting has no effect.';
-$str['sch_editor_sch_upload_ls_p_fix'] = 'The Laser Sight Power setting\'s byte waarde has been reset to 0 (was %1) - this setting has no effect.';
-$str['sch_editor_sch_upload_ls_cp_fix'] = 'The Laser Sight Crate Probability byte waarde has been reset to 0 (was %1) - this setting has no effect.';
-$str['sch_editor_sch_upload_fw_p_fix'] = 'The Fast Walk Power setting\'s byte waarde has been reset to 0 (was %1) - this setting has no effect.';
-$str['sch_editor_sch_upload_fw_cp_fix'] = 'The Fast Walk Crate Probability byte waarde has been reset to 0 (was %1) - this setting has no effect.';
-$str['sch_editor_sch_upload_invis_p_fix'] = 'The Invisibility Power setting\'s byte waarde has been reset to 0 (was %1) - this setting has no effect.';
-$str['sch_editor_sch_upload_invis_cp_fix'] = 'The Invisibility Crate Probability byte waarde has been reset to 0 (was %1) - this setting has no effect.';
-$str['sch_editor_sch_upload_dd_p_fix'] = 'The Double Damage Power setting\'s byte waarde has been reset to 0 (was %1) - this setting has no effect.';
-$str['sch_editor_sch_upload_dd_d_fix'] = 'The Double Damage Delay setting has been reset to 0 (was %1) - this setting has no effect.';
-$str['sch_editor_sch_upload_dd_cp_fix'] = 'The Double Damage Crate Probability byte value has been reset to 0 (was %1) - this setting has no effect.';
-$str['sch_editor_sch_upload_freeze_p_fix'] = 'The Freeze\'s Power setting\'s byte value has been reset to 0 (was %1) - this setting has no effect.';
-$str['sch_editor_sch_upload_freeze_cp_fix'] = 'The Freeze\'s Crate Probability byte value has been reset to 1 (was %1) - there are less than 512 emulable versions currently.';
-$str['sch_editor_sch_upload_sbb_p_fix'] = 'The Super Banana Bomb Power setting\'s byte value has been reset to 0 (was %1) - this setting has no effect.';
-$str['sch_editor_sch_upload_minestr_p_fix'] = 'The Mine Strike Power setting\'s byte value has been reset to 0 (was %1) - this setting has no effect.';
-$str['sch_editor_sch_upload_gsp_p_fix'] = 'The Girder Starter Pack Power setting\'s byte value has been reset to 0 (was %1) - this setting has no effect; you need to edit the Girder\'s Power setting.';
-$str['sch_editor_sch_upload_gsp_cp_fix'] = 'The Girder Starter Pack Crate Probability byte value has been reset to 0 (was %1) - this setting has no effect.';
-$str['sch_editor_sch_upload_eq_p_fix'] = 'The Earthquake Power setting\'s byte value has been reset to 0 (was %1) - this setting has no effect.';
-$str['sch_editor_sch_upload_scales_p_fix'] = 'The Scales of Justice Power setting\'s byte value has been reset to 0 (was %1) - this setting has no effect, and I actually wonder how you would have liked to change the default effects of that weapon anyway. =)';
-$str['sch_editor_sch_upload_mvase_p_fix'] = 'The Ming Vase Power setting\'s byte value has been reset to 0 (was %1) - this setting has no effect.';
-$str['sch_editor_sch_upload_mvase_cp_fix'] = 'The Ming Vase Crate Probability byte value has been reset to 0 (was %1) - this setting only has effect in wkLaserFix, which is for an older W:A version (3.6.29.0).';
-$str['sch_editor_sch_upload_carp_p_fix'] = 'The Mike\'s Carpet Bomb Power setting\'s byte value has been reset to 0 (was %1) - this setting has no effect.';
-$str['sch_editor_sch_upload_carp_cp_fix'] = 'The Mike\'s Carpet Bomb Crate Probability byte value has been reset to 0 (was %1) - this setting only has effect in wkLaserFix, which is for an older W:A version (3.6.29.0).';
-$str['sch_editor_sch_upload_bullet_p_fix'] = 'The Patsy\'s Magic Bullet Power setting\'s byte value has been reset to 0 (was %1) - this setting has no effect.';
-$str['sch_editor_sch_upload_nuke_p_fix'] = 'The Indian Nuclear Test Power setting\'s byte value has been reset to 0 (was %1) - this setting has no effect.';
-$str['sch_editor_sch_upload_sw_p_fix'] = 'The Select Worm Power setting\'s byte value has been reset to 0 (was %1) - this setting has no effect and would be useless anyway.';
-$str['sch_editor_sch_upload_sally_army_p_fix'] = 'The Salvation Army Power setting\'s byte value has been reset to 0 (was %1) - this setting has no effect.';
-$str['sch_editor_sch_upload_msquad_p_fix'] = 'The Mole Squadron Power setting\'s byte value has been reset to 0 (was %1) - this setting has no effect.';
-$str['sch_editor_sch_upload_mbbomb_p_fix'] = 'The MB Bomb Power setting\'s byte value has been reset to 0 (was %1) - this setting has no effect.';
-$str['sch_editor_sch_upload_cdonkey_p_fix'] = 'The Concrete Donkey Power setting\'s byte value has been reset to 0 (was %1) - this setting has no effect.';
-$str['sch_editor_sch_upload_sbomber_p_fix'] = 'The Suicide Bomber Power setting\'s byte value has been reset to 0 (was %1) - this setting has no effect; I always wondered why such a weak weapon is considered as a super weapon...';
-$str['sch_editor_sch_upload_sheepstr_p_fix'] = 'The French Sheep Strike Power setting\'s byte value has been reset to 0 (was %1) - this setting has no effect.';
-$str['sch_editor_sch_upload_mailstr_p_fix'] = 'The Mail Strike Power setting\'s byte value has been reset to 0 (was %1) - this setting has no effect.';
-$str['sch_editor_sch_upload_arma_p_fix'] = 'The Armageddon Power setting\'s byte value has been reset to 0 (was %1) - this setting has no effect.';
+$str['sch_editor_sch_upload_jp_cp_fix'] = 'De Jet Pack Krat Kans byte waarde is gereset naar 0 (was %1) - Deze instelling heeft geen effect.'; // I'm listing weapons separately because some may need different articles in front of them in other languages (like in French, for example).
+$str['sch_editor_sch_upload_lg_p_fix'] = 'De Minder Zwaartekracht Kracht instellingen byte waarde is gereset naar 0 (was %1) - Deze instelling heeft geen effect.';
+$str['sch_editor_sch_upload_lg_cp_fix'] = 'De Minder Zwaartekracht Krat Kans byte waarde is gereset naar 0 (was %1) - Deze instelling heeft geen effect.';
+$str['sch_editor_sch_upload_ls_p_fix'] = 'De Laservizier Kracht instellingen byte waarde is gereset naar 0 (was %1) - Deze instelling heeft geen effect.';
+$str['sch_editor_sch_upload_ls_cp_fix'] = 'De Laservizier Krat Kans byte waarde is gereset naar 0 (was %1) - Deze instelling heeft geen effect.';
+$str['sch_editor_sch_upload_fw_p_fix'] = 'De Extra Snelheid Kracht instellingen byte waarde is gereset naar 0 (was %1) - Deze instelling heeft geen effect.';
+$str['sch_editor_sch_upload_fw_cp_fix'] = 'De Extra Snelheid Krat Kans byte waarde is gereset naar 0 (was %1) - Deze instelling heeft geen effect.';
+$str['sch_editor_sch_upload_invis_p_fix'] = 'De onzichtbaarheid\s Kracht instellingen byte waarde is gereset naar 0 (was %1) - Deze instelling heeft geen effect.';
+$str['sch_editor_sch_upload_invis_cp_fix'] = 'De onzichtbaarheid\s Krat Kans byte waarde is gereset naar 0 (was %1) - Deze instelling heeft geen effect.';
+$str['sch_editor_sch_upload_dd_p_fix'] = 'De Dubbele schade Kracht instellingen byte waarde is gereset naar 0 (was %1) - Deze instelling heeft geen effect.';
+$str['sch_editor_sch_upload_dd_d_fix'] = 'De Dubbele Schade Vertraging Instellingen is gereset naar 0 (was %1) - Deze instelling heeft geen effect.';
+$str['sch_editor_sch_upload_dd_cp_fix'] = 'De Dubbele Schade Krat Kans byte waarde is gereset naar 0 (was %1) - Deze instelling heeft geen effect.';
+$str['sch_editor_sch_upload_freeze_p_fix'] = 'De Bevriezen Kracht instellingen byte waarde is gereset naar 0 (was %1) - Deze instelling heeft geen effect.';
+$str['sch_editor_sch_upload_freeze_cp_fix'] = 'De Bevriezen Krat Kans byte value is gereset naar 1 (was %1) - Er zijn minder dan 512 Emuleerbare versies.';
+$str['sch_editor_sch_upload_sbb_p_fix'] = 'De Super Bananenbom Kracht instellingen byte waarde is gereset naar 0 (was %1) - Deze instelling heeft geen effect.';
+$str['sch_editor_sch_upload_minestr_p_fix'] = 'De Mijnenregen Kracht instellingen byte waarde is gereset naar 0 (was %1) - Deze instelling heeft geen effect.';
+$str['sch_editor_sch_upload_gsp_p_fix'] = 'De Balk startpak Kracht instellingen byte waarde is gereset naar 0 (was %1) - Deze instelling heeft geen effect; je moet de kracht van de balk bewerken.';
+$str['sch_editor_sch_upload_gsp_cp_fix'] = 'De Balk startpak Krat Kans byte waarde is gereset naar 0 (was %1) - Deze instelling heeft geen effect.';
+$str['sch_editor_sch_upload_eq_p_fix'] = 'De Aardbeving Kracht instellingen byte waarde is gereset naar 0 (was %1) - Deze instelling heeft geen effect.';
+$str['sch_editor_sch_upload_scales_p_fix'] = 'De Gerechtigheid Kracht instellingens byte waarde is gereset naar 0 (was %1) - Deze instelling heeft geen effect en ik vraag me af hoe je het zou veranderen als het kon. =)';
+$str['sch_editor_sch_upload_mvase_p_fix'] = 'De Ming Vaas Kracht instellingen byte waarde is gereset naar 0 (was %1) - Deze instelling heeft geen effect.';
+$str['sch_editor_sch_upload_mvase_cp_fix'] = 'De Ming Vaas Krat Kans byte waarde is gereset naar 0 (was %1) - Deze instelling heeft geen effect in wkLaserFix, wat voor een oudere versie van W:A is (3.6.29.0).';
+$str['sch_editor_sch_upload_carp_p_fix'] = 'De Tom\'s tapijt bom Kracht instellingen byte waarde is gereset naar 0 (was %1) - Deze instelling heeft geen effect.';
+$str['sch_editor_sch_upload_carp_cp_fix'] = 'De Tom\'s tapijt bom Krat Kans byte waarde is gereset naar 0 (was %1) - Deze instelling heeft alleen effect in wkLaserFix, wat voor een oudere versie van W:A is (3.6.29.0).';
+$str['sch_editor_sch_upload_bullet_p_fix'] = 'The Patsy\'s Magic Bullet Kracht instellingen byte waarde is gereset naar 0 (was %1) - Deze instelling heeft geen effect.';
+$str['sch_editor_sch_upload_nuke_p_fix'] = 'De Indiase kernproef Kracht instellingen byte waarde is gereset naar 0 (was %1) - Deze instelling heeft geen effect.';
+$str['sch_editor_sch_upload_sw_p_fix'] = 'De kies worm Kracht instellingen byte waarde is gereset naar 0 (was %1) - Deze instelling heeft geen effect en zak sowieso zinloos zijn.';
+$str['sch_editor_sch_upload_sally_army_p_fix'] = 'De Leger des Twijfels Kracht instellingen byte waarde is gereset naar 0 (was %1) - Deze instelling heeft geen effect.';
+$str['sch_editor_sch_upload_msquad_p_fix'] = 'De Mollensquadron Kracht instellingen byte waarde is gereset naar 0 (was %1) - Deze instelling heeft geen effect.';
+$str['sch_editor_sch_upload_mbbomb_p_fix'] = 'De MB Bom Kracht instellingen byte waarde is gereset naar 0 (was %1) - Deze instelling heeft geen effect.';
+$str['sch_editor_sch_upload_cdonkey_p_fix'] = 'De Betonnen ezel Kracht instellingen byte waarde is gereset naar 0 (was %1) - this setting has no effect.';
+$str['sch_editor_sch_upload_sbomber_p_fix'] = 'De Zelfmoordaanval Kracht instellingen byte waarde is gereset naar 0 (was %1) - this setting has no effect; Ik snap echter niet waarom dit als een super wapen werd gezien...';/// maybe because you can poisen someone, and you don't realy lose much if you only have less than 10 hp left. SO it is strong in his points...
+$str['sch_editor_sch_upload_sheepstr_p_fix'] = 'De Franse Schapen Kracht instellingen byte waarde is gereset naar 0 (was %1) - Deze instelling heeft geen effect.';
+$str['sch_editor_sch_upload_mailstr_p_fix'] = 'De Luchtpost Kracht instellingen byte waarde is gereset naar 0 (was %1) - Deze instelling heeft geen effect.';
+$str['sch_editor_sch_upload_arma_p_fix'] = 'De Armageddon Kracht instellingen byte waarde is gereset naar 0 (was %1) - Deze instelling heeft geen effect.';
 
 // Scheme viewer
 $str['sch_editor_sch_viewer_title'] = 'Laat een speel stijl zien:';
@@ -374,15 +374,15 @@ $str['sch_editor_sch_viewer_sch_desc'] = 'Beschrijving:';
 $str['sch_editor_sch_viewer_sch_no_desc'] = 'Geen';
 $str['sch_editor_sch_viewer_sch_example_replays'] = 'Voorbeeld Herhalingen:';
 $str['sch_editor_sch_viewer_sch_no_example_replays'] = 'Geen';
-$str['sch_editor_sch_viewer_sch_based_on_the_current_one'] = 'Schemes based on this scheme:';
-$str['sch_editor_sch_viewer_sch_based_on_the_current_one_sg'] = 'Scheme based on this scheme:'; // Singular.
+$str['sch_editor_sch_viewer_sch_based_on_the_current_one'] = 'Speel stijl\'s gebaseerd op deze:';
+$str['sch_editor_sch_viewer_sch_based_on_the_current_one_sg'] = 'Speel stijl gebaseerd op deze:'; // Singular.
 
 $str['sch_editor_sch_viewer_actions'] = 'Acties:';
 $str['sch_editor_sch_viewer_edit_link'] = 'Bewerk deze speel stijl';
 $str['sch_editor_sch_viewer_add_exrep_link'] = 'Zet Voorbeeld Herhaling erbij';
 $str['sch_editor_sch_viewer_handle_exrep_link'] = 'Handel Voorbeeld Herhalingen';
 
-$str['sch_editor_sch_view_action_replays'] = 'I. Replays'; // This string should be as short as this.
+$str['sch_editor_sch_view_action_replays'] = 'Ik. Herhalingen'; // This string should be as short as this.
 
 $str['sch_editor_sch_viewer_no_weapons'] = 'Er zijn geen wapens in deze speelstijl.';
 
@@ -391,11 +391,11 @@ $str['sch_editor_sch_viewer_error_scheme_not_found'] = 'Speel stijl niet gevonde
 $str['sch_editor_sch_viewer_error_no_id_specified'] = 'Errm, what scheme do you want me to load? I mean, I can\'t load schemes without an ID, a bit like calculators can\'t multiply any numbers if these numbers are not specified... (Well, I hope you got my point.)';
 $str['sch_editor_sch_viewer_error_invalid_sch_signature'] = 'Invalid scheme signature. There, how did that file land on this server, if it had an invalid signature? =o';
 
-$str['sch_editor_sch_viewer_weapon_column'] = '<abbr title="Weapon">W</abbr>'; // These are abbreviations shown on top of the weapons table. Translate the words between "" and change the abbreviation between > and <.
-$str['sch_editor_sch_viewer_ammo_column'] = '<abbr title="Ammunition">A</abbr>';
-$str['sch_editor_sch_viewer_power_column'] = '<abbr title="Power">P</abbr>';
-$str['sch_editor_sch_viewer_delay_column'] = '<abbr title="Delay">D</abbr>';
-$str['sch_editor_sch_viewer_crate_prob_column'] = '<abbr title="Crate Probability">CP</abbr>';
+$str['sch_editor_sch_viewer_weapon_column'] = '<abbr title="Wapen">W</abbr>'; // These are abbreviations shown on top of the weapons table. Translate the words between "" and change the abbreviation between > and <.
+$str['sch_editor_sch_viewer_ammo_column'] = '<abbr title="Munitie">M</abbr>';
+$str['sch_editor_sch_viewer_power_column'] = '<abbr title="Kracht">K</abbr>';
+$str['sch_editor_sch_viewer_delay_column'] = '<abbr title="Herhaling">H</abbr>';
+$str['sch_editor_sch_viewer_crate_prob_column'] = '<abbr title="Krat kans">K</abbr>';
 
 $str['sch_editor_sch_viewer_double_damage'] = 'Dubbele schade'; // Feel free to add a non-breaking space at the end of this string if your language needs one before ":" (a non-breaking space's can be typed with Alt+255).
 $str['sch_editor_sch_viewer_jp_power_hint'] = '(In brandstof eenheid.)';
@@ -423,7 +423,7 @@ $str['sch_editor_sch_replay_uploader_button'] = 'Zend ons deze herhalingen!';
 $str['sch_editor_sch_replay_uploader_error_uatginam'] = 'Mooi geprobeerd om mij daar te krijgen :P.'; // UATGINAM = Uploading Although The Guy Is Not A Member.
 
 // Example replays approving interface
-$str['sch_editor_sch_replay_approving_interface_title'] = 'Approving Pending Example Replays for Scheme'; // Same as line 374.
+$str['sch_editor_sch_replay_approving_interface_title'] = 'Afwachting van goedkeuring voor voorbeeld herhalingen voor deze speel stijl'; // Same as line 374.
 $str['sch_editor_sch_replay_approving_interface_please_enter_sch_pwd'] = 'Voer alstublieft het wachtwoord van de speel stijl in.';
 
 $str['sch_editor_sch_replay_approving_interface_please_login'] = 'Log alstublieft in om herhaling goed te keuren of te weigeren (sinds auteur een lid is.).';
@@ -590,5 +590,6 @@ $str['sch_editor_changelog_v1_0_3_item2'] = '[Fixed bug] Since v1.0.2, it was im
 $str['sch_editor_changelog_v1_1_0_date'] = 'May 2nd, 2013';
 $str['sch_editor_changelog_v1_1_0_item1'] = '[New feature] It is now possible to create a scheme based on an existing one.';
 $str['sch_editor_changelog_v1_1_0_item2'] = '[New feature] It is now possible to create a scheme without saving it on the server and in the database.';
-$str['sch_editor_changelog_v1_1_0_item3'] = '[Change] The "Select Another Language" links are no longer translatable. These links are a stopgap until I implement flags anyway.';
+$str['sch_editor_changelog_v1_1_0_item3'] = '[Translation] The Dutch translation has been completed by Piki1802.';
+$str['sch_editor_changelog_v1_1_0_item4'] = '[Change] The "Select Another Language" links are no longer translatable. These links are a stopgap until I implement flags anyway.';
 ?>
