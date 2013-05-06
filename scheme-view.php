@@ -888,27 +888,27 @@ if (isset($_GET['id'])) // Yeah, we should rather make sure we're viewing an exi
 								// - Shot Doesn't End Turn.
 								if ($mole_squadron_crate_probability % 2 == 1)
 								{
-									$sdet = $str['off']; // Reversing because I actually labelled that setting as Shot Ends Turn.
+									$sdet = $str['on'];
 								}
 								else
 								{
-									$sdet = $str['on'];
+									$sdet = $str['off'];
 								}
 
 								// - Loss of Control Doesn't End Turn.
 								if ($mole_squadron_crate_probability % 4 >= 2)
 								{
-									$ldet = $str['off']; // Reversing because I actually labelled that setting as Loss of Control Ends Turn.
+									$ldet = $str['on'];
 								}
 								else
 								{
-									$ldet = $str['on'];
+									$ldet = $str['off'];
 								}
 
 								// - Fire Doesn't Pause Timer.
 								if ($mole_squadron_crate_probability % 8 >= 4)
 								{
-									$fdpt = $str['on']; // And now I'm breaking a broken consistency, or something like that. Whatever.
+									$fdpt = $str['on'];
 								}
 								else
 								{
@@ -1155,11 +1155,131 @@ if (isset($_GET['id'])) // Yeah, we should rather make sure we're viewing an exi
 					</td>
 				</tr>
 			</table>
+			
+			<h2><?php echo $str['sch_editor_sch_viewer_comments_title']; ?></h2>
 			<?php
+			$comments_count_query = $bdd->prepare('SELECT COUNT(*) AS comment_count FROM sch_comments WHERE sch_id = :sch_id');
+			$comments_count_query->execute(array(':sch_id' => $sch_id));
+			$comments_count_query_result = $comments_count_query->fetch();
+			$number_of_comments = $comments_count_query_result['comment_count'];
+			$comments_count_query->closeCursor();
+
+			$pages_count = ceil($number_of_comments / 10);
+
+			if ($pages_count > 0) // There would only be 0 pages if there are no comments.
+			{
+				if (isset($_GET['p']))
+				{
+					$current_page = (int) $_GET['p'];
+
+					if ($current_page == 0 OR $current_page > $pages_count) // Just in case a user is weird enough to invent unexisting pages in books.
+					{
+						$current_page = $pages_count; // Let's reset that to the latest page then.
+					}
+				}
+				else
+				{
+					$current_page = $pages_count;
+				}
+
+				// First pages list, above the comments.
+				echo '<p class="pages">'.$str['sch_editor_sch_list_pages_label'].' ';
+				for ($p = 1 ; $p <= $pages_count ; $p++)
+				{
+					if ($p == $current_page AND $p != $pages_count)
+					{
+					echo '['.$p.'] ';
+					}
+					else if ($p == $current_page AND $p == $pages_count)
+					{
+					echo '['.$p.'].</p>';
+					}
+					else if ($p < $pages_count AND $p != $current_page)
+					{
+					echo '<a href="?p='.$p.'">'.$p.'</a> ';
+					}
+					else if ($p == $pages_count AND $p != $current_page)
+					{
+					echo '<a href="?p='.$p.'">'.$p.'</a>.</p>';
+					}
+				}
+
+				$beginning = ($current_page - 1) * 10;
+
+				$get_comments = $bdd->prepare('SELECT * FROM sch_comments WHERE sch_id = :id ORDER BY com_id LIMIT :beginning, 10');
+				$get_comments->bindValue(':id', $sch_id, PDO::PARAM_INT);
+				$get_comments->bindValue(':beginning', $beginning, PDO::PARAM_INT);
+				$get_comments->execute();
+
+				$j = $beginning + 1;
+
+				while ($get_comments_result = $get_comments->fetch())
+				{
+					echo '<div class="commentaire">';
+					echo '<div style="float: right; margin: 0;"><h4 style="margin: 0;">#'.$j.'</h4></div>';
+					echo '<h4 style="margin: 0;">'.$get_comments_result['com_author'].' '.$str['sch_editor_sch_viewer_comment_on_date'].' '.date('d/m/Y', $get_comments_result['com_timestamp']).' '.$str['sch_editor_sch_viewer_comment_at_hour'].' '.date('H:i:s', $get_comments_result['com_timestamp']).':</h4>';
+					echo '<p style="margin-top: 5px; margin-bottom: 2px;">'.nl2br(htmlspecialchars(apostropheParse($get_comments_result['comment']))).'</p>';
+					echo '</div>';
+
+					$j++;
+				}
+				
+				// Second pages list, below the comments.
+				echo '<p class="pages">'.$str['sch_editor_sch_list_pages_label'].' ';
+				for ($p = 1 ; $p <= $pages_count ; $p++)
+				{
+					if ($p == $current_page AND $p != $pages_count)
+					{
+					echo '['.$p.'] ';
+					}
+					else if ($p == $current_page AND $p == $pages_count)
+					{
+					echo '['.$p.'].</p>';
+					}
+					else if ($p < $pages_count AND $p != $current_page)
+					{
+					echo '<a href="?p='.$p.'">'.$p.'</a> ';
+					}
+					else if ($p == $pages_count AND $p != $current_page)
+					{
+					echo '<a href="?p='.$p.'">'.$p.'</a>.</p>';
+					}
+				}
+			}
+			else
+			{
+				echo '<p><em>'.$str['sch_editor_sch_viewer_no_comments'].'</em></p>';
+			}
+
+			if ($get_scheme_info_result['sch_allow_comments'] == 1)
+			{
+				?>
+				<form method="post" action="add-comment.php?id=<?php echo $sch_id; ?>">
+					<fieldset style="margin-left: 3%; width: 737px;"><legend><?php echo $str['sch_editor_sch_viewer_add_comment']; ?></legend>
+						<p style="padding-left: 15px;">
+						<?php
+						if (!isset($_SESSION['id']))
+						{
+							echo '<label for="sch_com_author">'.$str['sch_editor_sch_author'].'</label><input type="text" name="sch_com_author" id="sch_com_author" /><br />';
+						}
+						?>
+						<label for="sch_comment"><?php echo $str['sch_editor_sch_viewer_comment']; ?>:</label><br />
+						<textarea name="sch_comment" cols="60" rows="10" id="sch_comment"></textarea></p>
+						<p style="padding-left: 15px;"><label for="antibot"><?php echo $str['sch_editor_sch_viewer_comment_antibot']; ?></label> <input type="text" name="antibot" id="antibot" /></p>
+						<p style="margin-left: 250px; margin-bottom: 0;"><input type="submit" /></p>
+					</fieldset>
+				</form>
+				<?php
+			}
+			else
+			{
+				echo '<p><em>'.$str['sch_editor_sch_viewer_cannot_comment'].'</em></p>';
+			}
 		}
 		else
 		{
-		echo $str['sch_editor_sch_viewer_error_invalid_sch_signature'];
+			echo '<h1>'.$str['error'].'</h1>';
+			echo '<p>'.$str['sch_editor_sch_viewer_error_invalid_sch_signature'].'</p>';
 		}
 	}
 	else
@@ -1184,22 +1304,22 @@ if (isset($_GET['id'])) // Yeah, we should rather make sure we're viewing an exi
 }
 else
 {
-$parent_directory = 2;
-$titre = 'Worms Armageddon - '.$str['sch_editor_sch_viewer_error_title'];
-include('../../includes/haut-sans-session-start.php');
+	$parent_directory = 2;
+	$titre = 'Worms Armageddon - '.$str['sch_editor_sch_viewer_error_title'];
+	include('../../includes/haut-sans-session-start.php');
 
-$jeu = $str['category'];
+	$jeu = $str['category'];
 
-//Chemin de fer (19 septembre 2012)
-$lien1 = array($str['index'], '../../index.php');
-$lien2 = array('Worms Armageddon', '../index.php');
-$lien3 = array($str['sch_editor'], 'index.php');
-$page_actuelle = $str['sch_editor_sch_viewer_error_title'];
+	//Chemin de fer (19 septembre 2012)
+	$lien1 = array($str['index'], '../../index.php');
+	$lien2 = array('Worms Armageddon', '../index.php');
+	$lien3 = array($str['sch_editor'], 'index.php');
+	$page_actuelle = $str['sch_editor_sch_viewer_error_title'];
 
-include('../../includes/menu.php');
+	include('../../includes/menu.php');
 
-echo '<h1>'.$str['error'].'</h1>';
-echo '<p>'.$str['sch_editor_sch_viewer_error_no_id_specified'].'</p>';
+	echo '<h1>'.$str['error'].'</h1>';
+	echo '<p>'.$str['sch_editor_sch_viewer_error_no_id_specified'].'</p>';
 }
 
 include('includes/scheme-editor-bottom.php');

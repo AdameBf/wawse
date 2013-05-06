@@ -6,6 +6,11 @@
 		<td style="width:300px; max-width: 300px;"><input type="text" name="sch_name" id="sch_name" value="<?php echo $get_scheme_info_result['sch_name']; ?>" readonly="readonly" /></td>
 		<td><span class="sch_editor_hint"><?php echo $str['sch_editor_sch_name_hint2']; ?></span></td>
 	</tr>
+	<tr>
+		<td style="width:200px;"><label for="sch_short_desc"><?php echo $str['sch_editor_sch_short_desc']; ?></label></td>
+		<td style="width:250px;"><input type="text" name="sch_short_desc" id="sch_short_desc" value="<?php echo $get_scheme_info_result['sch_short_desc']; ?>" maxlength="255" /></td>
+		<td><span class="sch_editor_hint"><?php echo $str['sch_editor_sch_short_desc_hint']; ?></span></td>
+	</tr>
 	<?php if (!isset($_SESSION['id']))
 	{
 	?>
@@ -28,6 +33,14 @@
 		<td colspan="2"><input type="radio" name="sch_exrep_permissions" value="0" id="opt0" <?php if ($get_scheme_info_result['sch_example_replays_permissions'] == 0) { echo 'checked="checked"'; } ?> /> <label for="opt0" class="sch_editor_hint"><?php echo $str['sch_editor_sch_example_replays_permissions_opt0']; ?></label><br />
 		<input type="radio" name="sch_exrep_permissions" value="1" id="opt1" <?php if ($get_scheme_info_result['sch_example_replays_permissions'] == 1) { echo 'checked="checked"'; } ?> /> <label for="opt1" class="sch_editor_hint"><?php echo $str['sch_editor_sch_example_replays_permissions_opt1']; ?></label><br />
 		<input type="radio" name="sch_exrep_permissions" value="2" id="opt2" <?php if ($get_scheme_info_result['sch_example_replays_permissions'] == 2) { echo 'checked="checked"'; } ?> /> <label for="opt2" class="sch_editor_hint"><?php echo $str['sch_editor_sch_example_replays_permissions_opt2']; ?></label></td>
+	</tr>
+	<tr>
+		<td colspan="3"> </td>
+	</tr>
+	<tr>
+		<td style="width:280px;"><label for="sch_comments"><?php echo $str['sch_editor_sch_allow_comments']; ?></label></td>
+		<td style="padding-left: 25px; width: 80px;"><input type="checkbox" name="sch_comments" id="sch_comments" <?php if ($get_scheme_info_result['sch_allow_comments'] == 1) { echo 'checked="checked"'; } ?> /></td>
+		<td><span class="sch_editor_hint"><?php echo $str['sch_editor_sch_allow_comments_hint']; ?></span></td>
 	</tr>
 	</table>
 	
@@ -1013,7 +1026,7 @@
 	<table class="table_no_borders">
 	<tr>
 		<td style="width:280px;"><label for="rubber_sdet"><?php echo $str['sch_editor_rubber_sdet']; ?></label> <img src="../../images/sch-editor-hint-icon.png" alt="(Hover for a tip)" title="<?php echo $str['sch_editor_rubber_sdet_hint']; ?>" /></td>
-		<td style="padding-left: 25px; width: 80px;"><input type="checkbox" name="rubber_sdet" id="rubber_sdet" <?php  if (!isset($sdet)) { echo 'checked="checked"'; } // Yes, this inconsistency still has to be fixed. ?> /></td>
+		<td style="padding-left: 25px; width: 80px;"><input type="checkbox" name="rubber_sdet" id="rubber_sdet" <?php  if (isset($sdet)) { echo 'checked="checked"'; } ?> /></td>
 		<td style="width:280px;"><label for="rubber_crate_rate"><?php echo $str['sch_editor_rubber_crate_rate']; ?></label> <img src="../../images/sch-editor-hint-icon.png" alt="(Hover for a tip)" title="<?php echo $str['sch_editor_rubber_crate_rate_hint']; ?>" /></td>
 		<td style="width:105px;"><input type="text" name="rubber_crate_rate" id="rubber_crate_rate" maxlength="3" size="2" value="<?php echo ord($file_content[260]); ?>" style="font-size: 0.9em;" onchange="checkValue(this, 0, 255, '<?php echo ord($file_content[260]); ?>', '<?php echo $language; ?>')" /></td>
 	</tr>
@@ -1025,7 +1038,7 @@
 	</tr>
 	<tr>
 		<td><label for="rubber_ldet"><?php echo $str['sch_editor_rubber_ldet']; ?></label> <img src="../../images/sch-editor-hint-icon.png" alt="(Hover for a tip)" title="<?php echo $str['sch_editor_rubber_ldet_hint']; ?>" /></td>
-		<td style="padding-left: 25px;"><input type="checkbox" name="rubber_ldet" id="rubber_ldet" <?php  if (!isset($ldet)) { echo 'checked="checked"'; } // This inconsistency still has to be fixed as well. ?> /></td>
+		<td style="padding-left: 25px;"><input type="checkbox" name="rubber_ldet" id="rubber_ldet" <?php  if (isset($ldet)) { echo 'checked="checked"'; } ?> /></td>
 		<td><label for="rubber_kaosmod"><?php echo $str['sch_editor_rubber_kaosmod']; ?></label> <img src="../../images/sch-editor-hint-icon.png" alt="(Hover for a tip)" title="<?php echo $str['sch_editor_rubber_kaosmod_hint']; ?>" /></td>
 		<td><select name="rubber_kaosmod" id="rubber_kaosmod">
 		<?php

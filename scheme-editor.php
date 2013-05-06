@@ -116,7 +116,7 @@ if (isset($_GET['action']))
 			}
 			else
 			{
-				if (isset($_SESSION['pseudo']) AND $_SESSION['pseudo'] == $get_schemes_infos_result['sch_author'])
+				if (isset($_SESSION['membre_id']) AND $_SESSION['membre_id'] == $get_scheme_info_result['sch_auth_ismember'])
 				{
 					// Load the scheme file.
 					$file_name = 'schemes/'.fileNameParser($get_scheme_info_result['sch_name']).'_by_'.fileNameParser($get_scheme_info_result['sch_author']).'.wsc';

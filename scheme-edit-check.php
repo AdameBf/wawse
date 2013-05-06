@@ -58,16 +58,16 @@ if (isset($_POST['action']))
 	}
 
 	// First, let's make sure that we won't override a scheme before actually writing the file.
-	if (isset($_SESSION['id']))
+	if (isset($_SESSION['membre_id']))
 	{
-		$sch_author_is_member = 1;
+		$sch_author_is_member = $_SESSION['membre_id'];
 	}
 	else
 	{
 		$sch_author_is_member = 0;
 	}
 
-	if ($sch_author_is_member === 1)
+	if ($sch_author_is_member != 0)
 	{
 		$sch_author = apostropheParse($_SESSION['pseudo']);
 		$sch_password = null;
@@ -677,11 +677,11 @@ if (isset($_POST['action']))
 		// Mole Squadron
 		$rubber_mole_squadron = 0;
 	
-		if (!isset($_POST['rubber_sdet']))
+		if (isset($_POST['rubber_sdet']))
 		{
 			$rubber_mole_squadron += 1;
 		}
-		if (!isset($_POST['rubber_ldet']))
+		if (isset($_POST['rubber_ldet']))
 		{
 			$rubber_mole_squadron += 2;
 		}
@@ -792,12 +792,13 @@ if (isset($_POST['action']))
 		{
 			// We're done, finally. Now we can close that file.
 			fclose($scheme_file);
-		
+
 			// Time to know the required version.
 			$version_required = (string) max($version_required_array);
-		
+
 			// Parse description so it can be saved in the database
-			$description = htmlspecialchars($_POST['sch_desc']);
+			$short_description = htmlspecialchars(apostropheParse($_POST['sch_short_desc']));
+			$description = htmlspecialchars(apostropheParse($_POST['sch_desc']));
 
 			if ($version_required == 5)
 			{
@@ -835,11 +836,11 @@ if (isset($_POST['action']))
 		
 			if (isset($magic_number))
 			{
-			$timestamp = $magic_number;
+				$timestamp = $magic_number;
 			}
 			else
 			{
-			$timestamp = time();
+				$timestamp = time();
 			}
 			
 			// Introduced in 0.5.1: who can upload example replays and do they have to be approved?
@@ -849,7 +850,7 @@ if (isset($_POST['action']))
 
 				if ($example_replays_permissions < 0 && $example_replays_permissions > 2)
 				{
-				$example_replays_permissions = 0;
+					$example_replays_permissions = 0;
 				}
 			}
 			else
@@ -867,18 +868,30 @@ if (isset($_POST['action']))
 				$sch_based_on = 0;
 			}
 			
+			// Introduced in v1.2.0: are comments allowed?
+			if (isset($_POST['sch_comments']))
+			{
+				$sch_allow_comments = 1;
+			}
+			else
+			{
+				$sch_allow_comments = 0;
+			}
+			
 			// We can store the scheme on the database, that thing I logged on almost 600 lines above.
-			$create_scheme_query = $bdd->prepare('INSERT INTO schemes_list VALUES(\'\', :name, :author, :is_member, :password, :submit_date, :submit_date, :description, :version_required_string, 0, :example_replays_permissions, :based_on)');
+			$create_scheme_query = $bdd->prepare('INSERT INTO schemes_list VALUES(\'\', :name, :author, :is_member, :password, :submit_date, :submit_date, :short_description, :description, :version_required_string, 0, :example_replays_permissions, :based_on, :allow_comments)');
 			$create_scheme_query->execute(array(
 			'name' => $sch_name,
 			'author' => $sch_author,
 			'is_member' => $sch_author_is_member,
 			'password' => $sch_password,
 			'submit_date' => $timestamp,
+			'short_description' => $short_description,
 			'description' => $description,
 			'version_required_string' => $version_required_string,
 			'example_replays_permissions' => $example_replays_permissions,
-			'based_on' => $sch_based_on));
+			'based_on' => $sch_based_on,
+			'allow_comments' => $sch_allow_comments));
 
 			$scheme_get_id = $bdd->prepare('SELECT sch_id FROM schemes_list WHERE sch_name = :name');
 			$scheme_get_id->execute(array('name' => $sch_name));
@@ -1380,11 +1393,11 @@ if (isset($_POST['action']))
 			// Mole Squadron
 			$rubber_mole_squadron = 0;
 		
-			if (!isset($_POST['rubber_sdet']))
+			if (isset($_POST['rubber_sdet']))
 			{
 				$rubber_mole_squadron += 1;
 			}
-			if (!isset($_POST['rubber_ldet']))
+			if (isset($_POST['rubber_ldet']))
 			{
 				$rubber_mole_squadron += 2;
 			}
@@ -1452,6 +1465,7 @@ if (isset($_POST['action']))
 			$rubber_settings = array($rubber_version_override_2, $rubber_knocking_force, $rubber_speed, 0, $rubber_earthquake, $rubber_flames_limit, 0, 0, $rubber_crate_limit, $rubber_crate_rate, $rubber_version_override, $rubber_friction, $rubber_mole_squadron, $rubber_swat, $rubber_air_resistance, $rubber_wind_influence, $rubber_anti_sink, $rubber_gravity_modifications, $rubber_worms_bounciness);
 
 			$rubber_max_value = max($rubber_settings);
+
 			if ($rubber_max_value === 0)
 			{
 				$rubber_required = false;
@@ -1491,7 +1505,7 @@ if (isset($_POST['action']))
 			{
 				$sch_password = NULL;
 			}
-			else if ($_POST['sch_password'] != '') // Let's save the new password.
+			else if (isset($_POST['sch_password']) AND $_POST['sch_password'] != '') // Let's save the new password.
 			{
 				$sch_password = sha1($_POST['sch_password']);
 			}
@@ -1500,8 +1514,9 @@ if (isset($_POST['action']))
 				$sch_password = $query_check_result['sch_password'];
 			}
 		
-			// Parse description so it can be saved in the database
-			$description = htmlspecialchars($_POST['sch_desc']);
+			// Parse descriptions so it can be saved in the database
+			$short_description = htmlspecialchars(apostropheParse($_POST['sch_short_desc']));
+			$description = htmlspecialchars(apostropheParse($_POST['sch_desc']));
 
 			if ($version_required == 5)
 			{
@@ -1554,17 +1569,28 @@ if (isset($_POST['action']))
 			{
 			$example_replays_permissions = 0;
 			}
+			
+			// Introduced in v1.2.0: are comments allowed?
+			if (isset($_POST['sch_comments']))
+			{
+				$sch_allow_comments = 1;
+			}
+			else
+			{
+				$sch_allow_comments = 0;
+			}
 		
 			// We can store the scheme on the database, that thing I logged on almost 600 lines above.
-			$create_scheme_query = $bdd->prepare('UPDATE schemes_list SET sch_password = :password, sch_last_edit_date = :last_edit_date, sch_desc = :description, sch_version_required = :version_required_string, sch_example_replays_permissions = :example_replays_permissions WHERE sch_id = :id');
+			$create_scheme_query = $bdd->prepare('UPDATE schemes_list SET sch_password = :password, sch_last_edit_date = :last_edit_date, sch_short_desc = :short_description, sch_desc = :description, sch_version_required = :version_required_string, sch_example_replays_permissions = :example_replays_permissions, sch_allow_comments = :allow_comments WHERE sch_id = :id');
 			$create_scheme_query->execute(array(
 			'password' => $sch_password,
 			'last_edit_date' => $last_edit_timestamp,
+			'short_description' => $short_description,
 			'description' => $description,
 			'version_required_string' => $version_required_string,
 			'example_replays_permissions' => $example_replays_permissions,
-			'id' => $sch_id
-			));
+			'allow_comments' => $sch_allow_comments,
+			'id' => $sch_id));
 	
 			// Last, but not least, let's show the user a friendly message telling the user his scheme has successfully been edited, and that he can even download it himself.
 			echo '<p>'.$str['sch_editor_scheme_succesfully_edited_message'].'</p>';
@@ -2204,7 +2230,8 @@ if (isset($_POST['action']))
 						file_put_contents($_FILES['sch_file']['tmp_name'], $file_content); // Let's update the file
 					}
 
-					$description = htmlspecialchars($_POST['sch_desc']);
+					$short_description = htmlspecialchars(apostropheParse($_POST['sch_short_desc']));
+					$description = htmlspecialchars(apostropheParse($_POST['sch_desc']));
 
 					$version_required = max($version_required_array);
 
@@ -2257,19 +2284,30 @@ if (isset($_POST['action']))
 					{
 						$example_replays_permissions = 0;
 					}
+					
+					// Introduced in v1.2.0: are comments allowed?
+					if (isset($_POST['sch_comments']))
+					{
+						$sch_allow_comments = 1;
+					}
+					else
+					{
+						$sch_allow_comments = 0;
+					}
 
 					move_uploaded_file($_FILES['sch_file']['tmp_name'], 'schemes/'.basename($name));
-					$create_scheme_query = $bdd->prepare('INSERT INTO schemes_list VALUES(\'\', :name, :author, :is_member, :password, :submit_date, :submit_date, :description, :version_required_string, 0, :example_replays_permissions)');
+					$create_scheme_query = $bdd->prepare('INSERT INTO schemes_list VALUES(\'\', :name, :author, :is_member, :password, :submit_date, :submit_date, :short_description, :description, :version_required_string, 0, :example_replays_permissions, 0, :allow_comments)');
 					$create_scheme_query->execute(array(
 					'name' => $database_sch_name,
 					'author' => $sch_author,
 					'is_member' => $sch_author_is_member,
 					'password' => $sch_password,
 					'submit_date' => $timestamp,
+					'short_description' => $short_description,
 					'description' => $description,
 					'version_required_string' => $version_required_string,
-					'example_replays_permissions' => $example_replays_permissions
-					));
+					'example_replays_permissions' => $example_replays_permissions,
+					'allow_comments' => $sch_allow_comments));
 					
 					// Now, replay files.
 					$i = 1;
@@ -2364,16 +2402,16 @@ if (isset($_POST['action']))
 							echo '<li>'.$fixes[$c].'</li>';
 						}
 				
-					echo '</ul>';
-					
-					// Get the scheme ID so you can offer the user to download the scheme with fixes.
-					$scheme_get_id = $bdd->prepare('SELECT sch_id FROM schemes_list WHERE sch_name = :name');
-					$scheme_get_id->execute(array(
-					'name' => $database_sch_name,
-					));
-					$scheme_id = $scheme_get_id->fetch();
-					
-					echo '<p><a href="download.php?id='.$scheme_id['sch_id'].'">'.$str['sch_editor_download_scheme_with_fixes_message'].'</a></p>';
+						echo '</ul>';
+						
+						// Get the scheme ID so you can offer the user to download the scheme with fixes.
+						$scheme_get_id = $bdd->prepare('SELECT sch_id FROM schemes_list WHERE sch_name = :name');
+						$scheme_get_id->execute(array(
+						'name' => $database_sch_name,
+						));
+						$scheme_id = $scheme_get_id->fetch();
+						
+						echo '<p><a href="download.php?id='.$scheme_id['sch_id'].'">'.$str['sch_editor_download_scheme_with_fixes_message'].'</a></p>';
 					}
 				}
 				else

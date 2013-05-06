@@ -125,7 +125,7 @@ if ($pages_count > 0) // There would only be 0 pages if there are no schemes.
 	}
 	?>
 	<table>
-		<tr><th><?php echo $str['sch_editor_sch_list_id_column']; ?></th><th><?php echo $str['sch_editor_sch_list_name_column']; ?></th><th><?php echo $str['sch_editor_sch_list_author_column']; ?></th><th><?php echo $str['sch_editor_sch_list_submit_date_column']; ?></th><th><?php echo $str['sch_editor_sch_list_last_edit_date_column']; ?></th><th><?php echo $str['sch_editor_sch_list_version_required_column']; ?></th><th><?php echo $str['sch_editor_sch_list_download_count_column']; ?></th><th><?php echo $str['sch_editor_sch_list_download_column']; ?></th><th><?php echo $str['sch_editor_sch_list_edit_column']; ?></th><th><?php echo $str['sch_editor_sch_list_download_example_replays']; ?></th><th><?php echo $str['sch_editor_sch_list_based_on']; ?></th></tr>
+		<tr><th><?php echo $str['sch_editor_sch_list_id_column']; ?></th><th><?php echo $str['sch_editor_sch_list_name_column']; ?></th><th><?php echo $str['sch_editor_sch_list_author_column']; ?></th><th><?php echo $str['sch_editor_sch_list_submit_date_column']; ?></th><th><?php echo $str['sch_editor_sch_list_last_edit_date_column']; ?></th><th><?php echo $str['sch_editor_sch_list_version_required_column']; ?></th><th><?php echo $str['sch_editor_sch_list_download_count_column']; ?></th><th><?php echo $str['sch_editor_sch_list_download_column']; ?></th><th><?php echo $str['sch_editor_sch_list_edit_column']; ?></th><th><?php echo $str['sch_editor_sch_list_download_example_replays']; ?></th><th><?php echo $str['sch_editor_sch_list_based_on']; ?></th><th><?php echo $str['sch_editor_sch_list_comments']; ?></th><th><?php echo $str['sch_editor_sch_list_last_comment']; ?></th></tr>
 	<?php
 	while ($scheme_data = $get_schemes_query->fetch() AND $k <= 30)
 	{
@@ -135,7 +135,14 @@ if ($pages_count > 0) // There would only be 0 pages if there are no schemes.
 		if (!isset($previous_sch_id)) // This means we're going to list the first scheme.
 		{
 			// Let's start the table row and set the replay counter to 1.
-			echo '<tr><td>'.$scheme_data['sch_id'].'</td><td><a href="scheme-view.php?id='.$scheme_data['sch_id'].'">'.$scheme_data['sch_name'].'</a></td><td>'.$scheme_data['sch_author'].'</td><td>'.$creation_date.'</td><td>'.$last_edit_date.'</td><td>'.$scheme_data['sch_version_required'].'</td><td>'.$scheme_data['sch_download_count'].'</td><td><a href="download.php?id='.$scheme_data['sch_id'].'">'.$str['sch_editor_sch_list_download_column'].'</a></td><td><a href="scheme-editor.php?action=edit&amp;id='.$scheme_data['sch_id'].'">'.$str['sch_editor_sch_list_edit_column'].'</a></td><td style="text-align: center;">';
+			echo '<tr><td>'.$scheme_data['sch_id'].'</td><td><a href="scheme-view.php?id='.$scheme_data['sch_id'].'">'.$scheme_data['sch_name'].'</a>';
+
+			if (!empty($scheme_data['sch_short_desc']))
+			{
+				echo '<br /><span class="sch_editor_hint">'.$scheme_data['sch_short_desc'].'</span>';
+			}
+
+			echo'</td><td>'.$scheme_data['sch_author'].'</td><td>'.$creation_date.'</td><td>'.$last_edit_date.'</td><td>'.$scheme_data['sch_version_required'].'</td><td>'.$scheme_data['sch_download_count'].'</td><td><a href="download.php?id='.$scheme_data['sch_id'].'">'.$str['sch_editor_sch_list_download_column'].'</a></td><td><a href="scheme-editor.php?action=edit&amp;id='.$scheme_data['sch_id'].'">'.$str['sch_editor_sch_list_edit_column'].'</a></td><td style="text-align: center;">';
 			
 			$sch_based_on = $scheme_data['sch_based_on'];
 			
@@ -164,11 +171,41 @@ if ($pages_count > 0) // There would only be 0 pages if there are no schemes.
 			{
 				echo '<td>-</td>';
 			}
+			
+			$comments_count_query = $bdd->prepare('SELECT COUNT(*) AS comment_count FROM sch_comments WHERE sch_id = :sch_id');
+			$comments_count_query->execute(array(':sch_id' => $scheme_data['sch_id']));
+			$comments_count_query_result = $comments_count_query->fetch();
+			$number_of_comments = $comments_count_query_result['comment_count'];
+			$comments_count_query->closeCursor();
+			
+			echo '<td>'.$number_of_comments.'</td>';
+			
+			if ($number_of_comments != 0)
+			{			
+				$last_comment_query = $bdd->prepare('SELECT com_author, com_timestamp FROM sch_comments WHERE sch_id = :sch_id ORDER BY com_id DESC LIMIT 0, 1');
+				$last_comment_query->execute(array(':sch_id' => $scheme_data['sch_id']));
+				$last_comment_query_result = $last_comment_query->fetch();
+				
+				echo '<td>'.$last_comment_query_result['com_author'].' '.$str['sch_editor_sch_viewer_comment_on_date'].' '.date('d/m/Y', $last_comment_query_result['com_timestamp']).' '.$str['sch_editor_sch_viewer_comment_at_hour'].' '.date('H:i:s', $last_comment_query_result['com_timestamp']).'</td>';
+				
+				$last_comment_query->closeCursor();
+			}
+			else
+			{
+				echo '<td>-</td>';
+			}
 
 			echo '</tr>';
 			
 			// Then, let's start the new one and reset the replay counter.
-			echo '<tr><td>'.$scheme_data['sch_id'].'</td><td><a href="scheme-view.php?id='.$scheme_data['sch_id'].'">'.$scheme_data['sch_name'].'</a></td><td>'.$scheme_data['sch_author'].'</td><td>'.$creation_date.'</td><td>'.$last_edit_date.'</td><td>'.$scheme_data['sch_version_required'].'</td><td>'.$scheme_data['sch_download_count'].'</td><td><a href="download.php?id='.$scheme_data['sch_id'].'">'.$str['sch_editor_sch_list_download_column'].'</a></td><td><a href="scheme-editor.php?action=edit&amp;id='.$scheme_data['sch_id'].'">'.$str['sch_editor_sch_list_edit_column'].'</a></td><td style="text-align: center;">';
+			echo '<tr><td>'.$scheme_data['sch_id'].'</td><td><a href="scheme-view.php?id='.$scheme_data['sch_id'].'">'.$scheme_data['sch_name'].'</a>';
+
+			if (!empty($scheme_data['sch_short_desc']))
+			{
+				echo '<br /><span class="sch_editor_hint">'.$scheme_data['sch_short_desc'].'</span>';
+			}
+
+			echo'</td><td>'.$scheme_data['sch_author'].'</td><td>'.$creation_date.'</td><td>'.$last_edit_date.'</td><td>'.$scheme_data['sch_version_required'].'</td><td>'.$scheme_data['sch_download_count'].'</td><td><a href="download.php?id='.$scheme_data['sch_id'].'">'.$str['sch_editor_sch_list_download_column'].'</a></td><td><a href="scheme-editor.php?action=edit&amp;id='.$scheme_data['sch_id'].'">'.$str['sch_editor_sch_list_edit_column'].'</a></td><td style="text-align: center;">';
 			
 			$sch_based_on = $scheme_data['sch_based_on'];
 			
@@ -207,6 +244,14 @@ if ($pages_count > 0) // There would only be 0 pages if there are no schemes.
 	{
 		echo '<td>-</td>';
 	}
+	
+	$comments_count_query = $bdd->prepare('SELECT COUNT(*) AS comment_count FROM sch_comments WHERE sch_id = :sch_id');
+	$comments_count_query->execute(array(':sch_id' => $scheme_data['sch_id']));
+	$comments_count_query_result = $comments_count_query->fetch();
+	$number_of_comments = $comments_count_query_result['comment_count'];
+	$comments_count_query->closeCursor();
+			
+	echo '<td>'.$number_of_comments.'</td>';
 	echo '</tr>
 	</table>';
 	
