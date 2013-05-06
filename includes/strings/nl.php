@@ -30,6 +30,8 @@ $str['sch_editor_sch_list_download_column'] = 'Download';
 $str['sch_editor_sch_list_edit_column'] = 'Bewerken';
 $str['sch_editor_sch_list_download_example_replays'] = 'Download Voorbeeld Herhalingen';
 $str['sch_editor_sch_list_based_on'] = 'Based on Scheme';
+$str['sch_editor_sch_list_comments'] = 'Comments';
+$str['sch_editor_sch_list_last_comment'] = 'Last Comment';
 
 $str['sch_editor_sch_list_no_example_replays'] = 'Geen Voorbeeld Herhalingen';
 
@@ -45,6 +47,8 @@ $str['sch_editor_sch_creation_based_on_title_2'] = 'Maak een nieuwe speel stijl 
 $str['sch_editor_sch_name'] = 'Speel Stijl Naam';
 $str['sch_editor_sch_name_hint'] = 'Uw speel stijl zal de standardnaam Naamloos speel stijl gevolgd door een tijdstempel ontvangen als u geen naam kiest.';
 $str['sch_editor_sch_name_hint2'] = 'Het is nog niet mogelijk om een schema\'s naam te wijzigen nadat het is opgericht of nadat geupload.';
+$str['sch_editor_sch_short_desc'] = 'Short Description';
+$str['sch_editor_sch_short_desc_hint'] = 'If you wish, you can write a short description that will be shown under the scheme\'s name in the Scheme List. This description is limited to 255 characters.';
 $str['sch_editor_sch_author'] = 'Uw gebruikersnaam';
 $str['sch_editor_sch_author_hint'] = 'Optioneel veld. Als je geen gebruikersnaam invoert, zal je gebruikersnaam gedoopt worden naar Anonymous in de database.';
 $str['sch_editor_sch_password'] = 'Speel Stijl\'s Wachtwoord';
@@ -68,6 +72,8 @@ $str['sch_editor_sch_example_replays_permissions_opt2'] = 'Iedereen, zonder enig
 
 $str['sch_editor_sch_creation_do_not_save_on_database'] = 'Zet deze speel stijl niet op de database';
 $str['sch_editor_sch_creation_do_not_save_on_database_hint'] = 'Als je hierop klikt en ja alles verstuurt, download je de speel stijl meteen, zonder dat het op onze database wordt gezet.';
+$str['sch_editor_sch_allow_comments'] = 'Allow Comments';
+$str['sch_editor_sch_allow_comments_hint'] = 'Will other users be allowed to comment your scheme?';
 
 $str['add'] = 'Erbij doen';
 $str['ammo'] = 'Munitie';
@@ -185,12 +191,12 @@ $str['sch_editor_indestructible_landscape_hint'] = 'Als je voor deze optie kiest
 
 $str['sch_editor_rubber_settings'] = 'Rubber Worm Instellingen';
 $str['sch_editor_rubber_settings_warning'] = 'Waarschuwing: Voor deze instellingen heb je WormKit en wkRubberWorm module nodig. Als u een van deze instellingen bewerkt, de speel stijl kan desynchronisatie veroorzaken tussen de spelers met rubber en de spelers zonder Rubber. U kunt numerieke waarden uitschakelen door hen de waarde 0 te geven.';
-$str['sch_editor_rubber_sdet'] = 'Schot beëindigt beurt';
-$str['sch_editor_rubber_sdet_hint'] = 'Normaal staat deze optie aan.';
+$str['sch_editor_rubber_sdet'] = 'Schot beëindigt beurt niet';
+$str['sch_editor_rubber_sdet_hint'] = 'If you worm fires a weapon, it will still continue playing his current turn.';
 $str['sch_editor_rubber_usw'] = 'Ontgrendel "Schot beëindigt beurt niet" wapens';
 $str['sch_editor_rubber_usw_hint'] = 'Ontgrendelt Aardbeving, Indiase kernproef en Armageddon wanneer een schot de beurt niet beëindigt. U heeft RubberWorm voor 3.6.31.0 of latere versie nodig.';
-$str['sch_editor_rubber_ldet'] = 'Verlies Van Controle beëindigt beurt';
-$str['sch_editor_rubber_ldet_hint'] = 'Normaal staat deze optie aan.';
+$str['sch_editor_rubber_ldet'] = 'Verlies Van Controle beëindigt beurt niet';
+$str['sch_editor_rubber_ldet_hint'] = 'If your worm gets damaged (but not killed), it will still continue playing his current turn.';
 $str['sch_editor_rubber_fdpt'] = 'Wapen Afvuren Zet Klok Niet Op Pauze';
 $str['sch_editor_rubber_fdpt_hint'] = 'Handig als het schot de beurt niet beëindigt.';
 $str['sch_editor_rubber_improved_rope'] = 'Verbeterde Ninja Touw';
@@ -379,6 +385,7 @@ $str['sch_editor_sch_viewer_sch_based_on_the_current_one_sg'] = 'Speel stijl geb
 
 $str['sch_editor_sch_viewer_actions'] = 'Acties:';
 $str['sch_editor_sch_viewer_edit_link'] = 'Bewerk deze speel stijl';
+$str['sch_editor_sch_viewer_create_based_on_link'] = 'Maak een nieuwe speel stijl gebasseerd op deze';
 $str['sch_editor_sch_viewer_add_exrep_link'] = 'Zet Voorbeeld Herhaling erbij';
 $str['sch_editor_sch_viewer_handle_exrep_link'] = 'Handel Voorbeeld Herhalingen';
 
@@ -412,6 +419,16 @@ $str['sch_editor_sch_viewer_rubber_wind_influence_bazooka'] = 'Identiek aan die 
 $str['sch_editor_sch_viewer_rubber_proportional_black_hole'] = 'Proportioneel';
 $str['sch_editor_sch_viewer_rubber_central_black_hole'] = 'Centraal';
 
+$str['sch_editor_sch_viewer_comments_title'] = 'Scheme Comments';
+$str['sch_editor_sch_viewer_comment'] = 'Comment';
+$str['sch_editor_sch_viewer_comment_on_date'] = 'on';
+$str['sch_editor_sch_viewer_comment_at_hour'] = 'at';
+$str['sch_editor_sch_viewer_no_comments'] = 'No comments.';
+
+$str['sch_editor_sch_viewer_add_comment'] = 'Add a comment';
+$str['sch_editor_sch_viewer_comment_antibot'] = '[Antibot] Type FORTY-TWO in digits:';
+$str['sch_editor_sch_viewer_cannot_comment'] = 'The author disabled/locked scheme comments.';
+
 // Upload example replays
 $str['sch_editor_sch_replay_uploader_title'] = 'Zet voorbeeld herhalingen bij de speel stijl.'; // This string is completed by " #$id ($name $by $author)" - yes, the $by differs between languages.
 $str['sch_editor_sch_replay_uploader_intro'] = 'Heb je een goede voorbeeld herhalingen over de speel stijl? Well, just upload them!';
@@ -420,7 +437,7 @@ $str['sch_editor_sch_replay_uploader_authoring_submit_button'] = 'Ga!'; // By "a
 $str['sch_editor_sch_replay_uploader_wrong_user'] = 'U bent niet de lid die deze speel stijl heeft gemaakt!';
 $str['sch_editor_sch_replay_uploader_login_to_attach_replays'] = 'Log alstublieft in om herhalingen aan deze speel stijl toe te voegen (sinds de auteur een lid is die heeft beslist dat hij de enige was om een herhaling goed te keuren en toe te voegen.).';
 $str['sch_editor_sch_replay_uploader_button'] = 'Zend ons deze herhalingen!';
-$str['sch_editor_sch_replay_uploader_error_uatginam'] = 'Mooi geprobeerd om mij daar te krijgen :P.'; // UATGINAM = Uploading Although The Guy Is Not A Member.
+$str['sch_editor_sch_replay_uploader_error_uatginam'] = 'Please log in with the scheme author\'s account to attach example replays.'; // UATGINAM = Uploading Although The Guy Is Not A Member.
 
 // Example replays approving interface
 $str['sch_editor_sch_replay_approving_interface_title'] = 'Afwachting van goedkeuring voor voorbeeld herhalingen voor deze speel stijl'; // Same as line 374.
@@ -592,4 +609,13 @@ $str['sch_editor_changelog_v1_1_0_item1'] = '[New feature] It is now possible to
 $str['sch_editor_changelog_v1_1_0_item2'] = '[New feature] It is now possible to create a scheme without saving it on the server and in the database.';
 $str['sch_editor_changelog_v1_1_0_item3'] = '[Translation] The Dutch translation has been completed by Piki1802.';
 $str['sch_editor_changelog_v1_1_0_item4'] = '[Change] The "Select Another Language" links are no longer translatable. These links are a stopgap until I implement flags anyway.';
+
+$str['sch_editor_changelog_v1_1_1_date'] = 'May 5th, 2013';
+$str['sch_editor_changelog_v1_1_1_item1'] = '[Improvement] It is now possible to write a short description of a scheme that will be shown below the scheme name in the Schemes List.';
+$str['sch_editor_changelog_v1_1_1_item2'] = '[Change] Two RubberWorm settings, sdet and ldet, were respectively named "Shot Ends Turn" and "Loss of Control Ends Turn" and worked unintuitively (if you wanted the corresponding RubberWorm setting to be Off, you had to turn it On in the editing forms). They\'re now named "Shot Doesn\'t End Turn" and "Loss of Control Doesn\'t End Turn", respectively.';
+
+$str['sch_editor_changelog_v1_2_0_date'] = 'May 6th, 2013';
+$str['sch_editor_changelog_v1_2_0_item1'] = '[New feature] You can now comment schemes (unless the scheme author locked scheme comments).';
+$str['sch_editor_changelog_v1_2_0_item2'] = '[Change] The Scheme Uploading form has been reorganized.';
+$str['sch_editor_changelog_v1_2_0_item3'] = '[Fixed bug] Scheme Uploading, which was accidentally broken in v1.1.0, is now working again.';
 ?>

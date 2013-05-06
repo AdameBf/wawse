@@ -30,6 +30,8 @@ $str['sch_editor_sch_list_download_column'] = 'Download';
 $str['sch_editor_sch_list_edit_column'] = 'Edit';
 $str['sch_editor_sch_list_download_example_replays'] = 'Download Example Replays';
 $str['sch_editor_sch_list_based_on'] = 'Based on Scheme';
+$str['sch_editor_sch_list_comments'] = 'Comments';
+$str['sch_editor_sch_list_last_comment'] = 'Last Comment';
 
 $str['sch_editor_sch_list_no_example_replays'] = 'No Example Replay';
 
@@ -45,6 +47,8 @@ $str['sch_editor_sch_creation_based_on_title_2'] = 'Create a New Scheme based on
 $str['sch_editor_sch_name'] = 'Scheme Name';
 $str['sch_editor_sch_name_hint'] = 'Your scheme will receive the default name Unnamed Scheme followed by a timestamp if you don\'t choose a name.';
 $str['sch_editor_sch_name_hint2'] = 'It isn\'t possible to change a scheme\'s name after its creation or upload yet.';
+$str['sch_editor_sch_short_desc'] = 'Short Description';
+$str['sch_editor_sch_short_desc_hint'] = 'If you wish, you can write a short description that will be shown under the scheme\'s name in the Scheme List. This description is limited to 255 characters.';
 $str['sch_editor_sch_author'] = 'Your Nickname';
 $str['sch_editor_sch_author_hint'] = 'Optional field. If you don\'t give any nickname, then your nickname will be set to Anonymous in the database.';
 $str['sch_editor_sch_password'] = 'Scheme\'s Password';
@@ -64,10 +68,12 @@ $str['sch_editor_sch_example_replays_hint'] = 'There\'s nothing better than repl
 $str['sch_editor_sch_example_replays_permissions_label'] = 'Who can upload example replays?';
 $str['sch_editor_sch_example_replays_permissions_opt0'] = 'You (the author) only.';
 $str['sch_editor_sch_example_replays_permissions_opt1'] = 'Everyone, but replays have to be approved by the author - I might take over inactive authors though.';
-$str['sch_editor_sch_example_replays_permissions_opt2'] = 'Everyone, without any approvement required (I may still act behind though - for example, when the guy didn\'t get how to play the scheme).';
+$str['sch_editor_sch_example_replays_permissions_opt2'] = 'Everyone, without any approvement required (I may still act behind though - for example, when the replay uploader didn\'t get how to play the scheme).';
 
 $str['sch_editor_sch_creation_do_not_save_on_database'] = 'Don\'t save this scheme on the database';
 $str['sch_editor_sch_creation_do_not_save_on_database_hint'] = 'If you tick this box, then upon submitting the form, you\'ll download the scheme right away, without it is saved on the server and on the database.';
+$str['sch_editor_sch_allow_comments'] = 'Allow Comments';
+$str['sch_editor_sch_allow_comments_hint'] = 'Will other users be allowed to comment your scheme?';
 
 $str['add'] = 'Add';
 $str['ammo'] = 'Ammo';
@@ -185,12 +191,12 @@ $str['sch_editor_indestructible_landscape_hint'] = 'If this option is enabled, t
 
 $str['sch_editor_rubber_settings'] = 'Rubber Worm Settings';
 $str['sch_editor_rubber_settings_warning'] = 'Warning: These settings require WormKit and the wkRubberWorm module. If you edit any of these settings, the scheme could cause desynchronisations between players having Rubber and players not having Rubber. You can disable numeric values by giving them the 0 value.';
-$str['sch_editor_rubber_sdet'] = 'Shot Ends Turn';
-$str['sch_editor_rubber_sdet_hint'] = 'By default, this setting is enabled.';
+$str['sch_editor_rubber_sdet'] = 'Shot Doesn\'t End Turn';
+$str['sch_editor_rubber_sdet_hint'] = 'If you worm fires a weapon, it will still continue playing his current turn.';
 $str['sch_editor_rubber_usw'] = 'Unlock "Shot Doesn\'t End Turn" weapons';
 $str['sch_editor_rubber_usw_hint'] = 'Unlocks Earthquake, Indian Nuclear Test and Armageddon when shot doesn\'t end turn. Requires RubberWorm for 3.6.31.0 or later.';
-$str['sch_editor_rubber_ldet'] = 'Loss of Control Ends Turn';
-$str['sch_editor_rubber_ldet_hint'] = 'By default, this setting is enabled.';
+$str['sch_editor_rubber_ldet'] = 'Loss of Control Doesn\'t End Turn';
+$str['sch_editor_rubber_ldet_hint'] = 'If your worm gets damaged (but not killed), it will still continue playing his current turn.';
 $str['sch_editor_rubber_fdpt'] = 'Fire Doesn\'t Pause Timer';
 $str['sch_editor_rubber_fdpt_hint'] = 'Useful when shot doesn\'t end turn.';
 $str['sch_editor_rubber_improved_rope'] = 'Improved Rope';
@@ -413,6 +419,16 @@ $str['sch_editor_sch_viewer_rubber_wind_influence_bazooka'] = 'Identical to the 
 $str['sch_editor_sch_viewer_rubber_proportional_black_hole'] = 'Proportional';
 $str['sch_editor_sch_viewer_rubber_central_black_hole'] = 'Central';
 
+$str['sch_editor_sch_viewer_comments_title'] = 'Scheme Comments';
+$str['sch_editor_sch_viewer_comment'] = 'Comment';
+$str['sch_editor_sch_viewer_comment_on_date'] = 'on';
+$str['sch_editor_sch_viewer_comment_at_hour'] = 'at';
+$str['sch_editor_sch_viewer_no_comments'] = 'No comments.';
+
+$str['sch_editor_sch_viewer_add_comment'] = 'Add a comment';
+$str['sch_editor_sch_viewer_comment_antibot'] = '[Antibot] Type FORTY-TWO in digits:';
+$str['sch_editor_sch_viewer_cannot_comment'] = 'The author disabled/locked scheme comments.';
+
 // Upload example replays
 $str['sch_editor_sch_replay_uploader_title'] = 'Attach Example Replays to Scheme'; // This string is completed by " #$id ($name $by $author)" - yes, the $by differs between languages.
 $str['sch_editor_sch_replay_uploader_intro'] = 'Have good example replays to show how this scheme works? Well, just upload them!';
@@ -421,7 +437,7 @@ $str['sch_editor_sch_replay_uploader_authoring_submit_button'] = 'Go!'; // By "a
 $str['sch_editor_sch_replay_uploader_wrong_user'] = 'You\'re not the member who created this scheme!';
 $str['sch_editor_sch_replay_uploader_login_to_attach_replays'] = 'Please log in to attach replays to this scheme (since the author is a member who decided he was the only one allowed to upload example replays).';
 $str['sch_editor_sch_replay_uploader_button'] = 'Send us these replays';
-$str['sch_editor_sch_replay_uploader_error_uatginam'] = 'Nice try getting me there :P.'; // UATGINAM = Uploading Although The Guy Is Not A Member.
+$str['sch_editor_sch_replay_uploader_error_uatginam'] = 'Please log in with the scheme author\'s account to attach example replays.'; // UATGINAM = Uploading Although The Guy Is Not A Member.
 
 // Example replays approving interface
 $str['sch_editor_sch_replay_approving_interface_title'] = 'Approving Pending Example Replays for Scheme'; // Same as line 374.
@@ -593,4 +609,13 @@ $str['sch_editor_changelog_v1_1_0_item1'] = '[New feature] It is now possible to
 $str['sch_editor_changelog_v1_1_0_item2'] = '[New feature] It is now possible to create a scheme without saving it on the server and in the database.';
 $str['sch_editor_changelog_v1_1_0_item3'] = '[Translation] The Dutch translation has been completed by Piki1802.';
 $str['sch_editor_changelog_v1_1_0_item4'] = '[Change] The "Select Another Language" links are no longer translatable. These links are a stopgap until I implement flags anyway.';
+
+$str['sch_editor_changelog_v1_1_1_date'] = 'May 5th, 2013';
+$str['sch_editor_changelog_v1_1_1_item1'] = '[Improvement] It is now possible to write a short description of a scheme that will be shown below the scheme name in the Schemes List.';
+$str['sch_editor_changelog_v1_1_1_item2'] = '[Change] Two RubberWorm settings, sdet and ldet, were respectively named "Shot Ends Turn" and "Loss of Control Ends Turn" and worked unintuitively (if you wanted the corresponding RubberWorm setting to be Off, you had to turn it On in the editing forms). They\'re now named "Shot Doesn\'t End Turn" and "Loss of Control Doesn\'t End Turn", respectively.';
+
+$str['sch_editor_changelog_v1_2_0_date'] = 'May 6th, 2013';
+$str['sch_editor_changelog_v1_2_0_item1'] = '[New feature] You can now comment schemes (unless the scheme author locked scheme comments).';
+$str['sch_editor_changelog_v1_2_0_item2'] = '[Change] The Scheme Uploading form has been reorganized.';
+$str['sch_editor_changelog_v1_2_0_item3'] = '[Fixed bug] Scheme Uploading, which was accidentally broken in v1.1.0, is now working again.';
 ?>

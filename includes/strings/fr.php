@@ -30,6 +30,8 @@ $str['sch_editor_sch_list_download_column'] = 'Télécharger';
 $str['sch_editor_sch_list_edit_column'] = 'Éditer';
 $str['sch_editor_sch_list_download_example_replays'] = 'Télécharger les replays de démonstration';
 $str['sch_editor_sch_list_based_on'] = 'Basé sur le scheme';
+$str['sch_editor_sch_list_comments'] = 'Commentaires';
+$str['sch_editor_sch_list_last_comment'] = 'Dernier commentaire';
 
 $str['sch_editor_sch_list_no_example_replays'] = 'Pas de replay';
 
@@ -45,6 +47,8 @@ $str['sch_editor_sch_creation_based_on_title_2'] = 'Créer un scheme basé sur un 
 $str['sch_editor_sch_name'] = 'Nom du scheme';
 $str['sch_editor_sch_name_hint'] = 'À moins que le fait que votre scheme s\'appelle scheme non-nommé en anglais suivi du nombre de secondes écoulées depuis le 01/01/1970 (timestamp) ne vous pose aucun problème, vous devriez donner un nom à votre scheme.';
 $str['sch_editor_sch_name_hint2'] = 'Il est pour le moment impossible de changer le nom d\'un scheme.';
+$str['sch_editor_sch_short_desc'] = 'Courte description du scheme';
+$str['sch_editor_sch_short_desc_hint'] = 'Brève description qui s\'affichera sous le nom du scheme dans la liste des schemes. Limitée à 255 caractères.';
 $str['sch_editor_sch_author'] = 'Votre pseudo';
 $str['sch_editor_sch_author_hint'] = 'Champ optionnel. Si vous n\'indiquez aucun pseudo, votre pseudo sera Anonymous dans la base de données.';
 $str['sch_editor_sch_password'] = 'Mot de passe d\'édition du scheme';
@@ -68,6 +72,8 @@ $str['sch_editor_sch_example_replays_permissions_opt2'] = 'Tout le monde (l\'aut
 
 $str['sch_editor_sch_creation_do_not_save_on_database'] = 'Ne pas sauvegarder ce scheme sur la base de données';
 $str['sch_editor_sch_creation_do_not_save_on_database_hint'] = 'Si vous cochez cette case, vous téléchargerez directement votre scheme, sans qu\'il ne soit créé sur le serveur et dans la base de données.';
+$str['sch_editor_sch_allow_comments'] = 'Autoriser les commentaires';
+$str['sch_editor_sch_allow_comments_hint'] = 'Les autres pourront-ils commenter votre scheme ?';
 
 $str['add'] = 'Ajouter';
 $str['ammo'] = 'Munitions';
@@ -173,11 +179,11 @@ $str['sch_editor_dud_mines_hint'] = 'Si vous activez cette option, certaines min
 
 $str['sch_editor_rubber_settings'] = 'Options de Rubber Worm';
 $str['sch_editor_rubber_settings_warning'] = 'Attention : Ces options requièrent WormKit et le module wkRubberWorm. Si vous modifiez une de ces options, le scheme causera des désyncronisations entre les joueurs ayant RubberWorm et les joueurs ne l\'ayant pas. Pour désactiver une option dont la valeur est un nombre, mettez 0.';
-$str['sch_editor_rubber_sdet'] = 'Tirer met fin au tour';
+$str['sch_editor_rubber_sdet'] = 'Tirer ne met pas fin au tour';
 $str['sch_editor_rubber_sdet_hint'] = 'Par défaut, cette option est activée.';
 $str['sch_editor_rubber_usw'] = 'Déverrouiller certaines armes dans le mode "Tirer ne met pas fin au tour"';
 $str['sch_editor_rubber_usw_hint'] = 'Cela déverrouille le séisme, le test nucléaire indien et l\'Armageddon lorsque tirer ne met pas fin au tour. Requiert RubberWorm pour la v3.6.31.0 ou ultérieure.';
-$str['sch_editor_rubber_ldet'] = 'Perdre le contrôle du ver met fin au tour';
+$str['sch_editor_rubber_ldet'] = 'Perdre le contrôle du ver ne met pas fin au tour';
 $str['sch_editor_rubber_ldet_hint'] = 'Par défaut, cette option est activée.';
 $str['sch_editor_rubber_fdpt'] = 'Tirer n\'interrompt pas le temps de tour';
 $str['sch_editor_rubber_fdpt_hint'] = 'Utile lorsque tirer ne met pas fin au tour.';
@@ -413,6 +419,16 @@ $str['sch_editor_sch_viewer_rubber_wind_influence_bazooka'] = 'Identique à celle
 $str['sch_editor_sch_viewer_rubber_proportional_black_hole'] = 'Proportionnel';
 $str['sch_editor_sch_viewer_rubber_central_black_hole'] = 'Central';
 
+$str['sch_editor_sch_viewer_comments_title'] = 'Commentaires du scheme';
+$str['sch_editor_sch_viewer_comment'] = 'Commentaire';
+$str['sch_editor_sch_viewer_comment_on_date'] = 'le';
+$str['sch_editor_sch_viewer_comment_at_hour'] = 'à';
+$str['sch_editor_sch_viewer_no_comments'] = 'Aucun commentaire.';
+
+$str['sch_editor_sch_viewer_add_comment'] = 'Ajouter un commentaire';
+$str['sch_editor_sch_viewer_comment_antibot'] = '[Anti-robot] Tapez QUARANTE-DEUX en chiffres :';
+$str['sch_editor_sch_viewer_cannot_comment'] = 'L\'auteur a désactivé ou verrouillé la possibilité de commenter ce scheme.';
+
 // Upload example replays
 $str['sch_editor_sch_replay_uploader_title'] = 'Attacher des replays de démonstration au scheme'; // This string is completed by " #$id ($name $by $author)" - yes, the $by differs between languages.
 $str['sch_editor_sch_replay_uploader_intro'] = 'Vous avez de bons replays qui montrent comment ce scheme se joue ? Très bien, alors importez-les !';
@@ -421,7 +437,7 @@ $str['sch_editor_sch_replay_uploader_authoring_submit_button'] = 'Allons-y !'; /
 $str['sch_editor_sch_replay_uploader_wrong_user'] = 'Vous n\'êtes pas le membre qui a créé ce scheme !';
 $str['sch_editor_sch_replay_uploader_login_to_attach_replays'] = 'Veuillez vous connecter pour pouvoir attacher des replays à ce scheme (puisque l\'auteur est un membre qui a décidé d\'être le seul à pouvoir attacher des replays à ce scheme).';
 $str['sch_editor_sch_replay_uploader_button'] = 'Envoyer les replays';
-$str['sch_editor_sch_replay_uploader_error_uatginam'] = 'Bien essayé, mais vous ne m\'aurez pas :P.'; // UATGINAM = Uploading Although The Guy Is Not A Member.
+$str['sch_editor_sch_replay_uploader_error_uatginam'] = 'Veuillez vous connecter avec le compte utilisateur de l\'auteur du scheme pour ajouter des replays d\'exemple.'; // UATGINAM = Uploading Although The Guy Is Not A Member.
 
 // Example replays approving interface
 $str['sch_editor_sch_replay_approving_interface_title'] = 'Approuver des replays d\'exemple en attente pour le scheme'; // Same as line 293.
@@ -593,4 +609,13 @@ $str['sch_editor_changelog_v1_1_0_item1'] = '[Nouvelle fonctionnalité] Il est dé
 $str['sch_editor_changelog_v1_1_0_item2'] = '[Nouvelle fonctionnalité] Il est désormais possible de créer des schemes sans les sauvegarder sur la base de données.';
 $str['sch_editor_changelog_v1_1_0_item3'] = '[Traduction] La traduction néerlandais a été complétée par Piki1802.';
 $str['sch_editor_changelog_v1_1_0_item4'] = '[Changement] Les liens "Changer de langue" ne sont plus traduisibles. Qui plus est, ce sont des liens temporaires le temps que je mette en place des drapeaux.';
+
+$str['sch_editor_changelog_v1_1_1_date'] = '5 mai 2013';
+$str['sch_editor_changelog_v1_1_1_item1'] = '[Amélioration] Il est désormais possible d\'écrire une courte description d\'un scheme, qui sera ensuite affichée sous le nom du scheme dans la liste des schemes.';
+$str['sch_editor_changelog_v1_1_1_item2'] = '[Changement] Deux options RubberWorm, sdet and ldet, étaient appelées respectivement "Tirer met fin au tour" et "Perdre le contrôle du ver met fin au tour" et fonctionnaient de façon peu intuitive (pour désactiver l\'une de ces options dans RubberWorm, il fallait l\'activer dans les formulaires d\'édition). Ces options s\'appellent désormais "Tirer ne met pas fin au tour" et "Perdre le contrôle du ver ne met pas fin au tour" respectivement.';
+
+$str['sch_editor_changelog_v1_2_0_date'] = '6 mai 2013';
+$str['sch_editor_changelog_v1_2_0_item1'] = '[Nouvelle fonctionnalité] Il est désormais possible de commenter les schemes (sauf si l\'auteur du scheme a bloqué les commentaires).';
+$str['sch_editor_changelog_v1_2_0_item2'] = '[Changement] Le formulaire d\'importation de schemes a été réorganisé.';
+$str['sch_editor_changelog_v1_2_0_item3'] = '[Correction du bug] L\'importation de schemes, accidentellement corrompue en v1.1.0, est de nouveau possible.';
 ?>
