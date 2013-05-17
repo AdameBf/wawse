@@ -396,4 +396,53 @@ function apostropheParse($text)
 
 	return $text;
 }
+
+function commentParse($text)
+{
+	// Bold.
+	$text = preg_replace('#\[b\](.+)\[/b\]#isU', '<strong>$1</strong>', $text);
+	$text = preg_replace('#\[bold\](.+)\[/bold\]#isU', '<strong>$1</strong>', $text);
+
+	// Italic.
+	$text = preg_replace('#\[i\](.+)\[/i\]#isU', '<em>$1</em>', $text);
+	$text = preg_replace('#\[italic\](.+)\[/italic\]#isU', '<em>$1</em>', $text);
+
+	// Underline.
+	$text = preg_replace('#\[u\](.+)\[/u\]#isU', '<ins>$1</ins>', $text);
+	$text = preg_replace('#\[underline\](.+)\[/underline\]#isU', '<ins>$1</ins>', $text);
+	
+	// Links.
+	$text = preg_replace('#\[url="?((http|https|ftp|wa)://[a-z0-9._/-]+)"?\](.+)\[/url\]#isU', '<a href="$1">$2</a>', $text);
+	$text = preg_replace('#(http|https|ftp|wa)://[\#a-z0-9._/?&;=-]+#i', '<a href="$0">$0</a>', $text);
+	
+	// Images.
+	$text = preg_replace('#\[img="?((http|https|ftp)://[a-z0-9._/-]+)"?\]\[/img\]#isU', '<img src="$2" alt="" />', $text);
+	$text = preg_replace('#\[img="?((http|https|ftp)://[a-z0-9._/-]+)"? /\]#isU', '<img src="$2" alt="" />', $text);
+	$text = preg_replace('#\[img\]((http|https|ftp)://[a-z0-9._/-]+)\[/img\]#isU', '<img src="$2" alt="" />', $text);
+
+	// Strike.
+	$text = preg_replace('#\[s\](.+)\[/s\]#isU', '<del>$1</del>', $text);
+	$text = preg_replace('#\[str\](.+)\[/str\]#isU', '<del>$1</del>', $text);
+	$text = preg_replace('#\[strike\](.+)\[/strike\]#isU', '<del>$1</del>', $text);
+	
+	// Colours.
+	$text = preg_replace('#\[color=(?:&amp;quot;)?(aqua|blue|navy|purple|fuchsia|red|orange|yellow|olive|green|lime|teal|maroon|silver|gray|white|black|\#[0-9a-fA-F]{6})(?:&amp;quot;)?\](.+)\[/color\]#isU', '<span style="color: $1;">$2</span>', $text); // American spelling of the [color] tag.
+	$text = preg_replace('#\[colour=(?:&amp;quot;)?(aqua|blue|navy|purple|fuchsia|red|orange|yellow|olive|green|lime|teal|maroon|silver|gray|white|black|\#[0-9a-fA-F]{6})(?:&amp;quot;)?\](.+)\[/colour\]#isU', '<span style="color: $1;">$2</span>', $text); // British spelling of the [colour] tag.
+	
+	// Lists - temporarily disabled.
+	// - Unordered lists.
+	/* $text = preg_replace('#\[list\](?:\n)*(?:\[\*\](.+)){1,}\n?\[/list\]#isU', '</p><ul><li>$1</li></ul><p>', $text);
+	$text = preg_replace('#\[list\](?:\n)*(?:\[li\](.+)\[/li\]){1,}\n?\[/list\]#isU', '</p><ul><li>$1</li></ul><p>', $text);
+	$text = preg_replace('#\[ul\](?:\n)*(?:\[\*\](.+)){1,}\n?\[/ul\]#isU', '</p><ul><li>$1</li></ul><p>', $text);
+	$text = preg_replace('#\[ul\](?:\n)*(?:\[li\](.+)\[/li\]){1,}\n?\[/ul\]#isU', '</p><ul><li>$1</li></ul><p>', $text); */
+	
+	// - Ordered lists.
+	/*$text = preg_replace('#\[list=1\](?:\n)*(\[\*\](.+)){1,}\n?\[/list\]#isU', '</p><ol><li>$2</li></ol><p>', $text);
+	$text = preg_replace('#\[list=1\](?:\n)*(\[li\](.+)\[/li\]){1,}\n?\[/list\]#isU', '</p><ol><li>$2</li></ol><p>', $text);
+	$text = preg_replace('#\[ol\](?:\n)*(\[\*\](.+)){1,}\n?\[/ol\]#isU', '</p><ol><li>$2</li></ol><p>', $text);
+	$text = preg_replace('#\[ol\](?:\n)*(\[li\](.+)\[/li\]){1,}\n?\[/ol\]#isU', '</p><ol><li>$2</li></ol><p>', $text);*/
+
+	// Then output the resulting text.
+	return $text;
+}
 ?>
