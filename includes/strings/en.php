@@ -618,4 +618,14 @@ $str['sch_editor_changelog_v1_2_0_date'] = 'May 6th, 2013';
 $str['sch_editor_changelog_v1_2_0_item1'] = '[New feature] You can now comment schemes (unless the scheme author locked scheme comments).';
 $str['sch_editor_changelog_v1_2_0_item2'] = '[Change] The Scheme Uploading form has been reorganized.';
 $str['sch_editor_changelog_v1_2_0_item3'] = '[Fixed bug] Scheme Uploading, which was accidentally broken in v1.1.0, is now working again.';
+
+$str['sch_editor_changelog_v1_2_1_date'] = 'May 7th, 2013';
+$str['sch_editor_changelog_v1_2_1_item1'] = '[Improvement] Some basic BBcode (bold, italic, underline, strike, coloured text, links, images) has been added to scheme comments and descriptions.';
+$str['sch_editor_changelog_v1_2_1_item2'] = '[Fixed bug] Due to an error, the Scheme Viewing page\'s XHTML code was invalid.';
+
+$str['sch_editor_changelog_v1_2_1a_date'] = 'May 12th, 2013';
+$str['sch_editor_changelog_v1_2_1a_item1'] = '[Translation] The Dutch translation has been updated by Piki1802.';
+
+$str['sch_editor_changelog_v1_2_2_date'] = 'May 17th, 2013';
+$str['sch_editor_changelog_v1_2_2_item1'] = '[Improvement] IP addresses are now recorded in the database when commenting, creating, editing or uploading a scheme, and when attaching example replays to a scheme.';
 ?>

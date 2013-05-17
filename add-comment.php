@@ -2,6 +2,13 @@
 require('includes/functions.php');
 require('includes/variables.php');
 
+// Session start
+ini_set('session.use_cookies', '1');
+ini_set('session.use_only_cookies', '1'); // PHP >= 4.3
+ini_set('session.use_trans_sid', '0');
+ini_set('url_rewriter.tags', '');
+session_start();
+
 include('../../includes/connexion_pdo.php');
 
 if (isset($_GET['id']))
@@ -13,7 +20,7 @@ if (isset($_GET['id']))
 	{
 		$member_id = 0;
 		
-		if (isset($_SESSION['membre_id']))
+		if (isset($_SESSION['pseudo']))
 		{
 			$com_auth = $_SESSION['pseudo'];
 			$member_id = (int) $_SESSION['membre_id'];
@@ -39,15 +46,19 @@ if (isset($_GET['id']))
 			// Time to add the comment to the database.
 			$timestamp = time();
 			$comment = htmlspecialchars(apostropheParse($_POST['sch_comment']));
-			
-			$add_comment_query = $bdd->prepare('INSERT INTO sch_comments VALUES(\'\', :sch_id, :author, :member_id, :com_timestamp, :com_content, 0, 0)');
+
+			// Introduced in v1.2.2: IP recording.
+			$ip = $_SERVER['REMOTE_ADDR'];
+
+			$add_comment_query = $bdd->prepare('INSERT INTO sch_comments VALUES(\'\', :sch_id, :author, :member_id, :com_timestamp, :com_content, :ip, 0, 0)');
 			$add_comment_query->execute(array(
 			'sch_id' => $sch_id,
 			'author' => $com_auth,
 			'member_id' => $member_id,
 			'com_timestamp' => $timestamp,
-			'com_content' => $comment));
-			
+			'com_content' => $comment,
+			'ip' => $ip));
+
 			// Finally, redirect the user to the scheme he was previously viewing.
 			header('Location: scheme-view.php?id='.$sch_id);
 		}
