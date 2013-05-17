@@ -169,6 +169,9 @@ if (isset($_GET['id']))
 			{
 				$i = $example_replays_count + 1;
 				$timestamp = time();
+				
+				// Introduced in v1.2.2: IP recording.
+				$ip = $_SERVER['REMOTE_ADDR'];
 			
 				// Then, check the replays.
 				if (replayFileCheck($_FILES['sch_ex_rep1']))
@@ -177,11 +180,12 @@ if (isset($_GET['id']))
 					$replay_file_name = $replay_file_name_without_extension.'.WAgame';
 
 					move_uploaded_file($_FILES['sch_ex_rep1']['tmp_name'], 'replays/'.basename($replay_file_name));
-					$add_replay_query = $bdd->prepare('INSERT INTO sch_example_replays VALUES(\'\', :sch_id, :file_name, :submit_date, 0, :example_replays_approvement_level)');
+					$add_replay_query = $bdd->prepare('INSERT INTO sch_example_replays VALUES(\'\', :sch_id, :file_name, :submit_date, :ip, 0, :example_replays_approvement_level)');
 					$add_replay_query->execute(array(
 					'sch_id' => $scheme_id,
 					'file_name' => $replay_file_name_without_extension,
 					'submit_date' => $timestamp,
+					'ip' => $ip,
 					'example_replays_approvement_level' => $example_replays_approvement_level
 					));
 
@@ -194,11 +198,12 @@ if (isset($_GET['id']))
 					$replay_file_name = $replay_file_name_without_extension.'.WAgame';
 
 					move_uploaded_file($_FILES['sch_ex_rep2']['tmp_name'], 'replays/'.basename($replay_file_name));
-					$add_replay_query = $bdd->prepare('INSERT INTO sch_example_replays VALUES(\'\', :sch_id, :file_name, :submit_date, 0, :example_replays_approvement_level)');
+					$add_replay_query = $bdd->prepare('INSERT INTO sch_example_replays VALUES(\'\', :sch_id, :file_name, :submit_date, :ip, 0, :example_replays_approvement_level)');
 					$add_replay_query->execute(array(
 					'sch_id' => $scheme_id,
 					'file_name' => $replay_file_name_without_extension,
 					'submit_date' => $timestamp,
+					'ip' => $ip,
 					'example_replays_approvement_level' => $example_replays_approvement_level
 					));
 
@@ -211,11 +216,12 @@ if (isset($_GET['id']))
 					$replay_file_name = $replay_file_name_without_extension.'.WAgame';
 
 					move_uploaded_file($_FILES['sch_ex_rep3']['tmp_name'], 'replays/'.basename($replay_file_name));
-					$add_replay_query = $bdd->prepare('INSERT INTO sch_example_replays VALUES(\'\', :sch_id, :file_name, :submit_date, 0, :example_replays_approvement_level)');
+					$add_replay_query = $bdd->prepare('INSERT INTO sch_example_replays VALUES(\'\', :sch_id, :file_name, :submit_date, :ip, 0, :example_replays_approvement_level)');
 					$add_replay_query->execute(array(
 					'sch_id' => $scheme_id,
 					'file_name' => $replay_file_name_without_extension,
 					'submit_date' => $timestamp,
+					'ip' => $ip,
 					'example_replays_approvement_level' => $example_replays_approvement_level
 					));
 
@@ -228,11 +234,12 @@ if (isset($_GET['id']))
 					$replay_file_name = $replay_file_name_without_extension.'.WAgame';
 
 					move_uploaded_file($_FILES['sch_ex_rep4']['tmp_name'], 'replays/'.basename($replay_file_name));
-					$add_replay_query = $bdd->prepare('INSERT INTO sch_example_replays VALUES(\'\', :sch_id, :file_name, :submit_date, 0, :example_replays_approvement_level)');
+					$add_replay_query = $bdd->prepare('INSERT INTO sch_example_replays VALUES(\'\', :sch_id, :file_name, :submit_date, :ip, 0, :example_replays_approvement_level)');
 					$add_replay_query->execute(array(
 					'sch_id' => $scheme_id,
 					'file_name' => $replay_file_name_without_extension,
 					'submit_date' => $timestamp,
+					'ip' => $ip,
 					'example_replays_approvement_level' => $example_replays_approvement_level
 					));
 
@@ -245,11 +252,12 @@ if (isset($_GET['id']))
 					$replay_file_name = $replay_file_name_without_extension.'.WAgame';
 
 					move_uploaded_file($_FILES['sch_ex_rep5']['tmp_name'], 'replays/'.basename($replay_file_name));
-					$add_replay_query = $bdd->prepare('INSERT INTO sch_example_replays VALUES(\'\', :sch_id, :file_name, :submit_date, 0, :example_replays_approvement_level)');
+					$add_replay_query = $bdd->prepare('INSERT INTO sch_example_replays VALUES(\'\', :sch_id, :file_name, :submit_date, :ip, 0, :example_replays_approvement_level)');
 					$add_replay_query->execute(array(
 					'sch_id' => $scheme_id,
 					'file_name' => $replay_file_name_without_extension,
 					'submit_date' => $timestamp,
+					'ip' => $ip,
 					'example_replays_approvement_level' => $example_replays_approvement_level
 					));
 

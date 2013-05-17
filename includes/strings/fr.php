@@ -618,4 +618,14 @@ $str['sch_editor_changelog_v1_2_0_date'] = '6 mai 2013';
 $str['sch_editor_changelog_v1_2_0_item1'] = '[Nouvelle fonctionnalité] Il est désormais possible de commenter les schemes (sauf si l\'auteur du scheme a bloqué les commentaires).';
 $str['sch_editor_changelog_v1_2_0_item2'] = '[Changement] Le formulaire d\'importation de schemes a été réorganisé.';
 $str['sch_editor_changelog_v1_2_0_item3'] = '[Correction du bug] L\'importation de schemes, accidentellement corrompue en v1.1.0, est de nouveau possible.';
+
+$str['sch_editor_changelog_v1_2_1_date'] = '7 mai 2013';
+$str['sch_editor_changelog_v1_2_1_item1'] = '[Amélioration] Certaines balises BBcode basiques ont été ajoutées aux commentaires et aux descriptions des schemes : il est désormais possible de poster des liens et des images, de mettre du texte en gras, en italique, en couleurs ou encore de le barrer ou de le souligner.';
+$str['sch_editor_changelog_v1_2_1_item2'] = '[Correction de bug] Le code XHTML de la page permettant de visionner des schemes était invalide.';
+
+$str['sch_editor_changelog_v1_2_1a_date'] = '12 mai 2013';
+$str['sch_editor_changelog_v1_2_1a_item1'] = '[Traduction] La traduction néerlandaise a été mise à jour avec tous les textes ajoutés depuis la v1.1.0 par Piki1802.';
+
+$str['sch_editor_changelog_v1_2_2_date'] = '17 mai 2013';
+$str['sch_editor_changelog_v1_2_2_item1'] = '[Amélioration] Les adresses IP sont désormais enregistrées dans la base de données lors de la création, de l\'édition ou de l\'importation d\'un scheme, mais aussi lors de l\'ajout de commentaires ou de replays de démonstration à un scheme.';
 ?>

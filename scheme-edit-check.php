@@ -878,8 +878,11 @@ if (isset($_POST['action']))
 				$sch_allow_comments = 0;
 			}
 			
+			// Introduced in v1.2.2: IP recording.
+			$ip = $_SERVER['REMOTE_ADDR'];
+			
 			// We can store the scheme on the database, that thing I logged on almost 600 lines above.
-			$create_scheme_query = $bdd->prepare('INSERT INTO schemes_list VALUES(\'\', :name, :author, :is_member, :password, :submit_date, :submit_date, :short_description, :description, :version_required_string, 0, :example_replays_permissions, :based_on, :allow_comments)');
+			$create_scheme_query = $bdd->prepare('INSERT INTO schemes_list VALUES(\'\', :name, :author, :is_member, :password, :submit_date, :submit_date, :short_description, :description, :version_required_string, 0, :example_replays_permissions, :based_on, :allow_comments, :ip, :ip)');
 			$create_scheme_query->execute(array(
 			'name' => $sch_name,
 			'author' => $sch_author,
@@ -891,7 +894,8 @@ if (isset($_POST['action']))
 			'version_required_string' => $version_required_string,
 			'example_replays_permissions' => $example_replays_permissions,
 			'based_on' => $sch_based_on,
-			'allow_comments' => $sch_allow_comments));
+			'allow_comments' => $sch_allow_comments,
+			'ip' => $ip));
 
 			$scheme_get_id = $bdd->prepare('SELECT sch_id FROM schemes_list WHERE sch_name = :name');
 			$scheme_get_id->execute(array('name' => $sch_name));
@@ -1579,9 +1583,12 @@ if (isset($_POST['action']))
 			{
 				$sch_allow_comments = 0;
 			}
+			
+			// Introduced in v1.2.2: IP recording.
+			$ip = $_SERVER['REMOTE_ADDR'];
 		
 			// We can store the scheme on the database, that thing I logged on almost 600 lines above.
-			$create_scheme_query = $bdd->prepare('UPDATE schemes_list SET sch_password = :password, sch_last_edit_date = :last_edit_date, sch_short_desc = :short_description, sch_desc = :description, sch_version_required = :version_required_string, sch_example_replays_permissions = :example_replays_permissions, sch_allow_comments = :allow_comments WHERE sch_id = :id');
+			$create_scheme_query = $bdd->prepare('UPDATE schemes_list SET sch_password = :password, sch_last_edit_date = :last_edit_date, sch_short_desc = :short_description, sch_desc = :description, sch_version_required = :version_required_string, sch_example_replays_permissions = :example_replays_permissions, sch_allow_comments = :allow_comments, sch_last_edit_ip = :ip WHERE sch_id = :id');
 			$create_scheme_query->execute(array(
 			'password' => $sch_password,
 			'last_edit_date' => $last_edit_timestamp,
@@ -1590,6 +1597,7 @@ if (isset($_POST['action']))
 			'version_required_string' => $version_required_string,
 			'example_replays_permissions' => $example_replays_permissions,
 			'allow_comments' => $sch_allow_comments,
+			'ip' => $ip,
 			'id' => $sch_id));
 	
 			// Last, but not least, let's show the user a friendly message telling the user his scheme has successfully been edited, and that he can even download it himself.
@@ -2294,9 +2302,12 @@ if (isset($_POST['action']))
 					{
 						$sch_allow_comments = 0;
 					}
+					
+					// Introduced in v1.2.2: IP recording.
+					$ip = $_SERVER['REMOTE_ADDR'];
 
 					move_uploaded_file($_FILES['sch_file']['tmp_name'], 'schemes/'.basename($name));
-					$create_scheme_query = $bdd->prepare('INSERT INTO schemes_list VALUES(\'\', :name, :author, :is_member, :password, :submit_date, :submit_date, :short_description, :description, :version_required_string, 0, :example_replays_permissions, 0, :allow_comments)');
+					$create_scheme_query = $bdd->prepare('INSERT INTO schemes_list VALUES(\'\', :name, :author, :is_member, :password, :submit_date, :submit_date, :short_description, :description, :version_required_string, 0, :example_replays_permissions, 0, :allow_comments, :ip, :ip)');
 					$create_scheme_query->execute(array(
 					'name' => $database_sch_name,
 					'author' => $sch_author,
@@ -2307,7 +2318,8 @@ if (isset($_POST['action']))
 					'description' => $description,
 					'version_required_string' => $version_required_string,
 					'example_replays_permissions' => $example_replays_permissions,
-					'allow_comments' => $sch_allow_comments));
+					'allow_comments' => $sch_allow_comments,
+					'ip' => $ip));
 					
 					// Now, replay files.
 					$i = 1;
@@ -2318,12 +2330,12 @@ if (isset($_POST['action']))
 						$replay_file_name = $replay_file_name_without_extension.'.WAgame';
 						
 						move_uploaded_file($_FILES['sch_ex_rep1']['tmp_name'], 'replays/'.basename($replay_file_name));
-						$add_replay_query = $bdd->prepare('INSERT INTO sch_example_replays VALUES(\'\', :sch_id, :file_name, :submit_date, 0, "1")'); // Value 1 in last column because replays uploaded along with the scheme are automatically approved.
+						$add_replay_query = $bdd->prepare('INSERT INTO sch_example_replays VALUES(\'\', :sch_id, :file_name, :submit_date, :ip, 0, "1")'); // Value 1 in last column because replays uploaded along with the scheme are automatically approved.
 						$add_replay_query->execute(array(
 						'sch_id' => $scheme_id['sch_id'],
 						'file_name' => $replay_file_name_without_extension,
-						'submit_date' => $timestamp
-						));
+						'submit_date' => $timestamp,
+						'ip' => $ip));
 
 						$i++;
 					}
@@ -2333,12 +2345,12 @@ if (isset($_POST['action']))
 						$replay_file_name = $replay_file_name_without_extension.'.WAgame';
 						
 						move_uploaded_file($_FILES['sch_ex_rep2']['tmp_name'], 'replays/'.basename($replay_file_name));
-						$add_replay_query = $bdd->prepare('INSERT INTO sch_example_replays VALUES(\'\', :sch_id, :file_name, :submit_date, 0, "1")');
+						$add_replay_query = $bdd->prepare('INSERT INTO sch_example_replays VALUES(\'\', :sch_id, :file_name, :submit_date, :ip, 0, "1")');
 						$add_replay_query->execute(array(
 						'sch_id' => $scheme_id['sch_id'],
 						'file_name' => $replay_file_name_without_extension,
-						'submit_date' => $timestamp
-						));
+						'submit_date' => $timestamp,
+						'ip' => $ip));
 
 						$i++;
 					}
@@ -2348,12 +2360,12 @@ if (isset($_POST['action']))
 						$replay_file_name = $replay_file_name_without_extension.'.WAgame';
 						
 						move_uploaded_file($_FILES['sch_ex_rep3']['tmp_name'], 'replays/'.basename($replay_file_name));
-						$add_replay_query = $bdd->prepare('INSERT INTO sch_example_replays VALUES(\'\', :sch_id, :file_name, :submit_date, 0, "1")');
+						$add_replay_query = $bdd->prepare('INSERT INTO sch_example_replays VALUES(\'\', :sch_id, :file_name, :submit_date, :ip, 0, "1")');
 						$add_replay_query->execute(array(
 						'sch_id' => $scheme_id['sch_id'],
 						'file_name' => $replay_file_name_without_extension,
-						'submit_date' => $timestamp
-						));
+						'submit_date' => $timestamp,
+						'ip' => $ip));
 
 						$i++;
 					}
@@ -2363,12 +2375,12 @@ if (isset($_POST['action']))
 						$replay_file_name = $replay_file_name_without_extension.'.WAgame';
 						
 						move_uploaded_file($_FILES['sch_ex_rep4']['tmp_name'], 'replays/'.basename($replay_file_name));
-						$add_replay_query = $bdd->prepare('INSERT INTO sch_example_replays VALUES(\'\', :sch_id, :file_name, :submit_date, 0, "1")');
+						$add_replay_query = $bdd->prepare('INSERT INTO sch_example_replays VALUES(\'\', :sch_id, :file_name, :submit_date, :ip, 0, "1")');
 						$add_replay_query->execute(array(
 						'sch_id' => $scheme_id['sch_id'],
 						'file_name' => $replay_file_name_without_extension,
-						'submit_date' => $timestamp
-						));
+						'submit_date' => $timestamp,
+						'ip' => $ip));
 
 						$i++;
 					}
@@ -2378,12 +2390,12 @@ if (isset($_POST['action']))
 						$replay_file_name = $replay_file_name_without_extension.'.WAgame';
 						
 						move_uploaded_file($_FILES['sch_ex_rep5']['tmp_name'], 'replays/'.basename($replay_file_name));
-						$add_replay_query = $bdd->prepare('INSERT INTO sch_example_replays VALUES(\'\', :sch_id, :file_name, :submit_date, 0, "1")');
+						$add_replay_query = $bdd->prepare('INSERT INTO sch_example_replays VALUES(\'\', :sch_id, :file_name, :submit_date, :ip, 0, "1")');
 						$add_replay_query->execute(array(
 						'sch_id' => $scheme_id['sch_id'],
 						'file_name' => $replay_file_name_without_extension,
-						'submit_date' => $timestamp
-						));
+						'submit_date' => $timestamp,
+						'ip' => $ip));
 
 						$i++;
 					}
