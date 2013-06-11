@@ -49,12 +49,12 @@ include('../../includes/connexion_pdo.php');
 	</tr>
 	<tr>
 		<td><label for="sch_name"><?php echo $str['sch_editor_sch_name']; ?></label></td>
-		<td style="width: 238px; padding-left: 25px;"><input type="text" name="sch_name" id="sch_name" maxlength="30" /></td>
+		<td style="width: 238px;"><input type="text" name="sch_name" id="sch_name" maxlength="30" /></td>
 		<td><span class="sch_editor_hint"><?php echo $str['sch_editor_sch_uploader_sch_name_hint']; ?></span></td>
 	</tr>
 	<tr>
 		<td><label for="sch_short_desc" class="aligner"><?php echo $str['sch_editor_sch_short_desc']; ?></label></td>
-		<td style="padding-left: 25px;"><input type="text" name="sch_short_desc" id="sch_short_desc" maxlength="255" /></td>
+		<td><input type="text" name="sch_short_desc" id="sch_short_desc" maxlength="255" /></td>
 		<td><span class="sch_editor_hint"><?php echo $str['sch_editor_sch_short_desc_hint']; ?></span></td>
 	</tr>
 <?php if (!isset($_SESSION['id']))
@@ -73,7 +73,7 @@ include('../../includes/connexion_pdo.php');
 ?>
 	<tr>
 		<td><label for="sch_desc" class="aligner"><?php echo $str['sch_editor_sch_desc']; ?></label></td>
-		<td style="padding-left: 17px;"><textarea name="sch_desc" id="sch_desc" rows="4" cols="20"></textarea></td>
+		<td><textarea name="sch_desc" id="sch_desc" rows="4" cols="20"></textarea></td>
 		<td><span class="sch_editor_hint"><?php echo $str['sch_editor_sch_desc_hint']; ?></span></td>
 	</tr>
 	<tr>

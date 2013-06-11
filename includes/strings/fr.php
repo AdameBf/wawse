@@ -606,7 +606,7 @@ $str['sch_editor_changelog_v1_0_3_item2'] = '[Correction de bug] Depuis la v1.0.
 
 $str['sch_editor_changelog_v1_1_0_date'] = '2 mai 2013';
 $str['sch_editor_changelog_v1_1_0_item1'] = '[Nouvelle fonctionnalité] Il est désormais possible de créer des schemes à partir d\'autres schemes existants.';
-$str['sch_editor_changelog_v1_1_0_item2'] = '[Nouvelle fonctionnalité] Il est désormais possible de créer des schemes sans les sauvegarder sur la base de données.';
+$str['sch_editor_changelog_v1_1_0_item2'] = '[Nouvelle fonctionnalité] Il est désormais possible de créer des schemes sans les sauvegarder sur la base de données. <span class="ziprar"><em>(Cette fonctionnalité a été ajoutée à la va-vite et n\'a donc pas marché. Cela a été corrigé en v1.2.4.)</em></span>';
 $str['sch_editor_changelog_v1_1_0_item3'] = '[Traduction] La traduction néerlandais a été complétée par Piki1802.';
 $str['sch_editor_changelog_v1_1_0_item4'] = '[Changement] Les liens "Changer de langue" ne sont plus traduisibles. Qui plus est, ce sont des liens temporaires le temps que je mette en place des drapeaux.';
 
@@ -627,5 +627,14 @@ $str['sch_editor_changelog_v1_2_1a_date'] = '12 mai 2013';
 $str['sch_editor_changelog_v1_2_1a_item1'] = '[Traduction] La traduction néerlandaise a été mise à jour avec tous les textes ajoutés depuis la v1.1.0 par Piki1802.';
 
 $str['sch_editor_changelog_v1_2_2_date'] = '17 mai 2013';
-$str['sch_editor_changelog_v1_2_2_item1'] = '[Amélioration] Les adresses IP sont désormais enregistrées dans la base de données lors de la création, de l\'édition ou de l\'importation d\'un scheme, mais aussi lors de l\'ajout de commentaires ou de replays de démonstration à un scheme.';
+$str['sch_editor_changelog_v1_2_2_item1'] = '[Amélioration] Il est désormais possible de renommer un scheme lors de son édition. <span class="ziprar"><em>(Cette fonctionnalité a rendu l\'édition de schemes non-fonctionnelle ; cela a été corrigé en v1.2.3.)</em></span>';
+$str['sch_editor_changelog_v1_2_2_item2'] = '[Amélioration] Les adresses IP sont désormais enregistrées dans la base de données lors de la création, de l\'édition ou de l\'importation d\'un scheme, mais aussi lors de l\'ajout de commentaires ou de replays de démonstration à un scheme.';
+
+$str['sch_editor_changelog_v1_2_3_date'] = '2 juin 2013';
+$str['sch_editor_changelog_v1_2_3_item1'] = '[Correction de bug] La possibilité de renommer un scheme lors de son édition, ajoutée en v1.2.2, a rendu l\'édition de schemes non-fonctionnelle, parce que le fichier scheme généré après l\'édition n\'avait pas le nom de l\'auteur dans le nom de fichier, ce qui faisait que le fichier originellement créé/importé était lu lorsque vous prévisualisiez un scheme. (Le bug était dû au fait que la nouvelle requête SQL écrasait les données de la précédente.) Merci à Star&amp;Moon d\'avoir signalé ce bug.';
+$str['sch_editor_changelog_v1_2_3_item2'] = '[Correction] Les champs du formulaire d\'importation de schemes n\'étaient pas alignés correctement (certains étaient décalés, d\'autres pas). Le décalage a été retiré.';
+
+$str['sch_editor_changelog_v1_2_4_date'] = '11 juin 2013';
+$str['sch_editor_changelog_v1_2_4_item1'] = '[Correction de bug] La fonctionnalité suivante de la v1.1.0 : <em><q>Il est désormais possible de créer des schemes sans les sauvegarder sur la base de données.</q></em> n\'a pas été suffisamment testée et n\'a donc pas marché jusque là (le fichier généré contenait les mauvaises données). Vous pouvez désormais créer des schemes correctement sans avoir à les laisser en ligne.';
+$str['sch_editor_changelog_v1_2_4_item2'] = '[Correction de bug] Lorsque vous prévisualisez un scheme v1 (dont les fichiers sont plus courts et font 221 octets), plus aucune erreur ne s\'affichera.';
 ?>

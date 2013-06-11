@@ -125,12 +125,11 @@ if (isset($_POST['action']))
 		}
 		else
 		{
-			$file_name = $sch_name_2.'_by_'.$sch_author_2.'.wsc';
+			$file_name = $sch_name_2.'.wsc';
 			
 			// Code found on Stack Overflow.
 			header('Cache-Control: public');
 			header('Content-Description: File Transfer');
-			header('Content-Length: '. filesize($file_name));
 			header('Content-Disposition: attachment; filename='.$file_name);
 			header('Content-Type: application/wa-scheme'); 
 			header('Content-Transfer-Encoding: binary');
@@ -905,11 +904,6 @@ if (isset($_POST['action']))
 			echo '<p>'.$str['sch_editor_scheme_succesfully_created_message'].'</p>';
 			echo '<p><a href="download.php?id='.$scheme_id['sch_id'].'">'.$str['sch_editor_download_scheme_message'].'</a></p>';
 		}
-		else
-		{
-			// Much shorter: all there is to do is to read the file.
-			readfile($file_name);
-		}
 	break;
 
 
@@ -928,7 +922,7 @@ if (isset($_POST['action']))
 		
 		if (!empty($query_check_result))
 		{
-			$sch_name = htmlspecialchars($query_check_result['sch_name']);
+			$sch_name = htmlspecialchars($_POST['sch_name']);
 		
 			$titre = 'Worms Armageddon - '.$str['sch_editor_sch_editing_title'].' '.$query_check_result['sch_name'].' '.$str['sch_editor_sch_viewer_by'].' '.$query_check_result['sch_author'].' (#'.$sch_id.')';
 			include('../../includes/haut-sans-session-start.php');
@@ -936,8 +930,35 @@ if (isset($_POST['action']))
 			$page_actuelle = $str['sch_editor_sch_editing_title'].' '.$query_check_result['sch_name'].' '.$str['sch_editor_sch_viewer_by'].' '.$query_check_result['sch_author'].' (#'.$sch_id.')';
 			include('../../includes/menu.php');
 	
-			echo '<h1>'.$str['sch_editor_sch_editing_title'].' '.$query_check_result['sch_name'].' '.$str['sch_editor_sch_viewer_by'].' '.$query_check_result['sch_author'].' (#'.$sch_id.')</h1>';
-	
+			echo '<h1>'.$str['sch_editor_sch_editing_title'].' '.$sch_name.' '.$str['sch_editor_sch_viewer_by'].' '.$query_check_result['sch_author'].' (#'.$sch_id.')</h1>';
+			
+			$sch_author = $query_check_result['sch_author'];
+
+			$query_check_new_name = $bdd->prepare('SELECT * FROM schemes_list WHERE sch_name = :sch_name AND sch_author = :sch_author AND sch_id != :sch_id');
+			$query_check_new_name->execute(array('sch_name' => apostropheParse($sch_name), 'sch_author' => apostropheParse($query_check_result['sch_author']), 'sch_id' => $sch_id));
+			$query_check_new_name_result = $query_check_new_name->fetch();
+
+			if (!empty($query_check_new_name_result))
+			{
+				echo '<p><strong>'.$str['warning'].'</strong> '.$str['error_scheme_name_by_scheme_author_already_exists'].'</p>';
+				$query_check->closeCursor();
+
+				// And the magic number is... the timestamp. :O
+				$magic_number = time();
+				$sch_name .= $magic_number;
+			}
+
+			if (empty($sch_name))
+			{
+				$sch_name = 'Unnamed_scheme_'.time();
+			}
+
+			// Let's replace characters in the author name and the file name
+			$sch_name_2 = fileNameParser($sch_name);
+			$sch_author_2 = fileNameParser($sch_author);
+
+			$file_name = 'schemes/'.$sch_name_2.'_by_'.$sch_author_2.'.wsc';
+
 			// The version required to run the scheme should be recalculated, just in case.
 			$version_required_array[] = 5; // Below, v2 schemes (might) crash the game.
 
@@ -1186,9 +1207,7 @@ if (isset($_POST['action']))
 			}
 
 
-			// Now, time to edit the file: I'll just overwrite the previous one.
-			$file_name = 'schemes/'.fileNameParser(apostropheParse($query_check_result['sch_name'])).'_by_'.fileNameParser(apostropheParse($query_check_result['sch_author'])).'.wsc';
-			
+			// Now, time to edit the file: I'll just overwrite the previous one.	
 			$scheme_file = fopen($file_name, 'w');
 			fputs($scheme_file, 'SCHM'); // Scheme magic number (chars no.0-3)
 
@@ -1587,9 +1606,10 @@ if (isset($_POST['action']))
 			// Introduced in v1.2.2: IP recording.
 			$ip = $_SERVER['REMOTE_ADDR'];
 		
-			// We can store the scheme on the database, that thing I logged on almost 600 lines above.
-			$create_scheme_query = $bdd->prepare('UPDATE schemes_list SET sch_password = :password, sch_last_edit_date = :last_edit_date, sch_short_desc = :short_description, sch_desc = :description, sch_version_required = :version_required_string, sch_example_replays_permissions = :example_replays_permissions, sch_allow_comments = :allow_comments, sch_last_edit_ip = :ip WHERE sch_id = :id');
+			// We can store the scheme on the database, that thing I logged on many lines above.
+			$create_scheme_query = $bdd->prepare('UPDATE schemes_list SET sch_name = :name, sch_password = :password, sch_last_edit_date = :last_edit_date, sch_short_desc = :short_description, sch_desc = :description, sch_version_required = :version_required_string, sch_example_replays_permissions = :example_replays_permissions, sch_allow_comments = :allow_comments, sch_last_edit_ip = :ip WHERE sch_id = :id');
 			$create_scheme_query->execute(array(
+			'name' => $sch_name,
 			'password' => $sch_password,
 			'last_edit_date' => $last_edit_timestamp,
 			'short_description' => $short_description,
@@ -2466,5 +2486,8 @@ if (isset($_POST['action']))
 	}
 }
 
-include('includes/scheme-editor-bottom.php');
+if (!isset($_POST['no_database']))
+{
+	include('includes/scheme-editor-bottom.php');
+}
 ?>

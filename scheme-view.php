@@ -560,33 +560,40 @@ if (isset($_GET['id'])) // Yeah, we should rather make sure we're viewing an exi
 										}
 										else if ($weapons_id[$i] >= 40 && $weapons_id[$i] != 44)
 										{
-											$ammo = ord($file_content[41 + $weapons_id[$i] * 4]);
-											$delay = ord($file_content[43 + $weapons_id[$i] * 4]);
+											if(strlen($file_content) == 221 AND $weapons_id[$i] >= 44)
+											{
+												break; // Quit the loop.
+											}
+											else
+											{
+												$ammo = ord($file_content[41 + $weapons_id[$i] * 4]);
+												$delay = ord($file_content[43 + $weapons_id[$i] * 4]);
 
-											if ($ammo == 10 OR $ammo > 127)
-											{
-												$ammo = $str['infinite_abbr'];
-											}
-											
-											if ($delay > 127)
-											{
-												$delay = $str['infinite_abbr'];
-											}
-											
-											if ($ammo !== 0)
-											{
-											?>
-											<tr>
-												<td style="vertical-align: middle;"><img src="images/php/weapon-icon.php?v=<?php echo $i; ?>&amp;aquasheep=<?php echo ord($file_content[31]); ?>" alt="<?php echo $str['weapons_list'][$i]; ?>" title="<?php echo $str['weapons_list'][$i]; ?>" /></td>
-												<td><?php echo $ammo; ?></td>
-												<td>-</td>
-												<td><?php echo $delay; ?></td>
-												<td>-</td>
-											</tr>
-											<?php
-											}
+												if ($ammo == 10 OR $ammo > 127)
+												{
+													$ammo = $str['infinite_abbr'];
+												}
+												
+												if ($delay > 127)
+												{
+													$delay = $str['infinite_abbr'];
+												}
+												
+												if ($ammo !== 0)
+												{
+												?>
+												<tr>
+													<td style="vertical-align: middle;"><img src="images/php/weapon-icon.php?v=<?php echo $i; ?>&amp;aquasheep=<?php echo ord($file_content[31]); ?>" alt="<?php echo $str['weapons_list'][$i]; ?>" title="<?php echo $str['weapons_list'][$i]; ?>" /></td>
+													<td><?php echo $ammo; ?></td>
+													<td>-</td>
+													<td><?php echo $delay; ?></td>
+													<td>-</td>
+												</tr>
+												<?php
+												}
 
-											$i++;
+												$i++;
+											}
 										}
 										else
 										{
