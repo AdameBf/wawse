@@ -330,16 +330,25 @@ function crateProbabilitiesPercentages($weapon_crates_byte, $health_crates_byte,
 
 function weaponsInScheme($scheme_file_content) // Checks whether or not a scheme contains any weapons ammunition and crate probabilities.
 {
-	$bytes_array = array(); // This array will contain every weapon's ammuntion and every regular weapon's crate probability.
+	$bytes_array = array(); // This array will contain every weapon's ammunition and every regular weapon's crate probability.
 
 	// Weapons ammunition.
 	$i = 0;
-	while ($i < 63)
+	while ($i < 45) // a. Regular weapons.
 	{
 		$bytes_array[] = ord($scheme_file_content[41 + $i * 4]);
 		$i++;
 	}
-	
+
+	if (strlen($scheme_file_content) == 297) // b. Super weapons (for v2 schemes only).
+	{
+		while ($i < 63)
+		{
+			$bytes_array[] = ord($scheme_file_content[41 + $i * 4]);
+			$i++;
+		}
+	}
+
 	// Regular weapons crate probabilities.
 	$i = 0;
 	while ($i < 38)
@@ -361,26 +370,33 @@ function weaponsInScheme($scheme_file_content) // Checks whether or not a scheme
 
 function isRubberScheme($scheme_file_content) // Checks whether or not a scheme is a RubberWorm scheme.
 {
-	$bytes_array = array(); // This array will contain every super weapon's crate probability that stores one or more RubberWorm settings.
-	
-	$i = 46;
-	while ($i < 64)
+	if (strlen($scheme_file_content) == 297) // Only v2 schemes can contain Rubber settings.
 	{
-		if ($i != 48 AND $i != 51 AND $i != 52)
+		$bytes_array = array(); // This array will contain every super weapon's crate probability that stores one or more RubberWorm settings.
+		
+		$i = 46;
+		while ($i < 64)
 		{
-			$bytes_array[] = ord($scheme_file_content[44 + $i * 4]);
-		}
+			if ($i != 48 AND $i != 51 AND $i != 52)
+			{
+				$bytes_array[] = ord($scheme_file_content[44 + $i * 4]);
+			}
 
-		$i++;
-	}
-	
-	if (max($bytes_array) == 0)
-	{
-		return false;
+			$i++;
+		}
+		
+		if (max($bytes_array) == 0)
+		{
+			return false;
+		}
+		else
+		{
+			return true;
+		}
 	}
 	else
 	{
-		return true;
+		return false;
 	}
 }
 

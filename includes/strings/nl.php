@@ -606,7 +606,7 @@ $str['sch_editor_changelog_v1_0_3_item2'] = '[Fixed bug] Since v1.0.2, it was im
 
 $str['sch_editor_changelog_v1_1_0_date'] = 'May 2nd, 2013';
 $str['sch_editor_changelog_v1_1_0_item1'] = '[New feature] It is now possible to create a scheme based on an existing one.';
-$str['sch_editor_changelog_v1_1_0_item2'] = '[New feature] It is now possible to create a scheme without saving it on the server and in the database.';
+$str['sch_editor_changelog_v1_1_0_item2'] = '[New feature] It is now possible to create a scheme without saving it on the server and in the database. <span class="ziprar"><em>(This feature was overdone and thus didn\'t work. This has been fixed in v1.2.4.)</em></span>';
 $str['sch_editor_changelog_v1_1_0_item3'] = '[Translation] The Dutch translation has been completed by Piki1802.';
 $str['sch_editor_changelog_v1_1_0_item4'] = '[Change] The "Select Another Language" links are no longer translatable. These links are a stopgap until I implement flags anyway.';
 
@@ -627,5 +627,14 @@ $str['sch_editor_changelog_v1_2_1a_date'] = 'May 12th, 2013';
 $str['sch_editor_changelog_v1_2_1a_item1'] = '[Translation] The Dutch translation has been updated by Piki1802.';
 
 $str['sch_editor_changelog_v1_2_2_date'] = 'May 17th, 2013';
-$str['sch_editor_changelog_v1_2_2_item1'] = '[Improvement] IP addresses are now recorded in the database when commenting, creating, editing or uploading a scheme, and when attaching example replays to a scheme.';
+$str['sch_editor_changelog_v1_2_2_item1'] = '[Improvement] It is now possible to rename a scheme while editing it. <span class="ziprar"><em>(This new feature accidentally broke scheme editing, which has been fixed in v1.2.3.)</em></span>';
+$str['sch_editor_changelog_v1_2_2_item2'] = '[Improvement] IP addresses are now recorded in the database when commenting, creating, editing or uploading a scheme, and when attaching example replays to a scheme.';
+
+$str['sch_editor_changelog_v1_2_3_date'] = 'June 2nd, 2013';
+$str['sch_editor_changelog_v1_2_3_item1'] = '[Fixed bug] The ability to rename a scheme while editing it, introduced in v1.2.2, broke scheme editing, in that the scheme generated lacked the author\'s name in the file name; as a result, the Scheme Viewer would read the originally created/uploaded scheme. (This was due to the query overwriting data from the first one.) Credits go to Star&amp;Moon for reporting the bug.';
+$str['sch_editor_changelog_v1_2_3_item2'] = '[Fixed] Fields in the Scheme Uploading form were inconsistently padded (i.e. some were padded and some weren\'t). The padding has been removed.';
+
+$str['sch_editor_changelog_v1_2_4_date'] = 'June 11th, 2013';
+$str['sch_editor_changelog_v1_2_4_item1'] = '[Fixed bug] The following v1.1.0 feature: <em><q>It is now possible to create a scheme without saving it on the server and in the database.</q></em> was overdone and thus didn\'t work properly (the generated file was incorrect). Now, you can successfully create a scheme without having it being published.';
+$str['sch_editor_changelog_v1_2_4_item2'] = '[Fixed bug] Viewing a v1 scheme (221 bytes long scheme files) will no longer output errors.';
 ?>
