@@ -39,6 +39,20 @@ include('../../includes/menu.php');
 ?>
 <h1><?php echo $str['sch_editor_changelog']; ?></h1>
 <p><?php echo $str['sch_editor_changelog_intro']; ?></p>
+<h4>1.2.5 - <?php echo $str['sch_editor_changelog_v1_2_5_date']; ?></h4>
+<ul>
+	<li><?php echo $str['sch_editor_changelog_v1_2_5_item1']; ?></li>
+	<li><?php echo $str['sch_editor_changelog_v1_2_5_item2']; ?></li>
+	<li><?php echo $str['sch_editor_changelog_v1_2_5_item3']; ?>
+	<ul>
+		<li><?php echo $str['sch_editor_changelog_v1_2_5_item3a']; ?></li>
+		<li><?php echo $str['sch_editor_changelog_v1_2_5_item3b']; ?></li>
+		<li><?php echo $str['sch_editor_changelog_v1_2_5_item3c']; ?></li>
+	</ul></li>
+	<li><?php echo $str['sch_editor_changelog_v1_2_5_item4']; ?></li>
+	<li><?php echo $str['sch_editor_changelog_v1_2_5_item5']; ?></li>
+	<li><?php echo $str['sch_editor_changelog_v1_2_5_item6']; ?></li>
+</ul>
 <h4>1.2.4 - <?php echo $str['sch_editor_changelog_v1_2_4_date']; ?></h4>
 <ul>
 	<li><?php echo $str['sch_editor_changelog_v1_2_4_item1']; ?></li>

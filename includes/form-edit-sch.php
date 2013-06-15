@@ -3,8 +3,8 @@
 	<table class="table_no_borders">
 	<tr>
 		<td style="width:200px;"><label for="sch_name"><?php echo $str['sch_editor_sch_name']; ?></label></td>
-		<td style="width:300px; max-width: 300px;"><input type="text" name="sch_name" id="sch_name" value="<?php echo $get_scheme_info_result['sch_name']; ?>" readonly="readonly" /></td>
-		<td><span class="sch_editor_hint"><?php echo $str['sch_editor_sch_name_hint2']; ?></span></td>
+		<td style="width:300px; max-width: 300px;"><input type="text" name="sch_name" id="sch_name" value="<?php echo $get_scheme_info_result['sch_name']; ?>" /></td>
+		<td><span class="sch_editor_hint"><?php echo $str['sch_editor_sch_name_hint']; ?></span></td>
 	</tr>
 	<tr>
 		<td style="width:200px;"><label for="sch_short_desc"><?php echo $str['sch_editor_sch_short_desc']; ?></label></td>
@@ -488,7 +488,7 @@
 		<?php
 		if($weapons_crate_probability[$counter_weapon])
 		{
-			echo '<td><input type="text" name="weap'.$weapons_id[$counter_weapon].'_crates" id="weap'.$weapons_id[$counter_weapon].'_crates" maxlength="3" size="2" value="'.$delay.'" style="font-size: 0.9em;" onchange="checkValue(this, 0, 255, \''.$delay.'\', '.$language.')" /></td>';
+			echo '<td><input type="text" name="weap'.$weapons_id[$counter_weapon].'_crates" id="weap'.$weapons_id[$counter_weapon].'_crates" maxlength="3" size="2" value="'.$crate_prob.'" style="font-size: 0.9em;" onchange="checkValue(this, 0, 255, \''.$crate_prob.'\', '.$language.')" /></td>';
 		}
 		else
 		{
@@ -560,7 +560,7 @@
 		<?php
 		if($weapons_crate_probability[$counter_weapon])
 		{
-			echo '<td><input type="text" name="weap'.$weapons_id[$counter_weapon].'_crates" id="weap'.$weapons_id[$counter_weapon].'_crates" maxlength="3" size="2" value="'.$delay.'" style="font-size: 0.9em;" onchange="checkValue(this, 0, 255, \''.$delay.'\', '.$language.')" /></td>';
+			echo '<td><input type="text" name="weap'.$weapons_id[$counter_weapon].'_crates" id="weap'.$weapons_id[$counter_weapon].'_crates" maxlength="3" size="2" value="'.$crate_prob.'" style="font-size: 0.9em;" onchange="checkValue(this, 0, 255, \''.$crate_prob.'\', '.$language.')" /></td>';
 		}
 		else
 		{
@@ -632,11 +632,11 @@
 		<?php
 		if($weapons_crate_probability[$counter_weapon])
 		{
-			echo '<td><input type="text" name="weap'.$weapons_id[$counter_weapon].'_crates" id="weap'.$weapons_id[$counter_weapon].'_crates" maxlength="3" size="2" value="'.$delay.'" style="font-size: 0.9em;" onchange="checkValue(this, 0, 255, \''.$delay.'\', '.$language.')" /></td>';
+			echo '<td><input type="text" name="weap'.$weapons_id[$counter_weapon].'_crates" id="weap'.$weapons_id[$counter_weapon].'_crates" maxlength="3" size="2" value="'.$crate_prob.'" style="font-size: 0.9em;" onchange="checkValue(this, 0, 255, \''.$crate_prob.'\', '.$language.')" /></td>';
 		}
 		else
 		{
-		echo '<td>-</td>';
+			echo '<td>-</td>';
 		}
 		?>
 	</tr>
@@ -684,7 +684,7 @@
 		<?php
 		if($weapons_crate_probability[$counter_weapon])
 		{
-			echo '<td><input type="text" name="weap'.$weapons_id[$counter_weapon].'_crates" id="weap'.$weapons_id[$counter_weapon].'_crates" maxlength="3" size="2" value="'.$delay.'" style="font-size: 0.9em;" onchange="checkValue(this, 0, 255, \''.$delay.'\', '.$language.')" /></td>';
+			echo '<td><input type="text" name="weap'.$weapons_id[$counter_weapon].'_crates" id="weap'.$weapons_id[$counter_weapon].'_crates" maxlength="3" size="2" value="'.$crate_prob.'" style="font-size: 0.9em;" onchange="checkValue(this, 0, 255, \''.$crate_prob.'\', '.$language.')" /></td>';
 		}
 		else
 		{
@@ -736,7 +736,7 @@
 		<?php
 		if($weapons_crate_probability[$counter_weapon])
 		{
-			echo '<td><input type="text" name="weap'.$weapons_id[$counter_weapon].'_crates" id="weap'.$weapons_id[$counter_weapon].'_crates" maxlength="3" size="2" value="'.$delay.'" style="font-size: 0.9em;" onchange="checkValue(this, 0, 255, \''.$delay.'\', '.$language.')" /></td>';
+			echo '<td><input type="text" name="weap'.$weapons_id[$counter_weapon].'_crates" id="weap'.$weapons_id[$counter_weapon].'_crates" maxlength="3" size="2" value="'.$crate_prob.'" style="font-size: 0.9em;" onchange="checkValue(this, 0, 255, \''.$crate_prob.'\', '.$language.')" /></td>';
 		}
 		else
 		{
@@ -784,7 +784,7 @@
 		<?php
 		if($weapons_crate_probability[$counter_weapon])
 		{
-			echo '<td><input type="text" name="weap'.$weapons_id[$counter_weapon].'_crates" id="weap'.$weapons_id[$counter_weapon].'_crates" maxlength="3" size="2" value="'.$delay.'" style="font-size: 0.9em;" onchange="checkValue(this, 0, 255, \''.$delay.'\', '.$language.')" /></td>';
+			echo '<td><input type="text" name="weap'.$weapons_id[$counter_weapon].'_crates" id="weap'.$weapons_id[$counter_weapon].'_crates" maxlength="3" size="2" value="'.$crate_prob.'" style="font-size: 0.9em;" onchange="checkValue(this, 0, 255, \''.$crate_prob.'\', '.$language.')" /></td>';
 		}
 		else
 		{
@@ -831,7 +831,7 @@
 		<?php
 		if($weapons_crate_probability[$counter_weapon])
 		{
-			echo '<td><input type="text" name="weap'.$weapons_id[$counter_weapon].'_crates" id="weap'.$weapons_id[$counter_weapon].'_crates" maxlength="3" size="2" value="'.$delay.'" style="font-size: 0.9em;" onchange="checkValue(this, 0, 255, \''.$delay.'\', '.$language.')" /></td>';
+			echo '<td><input type="text" name="weap'.$weapons_id[$counter_weapon].'_crates" id="weap'.$weapons_id[$counter_weapon].'_crates" maxlength="3" size="2" value="'.$crate_prob.'" style="font-size: 0.9em;" onchange="checkValue(this, 0, 255, \''.$crate_prob.'\', '.$language.')" /></td>';
 		}
 		else
 		{
@@ -879,7 +879,7 @@
 		<?php
 		if($weapons_crate_probability[$counter_weapon])
 		{
-			echo '<td><input type="text" name="weap'.$weapons_id[$counter_weapon].'_crates" id="weap'.$weapons_id[$counter_weapon].'_crates" maxlength="3" size="2" value="'.$delay.'" style="font-size: 0.9em;" onchange="checkValue(this, 0, 255, \''.$delay.'\', '.$language.')" /></td>';
+			echo '<td><input type="text" name="weap'.$weapons_id[$counter_weapon].'_crates" id="weap'.$weapons_id[$counter_weapon].'_crates" maxlength="3" size="2" value="'.$crate_prob.'" style="font-size: 0.9em;" onchange="checkValue(this, 0, 255, \''.$crate_prob.'\', '.$language.')" /></td>';
 		}
 		else
 		{

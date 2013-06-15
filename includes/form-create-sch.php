@@ -48,7 +48,7 @@
 	</tr>
 	<tr>
 		<td style="width:280px;"><label for="sch_comments"><?php echo $str['sch_editor_sch_allow_comments']; ?></label></td>
-		<td style="padding-left: 25px; width: 80px;"><input type="checkbox" name="sch_comments" id="sch_comments" /></td>
+		<td style="padding-left: 25px; width: 80px;"><input type="checkbox" name="sch_comments" id="sch_comments" checked="checked" /></td>
 		<td><span class="sch_editor_hint"><?php echo $str['sch_editor_sch_allow_comments_hint']; ?></span></td>
 	</tr>
 </table>

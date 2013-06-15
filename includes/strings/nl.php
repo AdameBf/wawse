@@ -637,4 +637,15 @@ $str['sch_editor_changelog_v1_2_3_item2'] = '[Fixed] Fields in the Scheme Upload
 $str['sch_editor_changelog_v1_2_4_date'] = 'June 11th, 2013';
 $str['sch_editor_changelog_v1_2_4_item1'] = '[Fixed bug] The following v1.1.0 feature: <em><q>It is now possible to create a scheme without saving it on the server and in the database.</q></em> was overdone and thus didn\'t work properly (the generated file was incorrect). Now, you can successfully create a scheme without having it being published.';
 $str['sch_editor_changelog_v1_2_4_item2'] = '[Fixed bug] Viewing a v1 scheme (221 bytes long scheme files) will no longer output errors.';
+
+$str['sch_editor_changelog_v1_2_5_date'] = 'June 15th, 2013';
+$str['sch_editor_changelog_v1_2_5_item1'] = '[Fixed bug] The Super Weapons option accidentally used to be enabled by enabling the Upgraded Longbow option, the actual Super Weapons check box having no effect.';
+$str['sch_editor_changelog_v1_2_5_item2'] = '[Fixed bug] When editing a scheme, or creating a new one based on an existing one, the Crate Probability value of a weapon was carried over from its Delay value, if the row the weapon was in included one or more super weapons.';
+$str['sch_editor_changelog_v1_2_5_item3'] = '[Fixed bugs] Special chars display issues:';
+$str['sch_editor_changelog_v1_2_5_item3a'] = 'Backslashes and apostrophes are now parsed in scheme names, author names and short descriptions in the Scheme List.';
+$str['sch_editor_changelog_v1_2_5_item3b'] = 'Backslashes are now parsed in the scheme name, the author name and the description on the Scheme Viewing page.';
+$str['sch_editor_changelog_v1_2_5_item3c'] = 'Ampersands (&amp;) are now shown properly in the Schemes List or on the Scheme Viewing page.';
+$str['sch_editor_changelog_v1_2_5_item4'] = '[Fixed bug] Attempting to download a scheme file on Mac OS with Safari (and possibly other web browsers) will no longer show the scheme file\'s content instead of downloading the file.';
+$str['sch_editor_changelog_v1_2_5_item5'] = 'The above bugs have been reported by worMatty.';
+$str['sch_editor_changelog_v1_2_5_item6'] = '[Change] The "Allow Comments" option is now enabled by default.';
 ?>

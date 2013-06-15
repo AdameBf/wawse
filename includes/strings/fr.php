@@ -631,10 +631,21 @@ $str['sch_editor_changelog_v1_2_2_item1'] = '[Amélioration] Il est désormais pos
 $str['sch_editor_changelog_v1_2_2_item2'] = '[Amélioration] Les adresses IP sont désormais enregistrées dans la base de données lors de la création, de l\'édition ou de l\'importation d\'un scheme, mais aussi lors de l\'ajout de commentaires ou de replays de démonstration à un scheme.';
 
 $str['sch_editor_changelog_v1_2_3_date'] = '2 juin 2013';
-$str['sch_editor_changelog_v1_2_3_item1'] = '[Correction de bug] La possibilité de renommer un scheme lors de son édition, ajoutée en v1.2.2, a rendu l\'édition de schemes non-fonctionnelle, parce que le fichier scheme généré après l\'édition n\'avait pas le nom de l\'auteur dans le nom de fichier, ce qui faisait que le fichier originellement créé/importé était lu lorsque vous prévisualisiez un scheme. (Le bug était dû au fait que la nouvelle requête SQL écrasait les données de la précédente.) Merci à Star&amp;Moon d\'avoir signalé ce bug.';
+$str['sch_editor_changelog_v1_2_3_item1'] = '[Correction de bug] La possibilité de renommer un scheme lors de son édition, ajoutée en v1.2.2, a rendu l\'éditeur de schemes non-fonctionnel, parce que le fichier scheme généré après l\'édition n\'avait pas le nom de l\'auteur dans le nom de fichier, ce qui faisait que le fichier originellement créé/importé était lu lorsque vous prévisualisiez un scheme. (Le bug était dû au fait que la nouvelle requête SQL écrasait les données de la précédente.) Merci à Star&amp;Moon d\'avoir signalé ce bug.';
 $str['sch_editor_changelog_v1_2_3_item2'] = '[Correction] Les champs du formulaire d\'importation de schemes n\'étaient pas alignés correctement (certains étaient décalés, d\'autres pas). Le décalage a été retiré.';
 
 $str['sch_editor_changelog_v1_2_4_date'] = '11 juin 2013';
 $str['sch_editor_changelog_v1_2_4_item1'] = '[Correction de bug] La fonctionnalité suivante de la v1.1.0 : <em><q>Il est désormais possible de créer des schemes sans les sauvegarder sur la base de données.</q></em> n\'a pas été suffisamment testée et n\'a donc pas marché jusque là (le fichier généré contenait les mauvaises données). Vous pouvez désormais créer des schemes correctement sans avoir à les laisser en ligne.';
 $str['sch_editor_changelog_v1_2_4_item2'] = '[Correction de bug] Lorsque vous prévisualisez un scheme v1 (dont les fichiers sont plus courts et font 221 octets), plus aucune erreur ne s\'affichera.';
+
+$str['sch_editor_changelog_v1_2_5_date'] = '15 juin 2013';
+$str['sch_editor_changelog_v1_2_5_item1'] = '[Correction de bug] L\'option "Super armes" était accidentellement activée en activant l\'option "Arc amélioré", la case à cocher "Super armes" n\'ayant aucun effet.';
+$str['sch_editor_changelog_v1_2_5_item2'] = '[Correction de bug] Lors de l\'édition d\'un scheme, ou de la création d\'un nouveau scheme à partir d\'un scheme existant, la valeur de l\'option "Délai" d\'une arme était reprise pour l\'option "Chances d\'apparition dans les caisses" de cette arme, si l\'arme en question se trouve sur une ligne (F#) contenant des super-armes.';
+$str['sch_editor_changelog_v1_2_5_item3'] = '[Corrections de bugs] Affichage de certains caractères spéciaux :';
+$str['sch_editor_changelog_v1_2_5_item3a'] = 'Les antislashes et les apostrophes s\'affichent désormais correctement dans les noms des schemes, le nom de leur auteur et dans les brèves descriptions de la liste des schemes.';
+$str['sch_editor_changelog_v1_2_5_item3b'] = 'Les antislashes s\'affichent désormais correctement dans les noms du scheme, le nom de son auteur et dans la description lors de la prévisualisation d\'un scheme.';
+$str['sch_editor_changelog_v1_2_5_item3c'] = 'Les esperluettes (&amp;) s\'affichent désormais correctement dans la liste des schemes ou lors de la prévisualisation d\'un scheme.';
+$str['sch_editor_changelog_v1_2_5_item4'] = '[Correction de bug] Essayer de télécharger un scheme sur Mac OS avec le navigateur Safari (et peut-être également d\'autres navigateurs web) affichait le contenu du fichier au lieu de télécharger le fichier.';
+$str['sch_editor_changelog_v1_2_5_item5'] = 'Les bugs ci-dessus (mis à part celui des esperluettes) ont été signalés par worMatty.';
+$str['sch_editor_changelog_v1_2_5_item6'] = '[Changement] L\'option "Autoriser les commentaires" est désormais activée par défaut.';
 ?>

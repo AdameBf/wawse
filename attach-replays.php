@@ -129,7 +129,7 @@ if (isset($_GET['id']))
 		{
 			// First of all, get the scheme name.
 			$sch_name = $scheme_infos['sch_name'];
-			
+
 			// Then, count how many replays there already were in the database. This will prevent overwriting replays, especially if they're nice. (By the way, I decided not to keep the old and arbitrary limit of 5 replays/scheme.)
 			$example_replays_count_query = $bdd->prepare('SELECT COUNT(*) AS example_replays_count FROM sch_example_replays WHERE sch_id = :sch_id');
 			$example_replays_count_query->bindValue(':sch_id', $_GET['id'], PDO::PARAM_INT);
@@ -179,7 +179,7 @@ if (isset($_GET['id']))
 					$replay_file_name_without_extension = '['.$scheme_id.'.'.$sch_name.']_Example_Replay_'.$i;
 					$replay_file_name = $replay_file_name_without_extension.'.WAgame';
 
-					move_uploaded_file($_FILES['sch_ex_rep1']['tmp_name'], 'replays/'.basename($replay_file_name));
+					move_uploaded_file($_FILES['sch_ex_rep1']['tmp_name'], 'replays/'.basename(fileNameParser($replay_file_name)));
 					$add_replay_query = $bdd->prepare('INSERT INTO sch_example_replays VALUES(\'\', :sch_id, :file_name, :submit_date, :ip, 0, :example_replays_approvement_level)');
 					$add_replay_query->execute(array(
 					'sch_id' => $scheme_id,
@@ -197,7 +197,7 @@ if (isset($_GET['id']))
 					$replay_file_name_without_extension = '['.$scheme_id.'.'.$sch_name.']_Example_Replay_'.$i;
 					$replay_file_name = $replay_file_name_without_extension.'.WAgame';
 
-					move_uploaded_file($_FILES['sch_ex_rep2']['tmp_name'], 'replays/'.basename($replay_file_name));
+					move_uploaded_file($_FILES['sch_ex_rep2']['tmp_name'], 'replays/'.basename(fileNameParser($replay_file_name)));
 					$add_replay_query = $bdd->prepare('INSERT INTO sch_example_replays VALUES(\'\', :sch_id, :file_name, :submit_date, :ip, 0, :example_replays_approvement_level)');
 					$add_replay_query->execute(array(
 					'sch_id' => $scheme_id,
@@ -215,7 +215,7 @@ if (isset($_GET['id']))
 					$replay_file_name_without_extension = '['.$scheme_id.'.'.$sch_name.']_Example_Replay_'.$i;
 					$replay_file_name = $replay_file_name_without_extension.'.WAgame';
 
-					move_uploaded_file($_FILES['sch_ex_rep3']['tmp_name'], 'replays/'.basename($replay_file_name));
+					move_uploaded_file($_FILES['sch_ex_rep3']['tmp_name'], 'replays/'.basename(fileNameParser($replay_file_name)));
 					$add_replay_query = $bdd->prepare('INSERT INTO sch_example_replays VALUES(\'\', :sch_id, :file_name, :submit_date, :ip, 0, :example_replays_approvement_level)');
 					$add_replay_query->execute(array(
 					'sch_id' => $scheme_id,
@@ -233,7 +233,7 @@ if (isset($_GET['id']))
 					$replay_file_name_without_extension = '['.$scheme_id.'.'.$sch_name.']_Example_Replay_'.$i;
 					$replay_file_name = $replay_file_name_without_extension.'.WAgame';
 
-					move_uploaded_file($_FILES['sch_ex_rep4']['tmp_name'], 'replays/'.basename($replay_file_name));
+					move_uploaded_file($_FILES['sch_ex_rep4']['tmp_name'], 'replays/'.basename(fileNameParser($replay_file_name)));
 					$add_replay_query = $bdd->prepare('INSERT INTO sch_example_replays VALUES(\'\', :sch_id, :file_name, :submit_date, :ip, 0, :example_replays_approvement_level)');
 					$add_replay_query->execute(array(
 					'sch_id' => $scheme_id,
@@ -251,7 +251,7 @@ if (isset($_GET['id']))
 					$replay_file_name_without_extension = '['.$scheme_id.'.'.$sch_name.']_Example_Replay_'.$i;
 					$replay_file_name = $replay_file_name_without_extension.'.WAgame';
 
-					move_uploaded_file($_FILES['sch_ex_rep5']['tmp_name'], 'replays/'.basename($replay_file_name));
+					move_uploaded_file($_FILES['sch_ex_rep5']['tmp_name'], 'replays/'.basename(fileNameParser($replay_file_name)));
 					$add_replay_query = $bdd->prepare('INSERT INTO sch_example_replays VALUES(\'\', :sch_id, :file_name, :submit_date, :ip, 0, :example_replays_approvement_level)');
 					$add_replay_query->execute(array(
 					'sch_id' => $scheme_id,
