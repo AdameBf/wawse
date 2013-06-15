@@ -37,16 +37,16 @@ if (isset($_GET['id'])) // Yeah, we should rather make sure we're viewing an exi
 	
 	if (!empty($get_scheme_info_result)) // Now check the ID.
 	{
-		$sch_name = apostropheParse($get_scheme_info_result['sch_name']);
+		$sch_name = backslashParse(apostropheParse(htmlspecialchars($get_scheme_info_result['sch_name'])));
 		$sch_name_2 = $get_scheme_info_result['sch_name'];
 
-		$sch_author = apostropheParse($get_scheme_info_result['sch_author']);
+		$sch_author = backslashParse(apostropheParse(htmlspecialchars($get_scheme_info_result['sch_author'])));
 		$sch_author_2 = $get_scheme_info_result['sch_author'];
 		
 		$sch_id = $get_scheme_info_result['sch_id'];
 		$sch_version_required = $get_scheme_info_result['sch_version_required'];
 		$sch_download_count = $get_scheme_info_result['sch_download_count'];
-		$sch_description = nl2br(apostropheParse(commentParse(htmlspecialchars($get_scheme_info_result['sch_desc']))));
+		$sch_description = nl2br(backslashParse(apostropheParse(commentParse(htmlspecialchars($get_scheme_info_result['sch_desc'])))));
 		
 		$sch_based_on = $get_scheme_info_result['sch_based_on'];
 		
@@ -101,7 +101,7 @@ if (isset($_GET['id'])) // Yeah, we should rather make sure we're viewing an exi
 		$show_other_schemes_based_on_this_one = false;
 		
 		$other_schemes_based_on_this_one = '';
-			
+
 		while ($result_other_schemes_based_on_this_one = $get_other_schemes_based_on_this_one->fetch())
 		{
 			if (empty($other_schemes_based_on_this_one))
@@ -143,13 +143,13 @@ if (isset($_GET['id'])) // Yeah, we should rather make sure we're viewing an exi
 		{
 			$signature .= fgetc($sch_file);
 		}
-		
+
 		if ($signature == 'SCHM')
 		{
 			// Let's continue if the signature is correct
 			echo '<h1>'.$page_actuelle.'</h1>'; // = current page, can't rename the variable because it would break a part of the script.
 			echo '<p><strong>'.$str['sch_editor_sch_viewer_actions'].'</strong> <a href="scheme-editor.php?action=edit&amp;id='.$sch_id.'">'.$str['sch_editor_sch_viewer_edit_link'].'</a> - <a href="scheme-editor.php?action=create-based-on&amp;id='.$sch_id.'">'.$str['sch_editor_sch_viewer_create_based_on_link'].'</a> - <a href="attach-replays.php?id='.$sch_id.'">'.$str['sch_editor_sch_viewer_add_exrep_link'].'</a> - <a href="replay-approving-interface.php?id='.$sch_id.'">'.$str['sch_editor_sch_viewer_handle_exrep_link'].'</a>.</p>';
-			
+
 			// First, show general informations about the scheme
 			if ($language == 'nl') // In Dutch, the word order has to be different from English and French's.
 			{
@@ -159,6 +159,7 @@ if (isset($_GET['id'])) // Yeah, we should rather make sure we're viewing an exi
 			{
 				$download_link_line = '<p><strong>'.$str['sch_editor_sch_viewer_sch_download_label'].'</strong> <a href="download.php?id='.$sch_id.'">'.$str['sch_editor_sch_viewer_sch_download_link'].'</a> ('.$str['sch_editor_sch_viewer_sch_download_count_downloaded'].' '.$get_scheme_info_result['sch_download_count'].' '.$str['sch_editor_sch_viewer_sch_download_count_times'].').<br />';
 			}
+
 			$download_link_line = onceTwice($download_link_line);
 			echo $download_link_line;
 			echo '<strong>'.$str['sch_editor_sch_viewer_sch_example_replays'].'</strong>'.$sch_example_replays.'.</p>';

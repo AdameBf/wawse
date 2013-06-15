@@ -51,11 +51,11 @@ if (isset($_GET['id']))
 		$page_actuelle = $str['sch_editor_sch_replay_approving_interface_title'].' #'.$id.' ('.$scheme_infos['sch_name'].' '.$str['sch_editor_sch_viewer_by'].' '.$scheme_infos['sch_author'].')';
 
 		include('../../includes/menu.php');
-		if ($scheme_infos['sch_auth_ismember'] != 0) // Yeah, I'll probably change how this colum works to have the member's ID - which is more reliable than his nickname.
+		if ($scheme_infos['sch_auth_ismember'] != 0)
 		{
-			if (isset($_SESSION['pseudo']))
+			if (isset($_SESSION['membre_id']))
 			{
-				if ($_SESSION['pseudo'] == $scheme_infos['sch_author'])
+				if ($_SESSION['membre_id'] == $scheme_infos['sch_author_ismember'])
 				{
 					// We can continue :)
 					$continue = true;

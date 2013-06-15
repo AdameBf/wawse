@@ -413,6 +413,19 @@ function apostropheParse($text)
 	return $text;
 }
 
+function backslashParse($text)
+{
+	if (strpos($text, '\\\\') !== false)
+	{
+		while (strpos($text, '\\\\') !== false)
+		{
+			$text = str_replace('\\\\', '\\', $text);
+		}
+	}
+
+	return $text;
+}
+
 function commentParse($text)
 {
 	// Bold.

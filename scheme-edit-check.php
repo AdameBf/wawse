@@ -43,7 +43,7 @@ if (isset($_POST['action']))
 	{
 	case 'create';
 
-	$sch_name = htmlspecialchars(apostropheParse($_POST['sch_name']));
+	$sch_name = apostropheParse($_POST['sch_name']);
 
 	// Introduced in v1.1.0: Schemes that aren't saved on the database can now be created. They're downloaded right ahead, without showing any confirmation page.
 	if (!isset($_POST['no_database']))
@@ -322,7 +322,7 @@ if (isset($_POST['action']))
 			$team_weapons = 0x00;
 		}
 	
-		if (isset($_POST['upgraded_longbow']))
+		if (isset($_POST['super_weapons']))
 		{
 			$super_weapons = 0x01;
 		}
@@ -796,8 +796,8 @@ if (isset($_POST['action']))
 			$version_required = (string) max($version_required_array);
 
 			// Parse description so it can be saved in the database
-			$short_description = htmlspecialchars(apostropheParse($_POST['sch_short_desc']));
-			$description = htmlspecialchars(apostropheParse($_POST['sch_desc']));
+			$short_description = apostropheParse($_POST['sch_short_desc']);
+			$description = apostropheParse($_POST['sch_desc']);
 
 			if ($version_required == 5)
 			{
@@ -922,15 +922,15 @@ if (isset($_POST['action']))
 		
 		if (!empty($query_check_result))
 		{
-			$sch_name = htmlspecialchars($_POST['sch_name']);
+			$sch_name = $_POST['sch_name'];
 		
-			$titre = 'Worms Armageddon - '.$str['sch_editor_sch_editing_title'].' '.$query_check_result['sch_name'].' '.$str['sch_editor_sch_viewer_by'].' '.$query_check_result['sch_author'].' (#'.$sch_id.')';
+			$titre = 'Worms Armageddon - '.$str['sch_editor_sch_editing_title'].' '.htmlspecialchars($query_check_result['sch_name']).' '.$str['sch_editor_sch_viewer_by'].' '.htmlspecialchars($query_check_result['sch_author']).' (#'.$sch_id.')';
 			include('../../includes/haut-sans-session-start.php');
 
-			$page_actuelle = $str['sch_editor_sch_editing_title'].' '.$query_check_result['sch_name'].' '.$str['sch_editor_sch_viewer_by'].' '.$query_check_result['sch_author'].' (#'.$sch_id.')';
+			$page_actuelle = $str['sch_editor_sch_editing_title'].' '.htmlspecialchars($query_check_result['sch_name']).' '.$str['sch_editor_sch_viewer_by'].' '.htmlspecialchars($query_check_result['sch_author']).' (#'.$sch_id.')';
 			include('../../includes/menu.php');
 	
-			echo '<h1>'.$str['sch_editor_sch_editing_title'].' '.$sch_name.' '.$str['sch_editor_sch_viewer_by'].' '.$query_check_result['sch_author'].' (#'.$sch_id.')</h1>';
+			echo '<h1>'.$str['sch_editor_sch_editing_title'].' '.htmlspecialchars($sch_name).' '.$str['sch_editor_sch_viewer_by'].' '.htmlspecialchars($query_check_result['sch_author']).' (#'.$sch_id.')</h1>';
 			
 			$sch_author = $query_check_result['sch_author'];
 
@@ -1147,7 +1147,7 @@ if (isset($_POST['action']))
 				$team_weapons = 0x00;
 			}
 	
-			if (isset($_POST['upgraded_longbow']))
+			if (isset($_POST['super_weapons']))
 			{
 				$super_weapons = 0x01;
 			}
@@ -1538,8 +1538,8 @@ if (isset($_POST['action']))
 			}
 		
 			// Parse descriptions so it can be saved in the database
-			$short_description = htmlspecialchars(apostropheParse($_POST['sch_short_desc']));
-			$description = htmlspecialchars(apostropheParse($_POST['sch_desc']));
+			$short_description = apostropheParse($_POST['sch_short_desc']);
+			$description = apostropheParse($_POST['sch_desc']);
 
 			if ($version_required == 5)
 			{
@@ -1676,7 +1676,7 @@ if (isset($_POST['action']))
 			
 			if ($_POST['sch_name'] != '') // Introduced in v1.0.0: has the user specified a scheme name? 
 			{
-				$database_sch_name = htmlspecialchars(apostropheParse($_POST['sch_name']));
+				$database_sch_name = apostropheParse($_POST['sch_name']);
 				$sch_file_name = fileNameParser($database_sch_name);
 			}
 			else // If it is empty, the uploaded file's name will be used instead.
@@ -1690,14 +1690,14 @@ if (isset($_POST['action']))
                 // Let's store the file in the database and on the server, though it requires checking
 				if (isset($_SESSION['id']))
 				{
-				$sch_author = htmlspecialchars($_SESSION['pseudo']);
+				$sch_author = $_SESSION['pseudo'];
 				$sch_author_2 = fileNameParser($sch_author);
 				}
 				else
 				{
 					if (!empty($_POST['sch_author']))
 					{
-					$sch_author = htmlspecialchars($_POST['sch_author']);
+					$sch_author = $_POST['sch_author'];
 					$sch_author_2 = fileNameParser($sch_author);
 					}
 					else
@@ -2258,8 +2258,8 @@ if (isset($_POST['action']))
 						file_put_contents($_FILES['sch_file']['tmp_name'], $file_content); // Let's update the file
 					}
 
-					$short_description = htmlspecialchars(apostropheParse($_POST['sch_short_desc']));
-					$description = htmlspecialchars(apostropheParse($_POST['sch_desc']));
+					$short_description = apostropheParse($_POST['sch_short_desc']);
+					$description = apostropheParse($_POST['sch_desc']);
 
 					$version_required = max($version_required_array);
 
