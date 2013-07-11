@@ -9,6 +9,8 @@ ini_set('session.use_trans_sid', '0');
 ini_set('url_rewriter.tags', '');
 session_start();
 
+include('includes/strings/en.php');
+
 if (!isset($_SESSION['pseudo']) AND !isset($_COOKIE['pseudo'])) // If the user isn't a logged-in member.
 {
 	if (isset($_COOKIE['wa_sch_edit_lang']) OR isset($_POST['wa_sch_edit_lang']))
@@ -23,8 +25,7 @@ if (!isset($_SESSION['pseudo']) AND !isset($_COOKIE['pseudo'])) // If the user i
 			}
 			else if ($_POST['wa_sch_edit_lang'] == 'en')
 			{
-				// The language's set to English, so let's load the English strings.
-				include('includes/strings/en.php');
+				// The language's set to English.
 				setcookie('wa_sch_edit_lang', 'en', time() + 365*24*3600, null, null, false, true);
 			}
 			else if ($_POST['wa_sch_edit_lang'] == 'nl')
@@ -36,7 +37,6 @@ if (!isset($_SESSION['pseudo']) AND !isset($_COOKIE['pseudo'])) // If the user i
 			else
 			{
 				// The visitor is a nasty guy who edited the form. We'll just load the English string file.
-				include('includes/strings/en.php');
 				setcookie('wa_sch_edit_lang', 'en', time() + 365*24*3600, null, null, false, true);
 			}
 		}
@@ -49,8 +49,6 @@ if (!isset($_SESSION['pseudo']) AND !isset($_COOKIE['pseudo'])) // If the user i
 			}
 			else if ($_COOKIE['wa_sch_edit_lang'] == 'en')
 			{
-				// The language's set to English, so let's load the English strings.
-				include('includes/strings/en.php');
 			}
 			else if ($_COOKIE['wa_sch_edit_lang'] == 'nl')
 			{
@@ -60,7 +58,6 @@ if (!isset($_SESSION['pseudo']) AND !isset($_COOKIE['pseudo'])) // If the user i
 			else
 			{
 				// The visitor is a nasty guy who edited the cookie. We'll right load the English string file; but since the cookie was edited, let's change it to 'en'.
-				include('includes/strings/en.php');
 				setcookie('wa_sch_edit_lang', 'en', time() + 365*24*3600, null, null, false, true);
 			}
 		}
@@ -94,11 +91,6 @@ else
 			// Load the Dutch strings
 			include('includes/strings/nl.php');
 		}
-		else
-		{
-			// Load the English string
-			include('includes/strings/en.php');
-		}
 	}
 	else
 	{
@@ -117,15 +109,10 @@ else
 			// Load the French strings
 			include('includes/strings/fr.php');
 		}
-		else if ($language == "hu")
+		else if ($language == "nl")
 		{
 			// Load the Dutch strings
 			include('includes/strings/nl.php');
-		}
-		else
-		{
-			// Load the English string
-			include('includes/strings/en.php');
 		}
 	}
 }

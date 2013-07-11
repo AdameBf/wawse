@@ -37,6 +37,11 @@ $str['sch_editor_sch_list_no_example_replays'] = 'No Example Replay';
 
 $str['sch_editor_sch_list_replay_approving_interface_link'] = 'Handle';
 
+$str['sch_editor_sch_list_version_required_field_or_later'] = 'or later'; // Replaces %1 in version fields when displaying the version.
+$str['sch_editor_sch_list_version_required_with_rw'] = 'with RubberWorm'; // Replaces %2 in version fields.
+$str['sch_editor_sch_list_version_required_laserfix'] = '3.6.29.0 with Laser Fix or 3.6.31.0+ with RubberWorm'; // Replaces %3 version fields.
+$str['sch_editor_sch_list_version_required_laserfix_rw'] = '3.6.29.0 with Laser Fix and RubberWorm or 3.6.31.0+ with RubberWorm'; // Replaces %4 version fields.
+
 // Scheme maker/editor page
 $str['sch_editor_sch_maker_title'] = 'Create a New Scheme';
 $str['sch_editor_sch_editing_title'] = 'Edit Scheme'; // Followed by the scheme name.
@@ -648,4 +653,15 @@ $str['sch_editor_changelog_v1_2_5_item3c'] = 'Ampersands (&amp;) are now shown p
 $str['sch_editor_changelog_v1_2_5_item4'] = '[Fixed bug] Attempting to download a scheme file on Mac OS with Safari (and possibly other web browsers) will no longer show the scheme file\'s content instead of downloading the file.';
 $str['sch_editor_changelog_v1_2_5_item5'] = 'The above bugs (except for the ampersands problem) have been reported by worMatty.';
 $str['sch_editor_changelog_v1_2_5_item6'] = '[Change] The "Allow Comments" option is now enabled by default.';
+
+$str['sch_editor_changelog_v1_2_5a_date'] = 'June 29th, 2013';
+$str['sch_editor_changelog_v1_2_5a_item1'] = '[Change] If a string isn\'t present in a non-English translation file, the English string will be loaded, if it exists.';
+
+$str['sch_editor_changelog_v1_2_6_date'] = 'July 11th, 2013';
+$str['sch_editor_changelog_v1_2_6_item1'] = '[Improvement] IP addresses are now recorded for scheme and example replay downloads, thus preventing possible abuses of a scheme\'s or a replay\'s download counter.';
+$str['sch_editor_changelog_v1_2_6_item2'] = '[Improvement] The Version Required field is now translated. Note that this will only apply to upcoming schemes, but I\'ll be working on applying this to old schemes as well.';
+$str['sch_editor_changelog_v1_2_6_item3'] = '[Translation] The Dutch translation has been updated by Paperfold.';
+$str['sch_editor_changelog_v1_2_6_item4'] = '[Fixed bug] Due to a typo, the Anti Sink RubberWorm option was ignored when creating or editing a scheme.';
+$str['sch_editor_changelog_v1_2_6_item5'] = '[Fixed bug] When uploading a scheme, W:A version 3.0 was incorrectly called version "3.6.0.0 Beta".';
+$str['sch_editor_changelog_v1_2_6_item6'] = '[Fixed bug] In Scheme Comments, quotes (") weren\'t escaped properly.';
 ?>

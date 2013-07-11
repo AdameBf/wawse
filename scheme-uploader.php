@@ -9,20 +9,22 @@ ini_set('session.use_trans_sid', '0');
 ini_set('url_rewriter.tags', '');
 session_start();
 
+include('includes/strings/en.php');
+
 if (isset($_SESSION['wa_sch_edit_lang']))
 {
 	$language = setLanguage($_SESSION['wa_sch_edit_lang']);
+	include('includes/strings/'.$language.'.php');
 }
 else if (isset($_COOKIE['wa_sch_edit_lang']))
 {
 	$language = setLanguage($_COOKIE['wa_sch_edit_lang']);
+	include('includes/strings/'.$language.'.php');
 }
 else
 {
-$language = 'en';
+	$language = 'en';
 }
-
-include('includes/strings/'.$language.'.php');
 
 $parent_directory = 2;
 $titre = 'Worms Armageddon - '.$str['sch_editor_sch_uploader_title'];

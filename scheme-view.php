@@ -9,20 +9,22 @@ ini_set('session.use_trans_sid', '0');
 ini_set('url_rewriter.tags', '');
 session_start();
 
+include('includes/strings/en.php');
+
 if (isset($_SESSION['wa_sch_edit_lang']))
 {
 	$language = setLanguage($_SESSION['wa_sch_edit_lang']);
+	include('includes/strings/'.$language.'.php');
 }
 else if (isset($_COOKIE['wa_sch_edit_lang']))
 {
 	$language = setLanguage($_COOKIE['wa_sch_edit_lang']);
+	include('includes/strings/'.$language.'.php');
 }
 else
 {
-$language = 'en';
+	$language = 'en';
 }
-
-include('includes/strings/'.$language.'.php');
 
 if (isset($_GET['id'])) // Yeah, we should rather make sure we're viewing an existing scheme, but first, an ID must have been specified.
 {
@@ -170,7 +172,7 @@ if (isset($_GET['id'])) // Yeah, we should rather make sure we're viewing an exi
 			echo '<p><strong>'.$str['sch_editor_sch_viewer_sch_created_on'].'</strong> '.$sch_created_on.'.<br />';
 			echo '<strong>'.$str['sch_editor_sch_viewer_sch_last_edited_on'].'</strong> '.$sch_last_edited_on.'.</p>';
 
-			echo '<p><strong>'.$str['sch_editor_sch_viewer_sch_required_version'].'</strong> '.$sch_version_required.'.<br />';
+			echo '<p><strong>'.$str['sch_editor_sch_viewer_sch_required_version'].'</strong> '.versionFieldParse($sch_version_required, array($str['sch_editor_sch_list_version_required_field_or_later'], $str['sch_editor_sch_list_version_required_with_rw'], $str['sch_editor_sch_list_version_required_laserfix'], $str['sch_editor_sch_list_version_required_laserfix_rw'])).'.<br />';
 			echo '<strong>'.$str['sch_editor_sch_viewer_sch_desc'].'</strong><br />'.$sch_description.'</p>';
 
 			if ($show_based_on OR $show_other_schemes_based_on_this_one)

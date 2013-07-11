@@ -9,20 +9,22 @@ ini_set('session.use_trans_sid', '0');
 ini_set('url_rewriter.tags', '');
 session_start();
 
+include('includes/strings/en.php');
+
 if (isset($_SESSION['wa_sch_edit_lang']))
 {
 	$language = setLanguage($_SESSION['wa_sch_edit_lang']);
+	include('includes/strings/'.$language.'.php');
 }
 else if (isset($_COOKIE['wa_sch_edit_lang']))
 {
 	$language = setLanguage($_COOKIE['wa_sch_edit_lang']);
+	include('includes/strings/'.$language.'.php');
 }
 else
 {
-$language = 'en';
+	$language = 'en';
 }
-
-include('includes/strings/'.$language.'.php');
 
 $parent_directory = 2;
 $titre = 'Worms Armageddon - '.$str['sch_editor_sch_list_title'];
@@ -142,7 +144,7 @@ if ($pages_count > 0) // There would only be 0 pages if there are no schemes.
 				echo '<br /><span class="sch_editor_hint">'.backslashParse(apostropheParse(htmlspecialchars($scheme_data['sch_short_desc']))).'</span>';
 			}
 
-			echo'</td><td>'.backslashParse(apostropheParse(htmlspecialchars($scheme_data['sch_author']))).'</td><td>'.$creation_date.'</td><td>'.$last_edit_date.'</td><td>'.$scheme_data['sch_version_required'].'</td><td>'.$scheme_data['sch_download_count'].'</td><td><a href="download.php?id='.$scheme_data['sch_id'].'">'.$str['sch_editor_sch_list_download_column'].'</a></td><td><a href="scheme-editor.php?action=edit&amp;id='.$scheme_data['sch_id'].'">'.$str['sch_editor_sch_list_edit_column'].'</a></td><td style="text-align: center;">';
+			echo'</td><td>'.backslashParse(apostropheParse(htmlspecialchars($scheme_data['sch_author']))).'</td><td>'.$creation_date.'</td><td>'.$last_edit_date.'</td><td>'.versionFieldParse($scheme_data['sch_version_required'], array($str['sch_editor_sch_list_version_required_field_or_later'], $str['sch_editor_sch_list_version_required_with_rw'], $str['sch_editor_sch_list_version_required_laserfix'], $str['sch_editor_sch_list_version_required_laserfix_rw'])).'</td><td>'.$scheme_data['sch_download_count'].'</td><td><a href="download.php?id='.$scheme_data['sch_id'].'">'.$str['sch_editor_sch_list_download_column'].'</a></td><td><a href="scheme-editor.php?action=edit&amp;id='.$scheme_data['sch_id'].'">'.$str['sch_editor_sch_list_edit_column'].'</a></td><td style="text-align: center;">';
 			
 			$sch_based_on = $scheme_data['sch_based_on'];
 			
@@ -205,7 +207,7 @@ if ($pages_count > 0) // There would only be 0 pages if there are no schemes.
 				echo '<br /><span class="sch_editor_hint">'.$scheme_data['sch_short_desc'].'</span>';
 			}
 
-			echo'</td><td>'.$scheme_data['sch_author'].'</td><td>'.$creation_date.'</td><td>'.$last_edit_date.'</td><td>'.$scheme_data['sch_version_required'].'</td><td>'.$scheme_data['sch_download_count'].'</td><td><a href="download.php?id='.$scheme_data['sch_id'].'">'.$str['sch_editor_sch_list_download_column'].'</a></td><td><a href="scheme-editor.php?action=edit&amp;id='.$scheme_data['sch_id'].'">'.$str['sch_editor_sch_list_edit_column'].'</a></td><td style="text-align: center;">';
+			echo'</td><td>'.$scheme_data['sch_author'].'</td><td>'.$creation_date.'</td><td>'.$last_edit_date.'</td><td>'.versionFieldParse($scheme_data['sch_version_required'], array($str['sch_editor_sch_list_version_required_field_or_later'], $str['sch_editor_sch_list_version_required_with_rw'], $str['sch_editor_sch_list_version_required_laserfix'], $str['sch_editor_sch_list_version_required_laserfix_rw'])).'</td><td>'.$scheme_data['sch_download_count'].'</td><td><a href="download.php?id='.$scheme_data['sch_id'].'">'.$str['sch_editor_sch_list_download_column'].'</a></td><td><a href="scheme-editor.php?action=edit&amp;id='.$scheme_data['sch_id'].'">'.$str['sch_editor_sch_list_edit_column'].'</a></td><td style="text-align: center;">';
 			
 			$sch_based_on = $scheme_data['sch_based_on'];
 			

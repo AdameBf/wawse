@@ -37,6 +37,11 @@ $str['sch_editor_sch_list_no_example_replays'] = 'Pas de replay';
 
 $str['sch_editor_sch_list_replay_approving_interface_link'] = 'Gérer';
 
+$str['sch_editor_sch_list_version_required_field_or_later'] = 'ou ultérieure';
+$str['sch_editor_sch_list_version_required_with_rw'] = 'avec RubberWorm';
+$str['sch_editor_sch_list_version_required_laserfix'] = '3.6.29.0 avec LaserFix ou 3.6.31.0+ avec RubberWorm';
+$str['sch_editor_sch_list_version_required_laserfix_rw'] = '3.6.29.0 avec LaserFix et RubberWorm ou 3.6.31.0+ avec RubberWorm';
+
 // Scheme maker/editor page
 $str['sch_editor_sch_maker_title'] = 'Créer un scheme';
 $str['sch_editor_sch_editing_title'] = 'Éditer le scheme';
@@ -624,7 +629,7 @@ $str['sch_editor_changelog_v1_2_1_item1'] = '[Amélioration] Certaines balises BB
 $str['sch_editor_changelog_v1_2_1_item2'] = '[Correction de bug] Le code XHTML de la page permettant de visionner des schemes était invalide.';
 
 $str['sch_editor_changelog_v1_2_1a_date'] = '12 mai 2013';
-$str['sch_editor_changelog_v1_2_1a_item1'] = '[Traduction] La traduction néerlandaise a été mise à jour avec tous les textes ajoutés depuis la v1.1.0 par Piki1802.';
+$str['sch_editor_changelog_v1_2_1a_item1'] = '[Traduction] La traduction néerlandaise a été mise à jour par Piki1802.';
 
 $str['sch_editor_changelog_v1_2_2_date'] = '17 mai 2013';
 $str['sch_editor_changelog_v1_2_2_item1'] = '[Amélioration] Il est désormais possible de renommer un scheme lors de son édition. <span class="ziprar"><em>(Cette fonctionnalité a rendu l\'édition de schemes non-fonctionnelle ; cela a été corrigé en v1.2.3.)</em></span>';
@@ -648,4 +653,15 @@ $str['sch_editor_changelog_v1_2_5_item3c'] = 'Les esperluettes (&amp;) s\'affich
 $str['sch_editor_changelog_v1_2_5_item4'] = '[Correction de bug] Essayer de télécharger un scheme sur Mac OS avec le navigateur Safari (et peut-être également d\'autres navigateurs web) affichait le contenu du fichier au lieu de télécharger le fichier.';
 $str['sch_editor_changelog_v1_2_5_item5'] = 'Les bugs ci-dessus (mis à part celui des esperluettes) ont été signalés par worMatty.';
 $str['sch_editor_changelog_v1_2_5_item6'] = '[Changement] L\'option "Autoriser les commentaires" est désormais activée par défaut.';
+
+$str['sch_editor_changelog_v1_2_5a_date'] = '29 juin 2013';
+$str['sch_editor_changelog_v1_2_5a_item1'] = '[Changement] Si un message n\'existe pas dans un fichier de traduction autre qu\'Anglais, le message anglais sera chargé à la place, si toutefois il existe.';
+
+$str['sch_editor_changelog_v1_2_6_date'] = '11 juillet 2013';
+$str['sch_editor_changelog_v1_2_6_item1'] = '[Amélioration] À chaque téléchargement d\'un style de partie ou d\'un replay de démonstration, l\'adresse IP d\'où le téléchargement est effectué est désormais enregistrée, permettant ainsi d\'empêcher les abus éventuels du compteur de téléchargements d\'un scheme ou d\'un replay.';
+$str['sch_editor_changelog_v1_2_6_item2'] = '[Amélioration] Le contenu du champ Version Requise de la base de données est désormais traduit avant d\'être affiché à l\'écran. Notez que cela ne s\'appliquera qu\'aux styles de partie créés depuis l\'ajout de cette fonctionnalité ; je dois m\'occuper des autres schemes manuellement.';
+$str['sch_editor_changelog_v1_2_6_item3'] = '[Traduction] La traduction néerlandaise a été mise à jour par Paperfold.';
+$str['sch_editor_changelog_v1_2_6_item4'] = '[Correction de bug] À cause d\'une erreur, l\'option "Les vers ne coulent pas" de RubberWorm était ignorée lors de la création ou de l\'édition d\'un style de partie.';
+$str['sch_editor_changelog_v1_2_6_item5'] = '[Correction de bug] Lors de l\'importation d\'un scheme, la version 3.0 de W:A était appelée version "3.6.0.0 Beta".';
+$str['sch_editor_changelog_v1_2_6_item6'] = '[Correction de bug] Dans les commentaires des schemes, les guillemets (") n\'était pas échappés correctement.';
 ?>

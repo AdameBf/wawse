@@ -474,4 +474,14 @@ function commentParse($text)
 	// Then output the resulting text.
 	return $text;
 }
+
+function versionFieldParse($text, $replacement_strings)
+{
+	$text = str_replace('%1', $replacement_strings[0], $text);
+	$text = str_replace('%2', $replacement_strings[1], $text);
+	$text = str_replace('%3', $replacement_strings[2], $text);
+	$text = str_replace('%4', $replacement_strings[3], $text);
+	
+	return $text;
+}
 ?>

@@ -45,7 +45,7 @@ if (isset($_GET['id']))
 		{
 			// Time to add the comment to the database.
 			$timestamp = time();
-			$comment = htmlspecialchars(apostropheParse($_POST['sch_comment']));
+			$comment = apostropheParse($_POST['sch_comment']);
 
 			// Introduced in v1.2.2: IP recording.
 			$ip = $_SERVER['REMOTE_ADDR'];
